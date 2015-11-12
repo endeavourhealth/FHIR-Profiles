@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="endeavour-task" />
+  <meta>
+    <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="0" />
+  </extension>
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-task" />
+  <name value="Endeavour-Task" />
+  <display value="Endeavour task" />
+  <status value="draft" />
+  <publisher value="Endeavour Health Charitable Trust" />
+  <date value="2015-09-22T20:02:49+10:00" />
+  <description value="Structure definition for tasks" />
+  <fhirVersion value="1.0.1" />
+  <kind value="resource" />
+  <constrainedType value="Order" />
+  <abstract value="false" />
+  <base value="http://hl7.org/fhir/StructureDefinition/Order" />
+  <differential>
+    <element>
+      <path value="Order" />
+      <short value="A request to perform an action" />
+      <definition value="A request to perform an action." />
+      <alias value="Request" />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Order" />
+      </type>
+      <isSummary value="true" />
+    </element>
+    <element>
+      <path value="Order.extension" />
+      <slicing>
+        <discriminator value="url" />
+        <rules value="openAtEnd" />
+      </slicing>
+    </element>
+    <element>
+      <path value="Order.extension" />
+      <name value="type" />
+      <short value="Type of the task" />
+      <comments value="test" />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-task-type-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="Order.extension" />
+      <name value="status" />
+      <short value="Status of the task" />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-task-status-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="Order.extension" />
+      <name value="priority" />
+      <short value="Priority of the task" />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-task-priority-extension" />
+      </type>
+    </element>
+  </differential>
+</StructureDefinition>
