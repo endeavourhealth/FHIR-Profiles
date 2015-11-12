@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="endeavour-patient" />
+  <meta>
+    <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="5" />
+  </extension>
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-patient" />
+  <name value="Endeavour-Patient" />
+  <display value="Endeavour Patient" />
+  <status value="draft" />
+  <publisher value="Endeavour Health Charitable Trust" />
+  <date value="2015-09-22T20:02:49+10:00" />
+  <description value="Base StructureDefinition for Patient Resource" />
+  <requirements value="Tracking patient is the center of the healthcare process." />
+  <fhirVersion value="1.0.1" />
+  <kind value="resource" />
+  <constrainedType value="Patient" />
+  <abstract value="false" />
+  <base value="http://hl7.org/fhir/StructureDefinition/Patient" />
+  <differential>
+    <element>
+      <path value="Patient" />
+      <short value="Information about an individual or animal receiving health care services" />
+      <definition value="Demographics and other administrative information about an individual or animal receiving care or other health-related services." />
+      <alias value="SubjectOfCare Client Resident" />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Patient" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value="Patient[classCode=PAT]" />
+      </mapping>
+      <mapping>
+        <identity value="cda" />
+        <map value="ClinicalDocument.recordTarget.patientRole" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="administrative.individual" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Patient.identifier.assigner" />
+      <short value="Organization that issued id (may be just text)" />
+      <definition value="Organization that issued/manages the identifier." />
+      <comments value="The reference may be just a text description of the assigner." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="CX.4 / (CX.4,CX.9,CX.10)" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="./IdentifierIssuingAuthority" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Patient.contact.organization" />
+      <short value="Organization that is associated with the contact" />
+      <definition value="Organization on behalf of which the contact is acting or for which the contact is working." />
+      <requirements value="For guardians or business related contacts, the organization is relevant." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
+      </type>
+      <condition value="pat-1" />
+      <mapping>
+        <identity value="v2" />
+        <map value="NK1-13, NK1-30, NK1-31, NK1-32, NK1-41" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="scoper" />
+      </mapping>
+      <mapping>
+        <identity value="cda" />
+        <map value="n/a" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Patient.careProvider" />
+      <short value="Patient's nominated primary care provider" />
+      <definition value="Patient's nominated care provider." />
+      <comments value="This may be the primary care provider (in a GP context), or it may be a patient nominated care manager in a community/disablity setting, or even organization that will provide people to perform the care provider roles.  This is not to be used to record Care Teams, these should be recorded on either the CarePlan or EpisodeOfCare resources." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Practitioner" />
+      </type>
+      <mapping>
+        <identity value="v2" />
+        <map value="PD1-4" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="subjectOf.CareEvent.performer.AssignedEntity" />
+      </mapping>
+      <mapping>
+        <identity value="cda" />
+        <map value="n/a" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Patient.managingOrganization" />
+      <short value="Organization that is the custodian of the patient record" />
+      <definition value="Organization that is the custodian of the patient record." />
+      <comments value="There is only one managing organization for a specific patient record. Other organizations will have their own Patient record, and may use the Link property to join the records together (or a Person resource which can include confidence ratings for the association)." />
+      <requirements value="Need to know who recognizes this patient record, manages and updates it." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="rim" />
+        <map value="scoper" />
+      </mapping>
+      <mapping>
+        <identity value="cda" />
+        <map value=".providerOrganization" />
+      </mapping>
+    </element>
+  </differential>
+</StructureDefinition>

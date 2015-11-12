@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="endeavour-schedule" />
+  <meta>
+    <lastUpdated value="2015-11-01T10:00:00" />
+  </meta>
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-schedule" />
+  <name value="Endeavour-Schedule" />
+  <display value="Endeavour Schedule" />
+  <status value="draft" />
+  <publisher value="Endeavour Health Charitable Trust" />
+  <contact>
+    <telecom>
+      <system value="other" />
+      <value value="http://www.endeavourhealth.org/" />
+    </telecom>
+  </contact>
+  <date value="2015-11-01T10:00:00" />
+  <description value="Endeavour Schedule description." />
+  <fhirVersion value="1.0.1" />
+  <kind value="resource" />
+  <constrainedType value="Schedule" />
+  <abstract value="false" />
+  <base value="http://hl7.org/fhir/StructureDefinition/Schedule" />
+  <differential>
+    <element>
+      <path value="Schedule" />
+      <short value="A container for slot(s) of time that may be available for booking appointments" />
+      <definition value="A container for slot(s) of time that may be available for booking appointments." />
+      <alias value="Availability" />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Schedule" />
+      </type>
+    </element>
+    <element>
+      <path value="Schedule.extension" />
+      <slicing>
+        <discriminator value="url" />
+        <rules value="openAtEnd" />
+      </slicing>
+    </element>
+    <element>
+      <path value="Schedule.extension" />
+      <name value="additionalActors" />
+      <definition value="Optional Extensions Element - found in all resources." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-additionalactor" />
+      </type>
+    </element>
+  </differential>
+</StructureDefinition>

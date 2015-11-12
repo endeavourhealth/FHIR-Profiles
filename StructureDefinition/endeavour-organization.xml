@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="endeavour-organization" />
+  <meta>
+    <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="4" />
+  </extension>
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
+  <name value="Endeavour-Organization" />
+  <display value="Endeavour Organization" />
+  <status value="draft" />
+  <date value="2015-09-22T20:02:49+10:00" />
+  <description value="Base StructureDefinition for Organization Resource" />
+  <fhirVersion value="1.0.1" />
+  <kind value="resource" />
+  <constrainedType value="Organization" />
+  <abstract value="false" />
+  <base value="http://hl7.org/fhir/StructureDefinition/Organization" />
+  <differential>
+    <element>
+      <path value="Organization" />
+      <short value="A grouping of people or organizations with a common purpose" />
+      <definition value="A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.  Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, etc." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Organization" />
+      </type>
+      <mapping>
+        <identity value="v2" />
+        <map value="(also see master files messages)" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="Organization(classCode=ORG, determinerCode=INST)" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="Organization" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="administrative.group" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Organization.identifier.assigner" />
+      <short value="Organization that issued id (may be just text)" />
+      <definition value="Organization that issued/manages the identifier." />
+      <comments value="The reference may be just a text description of the assigner." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="CX.4 / (CX.4,CX.9,CX.10)" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="./IdentifierIssuingAuthority" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Organization.partOf" />
+      <short value="The organization of which this organization forms a part" />
+      <definition value="The organization of which this organization forms a part." />
+      <requirements value="Need to be able to track the hierarchy of organizations within an organization." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="No equivalent in HL7 v2" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value=".playedBy[classCode=Part].scoper" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="n/a" />
+      </mapping>
+    </element>
+  </differential>
+</StructureDefinition>
