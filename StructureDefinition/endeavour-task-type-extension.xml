@@ -15,7 +15,7 @@
   <constrainedType value="Extension" />
   <abstract value="false" />
   <contextType value="resource" />
-  <context value="endeavour-task.type" />
+  <context value="Order" />
   <base value="http://hl7.org/fhir/StructureDefinition/Extension" />
   <differential>
     <element>
