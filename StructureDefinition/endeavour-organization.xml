@@ -32,22 +32,6 @@
       <type>
         <code value="Organization" />
       </type>
-      <mapping>
-        <identity value="v2" />
-        <map value="(also see master files messages)" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Organization(classCode=ORG, determinerCode=INST)" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="Organization" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="administrative.group" />
-      </mapping>
     </element>
     <element>
       <path value="Organization.identifier.assigner" />
@@ -61,18 +45,6 @@
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
       </type>
       <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.4 / (CX.4,CX.9,CX.10)" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./IdentifierIssuingAuthority" />
-      </mapping>
     </element>
     <element>
       <path value="Organization.partOf" />
@@ -86,18 +58,6 @@
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
       </type>
       <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="No equivalent in HL7 v2" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value=".playedBy[classCode=Part].scoper" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="n/a" />
-      </mapping>
     </element>
   </differential>
 </StructureDefinition>

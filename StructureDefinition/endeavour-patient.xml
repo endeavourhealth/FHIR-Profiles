@@ -2,14 +2,14 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="endeavour-patient" />
   <meta>
-    <lastUpdated value="2015-11-01T10:00:00" />
+    <lastUpdated value="2015-11-01T10:00:00+00:00" />
   </meta>
   <url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-patient" />
   <name value="Endeavour-Patient" />
   <display value="Endeavour patient" />
   <status value="draft" />
   <publisher value="Endeavour Health Charitable Trust" />
-	<contact>
+  <contact>
     <telecom>
       <system value="other" />
       <value value="http://www.endeavourhealth.org/" />
@@ -33,18 +33,6 @@
       <type>
         <code value="Patient" />
       </type>
-      <mapping>
-        <identity value="rim" />
-        <map value="Patient[classCode=PAT]" />
-      </mapping>
-      <mapping>
-        <identity value="cda" />
-        <map value="ClinicalDocument.recordTarget.patientRole" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="administrative.individual" />
-      </mapping>
     </element>
     <element>
       <path value="Patient.identifier.assigner" />
@@ -58,18 +46,6 @@
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
       </type>
       <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.4 / (CX.4,CX.9,CX.10)" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./IdentifierIssuingAuthority" />
-      </mapping>
     </element>
     <element>
       <path value="Patient.contact.organization" />
@@ -83,18 +59,6 @@
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
       </type>
       <condition value="pat-1" />
-      <mapping>
-        <identity value="v2" />
-        <map value="NK1-13, NK1-30, NK1-31, NK1-32, NK1-41" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="scoper" />
-      </mapping>
-      <mapping>
-        <identity value="cda" />
-        <map value="n/a" />
-      </mapping>
     </element>
     <element>
       <path value="Patient.careProvider" />
@@ -109,20 +73,8 @@
       </type>
       <type>
         <code value="Reference" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/Practitioner" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-practitioner" />
       </type>
-      <mapping>
-        <identity value="v2" />
-        <map value="PD1-4" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="subjectOf.CareEvent.performer.AssignedEntity" />
-      </mapping>
-      <mapping>
-        <identity value="cda" />
-        <map value="n/a" />
-      </mapping>
     </element>
     <element>
       <path value="Patient.managingOrganization" />
@@ -137,14 +89,6 @@
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
       </type>
       <isSummary value="true" />
-      <mapping>
-        <identity value="rim" />
-        <map value="scoper" />
-      </mapping>
-      <mapping>
-        <identity value="cda" />
-        <map value=".providerOrganization" />
-      </mapping>
     </element>
   </differential>
 </StructureDefinition>
