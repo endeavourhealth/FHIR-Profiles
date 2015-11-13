@@ -2,11 +2,8 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="endeavour-practitioner" />
   <meta>
-    <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
+    <lastUpdated value="2015-11-01T10:00:00" />
   </meta>
-  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
-    <valueInteger value="3" />
-  </extension>
   <url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-practitioner" />
   <name value="Endeavour-Practitioner" />
   <display value="Endeavour practitioner" />
@@ -15,11 +12,11 @@
   <contact>
     <telecom>
       <system value="other" />
-      <value value="http://www.endeavourhealth.org" />
+      <value value="http://www.endeavourhealth.org/" />
     </telecom>
   </contact>
-  <date value="2015-09-22T20:02:49+10:00" />
-  <description value="Base StructureDefinition for Endeavour Practitioner Resource" />
+  <date value="2015-11-01" />
+  <description value="" />
   <fhirVersion value="1.0.1" />
   <kind value="resource" />
   <constrainedType value="Practitioner" />

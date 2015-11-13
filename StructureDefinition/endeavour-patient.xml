@@ -2,19 +2,21 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="endeavour-patient" />
   <meta>
-    <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
+    <lastUpdated value="2015-11-01T10:00:00" />
   </meta>
-  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
-    <valueInteger value="5" />
-  </extension>
   <url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-patient" />
   <name value="Endeavour-Patient" />
-  <display value="Endeavour Patient" />
+  <display value="Endeavour patient" />
   <status value="draft" />
   <publisher value="Endeavour Health Charitable Trust" />
-  <date value="2015-09-22T20:02:49+10:00" />
-  <description value="Base StructureDefinition for Patient Resource" />
-  <requirements value="Tracking patient is the center of the healthcare process." />
+	<contact>
+    <telecom>
+      <system value="other" />
+      <value value="http://www.endeavourhealth.org/" />
+    </telecom>
+  </contact>
+  <date value="2015-11-01" />
+  <description value="" />
   <fhirVersion value="1.0.1" />
   <kind value="resource" />
   <constrainedType value="Patient" />

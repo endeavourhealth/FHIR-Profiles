@@ -6,7 +6,7 @@
   </meta>
   <url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-schedule" />
   <name value="Endeavour-Schedule" />
-  <display value="Endeavour Schedule" />
+  <display value="Endeavour schedule" />
   <status value="draft" />
   <publisher value="Endeavour Health Charitable Trust" />
   <contact>
@@ -15,8 +15,8 @@
       <value value="http://www.endeavourhealth.org/" />
     </telecom>
   </contact>
-  <date value="2015-11-01T10:00:00" />
-  <description value="Endeavour Schedule description." />
+  <date value="2015-11-01" />
+  <description value="" />
   <fhirVersion value="1.0.1" />
   <kind value="resource" />
   <constrainedType value="Schedule" />
