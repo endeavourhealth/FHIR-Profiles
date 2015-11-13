@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="endeavour-goal" />
+  <meta>
+    <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="0" />
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm-no-warnings">
+    <valueInteger value="1" />
+  </extension>
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-goal" />
+  <name value="Endeavour-Goal" />
+  <display value="Endeavour goal" />
+  <status value="draft" />
+  <publisher value="Endeavour Health Charitable Trust" />
+  <date value="2015-09-22T20:02:49+10:00" />
+  <fhirVersion value="1.0.1" />
+  <kind value="resource" />
+  <constrainedType value="Goal" />
+  <abstract value="false" />
+  <base value="http://hl7.org/fhir/StructureDefinition/Goal" />
+  <differential>
+    <element>
+      <path value="Goal" />
+      <short value="Describes the intended objective(s) for a patient, group or organization" />
+      <definition value="Describes the intended objective(s) for a patient, group or organization care, for example, weight loss, restoring an activity of daily living, obtaining herd immunity via immunization, meeting a process improvement objective, etc." />
+      <comments value="Goal can be achieving a particular change or merely maintaining a current state or even slowing a decline." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Goal" />
+      </type>
+      <mapping>
+        <identity value="v2" />
+        <map value="GOL.1" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value=".outboundRelationship[typeCode&lt;=OBJ]." />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="clinical.careprovision" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Goal.extension" />
+      <slicing>
+        <discriminator value="url" />
+        <rules value="openAtEnd" />
+      </slicing>
+    </element>
+    <element>
+      <path value="Goal.extension" />
+      <name value="milestone" />
+      <short value="Intermediate goal milestone" />
+      <definition value="Optional Extensions Element - found in all resources." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-milestone-extension" />
+      </type>
+    </element>
+  </differential>
+</StructureDefinition>

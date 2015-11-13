@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="endeavour-care-plan" />
+  <meta>
+    <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="0" />
+  </extension>
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-care-plan" />
+  <name value="Endeavour-CarePlan" />
+  <display value="Endeavour care plan" />
+  <status value="draft" />
+  <publisher value="Endeavour Health Charitable Trust" />
+  <date value="2015-09-22T20:02:49+10:00" />
+  <fhirVersion value="1.0.1" />
+  <kind value="resource" />
+  <constrainedType value="CarePlan" />
+  <abstract value="false" />
+  <base value="http://hl7.org/fhir/StructureDefinition/CarePlan" />
+  <differential>
+    <element>
+      <path value="CarePlan" />
+      <short value="Healthcare plan for patient or group" />
+      <definition value="Describes the intention of how one or more practitioners intend to deliver care for a particular patient, group or community for a period of time, possibly limited to care for a specific condition or set of conditions." />
+      <alias value="Care Team" />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="CarePlan" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value="Act[classCode=PCPR, moodCode=INT]" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="clinical.careprovision" />
+      </mapping>
+    </element>
+    <element>
+      <path value="CarePlan.goal" />
+      <short value="Desired outcome of plan" />
+      <definition value="Describes the intended objective(s) of carrying out the care plan." />
+      <comments value="Goal can be achieving a particular change or merely maintaining a current state or even slowing a decline." />
+      <requirements value="Provides context for plan.  Allows plan effectiveness to be evaluated by clinicians." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Goal" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-goal" />
+      </type>
+      <mapping>
+        <identity value="v2" />
+        <map value="GOL.1" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value=".outboundRelationship[typeCode&lt;=OBJ]." />
+      </mapping>
+    </element>
+  </differential>
+</StructureDefinition>
