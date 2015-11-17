@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="endeavour-group" />
+  <meta>
+    <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="0" />
+  </extension>
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-group" />
+  <name value="Endeavour-Group" />
+  <display value="Endeavour group" />
+  <status value="draft" />
+  <publisher value="Endeavour Health Charitable Trust" />
+  <date value="2015-09-22T20:02:49+10:00" />
+  <fhirVersion value="1.0.1" />
+  <kind value="resource" />
+  <constrainedType value="Group" />
+  <abstract value="false" />
+  <base value="http://hl7.org/fhir/StructureDefinition/Group" />
+  <differential>
+    <element>
+      <path value="Group" />
+      <short value="Group of multiple entities" />
+      <definition value="Represents a defined collection of entities that may be discussed or acted upon collectively but which are not expected to act collectively and are not formally or legally recognized; i.e. a collection of entities that isn't an Organization." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Group" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value="Entity[determinerCode=&quot;GRP&quot; or determinerCode=&quot;GRP_KIND&quot;]" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="administrative.group" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Group.member.entity" />
+      <short value="Reference to the group member" />
+      <definition value="A reference to the entity that is a member of the group. Must be consistent with Group.type." />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-patient" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-practitioner" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://http://hl7.org/fhir/StructureDefinition/Device" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-medication" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-substance" />
+      </type>
+    </element>
+  </differential>
+</StructureDefinition>
