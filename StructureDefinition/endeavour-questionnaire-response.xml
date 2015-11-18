@@ -7,7 +7,7 @@
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="0" />
   </extension>
-  <url value="http://endeavour-health.org/fhir/StructureDefinition/endeavour-questionnaire-response" />
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-questionnaire-response" />
   <name value="Endeavour-QuestionnaireResponse" />
   <display value="Endeavour questionnaire response" />
   <status value="draft" />
