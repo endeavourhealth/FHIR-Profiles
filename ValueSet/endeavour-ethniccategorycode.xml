@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ValueSet xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<id value="endeavour-ethniccategorycode"/>	
+<ValueSet xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../Schema/fhir-single.xsd">
+	<id value="endeavour-ethniccategorycode"/>
 	<meta>
-		<lastUpdated value="2015-11-01T10:00:00" />
+		<lastUpdated value="2015-11-01T10:00:00"/>
 	</meta>
 	<url value="http://endeavourhealth.org/fhir/ValueSet/endeavour-ethniccategorycode"/>
 	<name value="Endeavour-EthnicCategoryCode"/>
 	<status value="draft"/>
-	<publisher value="Endeavour Health Charitable Trust" />
+	<publisher value="Endeavour Health Charitable Trust"/>
 	<contact>
 		<telecom>
-			<system value="other" />
-			<value value="http://www.endeavourhealth.org/" />
+			<system value="other"/>
+			<value value="http://www.endeavourhealth.org/"/>
 		</telecom>
 	</contact>
-	<date value="2015-11-01" />
+	<date value="2015-11-01"/>
 	<description value="The ethnicity of a patient, as specified by the patient. This valueset references NHS Data Dictionary: Ethnic Category Code."/>
 	<compose>
 		<include>
@@ -31,7 +31,7 @@
 		</include>
 	</compose>
 	<expansion>
-		<identifier value="urn:uuid:8230ff20-c97a-4167-a59d-dc2cb9df16dd" />
+		<identifier value="urn:uuid:8230ff20-c97a-4167-a59d-dc2cb9df16dd"/>
 		<timestamp value="2015-11-01T10:00:00"/>
 		<contains>
 			<system value="urn:fhir.nhs.uk:vs/Ethnicity"/>

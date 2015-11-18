@@ -1,63 +1,63 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="endeavour-organization" />
-  <meta>
-    <lastUpdated value="2015-11-01T10:00:00" />
-  </meta>
-  <url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
-  <name value="Endeavour-Organization" />
-  <display value="Endeavour organization" />
-  <status value="draft" />
-	<publisher value="Endeavour Health Charitable Trust" />
+<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../Schema/fhir-single.xsd">
+	<id value="endeavour-organization"/>
+	<meta>
+		<lastUpdated value="2015-11-01T10:00:00"/>
+	</meta>
+	<url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization"/>
+	<name value="Endeavour-Organization"/>
+	<display value="Endeavour organization"/>
+	<status value="draft"/>
+	<publisher value="Endeavour Health Charitable Trust"/>
 	<contact>
-    <telecom>
-      <system value="other" />
-      <value value="http://www.endeavourhealth.org/" />
-    </telecom>
-  </contact>
-	<date value="2015-11-01" />
-  <description value="" />
-  <fhirVersion value="1.0.2" />
-  <kind value="resource" />
-  <constrainedType value="Organization" />
-  <abstract value="false" />
-  <base value="http://hl7.org/fhir/StructureDefinition/Organization" />
-  <differential>
-    <element>
-      <path value="Organization" />
-      <short value="A grouping of people or organizations with a common purpose" />
-      <definition value="A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.  Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, etc." />
-      <min value="0" />
-      <max value="*" />
-      <type>
-        <code value="Organization" />
-      </type>
-    </element>
-    <element>
-      <path value="Organization.identifier.assigner" />
-      <short value="Organization that issued id (may be just text)" />
-      <definition value="Organization that issued/manages the identifier." />
-      <comments value="The reference may be just a text description of the assigner." />
-      <min value="0" />
-      <max value="1" />
-      <type>
-        <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
-      </type>
-      <isSummary value="true" />
-    </element>
-    <element>
-      <path value="Organization.partOf" />
-      <short value="The organization of which this organization forms a part" />
-      <definition value="The organization of which this organization forms a part." />
-      <requirements value="Need to be able to track the hierarchy of organizations within an organization." />
-      <min value="0" />
-      <max value="1" />
-      <type>
-        <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
-      </type>
-      <isSummary value="true" />
-    </element>
-  </differential>
+		<telecom>
+			<system value="other"/>
+			<value value="http://www.endeavourhealth.org/"/>
+		</telecom>
+	</contact>
+	<date value="2015-11-01"/>
+	<description value="Endeavour organization"/>
+	<fhirVersion value="1.0.2"/>
+	<kind value="resource"/>
+	<constrainedType value="Organization"/>
+	<abstract value="false"/>
+	<base value="http://hl7.org/fhir/StructureDefinition/Organization"/>
+	<differential>
+		<element>
+			<path value="Organization"/>
+			<short value="A grouping of people or organizations with a common purpose"/>
+			<definition value="A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.  Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, etc."/>
+			<min value="0"/>
+			<max value="*"/>
+			<type>
+				<code value="Organization"/>
+			</type>
+		</element>
+		<element>
+			<path value="Organization.identifier.assigner"/>
+			<short value="Organization that issued id (may be just text)"/>
+			<definition value="Organization that issued/manages the identifier."/>
+			<comments value="The reference may be just a text description of the assigner."/>
+			<min value="0"/>
+			<max value="1"/>
+			<type>
+				<code value="Reference"/>
+				<profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization"/>
+			</type>
+			<isSummary value="true"/>
+		</element>
+		<element>
+			<path value="Organization.partOf"/>
+			<short value="The organization of which this organization forms a part"/>
+			<definition value="The organization of which this organization forms a part."/>
+			<requirements value="Need to be able to track the hierarchy of organizations within an organization."/>
+			<min value="0"/>
+			<max value="1"/>
+			<type>
+				<code value="Reference"/>
+				<profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization"/>
+			</type>
+			<isSummary value="true"/>
+		</element>
+	</differential>
 </StructureDefinition>
