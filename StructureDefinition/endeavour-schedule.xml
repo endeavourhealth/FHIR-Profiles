@@ -17,7 +17,7 @@
   </contact>
   <date value="2015-11-01" />
   <description value="" />
-  <fhirVersion value="1.0.1" />
+  <fhirVersion value="1.0.2" />
   <kind value="resource" />
   <constrainedType value="Schedule" />
   <abstract value="false" />
@@ -83,14 +83,6 @@
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-location" />
       </type>
       <isSummary value="true" />
-      <mapping>
-        <identity value="ical" />
-        <map value="ATTENDEE:MAILTO:john_public@host2.com This can be populated with a value from the referenced resource" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="who.focus" />
-      </mapping>
     </element>
   </differential>
 </StructureDefinition>

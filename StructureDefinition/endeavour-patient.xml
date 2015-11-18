@@ -17,7 +17,7 @@
   </contact>
   <date value="2015-11-01" />
   <description value="" />
-  <fhirVersion value="1.0.1" />
+  <fhirVersion value="1.0.2" />
   <kind value="resource" />
   <constrainedType value="Patient" />
   <abstract value="false" />
@@ -61,6 +61,23 @@
       <condition value="pat-1" />
     </element>
     <element>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name">
+        <valueString value="Animal" />
+      </extension>
+      <path value="Patient.animal" />
+      <short value="This patient is known to be an animal (non-human)" />
+      <definition value="This patient is known to be an animal." />
+      <comments value="The animal element is labeled &quot;Is Modifier&quot; since patients may be non-human. Systems SHALL either handle patient details appropriately (e.g. inform users patient is not human) or reject declared animal records.   The absense of the animal element does not imply that the patient is a human. If a system requires such a positive assertion that the patient is human, an extension will be required.  (Do not use a species of homo-sapiens in animal species, as this would incorrectly infer that the patient is an animal)." />
+      <requirements value="Many clinical systems are extended to care for animal patients as well as human." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="BackboneElement" />
+      </type>
+      <isModifier value="true" />
+      <isSummary value="true" />
+    </element>
+    <element>
       <path value="Patient.careProvider" />
       <short value="Patient's nominated primary care provider" />
       <definition value="Patient's nominated care provider." />
@@ -89,6 +106,18 @@
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
       </type>
       <isSummary value="true" />
+    </element>
+    <element>
+      <path value="Patient.link.other" />
+      <short value="The other patient resource that the link refers to" />
+      <definition value="The other patient resource that the link refers to." />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-patient" />
+      </type>
+      <isModifier value="true" />
     </element>
   </differential>
 </StructureDefinition>

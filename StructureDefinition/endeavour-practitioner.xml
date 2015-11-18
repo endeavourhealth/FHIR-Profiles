@@ -17,7 +17,7 @@
   </contact>
   <date value="2015-11-01" />
   <description value="" />
-  <fhirVersion value="1.0.1" />
+  <fhirVersion value="1.0.2" />
   <kind value="resource" />
   <constrainedType value="Practitioner" />
   <abstract value="false" />
@@ -33,22 +33,6 @@
       <type>
         <code value="Practitioner" />
       </type>
-      <mapping>
-        <identity value="v2" />
-        <map value="PRD (as one example)" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Role" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="Provider" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="administrative.individual" />
-      </mapping>
     </element>
     <element>
       <path value="Practitioner.practitionerRole.managingOrganization" />
@@ -60,10 +44,6 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
       </type>
-      <mapping>
-        <identity value="rim" />
-        <map value="scopingOrganization" />
-      </mapping>
     </element>
     <element>
       <path value="Practitioner.qualification.issuer" />
@@ -75,10 +55,6 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
       </type>
-      <mapping>
-        <identity value="rim" />
-        <map value="./scoper" />
-      </mapping>
     </element>
   </differential>
 </StructureDefinition>

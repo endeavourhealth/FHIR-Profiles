@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValueSet xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<id value="endeavour-ethniccategorycode"/>	
+	<meta>
+		<lastUpdated value="2015-11-01T10:00:00" />
+	</meta>
+	<url value="http://endeavourhealth.org/fhir/ValueSet/endeavour-ethniccategorycode"/>
+	<name value="Endeavour-EthnicCategoryCode"/>
+	<status value="draft"/>
+	<publisher value="Endeavour Health Charitable Trust" />
+	<contact>
+		<telecom>
+			<system value="other" />
+			<value value="http://www.endeavourhealth.org/" />
+		</telecom>
+	</contact>
+	<date value="2015-11-01" />
+	<description value="The ethnicity of a patient, as specified by the patient. This valueset references NHS Data Dictionary: Ethnic Category Code."/>
+	<compose>
+		<include>
+			<extension url="http://hl7.org/fhir/StructureDefinition/valueset-systemName">
+				<valueString value="NHS Data Dictionary: Ethnic Category Code"/>
+			</extension>
+			<extension url="http://hl7.org/fhir/StructureDefinition/valueset-systemRef">
+				<valueUri value="http://www.datadictionary.nhs.uk/data_dictionary/attributes/e/end/ethnic_category_code_de.asp?shownav=0"/>
+			</extension>
+			<extension url="http://hl7.org/fhir/StructureDefinition/valueset-oid">
+				<valueUri value="urn:oid:2.16.840.1.113883.2.1.3.2.4.16.6"/>
+			</extension>
+			<system value="urn:fhir.nhs.uk:vs/Ethnicity"/>
+		</include>
+	</compose>
+	<expansion>
+		<identifier value="urn:uuid:8230ff20-c97a-4167-a59d-dc2cb9df16dd" />
+		<timestamp value="2015-11-01T10:00:00"/>
+		<contains>
+			<system value="urn:fhir.nhs.uk:vs/Ethnicity"/>
+			<code value="A"/>
+			<display value="British"/>
+		</contains>
+		<contains>
+			<system value="urn:fhir.nhs.uk:vs/Ethnicity"/>
+			<code value="B"/>
+			<display value="Irish"/>
+		</contains>
+		<contains>
+			<system value="urn:fhir.nhs.uk:vs/Ethnicity"/>
+			<code value="C"/>
+			<display value="Any other White background"/>
+		</contains>
+		<contains>
+			<system value="urn:fhir.nhs.uk:vs/Ethnicity"/>
+			<code value="D"/>
+			<display value="White and Black Caribbean"/>
+		</contains>
+		<contains>
+			<system value="urn:fhir.nhs.uk:vs/Ethnicity"/>
+			<code value="E"/>
+			<display value="White and Black African"/>
+		</contains>
+		<contains>
+			<system value="urn:fhir.nhs.uk:vs/Ethnicity"/>
+			<code value="F"/>
+			<display value="White and Asian"/>
+		</contains>
+		<contains>
+			<system value="urn:fhir.nhs.uk:vs/Ethnicity"/>
+			<code value="G"/>
+			<display value="Any other mixed background"/>
+		</contains>
+		<contains>
+			<system value="urn:fhir.nhs.uk:vs/Ethnicity"/>
+			<code value="H"/>
+			<display value="Indian"/>
+		</contains>
+		<contains>
+			<system value="urn:fhir.nhs.uk:vs/Ethnicity"/>
+			<code value="J"/>
+			<display value="Pakistani"/>
+		</contains>
+		<contains>
+			<system value="urn:fhir.nhs.uk:vs/Ethnicity"/>
+			<code value="K"/>
+			<display value="Bangladeshi"/>
+		</contains>
+		<contains>
+			<system value="urn:fhir.nhs.uk:vs/Ethnicity"/>
+			<code value="L"/>
+			<display value="Any other Asian background"/>
+		</contains>
+		<contains>
+			<system value="urn:fhir.nhs.uk:vs/Ethnicity"/>
+			<code value="M"/>
+			<display value="Caribbean"/>
+		</contains>
+		<contains>
+			<system value="urn:fhir.nhs.uk:vs/Ethnicity"/>
+			<code value="N"/>
+			<display value="African"/>
+		</contains>
+		<contains>
+			<system value="urn:fhir.nhs.uk:vs/Ethnicity"/>
+			<code value="P"/>
+			<display value="Any other Black background"/>
+		</contains>
+		<contains>
+			<system value="urn:fhir.nhs.uk:vs/Ethnicity"/>
+			<code value="R"/>
+			<display value="Chinese"/>
+		</contains>
+		<contains>
+			<system value="urn:fhir.nhs.uk:vs/Ethnicity"/>
+			<code value="S"/>
+			<display value="Any other ethnic group"/>
+		</contains>
+		<contains>
+			<system value="urn:fhir.nhs.uk:vs/Ethnicity"/>
+			<code value="Z"/>
+			<display value="Not stated"/>
+		</contains>
+	</expansion>
+</ValueSet>
