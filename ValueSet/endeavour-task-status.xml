@@ -18,7 +18,7 @@
     </text>
     <url value="http://endeavourhealth.org/fhir/ValueSet/endeavour-task-status" />
     <version value="1.0.0" />
-    <name value="endeavour-task-status" />
+    <name value="Endeavour-TaskStatus" />
     <status value="draft" />
     <publisher value="Endeavour Health Charitable Trust" />
     <description value="The status of a task." />

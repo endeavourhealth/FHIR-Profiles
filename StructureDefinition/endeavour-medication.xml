@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="endeavour-medication" />
+  <meta>
+    <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="0" />
+  </extension>
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-medication" />
+  <name value="Endeavour-Medication" />
+  <display value="Endeavour medication" />
+  <status value="draft" />
+  <contact>
+    <telecom>
+      <system value="other" />
+      <value value="http://www.endeavourhealth.org/" />
+    </telecom>
+  </contact>
+  <date value="2015-09-22T20:02:49+10:00" />
+  <fhirVersion value="1.0.1" />
+  <mapping>
+    <identity value="rim" />
+    <uri value="http://hl7.org/v3" />
+    <name value="RIM" />
+  </mapping>
+  <mapping>
+    <identity value="w5" />
+    <uri value="http://hl7.org/fhir/w5" />
+    <name value="W5 Mapping" />
+  </mapping>
+  <mapping>
+    <identity value="v2" />
+    <uri value="http://hl7.org/v2" />
+    <name value="HL7 v2" />
+  </mapping>
+  <kind value="resource" />
+  <constrainedType value="Medication" />
+  <abstract value="false" />
+  <base value="http://hl7.org/fhir/StructureDefinition/Medication" />
+  <differential>
+    <element>
+      <path value="Medication" />
+      <short value="Definition of a Medication" />
+      <definition value="This resource is primarily used for the identification and definition of a medication. It covers the ingredients and the packaging for a medication." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Medication" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value="ManufacturedProduct[classCode=ADMM]" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="clinical.medication" />
+      </mapping>
+    </element>
+  </differential>
+</StructureDefinition>

@@ -53,7 +53,7 @@
       </type>
       <type>
         <code value="Reference" />
-        <profile value="http://http://hl7.org/fhir/StructureDefinition/Device" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Device" />
       </type>
       <type>
         <code value="Reference" />
