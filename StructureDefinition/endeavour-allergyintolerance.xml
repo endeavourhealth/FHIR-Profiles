@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="endeavour-allergyintolerance" />
+  <meta>
+    <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="0" />
+  </extension>
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/allergyintolerance" />
+  <name value="Endeavour-AllergyIntolerance" />
+  <display value="Endeavour allergy intolerance" />
+  <status value="draft" />
+  <publisher value="Endeavour Health Charitable Trust" />
+  <contact>
+    <telecom>
+      <system value="other" />
+      <value value="http://www.endeavourhealth.org/" />
+    </telecom>
+  </contact>
+  <date value="2015-11-01T00:00:00+00:00" />
+  <description value="Placeholder" />
+  <requirements value="To record a clinical assessment of a propensity, or potential risk to an individual, of an adverse reaction upon future exposure to the specified substance, or class of substance." />
+  <fhirVersion value="1.0.1" />
+  <kind value="resource" />
+  <constrainedType value="AllergyIntolerance" />
+  <abstract value="false" />
+  <base value="http://hl7.org/fhir/StructureDefinition/AllergyIntolerance" />
+  <differential>
+    <element>
+      <path value="AllergyIntolerance" />
+      <short value="Allergy or Intolerance (generally: Risk Of Adverse reaction to a substance)" />
+      <definition value="Risk of harmful or undesirable, physiological response which is unique to an individual and associated with exposure to a substance." />
+      <comments value="Substances include, but are not limited to: a therapeutic substance administered correctly at an appropriate dosage for the individual; food; material derived from plants or animals; or venom from insect stings." />
+      <alias value="Allergy" />
+      <alias value="Intolerance" />
+      <alias value="Adverse Reaction" />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="AllergyIntolerance" />
+      </type>
+      <mapping>
+        <identity value="w5" />
+        <map value="clinical.general" />
+      </mapping>
+    </element>
+  </differential>
+</StructureDefinition>
