@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ValueSet xmlns="http://hl7.org/fhir"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://hl7.org/fhir http://hl7.org/fhir/valueset.xsd">
+    <id value="endeavour-condition-episodelinktype" />
+    <meta>
+        <lastUpdated value="2015-09-24T15:19:37.151+00:00" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/valueset-shareable-definition" />
+    </meta>
+    <text>
+        <status value="extensions" />
+        <div xmlns="http://www.w3.org/1999/xhtml">
+            <h2>Condition Episode Link Type</h2>
+            <p>The type of relationship that exists between a condition and the target follow-on observation.</p>
+            <p>This value set has an inline code system which defines the following codes:</p>
+            <p>review | end</p>
+        </div>
+    </text>
+    <url value="http://endeavourhealth.org/fhir/ValueSet/endeavour-condition-episodelinktype" />
+    <version value="1.0.0" />
+    <name value="endeavour-condition-episodelinktype" />
+    <status value="draft" />
+    <publisher value="Endeavour Health Charitable Trust" />
+    <description value="The type of relationship that exists between a condition and the target follow-on observation." />
+    <codeSystem>
+        <system value="http://endeavourhealth.org/fhir/ValueSet/endeavour-condition-episodelinktype"/>
+        <version value="1.0.0"/>
+        <caseSensitive value="true"/>
+        <concept>
+            <code value="review"/>
+            <display value="Review"/>
+            <definition value="The target observation is a review of the condition episode"/>
+        </concept>
+        <concept>
+            <code value="end"/>
+            <display value="End"/>
+            <definition value="The target observation marks the end of the condition episode"/>
+        </concept>
+    </codeSystem>
+</ValueSet>

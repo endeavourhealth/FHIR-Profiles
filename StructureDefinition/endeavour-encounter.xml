@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="endeavour-encounter" />
+  <meta>
+    <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="0" />
+  </extension>
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-encounter" />
+  <name value="Endeavour-Encounter" />
+  <display value="Endeavour encounter" />
+  <status value="draft" />
+  <publisher value="Endeavour Health Charitable Trust" />
+  <contact>
+    <telecom>
+      <system value="other" />
+      <value value="http://www.endeavourhealth.org/" />
+    </telecom>
+  </contact>
+  <date value="2015-11-01T00:00:00+00:00" />
+  <fhirVersion value="1.0.1" />
+  <kind value="resource" />
+  <constrainedType value="Encounter" />
+  <abstract value="false" />
+  <base value="http://hl7.org/fhir/StructureDefinition/Encounter" />
+  <differential>
+    <element>
+      <path value="Encounter" />
+      <short value="An interaction during which services are provided to the patient" />
+      <definition value="An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient." />
+      <alias value="Visit" />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Encounter" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value="Encounter[moodCode=EVN]" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="workflow.encounter" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Encounter.extension" />
+      <slicing>
+        <discriminator value="url" />
+        <rules value="openAtEnd" />
+      </slicing>
+    </element>
+    <element>
+      <path value="Encounter.extension" />
+      <name value="purpose" />
+      <short value="Clinical purpose of encounter" />
+      <definition value="Specific clinical purpose of encounter (e.g. child health, antenatal, assessment)." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-encounter-purpose-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="Encounter.type" />
+      <short value="Specific type of encounter" />
+      <definition value="Specific type of encounter (e.g. telephone consultation, face to face, home visit note)." />
+      <comments value="Since there are many ways to further classify encounters, this element is 0..*." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="CodeableConcept" />
+      </type>
+      <isSummary value="true" />
+      <binding>
+        <strength value="example" />
+        <description value="The type of encounter" />
+        <valueSetUri value="http://endeavourhealth.org/fhir/ValueSet/endeavour-encounter-type" />
+      </binding>
+    </element>
+    <element>
+      <path value="Encounter.patient" />
+      <short value="The patient present at the encounter" />
+      <definition value="The patient present at the encounter." />
+      <comments value="While the encounter is always about the patient, the patient may not actually be known in all contexts of use." />
+      <alias value="patient" />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Patient" />
+      </type>
+      <isSummary value="true" />
+    </element>
+    <element>
+      <path value="Encounter.incomingReferral" />
+      <short value="The ReferralRequest that initiated this encounter" />
+      <definition value="The referral request this encounter satisfies (incoming referral)." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-procedure-request" />
+      </type>
+    </element>
+    <element>
+      <path value="Encounter.partOf" />
+      <short value="Another Encounter this encounter is part of" />
+      <definition value="Another Encounter of which this encounter is a part of (administratively or in time)." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-encounter" />
+      </type>
+    </element>
+  </differential>
+</StructureDefinition>

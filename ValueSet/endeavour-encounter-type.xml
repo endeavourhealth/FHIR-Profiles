@@ -1,0 +1,764 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValueSet xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir http://hl7.org/fhir/valueset.xsd">
+	<id value="endeavour-encounter-type"/>
+	<meta>
+		<lastUpdated value="2015-10-27T00:00:00+00:00"/>
+		<profile value="http://hl7.org/fhir/StructureDefinition/valueset-shareable-definition"/>
+	</meta>
+	<text>
+		<status value="extensions"/>
+		<div xmlns="http://www.w3.org/1999/xhtml">
+			<h2>Encounter Type Codes</h2>
+			<p>Example list of codes that can be used to indicate the type of encounter: a specific code indicating type of service provided.</p>
+			<p>
+				<b>Copyright Statement:</b> This value set includes content from SNOMED CT, which is copyright © 2002+ International Health Terminology Standards Development Organisation (IHTSDO), and distributed by agreement between IHTSDO and HL7. Implementer use of SNOMED CT is not covered by this agreement.
+            </p>
+			<p>This value set includes codes from the following code systems:</p>
+			<ul>
+				<li>Include these codes as defined in http://snomed.info/sct
+					<table>
+						<tr>
+							<td>
+								<b>Code</b>
+							</td>
+							<td>
+								<b>Display</b>
+							</td>
+						</tr>
+						<tr>
+							<td>182888003</td>
+							<td>Medication requested</td>
+						</tr>
+						<tr>
+							<td>709651000000101</td>
+							<td>Seen in L.A. clinic-school</td>
+						</tr>
+						<tr>
+							<td>185212007</td>
+							<td>Seen in hospital ward</td>
+						</tr>
+						<tr>
+							<td>185221008</td>
+							<td>Seen in gynaecology clinic</td>
+						</tr>
+						<tr>
+							<td>185229005</td>
+							<td>Seen in diabetic clinic</td>
+						</tr>
+						<tr>
+							<td>185242005</td>
+							<td>Seen in asthma clinic</td>
+						</tr>
+						<tr>
+							<td>185317003</td>
+							<td>Telephone encounter</td>
+						</tr>
+						<tr>
+							<td>748971000000100</td>
+							<td>Emergency appointment</td>
+						</tr>
+						<tr>
+							<td>185469009</td>
+							<td>District nurse visit</td>
+						</tr>
+						<tr>
+							<td>313103006</td>
+							<td>Seen in baby clinic</td>
+						</tr>
+						<tr>
+							<td>373942005</td>
+							<td>Discharge summary</td>
+						</tr>
+						<tr>
+							<td>386473003</td>
+							<td>Telephone follow-up</td>
+						</tr>
+						<tr>
+							<td>394808002</td>
+							<td>Genito-urinary medicine</td>
+						</tr>
+						<tr>
+							<td>401267002</td>
+							<td>Telephone triage encounter</td>
+						</tr>
+						<tr>
+							<td>401270003</td>
+							<td>E-mail received from patient</td>
+						</tr>
+						<tr>
+							<td>401271004</td>
+							<td>E-mail sent to patient</td>
+						</tr>
+						<tr>
+							<td>24611000000106</td>
+							<td>Radiology result</td>
+						</tr>
+						<tr>
+							<td>24631000000103</td>
+							<td>Residential home visit note</td>
+						</tr>
+						<tr>
+							<td>24661000000108</td>
+							<td>Hospital inpatient report</td>
+						</tr>
+						<tr>
+							<td>24671000000101</td>
+							<td>Telephone call to a patient</td>
+						</tr>
+						<tr>
+							<td>24681000000104</td>
+							<td>Telephone consultation</td>
+						</tr>
+						<tr>
+							<td>24701000000102</td>
+							<td>Laboratory result</td>
+						</tr>
+						<tr>
+							<td>24711000000100</td>
+							<td>Mail to patient</td>
+						</tr>
+						<tr>
+							<td>24731000000108</td>
+							<td>Clinic note</td>
+						</tr>
+						<tr>
+							<td>24751000000101</td>
+							<td>Nursing home visit note</td>
+						</tr>
+						<tr>
+							<td>24761000000103</td>
+							<td>Scanned document</td>
+						</tr>
+						<tr>
+							<td>25651000000106</td>
+							<td>Home visit note</td>
+						</tr>
+						<tr>
+							<td>25681000000100</td>
+							<td>Hospital outpatient report</td>
+						</tr>
+						<tr>
+							<td>25691000000103</td>
+							<td>Telephone call from a patient</td>
+						</tr>
+						<tr>
+							<td>25731000000109</td>
+							<td>Mail from patient</td>
+						</tr>
+						<tr>
+							<td>25741000000100</td>
+							<td>Third party consultation</td>
+						</tr>
+						<tr>
+							<td>25751000000102</td>
+							<td>Children's home visit note</td>
+						</tr>
+						<tr>
+							<td>25761000000104</td>
+							<td>Night visit note</td>
+						</tr>
+						<tr>
+							<td>25781000000108</td>
+							<td>OOH report</td>
+						</tr>
+						<tr>
+							<td>37271000000108</td>
+							<td>Twilight visit note</td>
+						</tr>
+						<tr>
+							<td>37291000000107</td>
+							<td>Externally entered note</td>
+						</tr>
+						<tr>
+							<td>37351000000107</td>
+							<td>Administration note</td>
+						</tr>
+						<tr>
+							<td>38651000000103</td>
+							<td>Other note</td>
+						</tr>
+						<tr>
+							<td>165357005</td>
+							<td>Test result to pat.by 'phone</td>
+						</tr>
+						<tr>
+							<td>182918009</td>
+							<td>Repeat prescription</td>
+						</tr>
+						<tr>
+							<td>270427003</td>
+							<td>Patient initiated enc. NOS</td>
+						</tr>
+						<tr>
+							<td>196391000000103</td>
+							<td>Non-consultation medication data</td>
+						</tr>
+						<tr>
+							<td>196401000000100</td>
+							<td>Non-consultation data</td>
+						</tr>
+						<tr>
+							<td>199281000000101</td>
+							<td>Seen in GP unit</td>
+						</tr>
+						<tr>
+							<td>279961000000108</td>
+							<td>Nurse telephone triage</td>
+						</tr>
+						<tr>
+							<td>287231000000109</td>
+							<td>Provision of GP intermediate care</td>
+						</tr>
+						<tr>
+							<td>352341000000105</td>
+							<td>E-mail received from carer</td>
+						</tr>
+						<tr>
+							<td>352371000000104</td>
+							<td>E-mail sent to carer</td>
+						</tr>
+						<tr>
+							<td>439708006</td>
+							<td>Home visit</td>
+						</tr>
+						<tr>
+							<td>728001000006100</td>
+							<td>Day-case attendance</td>
+						</tr>
+						<tr>
+							<td>300601000000107</td>
+							<td>Seen by GP with special interest ear nose &amp; throat disorders</td>
+						</tr>
+						<tr>
+							<td>1503121000006107</td>
+							<td>Walk-in clinic</td>
+						</tr>
+						<tr>
+							<td>1503351000006100</td>
+							<td>Face to face consultation</td>
+						</tr>
+						<tr>
+							<td>1503361000006103</td>
+							<td>Group consultation</td>
+						</tr>
+						<tr>
+							<td>1503371000006105</td>
+							<td>GP Surgery</td>
+						</tr>
+						<tr>
+							<td>1503381000006108</td>
+							<td>Face to face consultation with relative/carer</td>
+						</tr>
+						<tr>
+							<td>1503391000006106</td>
+							<td>Telephone call to relative/carer</td>
+						</tr>
+						<tr>
+							<td>1503401000006108</td>
+							<td>Telephone call from relative/carer</td>
+						</tr>
+						<tr>
+							<td>1503411000006106</td>
+							<td>Discussion with colleague</td>
+						</tr>
+						<tr>
+							<td>1503421000006103</td>
+							<td>Case conference</td>
+						</tr>
+						<tr>
+							<td>1763581000006102</td>
+							<td>Hospital ward round</td>
+						</tr>
+						<tr>
+							<td>1764451000006106</td>
+							<td>Inbound referral</td>
+						</tr>
+						<tr>
+							<td>1764461000006108</td>
+							<td>Outbound referral</td>
+						</tr>
+						<tr>
+							<td>1771561000006102</td>
+							<td>In-house andrology first appointment</td>
+						</tr>
+						<tr>
+							<td>1771571000006109</td>
+							<td>In-house andrology discharge</td>
+						</tr>
+						<tr>
+							<td>1771581000006107</td>
+							<td>In-house andrology follow-up appointment</td>
+						</tr>
+						<tr>
+							<td>1773281000006108</td>
+							<td>First outpatient appointment</td>
+						</tr>
+						<tr>
+							<td>1773291000006106</td>
+							<td>Follow-up outpatient appointment</td>
+						</tr>
+						<tr>
+							<td>1773301000006107</td>
+							<td>E-mail consultation</td>
+						</tr>
+						<tr>
+							<td>1778971000006106</td>
+							<td>Consultation via telemedicine web camera</td>
+						</tr>
+						<tr>
+							<td>1778981000006109</td>
+							<td>Consultation via Typetalk relay service</td>
+						</tr>
+						<tr>
+							<td>1778991000006107</td>
+							<td>Consultation via SMS text message</td>
+						</tr>
+						<tr>
+							<td>1779001000006107</td>
+							<td>Other consultation medium used</td>
+						</tr>
+						<tr>
+							<td>1807271000006105</td>
+							<td>Inbound document</td>
+						</tr>
+						<tr>
+							<td>1809161000006103</td>
+							<td>Urgent consultation</td>
+						</tr>
+						<tr>
+							<td>1809171000006105</td>
+							<td>Routine consultation</td>
+						</tr>
+						<tr>
+							<td>1809181000006108</td>
+							<td>Emergency consultation</td>
+						</tr>
+						<tr>
+							<td>1809191000006106</td>
+							<td>Extended hours consultation</td>
+						</tr>
+						<tr>
+							<td>1839321000006104</td>
+							<td>School visit note</td>
+						</tr>
+						<tr>
+							<td>1839331000006101</td>
+							<td>Seen in chronic obstructive pulmonary disease clinic</td>
+						</tr>
+						<tr>
+							<td>1849981000006103</td>
+							<td>Follow up telephone consultation</td>
+						</tr>
+						<tr>
+							<td>1849991000006100</td>
+							<td>First telephone consultation</td>
+						</tr>
+						<tr>
+							<td>1850001000006100</td>
+							<td>Follow up attendance face to face</td>
+						</tr>
+						<tr>
+							<td>1850011000006102</td>
+							<td>First attendance face to face</td>
+						</tr>
+						<tr>
+							<td>1854731000006104</td>
+							<td>Seen in drug misuse clinic</td>
+						</tr>
+						<tr>
+							<td>1879181000006100</td>
+							<td>Discussion with other professional</td>
+						</tr>
+						<tr>
+							<td>1879191000006102</td>
+							<td>Joint consultation</td>
+						</tr>
+						<tr>
+							<td>857661000000104</td>
+							<td>Seen in chronic obstructive pulmonary disease clinic</td>
+						</tr>
+						<tr>
+							<td>857681000000108</td>
+							<td>School visit note</td>
+						</tr>
+					</table>
+				</li>
+			</ul>
+		</div>
+	</text>
+	<url value="http://endeavourhealth.org/fhir/ValueSet/endeavour-encounter-type"/>
+	<version value="1.0.0"/>
+	<name value="Endeavour Encounter Type"/>
+	<status value="draft"/>
+	<publisher value="Endeavour Health Charitable Trust"/>
+	<contact>
+		<telecom>
+			<system value="other"/>
+			<value value="http://www.endeavour-health.org"/>
+		</telecom>
+	</contact>
+	<date value="2015-10-27T00:00:00+00:00"/>
+	<description value="Example list of codes that can be used to indicate the type of encounter: a specific code indicating type of service provided."/>
+	<copyright value="This value set includes content from SNOMED CT, which is copyright © 2002+ International Health Terminology Standards Development Organisation (IHTSDO), and distributed by agreement between IHTSDO and HL7. Implementer use of SNOMED CT is not covered by this agreement."/>
+	<compose>
+		<include>
+			<system value="http://snomed.info/sct"/>
+			<concept>
+				<code value="182888003"/>
+				<display value="Medication requested"/>
+			</concept>
+			<concept>
+				<code value="709651000000101"/>
+				<display value="Seen in L.A. clinic-school"/>
+			</concept>
+			<concept>
+				<code value="185212007"/>
+				<display value="Seen in hospital ward"/>
+			</concept>
+			<concept>
+				<code value="185221008"/>
+				<display value="Seen in gynaecology clinic"/>
+			</concept>
+			<concept>
+				<code value="185229005"/>
+				<display value="Seen in diabetic clinic"/>
+			</concept>
+			<concept>
+				<code value="185242005"/>
+				<display value="Seen in asthma clinic"/>
+			</concept>
+			<concept>
+				<code value="185317003"/>
+				<display value="Telephone encounter"/>
+			</concept>
+			<concept>
+				<code value="748971000000100"/>
+				<display value="Emergency appointment"/>
+			</concept>
+			<concept>
+				<code value="185469009"/>
+				<display value="District nurse visit"/>
+			</concept>
+			<concept>
+				<code value="313103006"/>
+				<display value="Seen in baby clinic"/>
+			</concept>
+			<concept>
+				<code value="373942005"/>
+				<display value="Discharge summary"/>
+			</concept>
+			<concept>
+				<code value="386473003"/>
+				<display value="Telephone follow-up"/>
+			</concept>
+			<concept>
+				<code value="394808002"/>
+				<display value="Genito-urinary medicine"/>
+			</concept>
+			<concept>
+				<code value="401267002"/>
+				<display value="Telephone triage encounter"/>
+			</concept>
+			<concept>
+				<code value="401270003"/>
+				<display value="E-mail received from patient"/>
+			</concept>
+			<concept>
+				<code value="401271004"/>
+				<display value="E-mail sent to patient"/>
+			</concept>
+			<concept>
+				<code value="24611000000106"/>
+				<display value="Radiology result"/>
+			</concept>
+			<concept>
+				<code value="24631000000103"/>
+				<display value="Residential home visit note"/>
+			</concept>
+			<concept>
+				<code value="24661000000108"/>
+				<display value="Hospital inpatient report"/>
+			</concept>
+			<concept>
+				<code value="24671000000101"/>
+				<display value="Telephone call to a patient"/>
+			</concept>
+			<concept>
+				<code value="24681000000104"/>
+				<display value="Telephone consultation"/>
+			</concept>
+			<concept>
+				<code value="24701000000102"/>
+				<display value="Laboratory result"/>
+			</concept>
+			<concept>
+				<code value="24711000000100"/>
+				<display value="Mail to patient"/>
+			</concept>
+			<concept>
+				<code value="24731000000108"/>
+				<display value="Clinic note"/>
+			</concept>
+			<concept>
+				<code value="24751000000101"/>
+				<display value="Nursing home visit note"/>
+			</concept>
+			<concept>
+				<code value="24761000000103"/>
+				<display value="Scanned document"/>
+			</concept>
+			<concept>
+				<code value="25651000000106"/>
+				<display value="Home visit note"/>
+			</concept>
+			<concept>
+				<code value="25681000000100"/>
+				<display value="Hospital outpatient report"/>
+			</concept>
+			<concept>
+				<code value="25691000000103"/>
+				<display value="Telephone call from a patient"/>
+			</concept>
+			<concept>
+				<code value="25731000000109"/>
+				<display value="Mail from patient"/>
+			</concept>
+			<concept>
+				<code value="25741000000100"/>
+				<display value="Third party consultation"/>
+			</concept>
+			<concept>
+				<code value="25751000000102"/>
+				<display value="Children's home visit note"/>
+			</concept>
+			<concept>
+				<code value="25761000000104"/>
+				<display value="Night visit note"/>
+			</concept>
+			<concept>
+				<code value="25781000000108"/>
+				<display value="OOH report"/>
+			</concept>
+			<concept>
+				<code value="37271000000108"/>
+				<display value="Twilight visit note"/>
+			</concept>
+			<concept>
+				<code value="37291000000107"/>
+				<display value="Externally entered note"/>
+			</concept>
+			<concept>
+				<code value="37351000000107"/>
+				<display value="Administration note"/>
+			</concept>
+			<concept>
+				<code value="38651000000103"/>
+				<display value="Other note"/>
+			</concept>
+			<concept>
+				<code value="165357005"/>
+				<display value="Test result to pat.by 'phone"/>
+			</concept>
+			<concept>
+				<code value="182918009"/>
+				<display value="Repeat prescription"/>
+			</concept>
+			<concept>
+				<code value="270427003"/>
+				<display value="Patient initiated enc. NOS"/>
+			</concept>
+			<concept>
+				<code value="196391000000103"/>
+				<display value="Non-consultation medication data"/>
+			</concept>
+			<concept>
+				<code value="196401000000100"/>
+				<display value="Non-consultation data"/>
+			</concept>
+			<concept>
+				<code value="199281000000101"/>
+				<display value="Seen in GP unit"/>
+			</concept>
+			<concept>
+				<code value="279961000000108"/>
+				<display value="Nurse telephone triage"/>
+			</concept>
+			<concept>
+				<code value="287231000000109"/>
+				<display value="Provision of GP intermediate care"/>
+			</concept>
+			<concept>
+				<code value="352341000000105"/>
+				<display value="E-mail received from carer"/>
+			</concept>
+			<concept>
+				<code value="352371000000104"/>
+				<display value="E-mail sent to carer"/>
+			</concept>
+			<concept>
+				<code value="439708006"/>
+				<display value="Home visit"/>
+			</concept>
+			<concept>
+				<code value="728001000006100"/>
+				<display value="Day-case attendance"/>
+			</concept>
+			<concept>
+				<code value="300601000000107"/>
+				<display value="Seen by GP with special interest ear nose &amp; throat disorders"/>
+			</concept>
+			<concept>
+				<code value="1503121000006107"/>
+				<display value="Walk-in clinic"/>
+			</concept>
+			<concept>
+				<code value="1503351000006100"/>
+				<display value="Face to face consultation"/>
+			</concept>
+			<concept>
+				<code value="1503361000006103"/>
+				<display value="Group consultation"/>
+			</concept>
+			<concept>
+				<code value="1503371000006105"/>
+				<display value="GP Surgery"/>
+			</concept>
+			<concept>
+				<code value="1503381000006108"/>
+				<display value="Face to face consultation with relative/carer"/>
+			</concept>
+			<concept>
+				<code value="1503391000006106"/>
+				<display value="Telephone call to relative/carer"/>
+			</concept>
+			<concept>
+				<code value="1503401000006108"/>
+				<display value="Telephone call from relative/carer"/>
+			</concept>
+			<concept>
+				<code value="1503411000006106"/>
+				<display value="Discussion with colleague"/>
+			</concept>
+			<concept>
+				<code value="1503421000006103"/>
+				<display value="Case conference"/>
+			</concept>
+			<concept>
+				<code value="1763581000006102"/>
+				<display value="Hospital ward round"/>
+			</concept>
+			<concept>
+				<code value="1764451000006106"/>
+				<display value="Inbound referral"/>
+			</concept>
+			<concept>
+				<code value="1764461000006108"/>
+				<display value="Outbound referral"/>
+			</concept>
+			<concept>
+				<code value="1771561000006102"/>
+				<display value="In-house andrology first appointment"/>
+			</concept>
+			<concept>
+				<code value="1771571000006109"/>
+				<display value="In-house andrology discharge"/>
+			</concept>
+			<concept>
+				<code value="1771581000006107"/>
+				<display value="In-house andrology follow-up appointment"/>
+			</concept>
+			<concept>
+				<code value="1773281000006108"/>
+				<display value="First outpatient appointment"/>
+			</concept>
+			<concept>
+				<code value="1773291000006106"/>
+				<display value="Follow-up outpatient appointment"/>
+			</concept>
+			<concept>
+				<code value="1773301000006107"/>
+				<display value="E-mail consultation"/>
+			</concept>
+			<concept>
+				<code value="1778971000006106"/>
+				<display value="Consultation via telemedicine web camera"/>
+			</concept>
+			<concept>
+				<code value="1778981000006109"/>
+				<display value="Consultation via Typetalk relay service"/>
+			</concept>
+			<concept>
+				<code value="1778991000006107"/>
+				<display value="Consultation via SMS text message"/>
+			</concept>
+			<concept>
+				<code value="1779001000006107"/>
+				<display value="Other consultation medium used"/>
+			</concept>
+			<concept>
+				<code value="1807271000006105"/>
+				<display value="Inbound document"/>
+			</concept>
+			<concept>
+				<code value="1809161000006103"/>
+				<display value="Urgent consultation"/>
+			</concept>
+			<concept>
+				<code value="1809171000006105"/>
+				<display value="Routine consultation"/>
+			</concept>
+			<concept>
+				<code value="1809181000006108"/>
+				<display value="Emergency consultation"/>
+			</concept>
+			<concept>
+				<code value="1809191000006106"/>
+				<display value="Extended hours consultation"/>
+			</concept>
+			<concept>
+				<code value="1839321000006104"/>
+				<display value="School visit note"/>
+			</concept>
+			<concept>
+				<code value="1839331000006101"/>
+				<display value="Seen in chronic obstructive pulmonary disease clinic"/>
+			</concept>
+			<concept>
+				<code value="1849981000006103"/>
+				<display value="Follow up telephone consultation"/>
+			</concept>
+			<concept>
+				<code value="1849991000006100"/>
+				<display value="First telephone consultation"/>
+			</concept>
+			<concept>
+				<code value="1850001000006100"/>
+				<display value="Follow up attendance face to face"/>
+			</concept>
+			<concept>
+				<code value="1850011000006102"/>
+				<display value="First attendance face to face"/>
+			</concept>
+			<concept>
+				<code value="1854731000006104"/>
+				<display value="Seen in drug misuse clinic"/>
+			</concept>
+			<concept>
+				<code value="1879181000006100"/>
+				<display value="Discussion with other professional"/>
+			</concept>
+			<concept>
+				<code value="1879191000006102"/>
+				<display value="Joint consultation"/>
+			</concept>
+			<concept>
+				<code value="857661000000104"/>
+				<display value="Seen in chronic obstructive pulmonary disease clinic"/>
+			</concept>
+			<concept>
+				<code value="857681000000108"/>
+				<display value="School visit note"/>
+			</concept>
+		</include>
+	</compose>
+</ValueSet>

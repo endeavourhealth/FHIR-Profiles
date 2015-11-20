@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="endeavour-family-member-history" />
+  <meta>
+    <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="0" />
+  </extension>
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-family-member-history" />
+  <name value="Endeavour-FamilyMemberHistory" />
+  <display value="Endeavour family member history" />
+  <status value="draft" />
+  <publisher value="Endeavour Health Charitable Trust" />
+  <contact>
+    <telecom>
+      <system value="other" />
+      <value value="http://www.endeavourhealth.org/" />
+    </telecom>
+  </contact>
+  <date value="2015-11-01T00:00:00+00:00" />
+  <description value="Placeholder" />
+  <fhirVersion value="1.0.1" />
+  <kind value="resource" />
+  <constrainedType value="FamilyMemberHistory" />
+  <abstract value="false" />
+  <base value="http://hl7.org/fhir/StructureDefinition/FamilyMemberHistory" />
+  <differential>
+    <element>
+      <path value="FamilyMemberHistory" />
+      <short value="Information about patient's relatives, relevant for patient" />
+      <definition value="Significant health events and conditions for a person related to the patient relevant in the context of care for the patient." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="FamilyMemberHistory" />
+      </type>
+      <mapping>
+        <identity value="v2" />
+        <map value="Not in scope for v2" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="Observation[classCode=OBS, moodCode=EVN]" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="clinical.general" />
+      </mapping>
+    </element>
+    <element>
+      <path value="FamilyMemberHistory.patient" />
+      <short value="Patient history is about" />
+      <definition value="The person who this history concerns." />
+      <alias value="Proband" />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-patient" />
+      </type>
+      <isSummary value="true" />
+    </element>
+  </differential>
+</StructureDefinition>
