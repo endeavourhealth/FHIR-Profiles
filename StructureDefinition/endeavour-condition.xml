@@ -83,7 +83,7 @@
       <path value="Condition.extension" />
       <name value="episodeLink" />
       <short value="Episode observation link" />
-      <definition value="A reference to a follow-on observation linked to this condition episode. The relationship is defined by the relationship type code e.g. Reviews | End" />
+      <definition value="A reference to a follow-on observation linked to this condition episode. The relationship is defined by the relationship type code e.g. Review | Flare | End" />
       <min value="0" />
       <max value="*" />
       <type>
@@ -156,7 +156,7 @@
       <path value="Condition.asserter" />
       <short value="Person who asserts this condition" />
       <definition value="Individual who is making the condition statement." />
-      <min value="0" />
+      <min value="1" />
       <max value="1" />
       <type>
         <code value="Reference" />
@@ -167,18 +167,6 @@
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-patient" />
       </type>
       <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="REL-7.1 identifier + REL-7.12 type code" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value=".participation[typeCode=AUT].role" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="who.author" />
-      </mapping>
     </element>
     <element>
       <path value="Condition.clinicalStatus" />

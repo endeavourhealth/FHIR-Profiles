@@ -45,7 +45,7 @@
       <path value="Extension.extension" />
       <name value="type" />
       <definition value="The type of relationship that exists between a condition and the target follow-on observation" />
-      <comments value="Allows the specification of the relationship type between a condition and the target follow-on observation. Review | End." />
+      <comments value="Allows the specification of the relationship type between a condition and the target follow-on observation. review | flare | end" />
       <min value="1" />
       <max value="1" />
       <type>

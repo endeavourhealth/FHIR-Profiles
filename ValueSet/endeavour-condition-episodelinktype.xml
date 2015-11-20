@@ -13,7 +13,7 @@
             <h2>Condition Episode Link Type</h2>
             <p>The type of relationship that exists between a condition and the target follow-on observation.</p>
             <p>This value set has an inline code system which defines the following codes:</p>
-            <p>review | end</p>
+            <p>review | flare | end</p>
         </div>
     </text>
     <url value="http://endeavourhealth.org/fhir/ValueSet/endeavour-condition-episodelinktype" />
@@ -30,6 +30,11 @@
             <code value="review"/>
             <display value="Review"/>
             <definition value="The target observation is a review of the condition episode"/>
+        </concept>
+        <concept>
+            <code value="flare"/>
+            <display value="Flare"/>
+            <definition value="The target observation marks a flare-up of the condition episode"/>
         </concept>
         <concept>
             <code value="end"/>
