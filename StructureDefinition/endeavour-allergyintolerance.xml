@@ -7,7 +7,7 @@
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="0" />
   </extension>
-  <url value="http://endeavourhealth.org/fhir/StructureDefinition/allergyintolerance" />
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-allergyintolerance" />
   <name value="Endeavour-AllergyIntolerance" />
   <display value="Endeavour allergy intolerance" />
   <status value="draft" />
@@ -19,7 +19,7 @@
     </telecom>
   </contact>
   <date value="2015-11-01T00:00:00+00:00" />
-  <description value="Placeholder" />
+  <description value="Risk of harmful or undesirable, physiological response which is unique to an individual and associated with exposure to a substance." />
   <requirements value="To record a clinical assessment of a propensity, or potential risk to an individual, of an adverse reaction upon future exposure to the specified substance, or class of substance." />
   <fhirVersion value="1.0.1" />
   <kind value="resource" />
@@ -44,6 +44,79 @@
         <identity value="w5" />
         <map value="clinical.general" />
       </mapping>
+    </element>
+    <element>
+      <path value="AllergyIntolerance.extension" />
+      <slicing>
+        <discriminator value="url" />
+        <rules value="openAtEnd" />
+      </slicing>
+    </element>
+    <element>
+      <path value="AllergyIntolerance.extension" />
+      <name value="encounter" />
+      <short value="Encounter during which AllergyIntolerance was recorded" />
+      <definition value="Encounter event during which this AllergyIntolerance was recorded" />
+      <comments value="This record indicates the encounter this particular record is associated with. " />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-encounter-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="AllergyIntolerance.recorder" />
+      <short value="Who recorded the sensitivity" />
+      <definition value="Individual who recorded the record and takes responsibility for its conten." />
+      <alias value="Author" />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-practitioner" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-patient" />
+      </type>
+      <isSummary value="true" />
+    </element>
+    <element>
+      <path value="AllergyIntolerance.patient" />
+      <short value="Who the sensitivity is for" />
+      <definition value="The patient who has the allergy or intolerance." />
+      <alias value="Patient" />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-patient" />
+      </type>
+      <isSummary value="true" />
+    </element>
+    <element>
+      <path value="AllergyIntolerance.reporter" />
+      <short value="Source of the information about the allergy" />
+      <definition value="The source of the information about the allergy that is recorded." />
+      <comments value="The recorder takes repsonsibility for the content, but can reference the source from where they got it." />
+      <alias value="Source" />
+      <alias value="Informant" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-patient" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-related-person" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-practitioner" />
+      </type>
+      <isSummary value="true" />
     </element>
   </differential>
 </StructureDefinition>
