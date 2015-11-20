@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="endeavour-allergyintolerance" />
+  <id value="endeavour-allergy-intolerance" />
   <meta>
     <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="0" />
   </extension>
-  <url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-allergyintolerance" />
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-allergy-intolerance" />
   <name value="Endeavour-AllergyIntolerance" />
   <display value="Endeavour allergy intolerance" />
   <status value="draft" />
@@ -57,7 +57,7 @@
       <name value="encounter" />
       <short value="Encounter during which AllergyIntolerance was recorded" />
       <definition value="Encounter event during which this AllergyIntolerance was recorded" />
-      <comments value="This record indicates the encounter this particular record is associated with. " />
+      <comments value="This record indicates the encounter this particular record is associated with." />
       <min value="0" />
       <max value="1" />
       <type>
@@ -81,6 +81,14 @@
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-patient" />
       </type>
       <isSummary value="true" />
+      <mapping>
+        <identity value="rim" />
+        <map value=".participation[typeCode=AUT].role" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="who.author" />
+      </mapping>
     </element>
     <element>
       <path value="AllergyIntolerance.patient" />
@@ -94,6 +102,18 @@
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-patient" />
       </type>
       <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="(PID-3)" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value=".participation[typeCode=SBJ].role[classCode=PAT]" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="who.focus" />
+      </mapping>
     </element>
     <element>
       <path value="AllergyIntolerance.reporter" />
@@ -117,6 +137,64 @@
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-practitioner" />
       </type>
       <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="IAM-14 (if patient) / IAM-18 (if practitioner)" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="who.source" />
+      </mapping>
+    </element>
+    <element>
+      <path value="AllergyIntolerance.note.author[x]" />
+      <short value="Individual responsible for the annotation" />
+      <definition value="The individual responsible for making the annotation." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-practitioner" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-patient" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-related-person" />
+      </type>
+      <type>
+        <code value="string" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="N/A" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="Act.participant[typeCode=AUT].role" />
+      </mapping>
+    </element>
+    <element>
+      <path value="AllergyIntolerance.note.text" />
+      <short value="The annotation - text content" />
+      <definition value="The text of the annotation." />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="string" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="N/A" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="Act.text" />
+      </mapping>
     </element>
   </differential>
 </StructureDefinition>

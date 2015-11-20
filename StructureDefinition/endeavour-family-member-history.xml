@@ -19,7 +19,7 @@
     </telecom>
   </contact>
   <date value="2015-11-01T00:00:00+00:00" />
-  <description value="Placeholder" />
+  <description value="Significant health events and conditions for a person related to the patient relevant in the context of care for the patient." />
   <fhirVersion value="1.0.1" />
   <kind value="resource" />
   <constrainedType value="FamilyMemberHistory" />
@@ -35,18 +35,26 @@
       <type>
         <code value="FamilyMemberHistory" />
       </type>
-      <mapping>
-        <identity value="v2" />
-        <map value="Not in scope for v2" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Observation[classCode=OBS, moodCode=EVN]" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="clinical.general" />
-      </mapping>
+    </element>
+    <element>
+      <path value="FamilyMemberHistory.extension" />
+      <slicing>
+        <discriminator value="url" />
+        <rules value="openAtEnd" />
+      </slicing>
+    </element>
+    <element>
+      <path value="FamilyMemberHistory.extension" />
+      <name value="encounter" />
+      <short value="Encounter during which FamilyMemberHistory was recorded" />
+      <definition value="Encounter event during which this FamilyMemberHistory was recorded" />
+      <comments value="This record indicates the encounter this particular record is associated with." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-encounter-extension" />
+      </type>
     </element>
     <element>
       <path value="FamilyMemberHistory.patient" />
@@ -58,6 +66,80 @@
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-patient" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="rim" />
+        <map value="participation[typeCode=SBJ].role" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="who.focus" />
+      </mapping>
+    </element>
+    <element>
+      <path value="FamilyMemberHistory.note" />
+      <short value="General note about related person" />
+      <definition value="This property allows a non condition-specific note to the made about the related person. Ideally, the note would be in the condition property, but this is not always possible." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Annotation" />
+      </type>
+    </element>
+    <element>
+      <path value="FamilyMemberHistory.note.author[x]" />
+      <short value="Individual responsible for the annotation" />
+      <definition value="The individual responsible for making the annotation." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-practitioner" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-patient" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-related-person" />
+      </type>
+      <type>
+        <code value="string" />
+      </type>
+      <isSummary value="true" />
+    </element>
+    <element>
+      <path value="FamilyMemberHistory.condition.note" />
+      <short value="Extra information about condition" />
+      <definition value="An area where general notes can be placed about this specific condition." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Annotation" />
+      </type>
+    </element>
+    <element>
+      <path value="FamilyMemberHistory.condition.note.author[x]" />
+      <short value="Individual responsible for the annotation" />
+      <definition value="The individual responsible for making the annotation." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-practitioner" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-patient" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-related-person" />
+      </type>
+      <type>
+        <code value="string" />
       </type>
       <isSummary value="true" />
     </element>
