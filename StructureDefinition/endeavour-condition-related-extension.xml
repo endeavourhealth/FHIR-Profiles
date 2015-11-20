@@ -27,6 +27,7 @@
   <differential>
     <element>
       <path value="Extension" />
+      <definition value="Optional Extensions Element - found in all resources." />
       <min value="0" />
       <max value="*" />
       <type>
@@ -42,6 +43,7 @@
       <representation value="xmlAttr" />
       <short value="identifies the meaning of the extension" />
       <definition value="Source of the definition for the extension code - a logical name or a URL." />
+      <comments value="The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension, with the code for the extension after a #." />
       <min value="1" />
       <max value="1" />
       <type>
@@ -55,14 +57,19 @@
     </element>
     <element>
       <path value="Extension.value[x]" />
-      <name value="valueTarget" />
+      <name value="valueReference" />
       <short value="Resource that is related to this one" />
+      <definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
       <min value="0" />
       <max value="1" />
       <type>
         <code value="Reference" />
         <profile value="http://hl7.org/fhir/StructureDefinition/Resource" />
       </type>
+      <mapping>
+        <identity value="rim" />
+        <map value="N/A" />
+      </mapping>
     </element>
   </differential>
 </StructureDefinition>

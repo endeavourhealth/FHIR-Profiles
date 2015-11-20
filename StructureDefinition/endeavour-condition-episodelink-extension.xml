@@ -74,6 +74,7 @@
     </element>
     <element>
       <path value="Extension.extension.value[x]" />
+      <name value="valueCode" />
       <min value="1" />
       <max value="1" />
       <type>
@@ -117,6 +118,7 @@
     </element>
     <element>
       <path value="Extension.extension.value[x]" />
+      <name value="valueReference" />
       <min value="1" />
       <max value="1" />
       <type>
