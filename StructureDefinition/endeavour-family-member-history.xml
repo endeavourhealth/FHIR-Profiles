@@ -35,6 +35,18 @@
       <type>
         <code value="FamilyMemberHistory" />
       </type>
+      <mapping>
+        <identity value="v2" />
+        <map value="Not in scope for v2" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="Observation[classCode=OBS, moodCode=EVN]" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="clinical.general" />
+      </mapping>
     </element>
     <element>
       <path value="FamilyMemberHistory.extension" />
@@ -42,6 +54,18 @@
         <discriminator value="url" />
         <rules value="openAtEnd" />
       </slicing>
+    </element>
+    <element>
+      <path value="FamilyMemberHistory.extension" />
+      <name value="recorder" />
+      <short value="Who recorded the family history" />
+      <definition value="Individual who recorded the record and takes responsibility for its content." />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-family-member-history-recorder-extension" />
+      </type>
     </element>
     <element>
       <path value="FamilyMemberHistory.extension" />
@@ -53,7 +77,19 @@
       <max value="1" />
       <type>
         <code value="Extension" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-encounter-extension" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/encounter-associatedEncounter" />
+      </type>
+    </element>
+    <element>
+      <path value="FamilyMemberHistory.extension" />
+      <name value="reporter" />
+      <short value="Source of the information about the family member history" />
+      <definition value="The source of the information about the family member history that is recorded." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-family-member-history-reporter-extension" />
       </type>
     </element>
     <element>
@@ -78,16 +114,6 @@
       </mapping>
     </element>
     <element>
-      <path value="FamilyMemberHistory.note" />
-      <short value="General note about related person" />
-      <definition value="This property allows a non condition-specific note to the made about the related person. Ideally, the note would be in the condition property, but this is not always possible." />
-      <min value="0" />
-      <max value="1" />
-      <type>
-        <code value="Annotation" />
-      </type>
-    </element>
-    <element>
       <path value="FamilyMemberHistory.note.author[x]" />
       <short value="Individual responsible for the annotation" />
       <definition value="The individual responsible for making the annotation." />
@@ -109,16 +135,14 @@
         <code value="string" />
       </type>
       <isSummary value="true" />
-    </element>
-    <element>
-      <path value="FamilyMemberHistory.condition.note" />
-      <short value="Extra information about condition" />
-      <definition value="An area where general notes can be placed about this specific condition." />
-      <min value="0" />
-      <max value="1" />
-      <type>
-        <code value="Annotation" />
-      </type>
+      <mapping>
+        <identity value="v2" />
+        <map value="N/A" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="Act.participant[typeCode=AUT].role" />
+      </mapping>
     </element>
     <element>
       <path value="FamilyMemberHistory.condition.note.author[x]" />
@@ -142,6 +166,14 @@
         <code value="string" />
       </type>
       <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="N/A" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="Act.participant[typeCode=AUT].role" />
+      </mapping>
     </element>
   </differential>
 </StructureDefinition>

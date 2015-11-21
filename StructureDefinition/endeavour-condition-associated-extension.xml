@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="endeavour-encounter-extension" />
+  <id value="endeavour-condition-associated-extension" />
   <meta>
     <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
   </meta>
-  <url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-encounter-extension" />
-  <name value="Endeavour-Encounter-Extension" />
-  <display value="Endeavour encounter extension" />
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-condition-associated-extension" />
+  <name value="Endeavour-ConditionAssociated-Extension" />
+  <display value="Endeavour condition associated extension" />
   <status value="draft" />
   <publisher value="Endeavour Health Charitable Trust" />
   <contact>
@@ -16,14 +16,13 @@
     </telecom>
   </contact>
   <date value="2015-11-01T00:00:00+00:00" />
-  <description value="A reference to an Encounter resource" />
+  <description value="A reference to another resource (e.g. MedicationOrder, Observation, ReferralRequest etc.) associated/linked to this condition." />
   <fhirVersion value="1.0.1" />
   <kind value="datatype" />
   <constrainedType value="Extension" />
   <abstract value="false" />
   <contextType value="resource" />
-  <context value="AllergyIntolerance" />
-  <context value="FamilyMemberHistory" />
+  <context value="Condition" />
   <base value="http://hl7.org/fhir/StructureDefinition/Extension" />
   <differential>
     <element>
@@ -34,29 +33,43 @@
       <type>
         <code value="Element" />
       </type>
+      <mapping>
+        <identity value="rim" />
+        <map value="N/A" />
+      </mapping>
     </element>
     <element>
       <path value="Extension.url" />
       <representation value="xmlAttr" />
       <short value="identifies the meaning of the extension" />
       <definition value="Source of the definition for the extension code - a logical name or a URL." />
+      <comments value="The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension, with the code for the extension after a #." />
       <min value="1" />
       <max value="1" />
       <type>
         <code value="uri" />
       </type>
-      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-encounter-extension" />
+      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-condition-associated-extension" />
+      <mapping>
+        <identity value="rim" />
+        <map value="N/A" />
+      </mapping>
     </element>
     <element>
       <path value="Extension.value[x]" />
       <name value="valueReference" />
-      <short value="Reference to Encounter resource" />
+      <short value="Resource that is associated to this one" />
+      <definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
       <min value="0" />
       <max value="1" />
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-encounter" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Resource" />
       </type>
+      <mapping>
+        <identity value="rim" />
+        <map value="N/A" />
+      </mapping>
     </element>
   </differential>
 </StructureDefinition>

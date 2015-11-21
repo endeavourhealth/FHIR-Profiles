@@ -62,7 +62,7 @@
       <max value="1" />
       <type>
         <code value="Extension" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-encounter-extension" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/encounter-associatedEncounter" />
       </type>
     </element>
     <element>

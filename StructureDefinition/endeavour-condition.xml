@@ -82,8 +82,8 @@
     <element>
       <path value="Condition.extension" />
       <name value="episodeLink" />
-      <short value="Episode observation link" />
-      <definition value="A reference to a follow-on observation linked to this condition episode. The relationship is defined by the relationship type code e.g. Review | Flare | End" />
+      <short value="Problem Episode Link" />
+      <definition value="A reference to a follow-on observation linked to this problem episode. The relationship is defined by the relationship type code e.g. Review | Flare | End" />
       <min value="0" />
       <max value="*" />
       <type>
@@ -93,14 +93,14 @@
     </element>
     <element>
       <path value="Condition.extension" />
-      <name value="related" />
+      <name value="associated" />
       <short value="Related resource" />
-      <definition value="A reference to another resource (e.g. MedicationOrder, Observation, ReferralRequest etc.) related/linked to this condition." />
+      <definition value="A reference to another resource (e.g. MedicationOrder, Observation, ReferralRequest etc.) associated/linked to this condition." />
       <min value="0" />
       <max value="*" />
       <type>
         <code value="Extension" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-condition-related-extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-condition-associated-extension" />
       </type>
     </element>
     <element>
@@ -167,6 +167,18 @@
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-patient" />
       </type>
       <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="REL-7.1 identifier + REL-7.12 type code" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value=".participation[typeCode=AUT].role" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="who.author" />
+      </mapping>
     </element>
     <element>
       <path value="Condition.clinicalStatus" />
