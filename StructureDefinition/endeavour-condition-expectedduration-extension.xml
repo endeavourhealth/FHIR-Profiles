@@ -57,13 +57,14 @@
     </element>
     <element>
       <path value="Extension.value[x]" />
-      <name value="valuePeriod" />
-      <short value="Expected duration period value" />
+      <name value="valueQuantity" />
+      <short value="Expected duration" />
       <definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
       <min value="0" />
       <max value="1" />
       <type>
-        <code value="Period" />
+        <code value="Quantity" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Duration" />
       </type>
       <mapping>
         <identity value="rim" />
