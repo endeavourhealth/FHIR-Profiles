@@ -253,7 +253,7 @@
       </type>
       <type>
         <code value="Reference" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/DiagnosticOrder" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-diagnostic-order" />
       </type>
       <type>
         <code value="Reference" />
@@ -269,7 +269,7 @@
       </type>
       <type>
         <code value="Reference" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/ProcedureRequest" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-procedure-request" />
       </type>
       <type>
         <code value="Reference" />
@@ -277,7 +277,7 @@
       </type>
       <type>
         <code value="Reference" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/ReferralRequest" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-referral-request" />
       </type>
       <type>
         <code value="Reference" />
