@@ -5,6 +5,9 @@
 		<lastUpdated value="2015-10-27T00:00:00+00:00"/>
 		<profile value="http://hl7.org/fhir/StructureDefinition/valueset-shareable-definition"/>
 	</meta>
+	<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+		<valueInteger value="0" />
+	</extension>
 	<text>
 		<status value="extensions"/>
 		<div xmlns="http://www.w3.org/1999/xhtml">

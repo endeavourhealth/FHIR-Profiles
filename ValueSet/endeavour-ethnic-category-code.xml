@@ -4,6 +4,9 @@
 	<meta>
 		<lastUpdated value="2015-11-01T10:00:00"/>
 	</meta>
+	<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+		<valueInteger value="0" />
+	</extension>
 	<url value="http://endeavourhealth.org/fhir/ValueSet/endeavour-ethnic-category-code"/>
 	<name value="Endeavour-EthnicCategoryCode"/>
 	<status value="draft"/>
