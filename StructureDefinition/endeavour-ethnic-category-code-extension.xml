@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../Schema/fhir-single.xsd">
-	<id value="endeavour-ethniccategorycode"/>
+	<id value="endeavour-ethnic-category-code"/>
 	<meta>
 		<lastUpdated value="2015-11-01T10:00:00+00:00"/>
 	</meta>
-	<url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-ethniccategorycode"/>
-	<name value="Endeavour-EthnicCategoryCode"/>
+	<url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-ethnic-category-code-extension"/>
+	<name value="Endeavour-EthnicCategoryCode-Extension"/>
 	<display value="Endeavour ethnic category code"/>
 	<status value="draft"/>
 	<publisher value="Endeavour Health Charitable Trust"/>
@@ -39,7 +39,7 @@
 			<type>
 				<code value="uri"/>
 			</type>
-			<fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-ethniccategorycode"/>
+			<fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-ethnic-category-code-extension"/>
 		</element>
 		<element>
 			<path value="Extension.extension"/>
@@ -57,7 +57,7 @@
 				<strength value="required"/>
 				<description value="A code classifying the person's ethnicity."/>
 				<valueSetReference>
-					<reference value="http://endeavourhealth.org/fhir/ValueSet/endeavour-ethniccategorycode"/>
+					<reference value="http://endeavourhealth.org/fhir/ValueSet/endeavour-ethnic-category-code"/>
 				</valueSetReference>
 			</binding>
 		</element>

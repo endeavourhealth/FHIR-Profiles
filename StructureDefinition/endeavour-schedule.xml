@@ -49,7 +49,7 @@
 			<max value="*"/>
 			<type>
 				<code value="Extension"/>
-				<profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-additionalactor"/>
+				<profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-additional-actor-extension"/>
 			</type>
 		</element>
 		<element>

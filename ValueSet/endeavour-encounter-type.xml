@@ -388,7 +388,7 @@
 	</text>
 	<url value="http://endeavourhealth.org/fhir/ValueSet/endeavour-encounter-type"/>
 	<version value="1.0.0"/>
-	<name value="Endeavour-Encounter-Type"/>
+	<name value="Endeavour-EncounterType"/>
 	<status value="draft"/>
 	<publisher value="Endeavour Health Charitable Trust"/>
 	<contact>

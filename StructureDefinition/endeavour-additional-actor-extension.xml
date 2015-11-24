@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../Schema/fhir-single.xsd">
-	<id value="endeavour-additionalactor"/>
+	<id value="endeavour-additionalactor-extension"/>
 	<meta>
 		<lastUpdated value="2015-11-01T10:00:00+00:00"/>
 	</meta>
-	<url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-additionalactor"/>
-	<name value="Endeavour-AdditionalActor"/>
+	<url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-additional-actor-extension"/>
+	<name value="Endeavour-AdditionalActor-Extension"/>
 	<display value="Endeavour Additional Actor"/>
 	<status value="draft"/>
 	<publisher value="Endeavour Health Charitable Trust"/>
@@ -42,7 +42,7 @@
 			<type>
 				<code value="uri"/>
 			</type>
-			<fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-additionalactor"/>
+			<fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-additional-actor-extension"/>
 		</element>
 		<element>
 			<path value="Extension.value[x]"/>

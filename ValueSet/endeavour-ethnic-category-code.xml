@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ValueSet xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../Schema/fhir-single.xsd">
-	<id value="endeavour-ethniccategorycode"/>
+	<id value="endeavour-ethnic-category-code"/>
 	<meta>
 		<lastUpdated value="2015-11-01T10:00:00"/>
 	</meta>
-	<url value="http://endeavourhealth.org/fhir/ValueSet/endeavour-ethniccategorycode"/>
+	<url value="http://endeavourhealth.org/fhir/ValueSet/endeavour-ethnic-category-code"/>
 	<name value="Endeavour-EthnicCategoryCode"/>
 	<status value="draft"/>
 	<publisher value="Endeavour Health Charitable Trust"/>
