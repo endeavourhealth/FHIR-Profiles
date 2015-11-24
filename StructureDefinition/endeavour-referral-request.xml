@@ -42,6 +42,31 @@
       </mapping>
     </element>
     <element>
+      <path value="ReferralRequest.identifier.assigner" />
+      <short value="Organization that issued id (may be just text)" />
+      <definition value="Organization that issued/manages the identifier." />
+      <comments value="The reference may be just a text description of the assigner." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="CX.4 / (CX.4,CX.9,CX.10)" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="./IdentifierIssuingAuthority" />
+      </mapping>
+    </element>
+    <element>
       <path value="ReferralRequest.patient" />
       <short value="Patient referred to care or transfer" />
       <definition value="The patient who is the subject of a referral or transfer of care request." />
@@ -54,6 +79,14 @@
       </type>
       <isModifier value="false" />
       <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="PID-3" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="who.focus" />
+      </mapping>
     </element>
     <element>
       <path value="ReferralRequest.requester" />
@@ -75,6 +108,14 @@
       </type>
       <isModifier value="false" />
       <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="Practitioner: PRD-2/PRD-7 where PRD-3 = RP; Organization: PRD-10 where PRD-3 = RP" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="who.author" />
+      </mapping>
     </element>
     <element>
       <path value="ReferralRequest.recipient" />
@@ -93,6 +134,14 @@
       </type>
       <isModifier value="false" />
       <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="Practitioner: PRD-2/PRD-7 where PRD-3 = RT; Organization: PRD-10 where PRD-3 = RT" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="who.actor" />
+      </mapping>
     </element>
     <element>
       <path value="ReferralRequest.encounter" />
@@ -105,6 +154,14 @@
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-encounter" />
       </type>
       <isModifier value="false" />
+      <mapping>
+        <identity value="v2" />
+        <map value="PV1-19" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="context" />
+      </mapping>
     </element>
   </differential>
 </StructureDefinition>

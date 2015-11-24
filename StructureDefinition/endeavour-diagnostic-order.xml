@@ -67,6 +67,14 @@
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-device" />
       </type>
       <isSummary value="true" />
+      <mapping>
+        <identity value="rim" />
+        <map value=".participation[typeCode=SBJ].role" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="who.focus" />
+      </mapping>
     </element>
     <element>
       <path value="DiagnosticOrder.orderer" />
@@ -79,6 +87,39 @@
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-practitioner" />
       </type>
       <isSummary value="true" />
+      <mapping>
+        <identity value="rim" />
+        <map value=".participation[typeCode=AUT].role" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="who.actor" />
+      </mapping>
+    </element>
+    <element>
+      <path value="DiagnosticOrder.identifier.assigner" />
+      <short value="Organization that issued id (may be just text)" />
+      <definition value="Organization that issued/manages the identifier." />
+      <comments value="The reference may be just a text description of the assigner." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="CX.4 / (CX.4,CX.9,CX.10)" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="./IdentifierIssuingAuthority" />
+      </mapping>
     </element>
     <element>
       <path value="DiagnosticOrder.encounter" />
@@ -91,6 +132,14 @@
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-encounter" />
       </type>
       <isSummary value="true" />
+      <mapping>
+        <identity value="rim" />
+        <map value=".inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN]" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="context" />
+      </mapping>
     </element>
     <element>
       <path value="DiagnosticOrder.supportingInformation" />
@@ -113,6 +162,14 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-document-reference" />
       </type>
+      <mapping>
+        <identity value="v2" />
+        <map value="OBR-13" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="outboundRelationship[typeCode=SPRT]/target[classCode=ACT, moodCode=EVN]" />
+      </mapping>
     </element>
     <element>
       <path value="DiagnosticOrder.specimen" />
@@ -125,6 +182,10 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-specimen" />
       </type>
+      <mapping>
+        <identity value="rim" />
+        <map value=".participation[typeCode=SPC].role" />
+      </mapping>
     </element>
     <element>
       <path value="DiagnosticOrder.event.actor" />
@@ -140,6 +201,10 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-device" />
       </type>
+      <mapping>
+        <identity value="rim" />
+        <map value=".participation[AUT or PFM]" />
+      </mapping>
     </element>
     <element>
       <path value="DiagnosticOrder.item.specimen" />
@@ -152,6 +217,41 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-specimen" />
       </type>
+      <mapping>
+        <identity value="rim" />
+        <map value=".participation[typeCode=SPC].role" />
+      </mapping>
+    </element>
+    <element>
+      <path value="DiagnosticOrder.note.author[x]" />
+      <short value="Individual responsible for the annotation" />
+      <definition value="The individual responsible for making the annotation." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-practitioner" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-patient" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-related-person" />
+      </type>
+      <type>
+        <code value="string" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="N/A" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="Act.participant[typeCode=AUT].role" />
+      </mapping>
     </element>
   </differential>
 </StructureDefinition>

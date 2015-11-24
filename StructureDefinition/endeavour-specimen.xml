@@ -45,6 +45,31 @@
       </mapping>
     </element>
     <element>
+      <path value="Specimen.identifier.assigner" />
+      <short value="Organization that issued id (may be just text)" />
+      <definition value="Organization that issued/manages the identifier." />
+      <comments value="The reference may be just a text description of the assigner." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="CX.4 / (CX.4,CX.9,CX.10)" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="./IdentifierIssuingAuthority" />
+      </mapping>
+    </element>
+    <element>
       <path value="Specimen.parent" />
       <short value="Specimen from which this specimen originated" />
       <definition value="Reference to the parent (source) specimen which is used when the specimen was either derived from or a component of another specimen." />
@@ -55,6 +80,10 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-specimen" />
       </type>
+      <mapping>
+        <identity value="rim" />
+        <map value=".scoper (if parent) .player.scopesRole[classCode=SPEC].player (if child)" />
+      </mapping>
     </element>
     <element>
       <path value="Specimen.subject" />
@@ -80,6 +109,59 @@
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-substance" />
       </type>
       <isSummary value="true" />
+      <mapping>
+        <identity value="rim" />
+        <map value=".scoper  or  .scoper.playsRole" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="who.focus" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Specimen.accessionIdentifier.assigner" />
+      <short value="Organization that issued id (may be just text)" />
+      <definition value="Organization that issued/manages the identifier." />
+      <comments value="The reference may be just a text description of the assigner." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="CX.4 / (CX.4,CX.9,CX.10)" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="./IdentifierIssuingAuthority" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Specimen.collection.collector" />
+      <short value="Who collected the specimen" />
+      <definition value="Person who collected the specimen." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-practitioner" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="PRT" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value=".participation[typeCode=PFM].role" />
+      </mapping>
     </element>
     <element>
       <path value="Specimen.treatment.additive" />
@@ -91,6 +173,39 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-substance" />
       </type>
+      <mapping>
+        <identity value="v2" />
+        <map value="SPM-6" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value=".participation[typeCode=CSM].role[classCode=ADTV].code" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Specimen.container.identifier.assigner" />
+      <short value="Organization that issued id (may be just text)" />
+      <definition value="Organization that issued/manages the identifier." />
+      <comments value="The reference may be just a text description of the assigner." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="CX.4 / (CX.4,CX.9,CX.10)" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="./IdentifierIssuingAuthority" />
+      </mapping>
     </element>
     <element>
       <path value="Specimen.container.additive[x]" />
@@ -112,6 +227,14 @@
           <reference value="http://hl7.org/fhir/ValueSet/v2-0371" />
         </valueSetReference>
       </binding>
+      <mapping>
+        <identity value="v2" />
+        <map value="SAC-27" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value=".scopesRole[classCode=ADTV].player" />
+      </mapping>
     </element>
   </differential>
 </StructureDefinition>

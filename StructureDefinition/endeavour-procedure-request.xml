@@ -42,6 +42,31 @@
       </mapping>
     </element>
     <element>
+      <path value="ProcedureRequest.identifier.assigner" />
+      <short value="Organization that issued id (may be just text)" />
+      <definition value="Organization that issued/manages the identifier." />
+      <comments value="The reference may be just a text description of the assigner." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="CX.4 / (CX.4,CX.9,CX.10)" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="./IdentifierIssuingAuthority" />
+      </mapping>
+    </element>
+    <element>
       <path value="ProcedureRequest.subject" />
       <short value="Who the procedure should be done to" />
       <definition value="The person, animal or group that should receive the procedure." />
@@ -56,6 +81,14 @@
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-group" />
       </type>
       <isSummary value="true" />
+      <mapping>
+        <identity value="quick" />
+        <map value="ClinicalStatement.subject" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="who.focus" />
+      </mapping>
     </element>
     <element>
       <path value="ProcedureRequest.reason[x]" />
@@ -78,6 +111,10 @@
           <reference value="http://hl7.org/fhir/ValueSet/procedure-reason" />
         </valueSetReference>
       </binding>
+      <mapping>
+        <identity value="quick" />
+        <map value="Action.indication.reason" />
+      </mapping>
     </element>
     <element>
       <path value="ProcedureRequest.encounter" />
@@ -90,6 +127,14 @@
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-encounter" />
       </type>
       <isSummary value="true" />
+      <mapping>
+        <identity value="quick" />
+        <map value="ClinicalStatement.encounter" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="context" />
+      </mapping>
     </element>
     <element>
       <path value="ProcedureRequest.performer" />
@@ -114,6 +159,10 @@
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-related-person" />
       </type>
       <isSummary value="true" />
+      <mapping>
+        <identity value="w5" />
+        <map value="who.actor" />
+      </mapping>
     </element>
     <element>
       <path value="ProcedureRequest.notes.author[x]" />
@@ -137,6 +186,14 @@
         <code value="string" />
       </type>
       <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="N/A" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="Act.participant[typeCode=AUT].role" />
+      </mapping>
     </element>
     <element>
       <path value="ProcedureRequest.orderer" />
@@ -161,24 +218,14 @@
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-device" />
       </type>
       <isSummary value="true" />
-    </element>
-    <element>
-      <path value="ProcedureRequest.priority" />
-      <short value="routine | urgent | stat | asap" />
-      <definition value="The clinical priority associated with this order." />
-      <min value="0" />
-      <max value="1" />
-      <type>
-        <code value="code" />
-      </type>
-      <isSummary value="true" />
-      <binding>
-        <strength value="required" />
-        <description value="The priority of the request." />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/procedure-request-priority" />
-        </valueSetReference>
-      </binding>
+      <mapping>
+        <identity value="quick" />
+        <map value="ClinicalStatement.statementAuthor" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="who.author" />
+      </mapping>
     </element>
   </differential>
 </StructureDefinition>

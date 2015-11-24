@@ -57,6 +57,31 @@
       </mapping>
     </element>
     <element>
+      <path value="DiagnosticReport.identifier.assigner" />
+      <short value="Organization that issued id (may be just text)" />
+      <definition value="Organization that issued/manages the identifier." />
+      <comments value="The reference may be just a text description of the assigner." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="CX.4 / (CX.4,CX.9,CX.10)" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="./IdentifierIssuingAuthority" />
+      </mapping>
+    </element>
+    <element>
       <path value="DiagnosticReport.subject" />
       <short value="The subject of the report, usually, but not always, the patient" />
       <definition value="The subject of the report. Usually, but not always, this is a patient. However diagnostic services also perform analyses on specimens collected from a variety of other sources." />
@@ -81,6 +106,18 @@
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-location" />
       </type>
       <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="PID-3 (no HL7 v2 mapping for Group or Device)" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="participation[typeCode=SBJ]" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="who.focus" />
+      </mapping>
     </element>
     <element>
       <path value="DiagnosticReport.encounter" />
@@ -93,6 +130,18 @@
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-encounter" />
       </type>
       <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="PV1-19" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN]" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="context" />
+      </mapping>
     </element>
     <element>
       <path value="DiagnosticReport.performer" />
@@ -116,6 +165,18 @@
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
       </type>
       <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="PRT-8 (where this PRT-4-Participation = &quot;PO&quot;)" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="participation[typeCode=AUT].role[classCode=ASSIGN].scoper" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="who.witness" />
+      </mapping>
     </element>
     <element>
       <path value="DiagnosticReport.request" />
@@ -137,6 +198,14 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-referral-request" />
       </type>
+      <mapping>
+        <identity value="v2" />
+        <map value="ORC? OBR-2/3?" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="outboundRelationship[typeCode=FLFS].target" />
+      </mapping>
     </element>
     <element>
       <path value="DiagnosticReport.specimen" />
@@ -150,6 +219,14 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-specimen" />
       </type>
+      <mapping>
+        <identity value="v2" />
+        <map value="SPM" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="participation[typeCode=SBJ]" />
+      </mapping>
     </element>
     <element>
       <path value="DiagnosticReport.result" />
@@ -171,6 +248,14 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-observation" />
       </type>
+      <mapping>
+        <identity value="v2" />
+        <map value="OBXs" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="outboundRelationship[typeCode=COMP].target" />
+      </mapping>
     </element>
   </differential>
 </StructureDefinition>

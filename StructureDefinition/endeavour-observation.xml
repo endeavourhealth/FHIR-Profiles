@@ -55,9 +55,36 @@
       </mapping>
     </element>
     <element>
+      <path value="Observation.identifier.assigner" />
+      <short value="Organization that issued id (may be just text)" />
+      <definition value="Organization that issued/manages the identifier." />
+      <comments value="The reference may be just a text description of the assigner." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="CX.4 / (CX.4,CX.9,CX.10)" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="./IdentifierIssuingAuthority" />
+      </mapping>
+    </element>
+    <element>
       <path value="Observation.subject" />
       <short value="Who this is about" />
       <definition value="The patient whose characteristics (direct or indirect) are described by the observation and into whose record the observation is placed.  Comments: Indirect characteristics may be those of a specimen, fetus, donor,  other observer (for example a relative or EMT), or any observation made about the subject." />
+      <comments value="One would expect this element to be a cardinality  of 1..1.  The only circumstance in which the subject can be missing is when the observation is made by a device that does not know the patient. In this case, the observation SHALL be matched to a patient through some context/channel matching technique, and at this point, the observation should be updated.  If the target of the observation is different than the subject, the general extension [observation-focal-subject](extension-observation-focal-subject.html).  may be used.  However, the distinction between the patient's own value for an observation versus that of the fetus, or the donor or blood product unit, etc., are often specified in the observation code." />
+      <requirements value="Observations have no value if you don't know who or what they're about." />
       <min value="1" />
       <max value="1" />
       <type>
@@ -77,6 +104,18 @@
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-location" />
       </type>
       <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="PID-3" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="participation[typeCode=SBJ]" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="who.focus" />
+      </mapping>
     </element>
     <element>
       <path value="Observation.encounter" />
@@ -89,6 +128,18 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-encounter" />
       </type>
+      <mapping>
+        <identity value="v2" />
+        <map value="PV1" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN]" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="context" />
+      </mapping>
     </element>
     <element>
       <path value="Observation.performer" />
@@ -114,6 +165,18 @@
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-related-person" />
       </type>
       <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="OBX.15 / (Practitioner)  OBX-16,  PRT-5:PRT-4='RO' /  (Device)  OBX-18 , PRT-10:PRT-4='EQUIP' / (Organization)  OBX-23,  PRT-8:PRT-4='PO'" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="participation[typeCode=PRF]" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="who.actor" />
+      </mapping>
     </element>
     <element>
       <path value="Observation.specimen" />
@@ -126,6 +189,14 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-specimen" />
       </type>
+      <mapping>
+        <identity value="v2" />
+        <map value="SPM segment" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="participation[typeCode=SPC].specimen" />
+      </mapping>
     </element>
     <element>
       <path value="Observation.device" />
@@ -165,6 +236,10 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-questionnaire-response" />
       </type>
+      <mapping>
+        <identity value="rim" />
+        <map value=".targetObservation" />
+      </mapping>
     </element>
   </differential>
 </StructureDefinition>

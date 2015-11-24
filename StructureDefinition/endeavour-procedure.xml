@@ -48,6 +48,31 @@
       </mapping>
     </element>
     <element>
+      <path value="Procedure.identifier.assigner" />
+      <short value="Organization that issued id (may be just text)" />
+      <definition value="Organization that issued/manages the identifier." />
+      <comments value="The reference may be just a text description of the assigner." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="CX.4 / (CX.4,CX.9,CX.10)" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="./IdentifierIssuingAuthority" />
+      </mapping>
+    </element>
+    <element>
       <path value="Procedure.subject" />
       <short value="Who the procedure was performed on" />
       <definition value="The person on which the procedure was performed." />
@@ -58,6 +83,18 @@
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-patient" />
       </type>
       <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="PID-3" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value=".participation[typeCode=SBJ].role" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="who.focus" />
+      </mapping>
     </element>
     <element>
       <path value="Procedure.reason[x]" />
@@ -81,17 +118,10 @@
           <reference value="http://hl7.org/fhir/ValueSet/procedure-reason" />
         </valueSetReference>
       </binding>
-    </element>
-    <element>
-      <path value="Procedure.performer" />
-      <short value="The people who performed the procedure" />
-      <definition value="Limited to 'real' people rather than equipment." />
-      <min value="0" />
-      <max value="*" />
-      <type>
-        <code value="BackboneElement" />
-      </type>
-      <isSummary value="true" />
+      <mapping>
+        <identity value="rim" />
+        <map value=".reasonCode" />
+      </mapping>
     </element>
     <element>
       <path value="Procedure.performer.actor" />
@@ -116,6 +146,18 @@
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-related-person" />
       </type>
       <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="ORC-19/PRT-5" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value=".role" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="who.actor" />
+      </mapping>
     </element>
     <element>
       <path value="Procedure.encounter" />
@@ -128,6 +170,18 @@
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-encounter" />
       </type>
       <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="PV1-19" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value=".inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN]" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="context" />
+      </mapping>
     </element>
     <element>
       <path value="Procedure.location" />
@@ -141,6 +195,10 @@
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-location" />
       </type>
       <isSummary value="true" />
+      <mapping>
+        <identity value="w5" />
+        <map value="where" />
+      </mapping>
     </element>
     <element>
       <path value="Procedure.report" />
@@ -153,6 +211,10 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-diagnostic-report" />
       </type>
+      <mapping>
+        <identity value="rim" />
+        <map value=".inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN]" />
+      </mapping>
     </element>
     <element>
       <path value="Procedure.request" />
@@ -176,6 +238,37 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-referral-request" />
       </type>
+    </element>
+    <element>
+      <path value="Procedure.notes.author[x]" />
+      <short value="Individual responsible for the annotation" />
+      <definition value="The individual responsible for making the annotation." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-practitioner" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-patient" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-related-person" />
+      </type>
+      <type>
+        <code value="string" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="N/A" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="Act.participant[typeCode=AUT].role" />
+      </mapping>
     </element>
     <element>
       <path value="Procedure.focalDevice.manipulated" />

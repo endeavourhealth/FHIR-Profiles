@@ -57,5 +57,67 @@
         <map value="clinical.medication" />
       </mapping>
     </element>
+    <element>
+      <path value="Medication.manufacturer" />
+      <short value="Manufacturer of the item" />
+      <definition value="Describes the details of the manufacturer." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="RXD-20-Substance Manufacturer Name / RXG-21-Substance Manufacturer Name / RXA-17-Substance Manufacturer Name" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value=".player.scopingRole[typeCode=MANU].scoper" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="who.actor" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Medication.product.ingredient.item" />
+      <short value="The product contained" />
+      <definition value="The actual ingredient - either a substance (simple ingredient) or another medication." />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-substance" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-medication" />
+      </type>
+      <mapping>
+        <identity value="v2" />
+        <map value="RXC-2-Component Code  if medication: RXO-1-Requested Give Code / RXE-2-Give Code / RXD-2-Dispense/Give Code / RXG-4-Give Code / RXA-5-Administered Code" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value=".player" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Medication.package.content.item" />
+      <short value="A product in the package" />
+      <definition value="Identifies one of the items in the package." />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-medication" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value=".player" />
+      </mapping>
+    </element>
   </differential>
 </StructureDefinition>
