@@ -109,7 +109,7 @@
       </type>
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-ealthcare-service" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-healthcare-service" />
       </type>
       <type>
         <code value="Reference" />
