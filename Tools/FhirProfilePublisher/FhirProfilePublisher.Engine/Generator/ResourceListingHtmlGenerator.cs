@@ -20,25 +20,34 @@ namespace FhirProfilePublisher.Engine
 
         internal void GenerateStructureDefinitionListing(string fileName, ResourceFileSet resourceFileSet)
         {
-            XElement structureDefinitionContent = GenerateItemList(resourceFileSet
-                .StructureDefinitionFilesWithoutExtensions
-                .OrderBy(t => t.Name)
-                .ToArray());
+            List<object> result = new List<object>();
 
+            foreach (string w5Group in resourceFileSet.StructureDefinitionsByW5Group.Keys.OrderBy(t => t))
+            {
+                StructureDefinitionFile[] structureDefinitionFiles = resourceFileSet
+                    .StructureDefinitionsByW5Group[w5Group]
+                    .OrderBy(t => t.Name)
+                    .ToArray();
+
+                XElement groupItemList = GenerateItemList(structureDefinitionFiles);
+
+                result.Add(Html.H4(w5Group));
+                result.Add(groupItemList);
+            }
+            
             XElement extensionContent = GenerateItemList(resourceFileSet
                 .StructureDefinitionExtensionFiles
                 .OrderBy(t => t.Name)
                 .ToArray());
 
-            XElement content = Html.Div(new object[]
+            result.AddRange(new object[]
             {
-                structureDefinitionContent,
                 Html.H3("Extensions"),
                 Html.P("The structures above refer to the following extensions:"),
                 extensionContent
             });
 
-            WritePage(fileName, "Resources", content);
+            WritePage(fileName, "Resources", Html.Div(result.ToArray()));
         }
 
         internal void GenerateValueSetListing(string fileName, ResourceFileSet resourceFileSet)

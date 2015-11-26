@@ -59,5 +59,25 @@ namespace Hl7.Fhir.V101
 
             return ext.Item.GetValueAsString();
         }
+
+        public ElementDefinition GetRootPathElement()
+        {
+            return differential
+                .element
+                .Single(t => t.path.value.Split('.').Count() == 1);
+        }
+
+        public string W5TopLevelGroup
+        {
+            get
+            {
+                string baseUrl = @base.value;
+
+                StructureDefinition baseStructureDefinition = FhirData.Instance.FindStructureDefinition(baseUrl);
+                ElementDefinition elementDefinition = ElementNavigator.GetRootElement(baseStructureDefinition.differential.element);
+
+                return Utilities.UpperCaseFirstCharacter(elementDefinition.GetW5TopLevelGroup());
+            }
+        }
     }
 }

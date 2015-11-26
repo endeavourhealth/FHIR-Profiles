@@ -29,6 +29,20 @@ namespace Hl7.Fhir.V101
             return null;
         }
 
+        public string GetW5TopLevelGroup()
+        {
+            string w5Group = (mapping
+                .FirstOrDefault(t => t.identity.value == "w5")
+                .WhenNotNull(t => t.map.value) ?? string.Empty)
+                .Split('.')
+                .FirstOrDefault();
+
+            if (w5Group == "administrative")
+                w5Group = "identification";
+
+            return w5Group;
+        }
+
         public bool IsRemoved()
         {
             int maxCardinality;

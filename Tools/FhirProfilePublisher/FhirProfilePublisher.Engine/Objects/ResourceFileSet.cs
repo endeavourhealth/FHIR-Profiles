@@ -43,6 +43,16 @@ namespace FhirProfilePublisher.Engine
             }
         }
 
+        public Dictionary<string, StructureDefinitionFile[]> StructureDefinitionsByW5Group
+        {
+            get
+            {
+                return StructureDefinitionFilesWithoutExtensions
+                    .GroupBy(t => t.StructureDefinition.W5TopLevelGroup)
+                    .ToDictionary(t => t.Key, t => t.ToArray());
+            }
+        }
+
         public StructureDefinitionFile[] StructureDefinitionExtensionFiles
         {
             get
@@ -138,18 +148,5 @@ namespace FhirProfilePublisher.Engine
                 display: valueSet.name.value
             );
         }
-
-        //public ValueSet GetValueSet(string url)
-        //{
-        //    ValueSet valueSet = _valueSets.FirstOrDefault(t => t.ValueSet.url.value == url).WhenNotNull(t => t.ValueSet);
-
-        //    if (valueSet == null)
-        //        valueSet = Schemas.Instance.FindValueSet(url);
-
-        //    if (valueSet == null)
-        //        throw new Exception("ValueSet " + url + " not found.");
-
-        //    return valueSet;
-        //}
     }
 }

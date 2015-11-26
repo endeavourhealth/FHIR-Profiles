@@ -19,8 +19,6 @@ namespace FhirProfilePublisher.Engine
 
         public StructureDefinition StructureDefinition { get; private set; }
 
-        public StructureDefinition BaseDefinitions { get; private set; }
-
         public override OutputFileType FileType
         { 
             get { return OutputFileType.StructureDefinition; } 

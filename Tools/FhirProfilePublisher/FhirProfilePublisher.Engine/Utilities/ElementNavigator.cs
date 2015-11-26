@@ -92,7 +92,12 @@ namespace FhirProfilePublisher.Engine
 
         private ElementDefinition GetRootElement()
         {
-            return _elements.Single(t => t.path.value.Split('.').Count() == 1);
+            return GetRootElement(_elements);
+        }
+
+        public static ElementDefinition GetRootElement(IEnumerable<ElementDefinition> elementDefinitions)
+        {
+            return elementDefinitions.Single(t => t.path.value.Split('.').Count() == 1);
         }
 
         private bool HasRemaingingSiblings(string path)
