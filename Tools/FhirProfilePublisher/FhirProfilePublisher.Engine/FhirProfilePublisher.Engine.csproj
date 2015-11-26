@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3778976F-153A-45D8-8F58-CC0F0C6A9B8A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FhirProfilePublisher.Engine</RootNamespace>
+    <AssemblyName>FhirProfilePublisher.Engine</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\Templates.cs" />
+    <Compile Include="Assets\Scripts.cs" />
+    <Compile Include="Assets\Images.cs" />
+    <Compile Include="Assets\Styles.cs" />
+    <Compile Include="Generator\GenericPageGenerator.cs" />
+    <Compile Include="Generator\TreeViewGenerator.cs" />
+    <Compile Include="Objects\ResourceMaturity.cs" />
+    <Compile Include="Partials\ElementDefinitionPartial.cs" />
+    <Compile Include="Partials\ElementPartial.cs" />
+    <Compile Include="Partials\StructureDefinitionPartial.cs" />
+    <Compile Include="Partials\ValueSetDefinitionPartial.cs" />
+    <Compile Include="Assets\FhirData.cs" />
+    <Compile Include="Utilities\BootstrapHtml.cs" />
+    <Compile Include="Objects\TextContent.cs" />
+    <Compile Include="Objects\ResourceFileSet.cs" />
+    <Compile Include="Objects\Link.cs" />
+    <Compile Include="Objects\OutputFileType.cs" />
+    <Compile Include="Objects\ResourceFile.cs" />
+    <Compile Include="Objects\OutputPaths.cs" />
+    <Compile Include="Utilities\Snomed.cs" />
+    <Compile Include="Objects\StructureDefinitionFile.cs" />
+    <Compile Include="Objects\ValueSetCode.cs" />
+    <Compile Include="Objects\ValueSetFile.cs" />
+    <Compile Include="Generator\ResourceListingHtmlGenerator.cs" />
+    <Compile Include="Utilities\ElementNavigator.cs" />
+    <Compile Include="Utilities\Fhir.cs" />
+    <Compile Include="Utilities\Html.cs" />
+    <Compile Include="Generator\ValueSetHtmlGenerator.cs" />
+    <Compile Include="HtmlGenerator.cs" />
+    <Compile Include="Generator\StructureDefinitionHtmlGenerator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Assets\Fhir\Schemas\fhir-v1.0.1\fhir-single.cs" />
+    <Compile Include="Assets\FhirSchemas.cs" />
+    <Compile Include="Generator\SourceFileManager.cs" />
+    <Compile Include="Utilities\GenericExtensions.cs" />
+    <Compile Include="Utilities\Utilities.cs" />
+    <Compile Include="Utilities\XmlHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Fhir\Schemas\fhir-v1.0.1\fhir-single.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\Fhir\Schemas\fhir-v1.0.1\fhir-xhtml.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Assets\Fhir\Schemas\fhir-v1.0.1\xml.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Fhir\Data\fhir-v1.0.1\conceptmaps.xml" />
+    <EmbeddedResource Include="Assets\Fhir\Data\fhir-v1.0.1\dataelements.xml" />
+    <EmbeddedResource Include="Assets\Fhir\Data\fhir-v1.0.1\extension-definitions.xml" />
+    <EmbeddedResource Include="Assets\Fhir\Data\fhir-v1.0.1\profiles-others.xml" />
+    <EmbeddedResource Include="Assets\Fhir\Data\fhir-v1.0.1\profiles-resources.xml" />
+    <EmbeddedResource Include="Assets\Fhir\Data\fhir-v1.0.1\profiles-types.xml" />
+    <EmbeddedResource Include="Assets\Fhir\Data\fhir-v1.0.1\search-parameters.xml" />
+    <EmbeddedResource Include="Assets\Fhir\Data\fhir-v1.0.1\v2-tables.xml" />
+    <EmbeddedResource Include="Assets\Fhir\Data\fhir-v1.0.1\v3-codesystems.xml" />
+    <EmbeddedResource Include="Assets\Fhir\Data\fhir-v1.0.1\valuesets.xml" />
+    <EmbeddedResource Include="Assets\Images\tbl_spacerwide.png" />
+    <EmbeddedResource Include="Assets\Scripts\bootstrap.js" />
+    <EmbeddedResource Include="Assets\Styles\bootstrap-theme.css" />
+    <EmbeddedResource Include="Assets\Styles\bootstrap.css" />
+    <EmbeddedResource Include="Assets\Scripts\jquery-2.1.4.js" />
+    <EmbeddedResource Include="Assets\Scripts\jquery-ui.js" />
+    <EmbeddedResource Include="Assets\Styles\jquery-ui.css" />
+    <EmbeddedResource Include="Assets\Images\endeavourlogo.png" />
+    <EmbeddedResource Include="Assets\Images\fhirlogo.png" />
+    <EmbeddedResource Include="Assets\Templates\Page.html" />
+    <EmbeddedResource Include="Assets\Templates\RedirectPage.html" />
+    <EmbeddedResource Include="Assets\Scripts\treeviewhelpers.js" />
+    <EmbeddedResource Include="Assets\Images\bullet_black.png" />
+    <EmbeddedResource Include="Assets\Images\bullet_green.png" />
+    <EmbeddedResource Include="Assets\Images\bullet_orange.png" />
+    <EmbeddedResource Include="Assets\Images\blank.png" />
+    <EmbeddedResource Include="Assets\Styles\style.css" />
+    <EmbeddedResource Include="Assets\Images\icon_choice.gif" />
+    <EmbeddedResource Include="Assets\Images\icon_datatype.gif" />
+    <EmbeddedResource Include="Assets\Images\icon_element.gif" />
+    <EmbeddedResource Include="Assets\Images\icon_extension_complex.png" />
+    <EmbeddedResource Include="Assets\Images\icon_extension_simple.png" />
+    <EmbeddedResource Include="Assets\Images\icon_primitive.png" />
+    <EmbeddedResource Include="Assets\Images\icon_profile.png" />
+    <EmbeddedResource Include="Assets\Images\icon_reference.png" />
+    <EmbeddedResource Include="Assets\Images\icon_resource.png" />
+    <EmbeddedResource Include="Assets\Images\icon_reuse.png" />
+    <EmbeddedResource Include="Assets\Images\icon_slice.png" />
+    <EmbeddedResource Include="Assets\Images\tbl_blank.png" />
+    <EmbeddedResource Include="Assets\Images\tbl_spacer.png" />
+    <EmbeddedResource Include="Assets\Images\tbl_vjoin.png" />
+    <EmbeddedResource Include="Assets\Images\tbl_vjoin_end.png" />
+    <EmbeddedResource Include="Assets\Images\tbl_vline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Fhir\Schemas\fhir-v1.0.1\fhir-invariants.sch" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FhirProfilePublisher.Converters\FhirProfilePublisher.Converters.csproj">
+      <Project>{0eee143d-bb4b-4d15-815f-04b2ba061f45}</Project>
+      <Name>FhirProfilePublisher.Converters</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
