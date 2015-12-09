@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="endeavour-message-header" />
+  <meta>
+    <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="2" />
+  </extension>
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/message-header" />
+  <name value="Endeavour-MessageHeader" />
+  <display value="Endeavour message header" />
+  <status value="draft" />
+  <publisher value="Endeavour Health Charitable Trust" />
+  <date value="2015-09-22T20:02:49+10:00" />
+  <description value="Base StructureDefinition for MessageHeader Resource" />
+  <requirements value="Many implementations are not prepared to use REST and need a messaging based infrastructure." />
+  <fhirVersion value="1.0.1" />
+  <kind value="resource" />
+  <constrainedType value="MessageHeader" />
+  <abstract value="false" />
+  <base value="http://hl7.org/fhir/StructureDefinition/MessageHeader" />
+  <differential>
+    <element>
+      <path value="MessageHeader" />
+      <short value="A resource that describes a message that is exchanged between systems" />
+      <definition value="The header for a message exchange that is either requesting or responding to an action.  The reference(s) that are the subject of the action as well as other information related to the action are typically transmitted in a bundle in which the MessageHeader resource instance is the first resource in the bundle." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="MessageHeader" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="MSH / MSA / ERR" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="Message" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="infrastructure.exchange" />
+      </mapping>
+    </element>
+    <element>
+      <path value="MessageHeader.source.extension" />
+      <slicing>
+        <discriminator value="url" />
+        <rules value="openAtEnd" />
+      </slicing>
+    </element>
+    <element>
+      <path value="MessageHeader.source.extension" />
+      <name value="identifier" />
+      <definition value="Optional Extensions Element - found in all resources." />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-identifier-extension" />
+      </type>
+    </element>
+  </differential>
+</StructureDefinition>
