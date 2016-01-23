@@ -186,20 +186,13 @@
       <path value="Condition.clinicalStatus" />
       <short value="active | relapse | remission | resolved" />
       <definition value="The clinical status of the condition." />
-      <min value="1" />
-      <max value="1" />
+      <min value="0" />
+      <max value="0" />
       <type>
         <code value="code" />
       </type>
       <isModifier value="true" />
       <isSummary value="true" />
-      <binding>
-        <strength value="required" />
-        <description value="The clinical status of the condition or diagnosis." />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/condition-clinical" />
-        </valueSetReference>
-      </binding>
       <mapping>
         <identity value="v2" />
         <map value="PRB-14 / DG1-6" />
