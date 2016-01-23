@@ -138,6 +138,69 @@
       </mapping>
     </element>
     <element>
+      <path value="FamilyMemberHistory.born[x]" />
+      <short value="(approximate) date of birth" />
+      <definition value="The actual or approximate date of birth of the relative." />
+      <requirements value="Allows calculation of the relative's age." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Period" />
+      </type>
+      <type>
+        <code value="date" />
+      </type>
+      <condition value="fhs-1" />
+      <mapping>
+        <identity value="rim" />
+        <map value="player[classCode=LIV, determinerCode=INSTANCE]. birthDate (could be URG)" />
+      </mapping>
+    </element>
+    <element>
+      <path value="FamilyMemberHistory.age[x]" />
+      <short value="(approximate) age" />
+      <definition value="The actual or approximate age of the relative at the time the family member history is recorded." />
+      <requirements value="While age can be calculated from date of birth, sometimes recording age directly is more natureal for clinicians." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Quantity" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Age" />
+      </type>
+      <type>
+        <code value="Range" />
+      </type>
+      <condition value="fhs-1" />
+      <mapping>
+        <identity value="rim" />
+        <map value="participation[typeCode=SBJ].act[classCode=OBS,moodCode=EVN, code=&quot;age&quot;].value" />
+      </mapping>
+    </element>
+    <element>
+      <path value="FamilyMemberHistory.deceased[x]" />
+      <short value="Dead? How old/when?" />
+      <definition value="Deceased flag or the actual or approximate age of the relative at the time of death for the family member history record." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="boolean" />
+      </type>
+      <type>
+        <code value="Quantity" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Age" />
+      </type>
+      <type>
+        <code value="Range" />
+      </type>
+      <type>
+        <code value="date" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value="player[classCode=LIV, determinerCode=INSTANCE].deceasedInd, deceasedDate (could be URG)  For age, you'd hang an observation off the role" />
+      </mapping>
+    </element>
+    <element>
       <path value="FamilyMemberHistory.note.author[x]" />
       <short value="Individual responsible for the annotation" />
       <definition value="The individual responsible for making the annotation." />
@@ -166,6 +229,28 @@
       <mapping>
         <identity value="rim" />
         <map value="Act.participant[typeCode=AUT].role" />
+      </mapping>
+    </element>
+    <element>
+      <path value="FamilyMemberHistory.condition.onset[x]" />
+      <short value="When condition first manifested" />
+      <definition value="Either the age of onset, range of approximate age or descriptive string can be recorded.  For conditions with multiple occurrences, this describes the first known occurrence." />
+      <requirements value="Age of onset of a condition in relatives is predictive of risk for the patient." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Quantity" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Age" />
+      </type>
+      <type>
+        <code value="Range" />
+      </type>
+      <type>
+        <code value="Period" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value="inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=&quot;Subject Age at measurement&quot;, value&lt;Diagnosis].value[@xsi:typeCode='TS' or 'IVL_TS']  Use originalText for string" />
       </mapping>
     </element>
     <element>
