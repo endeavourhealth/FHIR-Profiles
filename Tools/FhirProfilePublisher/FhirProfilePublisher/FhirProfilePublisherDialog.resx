@@ -122,6 +122,7 @@
     &lt;h3&gt;Overview&lt;/h3&gt;
     &lt;p&gt;The Endeavour Health FHIR Implementation Guide is a collection of profiles, that make conformance rules that, together with textual guidance, provides instruction on how to make use of FHIR in the UK.&lt;/p&gt;
     &lt;p&gt;This specification is built on &lt;a href="http://hl7.org/fhir/DSTU2/index.html"&gt;FHIR DSTU 2 (1.0.1)&lt;/a&gt;.&lt;/p&gt;
+    &lt;p&gt;The profiles in this specification are used in the &lt;a href="http://endeavour-cim.cloudapp.net/"&gt;Endeavour Common Interface Mechanism FHIR API&lt;/a&gt;.&lt;/p&gt;
     &lt;p&gt;This work is funded by the &lt;a href="http://www.endeavourhealth.org/"&gt;Endeavour Health Charitable Trust&lt;/a&gt;.&lt;/p&gt;
     &lt;h3&gt;Disclaimer&lt;/h3&gt;
     &lt;p&gt;This FHIR API specification is published as a 'work in progress' version and as such is subject to change. We welcome feedback on the contents of this guide.&lt;/p&gt;

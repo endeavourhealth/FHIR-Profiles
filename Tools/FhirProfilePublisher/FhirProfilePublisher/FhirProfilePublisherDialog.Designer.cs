@@ -213,7 +213,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(584, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(403, 38);
+            this.label1.Size = new System.Drawing.Size(402, 38);
             this.label1.TabIndex = 5;
             this.label1.Text = "Note 1 - Files must contain StructureDefinition or ValueSet XML.\r\nNote 2 - The fi" +
     "le list box below supports drag and drop of files.";
