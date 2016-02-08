@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="endeavour-questionnaire-response" />
+  <id value="primarycare-questionnaire-response" />
   <meta>
     <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="0" />
   </extension>
-  <url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-questionnaire-response" />
-  <name value="Endeavour-QuestionnaireResponse" />
-  <display value="Endeavour questionnaire response" />
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-questionnaire-response" />
+  <name value="PrimaryCare-QuestionnaireResponse" />
+  <display value="Primary Care questionnaire response" />
   <status value="draft" />
   <publisher value="Endeavour Health Charitable Trust" />
   <date value="2015-09-22T20:02:49+10:00" />
@@ -48,7 +48,7 @@
       <max value="1" />
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
       </type>
       <isSummary value="true" />
       <mapping>
@@ -74,7 +74,7 @@
       <max value="1" />
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-questionnaire" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-questionnaire" />
       </type>
       <isSummary value="true" />
       <mapping>
@@ -97,19 +97,19 @@
       <max value="1" />
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-device" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-device" />
       </type>
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-practitioner" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
       </type>
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-patient" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
       </type>
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-related-person" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person" />
       </type>
       <isSummary value="true" />
       <mapping>
@@ -131,15 +131,15 @@
       <max value="1" />
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-patient" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
       </type>
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-practitioner" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
       </type>
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-related-person" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person" />
       </type>
       <isSummary value="true" />
       <mapping>
@@ -160,7 +160,7 @@
       <max value="1" />
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-encounter" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter" />
       </type>
       <isSummary value="true" />
       <mapping>

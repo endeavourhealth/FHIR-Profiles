@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="endeavour-practitioner" />
+  <id value="primarycare-practitioner" />
   <meta>
     <lastUpdated value="2015-11-01T10:00:00+00:00" />
   </meta>
-  <url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-practitioner" />
-  <name value="Endeavour-Practitioner" />
-  <display value="Endeavour practitioner" />
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
+  <name value="PrimaryCare-Practitioner" />
+  <display value="Primary Care practitioner" />
   <status value="draft" />
   <publisher value="Endeavour Health Charitable Trust" />
   <contact>
@@ -16,7 +16,7 @@
     </telecom>
   </contact>
   <date value="2015-11-01" />
-  <description value="Endeavour practitioner" />
+  <description value="Primary Care practitioner" />
   <fhirVersion value="1.0.2" />
   <kind value="resource" />
   <constrainedType value="Practitioner" />
@@ -59,7 +59,7 @@
       <max value="1" />
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
       </type>
       <isSummary value="true" />
       <mapping>
@@ -83,7 +83,7 @@
       <max value="1" />
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
       </type>
       <mapping>
         <identity value="rim" />
@@ -98,7 +98,7 @@
       <max value="*" />
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-location" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location" />
       </type>
       <mapping>
         <identity value="rim" />
@@ -121,7 +121,7 @@
       <max value="*" />
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-healthcare-service" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-healthcare-service" />
       </type>
       <mapping>
         <identity value="rim" />
@@ -137,7 +137,7 @@
       <max value="1" />
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
       </type>
       <isSummary value="true" />
       <mapping>
@@ -161,7 +161,7 @@
       <max value="1" />
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
       </type>
       <mapping>
         <identity value="rim" />

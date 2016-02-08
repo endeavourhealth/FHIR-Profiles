@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="endeavour-task-type-extension" />
+  <id value="primarycare-task-type-extension" />
   <meta>
     <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
   </meta>
-  <url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-task-type-extension" />
-  <name value="Endeavour-TaskType-Extension" />
-  <display value="Endeavour task type extension" />
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-task-type-extension" />
+  <name value="PrimaryCare-TaskType-Extension" />
+  <display value="Primary Care task type extension" />
   <status value="draft" />
   <publisher value="Endeavour Health Charitable Trust" />
   <date value="2015-09-22T20:02:49+10:00" />
@@ -38,7 +38,7 @@
       <type>
         <code value="uri" />
       </type>
-      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-task-type-extension" />
+      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-task-type-extension" />
     </element>
     <element>
       <path value="Extension.value[x]" />
@@ -53,7 +53,7 @@
         <strength value="example" />
         <description value="Task type" />
         <valueSetReference>
-          <reference value="http://endeavourhealth.org/fhir/ValueSet/endeavour-task-type" />
+          <reference value="http://endeavourhealth.org/fhir/ValueSet/primarycare-task-type" />
         </valueSetReference>
       </binding>
     </element>

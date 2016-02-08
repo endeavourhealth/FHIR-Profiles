@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="endeavour-task-priority-extension" />
+  <id value="primarycare-task-priority-extension" />
   <meta>
     <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
   </meta>
-  <url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-task-priority-extension" />
-  <name value="Endeavour-TaskPriority-Extension" />
-  <display value="Endeavour task priority extension" />
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-task-priority-extension" />
+  <name value="PrimaryCare-TaskPriority-Extension" />
+  <display value="Primary Care task priority extension" />
   <status value="draft" />
   <publisher value="Endeavour Health Charitable Trust" />
   <date value="2015-09-22T20:02:49+10:00" />
@@ -38,7 +38,7 @@
       <type>
         <code value="uri" />
       </type>
-      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-task-priority-extension" />
+      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-task-priority-extension" />
     </element>
     <element>
       <path value="Extension.value[x]" />
@@ -53,7 +53,7 @@
         <strength value="required" />
         <description value="Task priority" />
         <valueSetReference>
-          <reference value="http://endeavourhealth.org/fhir/ValueSet/endeavour-task-priority" />
+          <reference value="http://endeavourhealth.org/fhir/ValueSet/primarycare-task-priority" />
         </valueSetReference>
       </binding>
     </element>

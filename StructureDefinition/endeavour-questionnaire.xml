@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="endeavour-questionnaire" />
+  <id value="primarycare-questionnaire" />
   <meta>
     <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
   </meta>
@@ -10,9 +10,9 @@
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm-no-warnings">
     <valueInteger value="3" />
   </extension>
-  <url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-questionnaire" />
-  <name value="Endeavour-Questionnaire" />
-  <display value="Endeavour questionnaire" />
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-questionnaire" />
+  <name value="PrimaryCare-Questionnaire" />
+  <display value="Primary Care questionnaire" />
   <status value="draft" />
   <publisher value="Endeavour Health Charitable Trust" />
   <date value="2015-09-22T20:02:49+10:00" />
@@ -53,7 +53,7 @@
       <max value="1" />
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
       </type>
       <isSummary value="true" />
     </element>

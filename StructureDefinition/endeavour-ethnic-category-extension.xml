@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../Schema/fhir-single.xsd">
-	<id value="endeavour-ethnic-category-extension"/>
+	<id value="primarycare-ethnic-category-extension"/>
 	<meta>
 		<lastUpdated value="2015-11-01T10:00:00+00:00"/>
 	</meta>
-	<url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-ethnic-category-extension"/>
-	<name value="Endeavour-EthnicCategory-Extension"/>
-	<display value="Endeavour ethnic category"/>
+	<url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-ethnic-category-extension"/>
+	<name value="PrimaryCare-EthnicCategory-Extension"/>
+	<display value="Primary Care ethnic category"/>
 	<status value="draft"/>
 	<publisher value="Endeavour Health Charitable Trust"/>
 	<contact>
@@ -16,7 +16,7 @@
 		</telecom>
 	</contact>
 	<date value="2015-11-01T10:00:00"/>
-	<description value="Endeavour Ethnic Category description."/>
+	<description value="Primary Care Ethnic Category description."/>
 	<fhirVersion value="1.0.2"/>
 	<kind value="datatype"/>
 	<constrainedType value="Extension"/>
@@ -39,7 +39,7 @@
 			<type>
 				<code value="uri"/>
 			</type>
-			<fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-ethnic-category-extension"/>
+			<fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-ethnic-category-extension"/>
 		</element>
 		<element>
 			<path value="Extension.extension"/>
@@ -57,7 +57,7 @@
 				<strength value="required"/>
 				<description value="A code classifying the person's ethnicity."/>
 				<valueSetReference>
-					<reference value="http://endeavourhealth.org/fhir/ValueSet/endeavour-ethnic-category"/>
+					<reference value="http://endeavourhealth.org/fhir/ValueSet/primarycare-ethnic-category"/>
 				</valueSetReference>
 			</binding>
 		</element>

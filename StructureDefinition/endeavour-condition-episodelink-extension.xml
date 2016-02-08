@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="endeavour-condition-episodelink-extension" />
+  <id value="primarycare-condition-episodelink-extension" />
   <meta>
     <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
   </meta>
-  <url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-condition-episodelink-extension" />
-  <name value="Endeavour-ConditionEpisodeLink-Extension" />
-  <display value="Endeavour condition episode link extension" />
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition-episodelink-extension" />
+  <name value="PrimaryCare-ConditionEpisodeLink-Extension" />
+  <display value="Primary Care condition episode link extension" />
   <status value="draft" />
   <publisher value="Endeavour Health Charitable Trust" />
   <contact>
@@ -82,7 +82,7 @@
       </type>
       <binding>
         <strength value="required"/>
-        <valueSetUri value="http://endeavourhealth.org/fhir/ValueSet/endeavour-condition-episodelinktype"/>
+        <valueSetUri value="http://endeavourhealth.org/fhir/ValueSet/primarycare-condition-episodelinktype"/>
       </binding>
     </element>
     <element>
@@ -123,7 +123,7 @@
       <max value="1" />
       <type>
         <code value="Reference"/>
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-observation"/>
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-observation"/>
       </type>
     </element>
     <element>
@@ -134,7 +134,7 @@
       <type>
         <code value="uri" />
       </type>
-      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-condition-episodelink-extension" />
+      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition-episodelink-extension" />
     </element>
     <element>
       <path value="Extension.value[x]" />

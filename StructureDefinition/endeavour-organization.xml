@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../Schema/fhir-single.xsd">
-	<id value="endeavour-organization"/>
+	<id value="primarycare-organization"/>
 	<meta>
 		<lastUpdated value="2015-11-01T10:00:00"/>
 	</meta>
-	<url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization"/>
-	<name value="Endeavour-Organization"/>
-	<display value="Endeavour organization"/>
+	<url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"/>
+	<name value="PrimaryCare-Organization"/>
+	<display value="Primary Care organization"/>
 	<status value="draft"/>
 	<publisher value="Endeavour Health Charitable Trust"/>
 	<contact>
@@ -16,7 +16,7 @@
 		</telecom>
 	</contact>
 	<date value="2015-11-01"/>
-	<description value="Endeavour organization"/>
+	<description value="Primary Care organization"/>
 	<fhirVersion value="1.0.2"/>
 	<kind value="resource"/>
 	<constrainedType value="Organization"/>
@@ -42,7 +42,7 @@
 			<max value="1"/>
 			<type>
 				<code value="Reference"/>
-				<profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization"/>
+				<profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"/>
 			</type>
 			<isSummary value="true"/>
 		</element>
@@ -55,7 +55,7 @@
 			<max value="1"/>
 			<type>
 				<code value="Reference"/>
-				<profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization"/>
+				<profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"/>
 			</type>
 			<isSummary value="true"/>
 		</element>

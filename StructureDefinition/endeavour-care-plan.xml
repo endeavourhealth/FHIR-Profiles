@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="endeavour-care-plan" />
+  <id value="primarycare-care-plan" />
   <meta>
     <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="0" />
   </extension>
-  <url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-care-plan" />
-  <name value="Endeavour-CarePlan" />
-  <display value="Endeavour care plan" />
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-care-plan" />
+  <name value="PrimaryCare-CarePlan" />
+  <display value="Primary Care care plan" />
   <status value="draft" />
   <publisher value="Endeavour Health Charitable Trust" />
   <date value="2015-09-22T20:02:49+10:00" />
@@ -46,11 +46,11 @@
       <max value="1" />
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-patient" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
       </type>
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-group" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-group" />
       </type>
       <isSummary value="true" />
       <mapping>
@@ -71,11 +71,11 @@
       <max value="1" />
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-encounter" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter" />
       </type>
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-episode-of-care" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-episode-of-care" />
       </type>
       <isSummary value="true" />
       <mapping>
@@ -100,19 +100,19 @@
       <max value="*" />
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-patient" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
       </type>
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-practitioner" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
       </type>
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-related-person" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person" />
       </type>
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
       </type>
       <isSummary value="true" />
     </element>
@@ -125,7 +125,7 @@
       <max value="*" />
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-condition" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition" />
       </type>
       <isSummary value="true" />
       <mapping>
@@ -145,7 +145,7 @@
       <max value="1" />
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-care-plan" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-care-plan" />
       </type>
     </element>
     <element>
@@ -157,19 +157,19 @@
       <max value="1" />
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-practitioner" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
       </type>
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-related-person" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person" />
       </type>
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-patient" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
       </type>
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
       </type>
       <mapping>
         <identity value="v2" />
@@ -190,7 +190,7 @@
       <max value="*" />
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-goal" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-goal" />
       </type>
       <mapping>
         <identity value="v2" />
@@ -209,15 +209,15 @@
       <max value="1" />
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-practitioner" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
       </type>
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-patient" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
       </type>
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-related-person" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person" />
       </type>
       <type>
         <code value="string" />
@@ -241,7 +241,7 @@
       <max value="1" />
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-appointment" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-appointment" />
       </type>
       <type>
         <code value="Reference" />
@@ -253,7 +253,7 @@
       </type>
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-diagnostic-order" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-diagnostic-order" />
       </type>
       <type>
         <code value="Reference" />
@@ -269,7 +269,7 @@
       </type>
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-procedure-request" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-procedure-request" />
       </type>
       <type>
         <code value="Reference" />
@@ -277,7 +277,7 @@
       </type>
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-referral-request" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-referral-request" />
       </type>
       <type>
         <code value="Reference" />
@@ -302,7 +302,7 @@
       <max value="*" />
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-condition" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition" />
       </type>
     </element>
     <element>
@@ -314,7 +314,7 @@
       <max value="*" />
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-goal" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-goal" />
       </type>
       <mapping>
         <identity value="rim" />
@@ -331,7 +331,7 @@
       <max value="1" />
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-location" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location" />
       </type>
       <mapping>
         <identity value="v2" />
@@ -352,19 +352,19 @@
       <max value="*" />
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-practitioner" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
       </type>
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
       </type>
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-related-person" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person" />
       </type>
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-patient" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
       </type>
       <mapping>
         <identity value="v2" />
@@ -386,7 +386,7 @@
       </type>
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-medication" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication" />
       </type>
       <type>
         <code value="Reference" />
@@ -416,15 +416,15 @@
       <max value="1" />
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-practitioner" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
       </type>
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-patient" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
       </type>
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-related-person" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person" />
       </type>
       <type>
         <code value="string" />

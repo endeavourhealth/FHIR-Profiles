@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="endeavour-family-member-history" />
+  <id value="primarycare-family-member-history" />
   <meta>
     <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="0" />
   </extension>
-  <url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-family-member-history" />
-  <name value="Endeavour-FamilyMemberHistory" />
-  <display value="Endeavour family member history" />
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-family-member-history" />
+  <name value="PrimaryCare-FamilyMemberHistory" />
+  <display value="Primary Care family member history" />
   <status value="draft" />
   <publisher value="Endeavour Health Charitable Trust" />
   <contact>
@@ -64,7 +64,7 @@
       <max value="1" />
       <type>
         <code value="Extension" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-family-member-history-recorder-extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-family-member-history-recorder-extension" />
       </type>
     </element>
     <element>
@@ -89,7 +89,7 @@
       <max value="1" />
       <type>
         <code value="Extension" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-family-member-history-reporter-extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-family-member-history-reporter-extension" />
       </type>
     </element>
     <element>
@@ -101,7 +101,7 @@
       <max value="1" />
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
       </type>
       <isSummary value="true" />
       <mapping>
@@ -126,7 +126,7 @@
       <max value="1" />
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-patient" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
       </type>
       <isSummary value="true" />
       <mapping>
@@ -146,15 +146,15 @@
       <max value="1" />
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-practitioner" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
       </type>
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-patient" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
       </type>
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-related-person" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person" />
       </type>
       <type>
         <code value="string" />
@@ -177,15 +177,15 @@
       <max value="1" />
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-practitioner" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
       </type>
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-patient" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
       </type>
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-related-person" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person" />
       </type>
       <type>
         <code value="string" />

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="endeavour-message-header" />
+  <id value="primarycare-message-header" />
   <meta>
     <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
   </meta>
@@ -8,8 +8,8 @@
     <valueInteger value="2" />
   </extension>
   <url value="http://endeavourhealth.org/fhir/StructureDefinition/message-header" />
-  <name value="Endeavour-MessageHeader" />
-  <display value="Endeavour message header" />
+  <name value="PrimaryCare-MessageHeader" />
+  <display value="Primary Care message header" />
   <status value="draft" />
   <publisher value="Endeavour Health Charitable Trust" />
   <date value="2015-09-22T20:02:49+10:00" />
@@ -60,7 +60,7 @@
         <strength value="preferred" />
         <description value="One of the message events defined as part of FHIR." />
         <valueSetReference>
-          <reference value="http://endeavourhealth.org/fhir/ValueSet/endeavour-message-event" />
+          <reference value="http://endeavourhealth.org/fhir/ValueSet/primarycare-message-event" />
         </valueSetReference>
       </binding>
       <mapping>

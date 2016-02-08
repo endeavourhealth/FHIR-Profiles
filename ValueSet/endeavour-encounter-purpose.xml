@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ValueSet xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir http://hl7.org/fhir/valueset.xsd">
-	<id value="endeavour-encounter-purpose"/>
+	<id value="primarycare-encounter-purpose"/>
 	<meta>
 		<lastUpdated value="2015-10-27T00:00:00+00:00"/>
 		<profile value="http://hl7.org/fhir/StructureDefinition/valueset-shareable-definition"/>
@@ -61,9 +61,9 @@
 			</ul>
 		</div>
 	</text>
-	<url value="http://endeavourhealth.org/fhir/ValueSet/endeavour-encounter-purpose"/>
+	<url value="http://endeavourhealth.org/fhir/ValueSet/primarycare-encounter-purpose"/>
 	<version value="1.0.0"/>
-	<name value="Endeavour-EncounterPurpose"/>
+	<name value="PrimaryCare-EncounterPurpose"/>
 	<status value="draft"/>
 	<publisher value="Endeavour Health Charitable Trust"/>
 	<contact>

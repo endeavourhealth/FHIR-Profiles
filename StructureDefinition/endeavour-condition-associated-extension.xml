@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="endeavour-condition-associated-extension" />
+  <id value="primarycare-condition-associated-extension" />
   <meta>
     <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
   </meta>
-  <url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-condition-associated-extension" />
-  <name value="Endeavour-ConditionAssociated-Extension" />
-  <display value="Endeavour condition associated extension" />
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition-associated-extension" />
+  <name value="PrimaryCare-ConditionAssociated-Extension" />
+  <display value="Primary Care condition associated extension" />
   <status value="draft" />
   <publisher value="Endeavour Health Charitable Trust" />
   <contact>
@@ -49,7 +49,7 @@
       <type>
         <code value="uri" />
       </type>
-      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-condition-associated-extension" />
+      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition-associated-extension" />
       <mapping>
         <identity value="rim" />
         <map value="N/A" />

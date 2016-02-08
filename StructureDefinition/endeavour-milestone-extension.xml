@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="endeavour-milestone-extension" />
-  <url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-milestone-extension" />
-  <name value="Endeavour-Milestone-Extension" />
-  <display value="Endeavour milestone" />
+  <id value="primarycare-milestone-extension" />
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-milestone-extension" />
+  <name value="PrimaryCare-Milestone-Extension" />
+  <display value="Primary Care milestone" />
   <status value="draft" />
   <publisher value="Endeavour Health Charitable Trust" />
   <date value="2015-11-13" />
@@ -299,7 +299,7 @@
       <type>
         <code value="uri" />
       </type>
-      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-milestone-extension" />
+      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-milestone-extension" />
     </element>
     <element>
       <path value="Extension.value[x]" />

@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="endeavour-slot" />
+  <id value="primarycare-slot" />
   <meta>
     <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="0" />
   </extension>
-  <url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-slot" />
-  <name value="Endeavour-Slot" />
-  <display value="Endeavour slot" />
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-slot" />
+  <name value="PrimaryCare-Slot" />
+  <display value="Primary Care slot" />
   <status value="draft" />
   <publisher value="Endeavour Health Charitable Trust" />
   <date value="2015-09-22T20:02:49+10:00" />
@@ -47,7 +47,7 @@
       <max value="1" />
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-organization" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
       </type>
       <isSummary value="true" />
       <mapping>
@@ -71,7 +71,7 @@
       <max value="1" />
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-schedule" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-schedule" />
       </type>
       <isSummary value="true" />
     </element>

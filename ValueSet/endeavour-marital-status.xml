@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ValueSet xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../Schema/fhir-single.xsd">
-	<id value="endeavour-marital-status"/>
+	<id value="primarycare-marital-status"/>
 	<meta>
 		<lastUpdated value="2015-11-01T10:00:00"/>
 	</meta>
@@ -10,8 +10,8 @@
 	<extension url="http://hl7.org/fhir/StructureDefinition/valueset-sourceReference">
 		<valueUri value="http://www.datadictionary.nhs.uk/data_dictionary/attributes/p/person/person_marital_status_code_de.asp?shownav=0"/>
 	</extension>
-	<url value="http://endeavourhealth.org/fhir/ValueSet/endeavour-marital-status"/>
-	<name value="Endeavour-MaritalStatus"/>
+	<url value="http://endeavourhealth.org/fhir/ValueSet/primarycare-marital-status"/>
+	<name value="PrimaryCare-MaritalStatus"/>
 	<status value="draft"/>
 	<publisher value="Endeavour Health Charitable Trust"/>
 	<contact>
@@ -23,7 +23,7 @@
 	<date value="2015-11-01"/>
 	<description value="An indicator to identify the legal marital status of a person. This valueset references NHS Data Dictionary: Person Marital Status Code.&#xA;&#xA;Note: This valueset defines an inline code system for an NHS code set.  This is a temporary provision while an NHS FHIR defined code system becomes available."/>
 	<codeSystem>
-		<system value="http://endeavourhealth.org/fhir/ValueSet/endeavour-marital-status"/>
+		<system value="http://endeavourhealth.org/fhir/ValueSet/primarycare-marital-status"/>
 		<concept>
 			<code value="S"/>
 			<display value="Single"/>

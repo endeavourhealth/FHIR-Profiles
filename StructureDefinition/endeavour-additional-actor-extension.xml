@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../Schema/fhir-single.xsd">
-	<id value="endeavour-additionalactor-extension"/>
+	<id value="primarycare-additionalactor-extension"/>
 	<meta>
 		<lastUpdated value="2015-11-01T10:00:00+00:00"/>
 	</meta>
-	<url value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-additional-actor-extension"/>
-	<name value="Endeavour-AdditionalActor-Extension"/>
-	<display value="Endeavour Additional Actor"/>
+	<url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-additional-actor-extension"/>
+	<name value="PrimaryCare-AdditionalActor-Extension"/>
+	<display value="Primary Care Additional Actor"/>
 	<status value="draft"/>
 	<publisher value="Endeavour Health Charitable Trust"/>
 	<contact>
@@ -16,7 +16,7 @@
 		</telecom>
 	</contact>
 	<date value="2015-11-01T10:00:00"/>
-	<description value="Endeavour Additional Actor description."/>
+	<description value="Primary Care Additional Actor description."/>
 	<fhirVersion value="1.0.2"/>
 	<kind value="datatype"/>
 	<constrainedType value="Extension"/>
@@ -42,7 +42,7 @@
 			<type>
 				<code value="uri"/>
 			</type>
-			<fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/endeavour-additional-actor-extension"/>
+			<fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-additional-actor-extension"/>
 		</element>
 		<element>
 			<path value="Extension.value[x]"/>
