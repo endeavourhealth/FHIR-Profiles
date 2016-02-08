@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="primarycare-referral-request" />
+  <meta>
+    <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="0" />
+  </extension>
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-referral-request" />
+  <name value="PrimaryCare-ReferralRequest" />
+  <display value="Primary Care referral request" />
+  <status value="draft" />
+  <publisher value="Endeavour Health Charitable Trust" />
+  <contact>
+    <telecom>
+      <system value="other" />
+      <value value="http://www.endeavourhealth.org/" />
+    </telecom>
+  </contact>
+  <date value="2015-11-01T00:00:00+00:00" />
+  <description value="Placeholder" />
+  <fhirVersion value="1.0.1" />
+  <kind value="resource" />
+  <constrainedType value="ReferralRequest" />
+  <abstract value="false" />
+  <base value="http://hl7.org/fhir/StructureDefinition/ReferralRequest" />
+  <differential>
+    <element>
+      <path value="ReferralRequest" />
+      <short value="A request for referral or transfer of care" />
+      <definition value="Used to record and send details about a request for referral service or transfer of a patient to the care of another provider or provider organization." />
+      <alias value="ReferralRequest TransferOfCare Request" />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="ReferralRequest" />
+      </type>
+      <mapping>
+        <identity value="w5" />
+        <map value="clinical.careprovision" />
+      </mapping>
+    </element>
+    <element>
+      <path value="ReferralRequest.identifier.assigner" />
+      <short value="Organization that issued id (may be just text)" />
+      <definition value="Organization that issued/manages the identifier." />
+      <comments value="The reference may be just a text description of the assigner." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="CX.4 / (CX.4,CX.9,CX.10)" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="./IdentifierIssuingAuthority" />
+      </mapping>
+    </element>
+    <element>
+      <path value="ReferralRequest.patient" />
+      <short value="Patient referred to care or transfer" />
+      <definition value="The patient who is the subject of a referral or transfer of care request." />
+      <comments value="Referral of family, group or community is to be catered for by profiles." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
+      </type>
+      <isModifier value="false" />
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="PID-3" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="who.focus" />
+      </mapping>
+    </element>
+    <element>
+      <path value="ReferralRequest.requester" />
+      <short value="Requester of referral / transfer of care" />
+      <definition value="The healthcare provider or provider organization who/which initiated the referral/transfer of care request. Can also be  Patient (a self referral)." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
+      </type>
+      <isModifier value="false" />
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="Practitioner: PRD-2/PRD-7 where PRD-3 = RP; Organization: PRD-10 where PRD-3 = RP" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="who.author" />
+      </mapping>
+    </element>
+    <element>
+      <path value="ReferralRequest.recipient" />
+      <short value="Receiver of referral / transfer of care request" />
+      <definition value="The healthcare provider(s) or provider organization(s) who/which is to receive the referral/transfer of care request." />
+      <comments value="There will be a primary receiver. But the request can be received by any number of &quot;copied to&quot; providers or organizations." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
+      </type>
+      <isModifier value="false" />
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="Practitioner: PRD-2/PRD-7 where PRD-3 = RT; Organization: PRD-10 where PRD-3 = RT" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="who.actor" />
+      </mapping>
+    </element>
+    <element>
+      <path value="ReferralRequest.encounter" />
+      <short value="Originating encounter" />
+      <definition value="The encounter at which the request for referral or transfer of care is initiated." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter" />
+      </type>
+      <isModifier value="false" />
+      <mapping>
+        <identity value="v2" />
+        <map value="PV1-19" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="context" />
+      </mapping>
+    </element>
+  </differential>
+</StructureDefinition>

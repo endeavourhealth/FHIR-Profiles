@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ValueSet xmlns="http://hl7.org/fhir"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://hl7.org/fhir http://hl7.org/fhir/valueset.xsd">
+    <id value="primarycare-task-type" />
+    <meta>
+        <lastUpdated value="2015-09-24T15:19:37.151+00:00" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/valueset-shareable-definition" />
+    </meta>
+		<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+			<valueInteger value="0" />
+		</extension>
+    <text>
+        <status value="extensions" />
+        <div xmlns="http://www.w3.org/1999/xhtml">
+            <h2>TaskType</h2>
+            <p>The type/purpose of the task.</p>
+            <p>This value set has an inline code system which defines the following codes:</p>
+            <p>BookAppointment | TelephonePatient | ScreenMessage | ResultsForInfo | MeetingNotification | PatientNote | AdminNote | FormToComplete | RepeatTest | EscalationNotification | ConfidentialityOverridden | TransmissionFailure | LegitimateRelationshipNotification | TransmissionReport | OverdueTaskNotification | Other</p>
+        </div>
+    </text>
+    <url value="http://endeavourhealth.org/fhir/ValueSet/primarycare-task-type" />
+    <version value="1.0.0" />
+    <name value="PrimaryCare-TaskType" />
+    <status value="draft" />		
+    <publisher value="Endeavour Health Charitable Trust" />
+    <contact>
+        <telecom>
+            <system value="other" />
+            <value value="http://www.endeavourhealth.org" />
+        </telecom>
+    </contact>
+    <description value="The type/purpose of a task." />
+    <codeSystem>
+        <system value="http://endeavourhealth.org/fhir/ValueSet/primarycare-task-type"/>
+        <version value="1.0.0"/>
+        <caseSensitive value="true"/>
+        <concept>
+            <extension url="http://hl7.org/fhir/StructureDefinition/valueset-comments">
+                <valueString value="Book Appointment"/>
+            </extension>
+            <code value="bookAppointment"/>
+            <display value="Book Appointment"/>
+            <definition value="BookAppointment"/>
+        </concept>
+        <concept>
+            <extension url="http://hl7.org/fhir/StructureDefinition/valueset-comments">
+                <valueString value="Telephone Patient"/>
+            </extension>
+            <code value="telephonePatient"/>
+            <display value="Telephone Patient"/>
+            <definition value="TelephonePatient"/>
+        </concept>
+        <concept>
+            <extension url="http://hl7.org/fhir/StructureDefinition/valueset-comments">
+                <valueString value="Screen Message"/>
+            </extension>
+            <code value="screenMessage"/>
+            <display value="Screen Message"/>
+            <definition value="ScreenMessage"/>
+        </concept>
+        <concept>
+            <extension url="http://hl7.org/fhir/StructureDefinition/valueset-comments">
+                <valueString value="Results For Information"/>
+            </extension>
+            <code value="resultsForInfo"/>
+            <display value="Results for Information"/>
+            <definition value="ResultsForInformation"/>
+        </concept>
+        <concept>
+            <extension url="http://hl7.org/fhir/StructureDefinition/valueset-comments">
+                <valueString value="Meeting Notification"/>
+            </extension>
+            <code value="meetingNotification"/>
+            <display value="Meeting Notification"/>
+            <definition value="MeetingNotification"/>
+        </concept>
+        <concept>
+            <extension url="http://hl7.org/fhir/StructureDefinition/valueset-comments">
+                <valueString value="Patient Note"/>
+            </extension>
+            <code value="patientNote"/>
+            <display value="Patient Note"/>
+            <definition value="PatientNote"/>
+        </concept>
+        <concept>
+            <extension url="http://hl7.org/fhir/StructureDefinition/valueset-comments">
+                <valueString value="Admin Note"/>
+            </extension>
+            <code value="adminNote"/>
+            <display value="Admin Note"/>
+            <definition value="AdminNote"/>
+        </concept>
+        <concept>
+            <extension url="http://hl7.org/fhir/StructureDefinition/valueset-comments">
+                <valueString value="Form To Complete"/>
+            </extension>
+            <code value="formToComplete"/>
+            <display value="Form to Complete"/>
+            <definition value="FormToComplete"/>
+        </concept>
+        <concept>
+            <extension url="http://hl7.org/fhir/StructureDefinition/valueset-comments">
+                <valueString value="Repeat Test"/>
+            </extension>
+            <code value="repeatTest"/>
+            <display value="Repeat Test"/>
+            <definition value="RepeatTest"/>
+        </concept>
+        <concept>
+            <extension url="http://hl7.org/fhir/StructureDefinition/valueset-comments">
+                <valueString value="Escalation Notification"/>
+            </extension>
+            <code value="escalationNotification"/>
+            <display value="Escalation Notification"/>
+            <definition value="EscalationNotification"/>
+        </concept>
+        <concept>
+            <extension url="http://hl7.org/fhir/StructureDefinition/valueset-comments">
+                <valueString value="Confidentiality Overridden"/>
+            </extension>
+            <code value="confidentialityOverridden"/>
+            <display value="Confidentiality Overridden"/>
+            <definition value="ConfidentialityOverridden"/>
+        </concept>
+        <concept>
+            <extension url="http://hl7.org/fhir/StructureDefinition/valueset-comments">
+                <valueString value="Transmission Failure"/>
+            </extension>
+            <code value="transmissionFailure"/>
+            <display value="Transmission Failure"/>
+            <definition value="TransmissionFailure"/>
+        </concept>
+        <concept>
+            <extension url="http://hl7.org/fhir/StructureDefinition/valueset-comments">
+                <valueString value="Transmission Report"/>
+            </extension>
+            <code value="transmissionReport"/>
+            <display value="Transmission Report"/>
+            <definition value="TransmissionReport"/>
+        </concept>
+        <concept>
+            <extension url="http://hl7.org/fhir/StructureDefinition/valueset-comments">
+                <valueString value="Legitimate Relationship Notification"/>
+            </extension>
+            <code value="legitimateRelationshipNotification"/>
+            <display value="Legitimate Relationship Notification"/>
+            <definition value="LegitimateRelationshipNotification"/>
+        </concept>
+        <concept>
+            <extension url="http://hl7.org/fhir/StructureDefinition/valueset-comments">
+                <valueString value="Overdue Task Notification"/>
+            </extension>
+            <code value="overdueTaskNotification"/>
+            <display value="Overdue Task Notification"/>
+            <definition value="OverdueTaskNotification"/>
+        </concept>
+    </codeSystem>
+</ValueSet>

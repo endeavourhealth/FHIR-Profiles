@@ -1,0 +1,397 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="primarycare-encounter" />
+  <meta>
+    <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="0" />
+  </extension>
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter" />
+  <name value="PrimaryCare-Encounter" />
+  <display value="Primary Care encounter" />
+  <status value="draft" />
+  <publisher value="Endeavour Health Charitable Trust" />
+  <contact>
+    <telecom>
+      <system value="other" />
+      <value value="http://www.endeavourhealth.org/" />
+    </telecom>
+  </contact>
+  <date value="2015-11-01T00:00:00+00:00" />
+  <fhirVersion value="1.0.1" />
+  <kind value="resource" />
+  <constrainedType value="Encounter" />
+  <abstract value="false" />
+  <base value="http://hl7.org/fhir/StructureDefinition/Encounter" />
+  <differential>
+    <element>
+      <path value="Encounter" />
+      <short value="An interaction during which services are provided to the patient" />
+      <definition value="An interaction between a patient and healthcare provider(s) for the purpose of providing healthcare service(s) or assessing the health status of a patient." />
+      <alias value="Visit" />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Encounter" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value="Encounter[moodCode=EVN]" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="workflow.encounter" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Encounter.extension" />
+      <slicing>
+        <discriminator value="url" />
+        <rules value="openAtEnd" />
+      </slicing>
+    </element>
+    <element>
+      <path value="Encounter.extension" />
+      <name value="purpose" />
+      <short value="Clinical purpose of encounter" />
+      <definition value="Specific clinical purpose of encounter (e.g. child health, antenatal, assessment)." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter-purpose-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="Encounter.identifier.assigner" />
+      <short value="Organization that issued id (may be just text)" />
+      <definition value="Organization that issued/manages the identifier." />
+      <comments value="The reference may be just a text description of the assigner." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="CX.4 / (CX.4,CX.9,CX.10)" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="./IdentifierIssuingAuthority" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Encounter.type" />
+      <short value="Specific type of encounter" />
+      <definition value="Specific type of encounter (e.g. telephone consultation, face to face, home visit note)." />
+      <comments value="Since there are many ways to further classify encounters, this element is 0..*." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="CodeableConcept" />
+      </type>
+      <isSummary value="true" />
+      <binding>
+        <strength value="example" />
+        <description value="The type of encounter" />
+        <valueSetUri value="http://endeavourhealth.org/fhir/ValueSet/primarycare-encounter-type" />
+      </binding>
+      <mapping>
+        <identity value="v2" />
+        <map value="PV1-4 / PV1-18" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value=".code" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="class" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Encounter.patient" />
+      <short value="The patient present at the encounter" />
+      <definition value="The patient present at the encounter." />
+      <comments value="While the encounter is always about the patient, the patient may not actually be known in all contexts of use." />
+      <alias value="patient" />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="PID-3" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value=".participation[typeCode=SBJ]/role[classCode=PAT]" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="who.focus" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Encounter.episodeOfCare" />
+      <short value="Episode(s) of care that this encounter should be recorded against" />
+      <definition value="Where a specific encounter should be classified as a part of a specific episode(s) of care this field should be used. This association can facilitate grouping of related encounters together for a specific purpose, such as government reporting, issue tracking, association via a common problem.  The association is recorded on the encounter as these are typically created after the episode of care, and grouped on entry rather than editing the episode of care to append another encounter to it (the episode of care could span years)." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-episode-of-care" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="PV1-54, PV1-53" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="context" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Encounter.incomingReferral" />
+      <short value="The ReferralRequest that initiated this encounter" />
+      <definition value="The referral request this encounter satisfies (incoming referral)." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-procedure-request" />
+      </type>
+    </element>
+    <element>
+      <path value="Encounter.participant.individual" />
+      <short value="Persons involved in the encounter other than the patient" />
+      <definition value="Persons involved in the encounter other than the patient." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="ROL-4" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value=".role" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="who" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Encounter.appointment" />
+      <short value="The appointment that scheduled this encounter" />
+      <definition value="The appointment that scheduled this encounter." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-appointment" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="SCH-1 / SCH-2" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value=".outboundRelationship[typeCode=FLFS].target[classCode=ENC, moodCode=APT]" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Encounter.indication" />
+      <short value="Reason the encounter takes place (resource)" />
+      <definition value="Reason the encounter takes place, as specified using information from another resource. For admissions, this is the admission diagnosis. The indication will typically be a Condition (with other resources referenced in the evidence.detail), or a Procedure." />
+      <comments value="For systems that need to know which was the primary diagnosis, these will be marked with the standard extension primaryDiagnosis (which is a sequence value rather than a flag, 1 = primary diagnosis)." />
+      <alias value="Admission diagnosis" />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-procedure" />
+      </type>
+      <mapping>
+        <identity value="v2" />
+        <map value="Resources that would commonly referenced at Encounter.indication would be Condition and/or Procedure. These most closely align with DG1/PRB and PR1 respectively." />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value=".outboundRelationship[typeCode=RSON].target" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="why" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Encounter.hospitalization.preAdmissionIdentifier.assigner" />
+      <short value="Organization that issued id (may be just text)" />
+      <definition value="Organization that issued/manages the identifier." />
+      <comments value="The reference may be just a text description of the assigner." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="CX.4 / (CX.4,CX.9,CX.10)" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="./IdentifierIssuingAuthority" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Encounter.hospitalization.origin" />
+      <short value="The location from which the patient came before admission" />
+      <definition value="The location from which the patient came before admission." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value=".participation[typeCode=ORG].role" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Encounter.hospitalization.admittingDiagnosis" />
+      <short value="The admitting diagnosis as reported by admitting practitioner" />
+      <definition value="The admitting diagnosis field is used to record the diagnosis codes as reported by admitting practitioner. This could be different or in addition to the conditions reported as reason-condition(s) for the encounter." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition" />
+      </type>
+    </element>
+    <element>
+      <path value="Encounter.hospitalization.destination" />
+      <short value="Location to which the patient is discharged" />
+      <definition value="Location to which the patient is discharged." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location" />
+      </type>
+      <mapping>
+        <identity value="v2" />
+        <map value="PV1-37" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value=".participation[typeCode=DST]" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Encounter.hospitalization.dischargeDiagnosis" />
+      <short value="The final diagnosis given a patient before release from the hospital after all testing, surgery, and workup are complete" />
+      <definition value="The final diagnosis given a patient before release from the hospital after all testing, surgery, and workup are complete." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value=".outboundRelationship[typeCode=OUT].target[classCode=OBS, moodCode=EVN, code=ASSERTION].value" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Encounter.location.location" />
+      <short value="Location the encounter takes place" />
+      <definition value="The location where the encounter takes place." />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location" />
+      </type>
+      <mapping>
+        <identity value="v2" />
+        <map value="PV1-3 / PV1-6 / PV1-11 / PV1-42 / PV1-43" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value=".role" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="where" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Encounter.serviceProvider" />
+      <short value="The custodian organization of this Encounter record" />
+      <definition value="An organization that is in charge of maintaining the information of this Encounter (e.g. who maintains the report or the master service catalog item, etc.). This MAY be the same as the organization on the Patient record, however it could be different. This MAY not be not the Service Delivery Location's Organization." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
+      </type>
+      <mapping>
+        <identity value="v2" />
+        <map value="PV1-10 / PL.6  &amp; PL.1  (note: HL7 v2 definition is &quot;the treatment or type of surgery that the patient is scheduled to receive&quot;; seems slightly out of alignment with the concept name 'hospital service'. Would not trust that implementations apply this semantic by default)" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value=".particiaption[typeCode=PFM].role" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Encounter.partOf" />
+      <short value="Another Encounter this encounter is part of" />
+      <definition value="Another Encounter of which this encounter is a part of (administratively or in time)." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value=".inboundRelationship[typeCode=COMP].source[classCode=COMP, moodCode=EVN]" />
+      </mapping>
+    </element>
+  </differential>
+</StructureDefinition>

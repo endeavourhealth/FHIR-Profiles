@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ValueSet xmlns="http://hl7.org/fhir"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://hl7.org/fhir http://hl7.org/fhir/valueset.xsd">
+    <id value="primarycare-message-event" />
+    <meta>
+        <lastUpdated value="2015-09-24T15:19:37.151+00:00" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/valueset-shareable-definition" />
+    </meta>
+		<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+			<valueInteger value="0" />
+		</extension>
+    <text>
+        <status value="extensions" />
+        <div xmlns="http://www.w3.org/1999/xhtml">
+            <h2>MessageEvent</h2>
+            <p>The operation to perform with the message.</p>
+            <p>This value set has an inline code system which defines the following codes:</p>
+            <p>BulkPatient</p>
+        </div>
+    </text>
+    <url value="http://endeavourhealth.org/fhir/ValueSet/primarycare-message-event" />
+    <version value="1.0.0" />
+    <name value="PrimaryCare-MessageEvent" />
+    <status value="draft" />		
+    <publisher value="Endeavour Health Charitable Trust" />
+    <contact>
+        <telecom>
+            <system value="other" />
+            <value value="http://www.endeavourhealth.org" />
+        </telecom>
+    </contact>
+    <description value="The operation to perform with a message." />
+    <codeSystem>
+        <system value="http://endeavourhealth.org/fhir/ValueSet/primarycare-message-event"/>
+        <version value="1.0.0"/>
+        <caseSensitive value="true"/>
+        <concept>
+            <extension url="http://hl7.org/fhir/StructureDefinition/valueset-comments">
+                <valueString value="Bulk Patient"/>
+            </extension>
+            <code value="bulkPatient"/>
+            <display value="Bulk Patient"/>
+            <definition value="BulkPatient"/>
+        </concept>
+    </codeSystem>
+</ValueSet>

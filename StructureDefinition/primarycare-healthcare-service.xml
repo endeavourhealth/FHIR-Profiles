@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="primarycare-healthcare-service" />
+  <meta>
+    <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="0" />
+  </extension>
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-healthcare-service" />
+  <name value="PrimaryCare-HealthcareService" />
+  <display value="Primary Care healthcare service" />
+  <status value="draft" />
+  <publisher value="Endeavour Health Charitable Trust" />
+  <date value="2015-09-22T20:02:49+10:00" />
+  <description value="Base StructureDefinition for HealthcareService Resource" />
+  <fhirVersion value="1.0.1" />
+  <kind value="resource" />
+  <constrainedType value="HealthcareService" />
+  <abstract value="false" />
+  <base value="http://hl7.org/fhir/StructureDefinition/HealthcareService" />
+  <differential>
+    <element>
+      <path value="HealthcareService" />
+      <short value="The details of a healthcare service available at a location" />
+      <definition value="The details of a healthcare service available at a location." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="HealthcareService" />
+      </type>
+      <mapping>
+        <identity value="w5" />
+        <map value="administrative.group" />
+      </mapping>
+    </element>
+    <element>
+      <path value="HealthcareService.identifier.assigner" />
+      <short value="Organization that issued id (may be just text)" />
+      <definition value="Organization that issued/manages the identifier." />
+      <comments value="The reference may be just a text description of the assigner." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="CX.4 / (CX.4,CX.9,CX.10)" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="./IdentifierIssuingAuthority" />
+      </mapping>
+    </element>
+    <element>
+      <path value="HealthcareService.providedBy" />
+      <short value="Organization that provides this service" />
+      <definition value="The organization that provides this healthcare service." />
+      <comments value="This property is recommended to be the same as the Location's managingOrganization, and if not provided should be interpreted as such. If the Location does not have a managing Organization, then this property should be populated." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
+      </type>
+      <isSummary value="true" />
+    </element>
+    <element>
+      <path value="HealthcareService.location" />
+      <short value="Location where service may be provided" />
+      <definition value="The location where this healthcare service may be provided." />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="w5" />
+        <map value="where" />
+      </mapping>
+    </element>
+    <element>
+      <path value="HealthcareService.coverageArea" />
+      <short value="Location(s) service is inteded for/available to" />
+      <definition value="The location(s) that this service is available to (not where the service is provided)." />
+      <comments value="The locations referenced by the coverage area can include both specific locations, including areas, and also conceptual domains too (mode = kind), such as a physical area (tri-state area) and some other attribute (covered by Example Care Organization). These types of Locations are often not managed by any specific organization. This could also include generic locations such as &quot;in-home&quot;." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location" />
+      </type>
+    </element>
+  </differential>
+</StructureDefinition>

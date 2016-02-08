@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="primarycare-milestone-extension" />
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-milestone-extension" />
+  <name value="PrimaryCare-Milestone-Extension" />
+  <display value="Primary Care milestone" />
+  <status value="draft" />
+  <publisher value="Endeavour Health Charitable Trust" />
+  <date value="2015-11-13" />
+  <fhirVersion value="1.0.2" />
+  <kind value="datatype" />
+  <constrainedType value="Extension" />
+  <abstract value="false" />
+  <contextType value="resource" />
+  <context value="Goal" />
+  <base value="http://hl7.org/fhir/StructureDefinition/Extension" />
+  <differential>
+    <element>
+      <path value="Extension" />
+      <short value="Intermediate goal milestone" />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Extension" />
+      </type>
+    </element>
+    <element>
+      <path value="Extension.extension" />
+      <slicing>
+        <discriminator value="url" />
+        <rules value="openAtEnd" />
+      </slicing>
+    </element>
+    <element>
+      <path value="Extension.extension" />
+      <name value="measure" />
+      <definition value="Whats being measured against the milestone" />
+      <requirements value="Allows the specification of the aspect being measured against the milestone.  This could be a coded item such as weight or free text such as walking distance." />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+      </type>
+    </element>
+    <element>
+      <path value="Extension.extension.extension" />
+      <slicing>
+        <discriminator value="url" />
+        <rules value="openAtEnd" />
+      </slicing>
+    </element>
+    <element>
+      <path value="Extension.extension.extension" />
+      <name value="extension" />
+      <min value="0" />
+      <max value="0" />
+    </element>
+    <element>
+      <path value="Extension.extension.url" />
+      <type>
+        <code value="uri" />
+      </type>
+      <fixedUri value="measure" />
+    </element>
+    <element>
+      <path value="Extension.extension.value[x]" />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="CodeableConcept" />
+      </type>
+    </element>
+    <element>
+      <path value="Extension.extension" />
+      <name value="value[x]" />
+      <short value="The milestone value to achieve" />
+      <requirements value="The actual milestone value.  This could be a quantity (such as 10kg for a coded measure of &quot;weight loss&quot;), a boolean (for a free-text measure of &quot;walk up stairs without losing breath&quot;) or free text value (such as &quot;walk 3 stops before catching bus&quot;)" />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+      </type>
+    </element>
+    <element>
+      <path value="Extension.extension.extension" />
+      <slicing>
+        <discriminator value="url" />
+        <rules value="openAtEnd" />
+      </slicing>
+    </element>
+    <element>
+      <path value="Extension.extension.extension" />
+      <name value="extension" />
+      <min value="0" />
+      <max value="0" />
+    </element>
+    <element>
+      <path value="Extension.extension.url" />
+      <type>
+        <code value="uri" />
+      </type>
+      <fixedUri value="value[x]" />
+    </element>
+    <element>
+      <path value="Extension.extension.value[x]" />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="boolean" />
+      </type>
+      <type>
+        <code value="integer" />
+      </type>
+      <type>
+        <code value="decimal" />
+      </type>
+      <type>
+        <code value="base64Binary" />
+      </type>
+      <type>
+        <code value="instant" />
+      </type>
+      <type>
+        <code value="string" />
+      </type>
+      <type>
+        <code value="uri" />
+      </type>
+      <type>
+        <code value="date" />
+      </type>
+      <type>
+        <code value="dateTime" />
+      </type>
+      <type>
+        <code value="time" />
+      </type>
+      <type>
+        <code value="code" />
+      </type>
+      <type>
+        <code value="oid" />
+      </type>
+      <type>
+        <code value="id" />
+      </type>
+      <type>
+        <code value="unsignedInt" />
+      </type>
+      <type>
+        <code value="positiveInt" />
+      </type>
+      <type>
+        <code value="markdown" />
+      </type>
+      <type>
+        <code value="Annotation" />
+      </type>
+      <type>
+        <code value="Attachment" />
+      </type>
+      <type>
+        <code value="Identifier" />
+      </type>
+      <type>
+        <code value="CodeableConcept" />
+      </type>
+      <type>
+        <code value="Coding" />
+      </type>
+      <type>
+        <code value="Quantity" />
+      </type>
+      <type>
+        <code value="Range" />
+      </type>
+      <type>
+        <code value="Period" />
+      </type>
+      <type>
+        <code value="Ratio" />
+      </type>
+      <type>
+        <code value="SampledData" />
+      </type>
+      <type>
+        <code value="Signature" />
+      </type>
+      <type>
+        <code value="HumanName" />
+      </type>
+      <type>
+        <code value="Address" />
+      </type>
+      <type>
+        <code value="ContactPoint" />
+      </type>
+      <type>
+        <code value="Timing" />
+      </type>
+      <type>
+        <code value="Reference" />
+      </type>
+      <type>
+        <code value="Meta" />
+      </type>
+    </element>
+    <element>
+      <path value="Extension.extension" />
+      <name value="target" />
+      <short value="The target by which the milestone should be met" />
+      <requirements value="This could be a specific date or a period of time (duration)" />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+      </type>
+    </element>
+    <element>
+      <path value="Extension.extension.extension" />
+      <slicing>
+        <discriminator value="url" />
+        <rules value="openAtEnd" />
+      </slicing>
+    </element>
+    <element>
+      <path value="Extension.extension.extension" />
+      <name value="extension" />
+      <min value="0" />
+      <max value="0" />
+    </element>
+    <element>
+      <path value="Extension.extension.url" />
+      <type>
+        <code value="uri" />
+      </type>
+      <fixedUri value="target" />
+    </element>
+    <element>
+      <path value="Extension.extension.value[x]" />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="date" />
+      </type>
+      <type>
+        <code value="Quantity" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Duration" />
+      </type>
+    </element>
+    <element>
+      <path value="Extension.extension" />
+      <name value="achievement" />
+      <short value="Wheather the milestone was achieved" />
+      <requirements value="This could be a specific date or a simple yes/no (boolean)" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+      </type>
+			<meaningWhenMissing value="Milestone has not been met/is still active/in progress" />
+    </element>
+    <element>
+      <path value="Extension.extension.extension" />
+      <slicing>
+        <discriminator value="url" />
+        <rules value="openAtEnd" />
+      </slicing>
+    </element>
+    <element>
+      <path value="Extension.extension.extension" />
+      <name value="extension" />
+      <min value="0" />
+      <max value="0" />
+    </element>
+    <element>
+      <path value="Extension.extension.url" />
+      <type>
+        <code value="uri" />
+      </type>
+      <fixedUri value="achievement" />
+    </element>
+    <element>
+      <path value="Extension.extension.value[x]" />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="date" />
+      </type>
+      <type>
+        <code value="boolean" />
+      </type>
+    </element>
+    <element>
+      <path value="Extension.url" />
+      <representation value="xmlAttr" />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="uri" />
+      </type>
+      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-milestone-extension" />
+    </element>
+    <element>
+      <path value="Extension.value[x]" />
+      <min value="0" />
+      <max value="0" />
+    </element>
+  </differential>
+</StructureDefinition>

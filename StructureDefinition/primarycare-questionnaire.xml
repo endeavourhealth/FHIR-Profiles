@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="primarycare-questionnaire" />
+  <meta>
+    <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="0" />
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm-no-warnings">
+    <valueInteger value="3" />
+  </extension>
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-questionnaire" />
+  <name value="PrimaryCare-Questionnaire" />
+  <display value="Primary Care questionnaire" />
+  <status value="draft" />
+  <publisher value="Endeavour Health Charitable Trust" />
+  <date value="2015-09-22T20:02:49+10:00" />
+  <requirements value="To support structured, hierarchical registration of data gathered using digital forms and other questionnaires." />
+  <fhirVersion value="1.0.1" />
+  <kind value="resource" />
+  <constrainedType value="Questionnaire" />
+  <abstract value="false" />
+  <base value="http://hl7.org/fhir/StructureDefinition/Questionnaire" />
+  <differential>
+    <element>
+      <path value="Questionnaire" />
+      <short value="A structured set of questions" />
+      <definition value="A structured set of questions intended to guide the collection of answers. The questions are ordered and grouped into coherent subsets, corresponding to the structure of the grouping of the underlying questions." />
+      <alias value="Form" />
+      <alias value="CRF" />
+      <alias value="Survey" />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Questionnaire" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value="Observation[moodCode=DEF]" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="infrastructure.information" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Questionnaire.identifier.assigner" />
+      <short value="Organization that issued id (may be just text)" />
+      <definition value="Organization that issued/manages the identifier." />
+      <comments value="The reference may be just a text description of the assigner." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
+      </type>
+      <isSummary value="true" />
+    </element>
+  </differential>
+</StructureDefinition>

@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="primarycare-location" />
+  <meta>
+    <lastUpdated value="2015-11-01T10:00:00+00:00" />
+  </meta>
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location" />
+  <name value="PrimaryCare-Location" />
+  <display value="Primary Care location" />
+  <status value="draft" />
+  <publisher value="Endeavour Health Charitable Trust" />
+  <contact>
+    <telecom>
+      <system value="other" />
+      <value value="http://www.endeavourhealth.org/" />
+    </telecom>
+  </contact>
+  <date value="2015-11-01" />
+  <description value="Primary Care location" />
+  <fhirVersion value="1.0.2" />
+  <kind value="resource" />
+  <constrainedType value="Location" />
+  <abstract value="false" />
+  <base value="http://hl7.org/fhir/StructureDefinition/Location" />
+  <differential>
+    <element>
+      <path value="Location" />
+      <short value="Details and position information for a physical place" />
+      <definition value="Details and position information for a physical place where services are provided  and resources and participants may be stored, found, contained or accommodated." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Location" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value=".Role[classCode=SDLC]" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="administrative.entity" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Location.identifier.assigner" />
+      <short value="Organization that issued id (may be just text)" />
+      <definition value="Organization that issued/manages the identifier." />
+      <comments value="The reference may be just a text description of the assigner." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="CX.4 / (CX.4,CX.9,CX.10)" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="./IdentifierIssuingAuthority" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Location.managingOrganization" />
+      <short value="Organization responsible for provisioning and upkeep" />
+      <definition value="The organization responsible for the provisioning and upkeep of the location." />
+      <comments value="This can also be used as the part of the organization hierarchy where this location provides services. These services can be defined through the HealthcareService resource." />
+      <requirements value="Need to know who manages the location." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="rim" />
+        <map value=".scopingEntity[classCode=ORG determinerKind=INSTANCE]" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Location.partOf" />
+      <short value="Another Location this one is physically part of" />
+      <definition value="Another Location which this Location is physically part of." />
+      <requirements value="For purposes of location, display and identification, knowing which locations are located within other locations is important." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value=".inboundLink[typeCode=PART].source[classCode=SDLC]" />
+      </mapping>
+    </element>
+  </differential>
+</StructureDefinition>

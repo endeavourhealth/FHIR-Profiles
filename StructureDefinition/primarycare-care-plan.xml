@@ -1,0 +1,443 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="primarycare-care-plan" />
+  <meta>
+    <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="0" />
+  </extension>
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-care-plan" />
+  <name value="PrimaryCare-CarePlan" />
+  <display value="Primary Care care plan" />
+  <status value="draft" />
+  <publisher value="Endeavour Health Charitable Trust" />
+  <date value="2015-09-22T20:02:49+10:00" />
+  <fhirVersion value="1.0.1" />
+  <kind value="resource" />
+  <constrainedType value="CarePlan" />
+  <abstract value="false" />
+  <base value="http://hl7.org/fhir/StructureDefinition/CarePlan" />
+  <differential>
+    <element>
+      <path value="CarePlan" />
+      <short value="Healthcare plan for patient or group" />
+      <definition value="Describes the intention of how one or more practitioners intend to deliver care for a particular patient, group or community for a period of time, possibly limited to care for a specific condition or set of conditions." />
+      <alias value="Care Team" />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="CarePlan" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value="Act[classCode=PCPR, moodCode=INT]" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="clinical.careprovision" />
+      </mapping>
+    </element>
+    <element>
+      <path value="CarePlan.subject" />
+      <short value="Who care plan is for" />
+      <definition value="Identifies the patient or group whose intended care is described by the plan." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-group" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="PID-3" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value=".participation[typeCode=PAT].role[classCode=PAT]" />
+      </mapping>
+    </element>
+    <element>
+      <path value="CarePlan.context" />
+      <short value="Created in context of" />
+      <definition value="Identifies the context in which this particular CarePlan is defined." />
+      <comments value="Activities conducted as a result of the care plan may well occur as part of other encounters/episodes." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-episode-of-care" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="Associated PV1" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="." />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="context" />
+      </mapping>
+    </element>
+    <element>
+      <path value="CarePlan.author" />
+      <short value="Who is responsible for contents of the plan" />
+      <definition value="Identifies the individual(s) or ogranization who is responsible for the content of the care plan." />
+      <comments value="Collaborative care plans may have multiple authors." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
+      </type>
+      <isSummary value="true" />
+    </element>
+    <element>
+      <path value="CarePlan.addresses" />
+      <short value="Health issues this plan addresses" />
+      <definition value="Identifies the conditions/problems/concerns/diagnoses/etc. whose management and/or mitigation are handled by this plan." />
+      <requirements value="Links plan to the conditions it manages.  Also scopes plans - multiple plans may exist addressing different concerns." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="PRB-4" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value=".actRelationship[typeCode=SUBJ].target[classCode=CONC, moodCode=EVN]" />
+      </mapping>
+    </element>
+    <element>
+      <path value="CarePlan.relatedPlan.plan" />
+      <short value="Plan relationship exists with" />
+      <definition value="A reference to the plan to which a relationship is asserted." />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-care-plan" />
+      </type>
+    </element>
+    <element>
+      <path value="CarePlan.participant.member" />
+      <short value="Who is involved" />
+      <definition value="The specific person or organization who is participating/expected to participate in the care plan." />
+      <comments value="Patient only needs to be listed if they have a role other than &quot;subject of care&quot;.  Member is optional because some participants may be known only by their role, particularly in draft plans." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
+      </type>
+      <mapping>
+        <identity value="v2" />
+        <map value="REL.5 (or PRT-5 : ( PRV-4 {provider participations} ) / PRT-5 : ( PRV-4  {non-provider person participations} ) / PRT-5 : ( PRV-4 = (patient non-subject of care) ) / PRT-8?)" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value=".role" />
+      </mapping>
+    </element>
+    <element>
+      <path value="CarePlan.goal" />
+      <short value="Desired outcome of plan" />
+      <definition value="Describes the intended objective(s) of carrying out the care plan." />
+      <comments value="Goal can be achieving a particular change or merely maintaining a current state or even slowing a decline." />
+      <requirements value="Provides context for plan.  Allows plan effectiveness to be evaluated by clinicians." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-goal" />
+      </type>
+      <mapping>
+        <identity value="v2" />
+        <map value="GOL.1" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value=".outboundRelationship[typeCode&lt;=OBJ]." />
+      </mapping>
+    </element>
+    <element>
+      <path value="CarePlan.activity.progress.author[x]" />
+      <short value="Individual responsible for the annotation" />
+      <definition value="The individual responsible for making the annotation." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person" />
+      </type>
+      <type>
+        <code value="string" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="N/A" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="Act.participant[typeCode=AUT].role" />
+      </mapping>
+    </element>
+    <element>
+      <path value="CarePlan.activity.reference" />
+      <short value="Activity details defined in specific resource" />
+      <definition value="The details of the proposed activity represented in a specific resource." />
+      <requirements value="Details in a form consistent with other applications and contexts of use." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-appointment" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/CommunicationRequest" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/DeviceUseRequest" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-diagnostic-order" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/MedicationOrder" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/NutritionOrder" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Order" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-procedure-request" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/ProcessRequest" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-referral-request" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/SupplyRequest" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/VisionPrescription" />
+      </type>
+      <condition value="cpl-3" />
+      <mapping>
+        <identity value="rim" />
+        <map value=".outboundRelationship[typeCode=COMP].target" />
+      </mapping>
+    </element>
+    <element>
+      <path value="CarePlan.activity.detail.reasonReference" />
+      <short value="Condition triggering need for activity" />
+      <definition value="Provides the health condition(s) that drove the inclusion of this particular activity as part of the plan." />
+      <comments value="Conditions can be identified at the activity level that are not identified as reasons for the overall plan." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition" />
+      </type>
+    </element>
+    <element>
+      <path value="CarePlan.activity.detail.goal" />
+      <short value="Goals this activity relates to" />
+      <definition value="Internal reference that identifies the goals that this activity is intended to contribute towards meeting." />
+      <requirements value="So that participants know the link explicitly." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-goal" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value=".outboundRelationship[typeCode&lt;=OBJ]." />
+      </mapping>
+    </element>
+    <element>
+      <path value="CarePlan.activity.detail.location" />
+      <short value="Where it should happen" />
+      <definition value="Identifies the facility where the activity will occur; e.g. home, hospital, specific clinic, etc." />
+      <comments value="May reference a specific clinical location or may identify a type of location." />
+      <requirements value="Helps in planning of activity." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location" />
+      </type>
+      <mapping>
+        <identity value="v2" />
+        <map value="OBR-24(???!!)" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value=".participation[typeCode=LOC].role" />
+      </mapping>
+    </element>
+    <element>
+      <path value="CarePlan.activity.detail.performer" />
+      <short value="Who will be responsible?" />
+      <definition value="Identifies who's expected to be involved in the activity." />
+      <comments value="A performer MAY also be a participant in the care plan." />
+      <requirements value="Helps in planning of activity." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
+      </type>
+      <mapping>
+        <identity value="v2" />
+        <map value="PRT-5 : ( PRV-4 e {provider participations} ) / PRT-5 : ( PRV-4 e {non-provider person participations} ) / PRT-5 : ( PRV-4 = (patient non-subject of care) ) / PRT-8" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value=".participation[typeCode=PFM]" />
+      </mapping>
+    </element>
+    <element>
+      <path value="CarePlan.activity.detail.product[x]" />
+      <short value="What is to be administered/supplied" />
+      <definition value="Identifies the food, drug or other product to be consumed or supplied in the activity." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="CodeableConcept" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Substance" />
+      </type>
+      <binding>
+        <strength value="example" />
+        <description value="A product supplied or administered as part of a care plan activity." />
+        <valueSetReference>
+          <reference value="http://hl7.org/fhir/ValueSet/medication-codes" />
+        </valueSetReference>
+      </binding>
+      <mapping>
+        <identity value="v2" />
+        <map value="RXE-2 / RXO-1 / RXD-2" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value=".participation[typeCode=PRD].role" />
+      </mapping>
+    </element>
+    <element>
+      <path value="CarePlan.note.author[x]" />
+      <short value="Individual responsible for the annotation" />
+      <definition value="The individual responsible for making the annotation." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person" />
+      </type>
+      <type>
+        <code value="string" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="N/A" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="Act.participant[typeCode=AUT].role" />
+      </mapping>
+    </element>
+  </differential>
+</StructureDefinition>

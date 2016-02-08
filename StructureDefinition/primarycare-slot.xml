@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="primarycare-slot" />
+  <meta>
+    <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="0" />
+  </extension>
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-slot" />
+  <name value="PrimaryCare-Slot" />
+  <display value="Primary Care slot" />
+  <status value="draft" />
+  <publisher value="Endeavour Health Charitable Trust" />
+  <date value="2015-09-22T20:02:49+10:00" />
+  <description value="Base StructureDefinition for Slot Resource" />
+  <fhirVersion value="1.0.1" />
+  <kind value="resource" />
+  <constrainedType value="Slot" />
+  <abstract value="false" />
+  <base value="http://hl7.org/fhir/StructureDefinition/Slot" />
+  <differential>
+    <element>
+      <path value="Slot" />
+      <short value="A slot of time on a schedule that may be available for booking appointments" />
+      <definition value="A slot of time on a schedule that may be available for booking appointments." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Slot" />
+      </type>
+      <mapping>
+        <identity value="ical" />
+        <map value="(refer to the Availability resource for the header mapping details)" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="workflow.scheduling" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Slot.identifier.assigner" />
+      <short value="Organization that issued id (may be just text)" />
+      <definition value="Organization that issued/manages the identifier." />
+      <comments value="The reference may be just a text description of the assigner." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="CX.4 / (CX.4,CX.9,CX.10)" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="./IdentifierIssuingAuthority" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Slot.schedule" />
+      <short value="The schedule resource that this slot defines an interval of status information" />
+      <definition value="The schedule resource that this slot defines an interval of status information." />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-schedule" />
+      </type>
+      <isSummary value="true" />
+    </element>
+  </differential>
+</StructureDefinition>

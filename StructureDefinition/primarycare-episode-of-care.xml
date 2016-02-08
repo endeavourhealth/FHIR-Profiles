@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="primarycare-episode-of-care" />
+  <meta>
+    <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="0" />
+  </extension>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm-no-warnings">
+    <valueInteger value="1" />
+  </extension>
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-episode-of-care" />
+  <name value="PrimaryCare-EpisodeOfCare" />
+  <display value="Primary Care episode of care" />
+  <status value="draft" />
+  <publisher value="Endeavour Health Charitable Trust" />
+  <date value="2015-09-22T20:02:49+10:00" />
+  <description value="Base StructureDefinition for EpisodeOfCare Resource" />
+  <fhirVersion value="1.0.1" />
+  <kind value="resource" />
+  <constrainedType value="EpisodeOfCare" />
+  <abstract value="false" />
+  <base value="http://hl7.org/fhir/StructureDefinition/EpisodeOfCare" />
+  <differential>
+    <element>
+      <path value="EpisodeOfCare" />
+      <short value="An association of a Patient with an Organization and  Healthcare Provider(s) for a period of time that the Organization assumes some level of responsibility" />
+      <definition value="An association between a patient and an organization / healthcare provider(s) during which time encounters may occur. The managing organization assumes a level of responsibility for the patient during this time." />
+      <alias value="Case Program Problem" />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="EpisodeOfCare" />
+      </type>
+      <mapping>
+        <identity value="w5" />
+        <map value="workflow.encounter" />
+      </mapping>
+    </element>
+    <element>
+      <path value="EpisodeOfCare.identifier.assigner" />
+      <short value="Organization that issued id (may be just text)" />
+      <definition value="Organization that issued/manages the identifier." />
+      <comments value="The reference may be just a text description of the assigner." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="CX.4 / (CX.4,CX.9,CX.10)" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="./IdentifierIssuingAuthority" />
+      </mapping>
+    </element>
+    <element>
+      <path value="EpisodeOfCare.condition" />
+      <short value="Conditions/problems/diagnoses this episode of care is for" />
+      <definition value="A list of conditions/problems/diagnoses that this episode of care is intended to be providing care for." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition" />
+      </type>
+      <mapping>
+        <identity value="w5" />
+        <map value="what" />
+      </mapping>
+    </element>
+    <element>
+      <path value="EpisodeOfCare.patient" />
+      <short value="Patient for this episode of care" />
+      <definition value="The patient that this EpisodeOfCare applies to." />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="w5" />
+        <map value="who.focus" />
+      </mapping>
+    </element>
+    <element>
+      <path value="EpisodeOfCare.managingOrganization" />
+      <short value="Organization that assumes care" />
+      <definition value="The organization that has assumed the specific responsibilities for the specified duration." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
+      </type>
+      <isSummary value="true" />
+    </element>
+    <element>
+      <path value="EpisodeOfCare.referralRequest" />
+      <short value="Originating Referral Request(s)" />
+      <definition value="Referral Request(s) that are fulfilled by this EpisodeOfCare, incoming referrals." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-referral-request" />
+      </type>
+    </element>
+    <element>
+      <path value="EpisodeOfCare.careManager" />
+      <short value="Care manager/care co-ordinator for the patient" />
+      <definition value="The practitioner that is the care manager/care co-ordinator for this patient." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
+      </type>
+    </element>
+    <element>
+      <path value="EpisodeOfCare.careTeam.member" />
+      <short value="The practitioner (or Organization) within the team" />
+      <definition value="The practitioner (or Organization) within the team." />
+      <comments value="Where an Organization is included in the CareTeam, it is really providing some form of services to the EpisodeOfCare (e.g. Jim's Mowing Services) the details of the services would be included on a CarePlan." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
+      </type>
+      <mapping>
+        <identity value="w5" />
+        <map value="who" />
+      </mapping>
+    </element>
+  </differential>
+</StructureDefinition>
