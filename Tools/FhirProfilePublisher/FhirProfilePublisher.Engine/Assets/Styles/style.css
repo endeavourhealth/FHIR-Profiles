@@ -263,7 +263,7 @@ table.resource-tree .label
 
 table tr.removed-row
 {
-    display: none;
+    text-decoration: line-through; 
 }
 
 .resource-tree-name-column,

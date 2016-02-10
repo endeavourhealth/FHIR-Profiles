@@ -90,8 +90,8 @@ namespace FhirProfilePublisher.Engine
 
             if (currentElement.IsRemoved())
             {
-                result.Add(Html.Class(Styles.StrikethroughStyle));
-                //result.Add(Html.Class(Styles.RemovedTableRowClassName));
+                //result.Add(Html.Class(Styles.StrikethroughStyle));
+                result.Add(Html.Class(Styles.RemovedTableRowClassName));
                 //result.Add(Html.Style(Styles.DisplayNoneStyle + Styles.StrikethroughStyle));
             }
 
