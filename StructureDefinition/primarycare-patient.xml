@@ -1,123 +1,217 @@
-<?xml version="1.0" encoding="utf-8"?>
-<StructureDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../Schema/fhir-single.xsd">
-	<id value="primarycare-patient"/>
-	<meta>
-		<lastUpdated value="2015-11-01T10:00:00+00:00"/>
-	</meta>
-	<url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"/>
-	<name value="PrimaryCare-Patient"/>
-	<display value="Primary Care patient"/>
-	<status value="draft"/>
-	<publisher value="Endeavour Health Charitable Trust"/>
-	<contact>
-		<telecom>
-			<system value="other"/>
-			<value value="http://www.endeavourhealth.org/"/>
-		</telecom>
-	</contact>
-	<date value="2015-11-01"/>
-	<description value="Primary Care patient"/>
-	<fhirVersion value="1.0.2"/>
-	<kind value="resource"/>
-	<constrainedType value="Patient"/>
-	<abstract value="false"/>
-	<base value="http://hl7.org/fhir/StructureDefinition/Patient"/>
-	<differential>
-		<element>
-			<path value="Patient"/>
-			<short value="Information about an individual or animal receiving health care services"/>
-			<definition value="Demographics and other administrative information about an individual or animal receiving care or other health-related services."/>
-			<alias value="SubjectOfCare Client Resident"/>
-			<min value="0"/>
-			<max value="*"/>
-			<type>
-				<code value="Patient"/>
-			</type>
-		</element>
-		<element>
-			<path value="Patient.identifier.assigner"/>
-			<short value="Organization that issued id (may be just text)"/>
-			<definition value="Organization that issued/manages the identifier."/>
-			<comments value="The reference may be just a text description of the assigner."/>
-			<min value="0"/>
-			<max value="1"/>
-			<type>
-				<code value="Reference"/>
-				<profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"/>
-			</type>
-			<isSummary value="true"/>
-		</element>
-		<element>
-			<path value="Patient.contact.organization"/>
-			<short value="Organization that is associated with the contact"/>
-			<definition value="Organization on behalf of which the contact is acting or for which the contact is working."/>
-			<requirements value="For guardians or business related contacts, the organization is relevant."/>
-			<min value="0"/>
-			<max value="1"/>
-			<type>
-				<code value="Reference"/>
-				<profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"/>
-			</type>
-			<condition value="pat-1"/>
-		</element>
-		<element>
-			<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name">
-				<valueString value="Animal"/>
-			</extension>
-			<path value="Patient.animal"/>
-			<short value="This patient is known to be an animal (non-human)"/>
-			<definition value="This patient is known to be an animal."/>
-			<comments value="The animal element is labeled &quot;Is Modifier&quot; since patients may be non-human. Systems SHALL either handle patient details appropriately (e.g. inform users patient is not human) or reject declared animal records.   The absense of the animal element does not imply that the patient is a human. If a system requires such a positive assertion that the patient is human, an extension will be required.  (Do not use a species of homo-sapiens in animal species, as this would incorrectly infer that the patient is an animal)."/>
-			<requirements value="Many clinical systems are extended to care for animal patients as well as human."/>
-			<min value="0"/>
-			<max value="0"/>
-			<type>
-				<code value="BackboneElement"/>
-			</type>
-			<isModifier value="true"/>
-			<isSummary value="true"/>
-		</element>
-		<element>
-			<path value="Patient.careProvider"/>
-			<short value="Patient's nominated primary care provider"/>
-			<definition value="Patient's nominated care provider."/>
-			<comments value="This may be the primary care provider (in a GP context), or it may be a patient nominated care manager in a community/disablity setting, or even organization that will provide people to perform the care provider roles.  This is not to be used to record Care Teams, these should be recorded on either the CarePlan or EpisodeOfCare resources."/>
-			<min value="0"/>
-			<max value="*"/>
-			<type>
-				<code value="Reference"/>
-				<profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"/>
-			</type>
-			<type>
-				<code value="Reference"/>
-				<profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner"/>
-			</type>
-		</element>
-		<element>
-			<path value="Patient.managingOrganization"/>
-			<short value="Organization that is the custodian of the patient record"/>
-			<definition value="Organization that is the custodian of the patient record."/>
-			<comments value="There is only one managing organization for a specific patient record. Other organizations will have their own Patient record, and may use the Link property to join the records together (or a Person resource which can include confidence ratings for the association)."/>
-			<requirements value="Need to know who recognizes this patient record, manages and updates it."/>
-			<min value="0"/>
-			<max value="1"/>
-			<type>
-				<code value="Reference"/>
-				<profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"/>
-			</type>
-			<isSummary value="true"/>
-		</element>
-		<element>
-			<path value="Patient.link.other"/>
-			<short value="The other patient resource that the link refers to"/>
-			<definition value="The other patient resource that the link refers to."/>
-			<min value="1"/>
-			<max value="1"/>
-			<type>
-				<code value="Reference"/>
-				<profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient"/>
-			</type>
-			<isModifier value="true"/>
-		</element>
-	</differential>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="primarycare-patient" />
+  <meta>
+    <lastUpdated value="2015-11-01T10:00:00+00:00" />
+  </meta>
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
+  <name value="PrimaryCare-Patient" />
+  <display value="Primary Care patient" />
+  <status value="draft" />
+  <publisher value="Endeavour Health Charitable Trust" />
+  <contact>
+    <telecom>
+      <system value="other" />
+      <value value="http://www.endeavourhealth.org/" />
+    </telecom>
+  </contact>
+  <date value="2015-11-01" />
+  <description value="Primary Care patient" />
+  <fhirVersion value="1.0.2" />
+  <kind value="resource" />
+  <constrainedType value="Patient" />
+  <abstract value="false" />
+  <base value="http://hl7.org/fhir/StructureDefinition/Patient" />
+  <differential>
+    <element>
+      <path value="Patient" />
+      <short value="Information about an individual or animal receiving health care services" />
+      <definition value="Demographics and other administrative information about an individual or animal receiving care or other health-related services." />
+      <alias value="SubjectOfCare Client Resident" />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Patient" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value="Patient[classCode=PAT]" />
+      </mapping>
+      <mapping>
+        <identity value="cda" />
+        <map value="ClinicalDocument.recordTarget.patientRole" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="administrative.individual" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Patient.extension" />
+      <slicing>
+        <discriminator value="url" />
+        <rules value="openAtEnd" />
+      </slicing>
+    </element>
+    <element>
+      <path value="Patient.extension" />
+      <name value="EthnicCategory" />
+      <definition value="The ethnicity of the subject." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-ethnic-category-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="Patient.identifier.assigner" />
+      <short value="Organization that issued id (may be just text)" />
+      <definition value="Organization that issued/manages the identifier." />
+      <comments value="The reference may be just a text description of the assigner." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="CX.4 / (CX.4,CX.9,CX.10)" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="./IdentifierIssuingAuthority" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Patient.contact.organization" />
+      <short value="Organization that is associated with the contact" />
+      <definition value="Organization on behalf of which the contact is acting or for which the contact is working." />
+      <requirements value="For guardians or business related contacts, the organization is relevant." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
+      </type>
+      <condition value="pat-1" />
+      <mapping>
+        <identity value="v2" />
+        <map value="NK1-13, NK1-30, NK1-31, NK1-32, NK1-41" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="scoper" />
+      </mapping>
+      <mapping>
+        <identity value="cda" />
+        <map value="n/a" />
+      </mapping>
+    </element>
+    <element>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name">
+        <valueString value="Animal" />
+      </extension>
+      <path value="Patient.animal" />
+      <short value="This patient is known to be an animal (non-human)" />
+      <definition value="This patient is known to be an animal." />
+      <comments value="The animal element is labeled &quot;Is Modifier&quot; since patients may be non-human. Systems SHALL either handle patient details appropriately (e.g. inform users patient is not human) or reject declared animal records.   The absense of the animal element does not imply that the patient is a human. If a system requires such a positive assertion that the patient is human, an extension will be required.  (Do not use a species of homo-sapiens in animal species, as this would incorrectly infer that the patient is an animal)." />
+      <requirements value="Many clinical systems are extended to care for animal patients as well as human." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="BackboneElement" />
+      </type>
+      <isModifier value="true" />
+      <isSummary value="true" />
+      <mapping>
+        <identity value="rim" />
+        <map value="player[classCode=ANM]" />
+      </mapping>
+      <mapping>
+        <identity value="cda" />
+        <map value="n/a" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Patient.careProvider" />
+      <short value="Patient's nominated primary care provider" />
+      <definition value="Patient's nominated care provider." />
+      <comments value="This may be the primary care provider (in a GP context), or it may be a patient nominated care manager in a community/disablity setting, or even organization that will provide people to perform the care provider roles.  This is not to be used to record Care Teams, these should be recorded on either the CarePlan or EpisodeOfCare resources." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
+      </type>
+      <mapping>
+        <identity value="v2" />
+        <map value="PD1-4" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="subjectOf.CareEvent.performer.AssignedEntity" />
+      </mapping>
+      <mapping>
+        <identity value="cda" />
+        <map value="n/a" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Patient.managingOrganization" />
+      <short value="Organization that is the custodian of the patient record" />
+      <definition value="Organization that is the custodian of the patient record." />
+      <comments value="There is only one managing organization for a specific patient record. Other organizations will have their own Patient record, and may use the Link property to join the records together (or a Person resource which can include confidence ratings for the association)." />
+      <requirements value="Need to know who recognizes this patient record, manages and updates it." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="rim" />
+        <map value="scoper" />
+      </mapping>
+      <mapping>
+        <identity value="cda" />
+        <map value=".providerOrganization" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Patient.link.other" />
+      <short value="The other patient resource that the link refers to" />
+      <definition value="The other patient resource that the link refers to." />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
+      </type>
+      <isModifier value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="PID-3, MRG-1" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="id" />
+      </mapping>
+      <mapping>
+        <identity value="cda" />
+        <map value="n/a" />
+      </mapping>
+    </element>
+  </differential>
 </StructureDefinition>
