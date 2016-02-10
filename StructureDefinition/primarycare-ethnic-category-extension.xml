@@ -4,6 +4,9 @@
 	<meta>
 		<lastUpdated value="2015-11-01T10:00:00+00:00"/>
 	</meta>
+	<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+		<valueInteger value="1" />
+	</extension>
 	<url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-ethnic-category-extension"/>
 	<name value="PrimaryCare-EthnicCategory-Extension"/>
 	<display value="Primary Care ethnic category"/>

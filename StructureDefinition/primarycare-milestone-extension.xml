@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-milestone-extension" />
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1" />
+  </extension>
   <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-milestone-extension" />
   <name value="PrimaryCare-Milestone-Extension" />
   <display value="Primary Care milestone" />

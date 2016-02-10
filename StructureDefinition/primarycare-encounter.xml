@@ -5,7 +5,7 @@
     <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
-    <valueInteger value="0" />
+    <valueInteger value="1" />
   </extension>
   <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter" />
   <name value="PrimaryCare-Encounter" />

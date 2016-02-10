@@ -4,6 +4,9 @@
   <meta>
     <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
   </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1" />
+  </extension>
   <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-family-member-history-recorder-extension" />
   <name value="PrimaryCare-FamilyMemberHistoryRecorder-Extension" />
   <display value="Primary Care family member history recorder extension" />

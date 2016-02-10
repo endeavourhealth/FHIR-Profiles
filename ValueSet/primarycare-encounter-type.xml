@@ -6,7 +6,7 @@
 		<profile value="http://hl7.org/fhir/StructureDefinition/valueset-shareable-definition"/>
 	</meta>
 	<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
-		<valueInteger value="0" />
+		<valueInteger value="1" />
 	</extension>
 	<text>
 		<status value="extensions"/>
