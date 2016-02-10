@@ -1,11 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-observation" />
   <meta>
     <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
-    <valueInteger value="0" />
+    <valueInteger value="1" />
   </extension>
   <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-observation" />
   <name value="PrimaryCare-Observation" />
@@ -80,6 +80,37 @@
       </mapping>
     </element>
     <element>
+      <path value="Observation.code" />
+      <short value="Type of observation (code / type)" />
+      <definition value="Describes what was observed. Sometimes this is called the observation &quot;name&quot;." />
+      <requirements value="Knowing what kind of observation is being made is essential to understanding the observation." />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="CodeableConcept" />
+      </type>
+      <isSummary value="true" />
+      <binding>
+        <strength value="example" />
+        <description value="Codes identifying names of simple observations." />
+        <valueSetReference>
+          <reference value="http://endeavourhealth.org/fhir/ValueSet/primarycare-observation-code" />
+        </valueSetReference>
+      </binding>
+      <mapping>
+        <identity value="v2" />
+        <map value="OBX-3" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="code" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="what" />
+      </mapping>
+    </element>
+    <element>
       <path value="Observation.subject" />
       <short value="Who this is about" />
       <definition value="The patient whose characteristics (direct or indirect) are described by the observation and into whose record the observation is placed.  Comments: Indirect characteristics may be those of a specimen, fetus, donor,  other observer (for example a relative or EMT), or any observation made about the subject." />
@@ -90,18 +121,6 @@
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
-      </type>
-      <type>
-        <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-group" />
-      </type>
-      <type>
-        <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-device" />
-      </type>
-      <type>
-        <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location" />
       </type>
       <isSummary value="true" />
       <mapping>
@@ -239,6 +258,38 @@
       <mapping>
         <identity value="rim" />
         <map value=".targetObservation" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Observation.component.code" />
+      <short value="Type of component observation (code / type)" />
+      <definition value="Describes what was observed. Sometimes this is called the observation &quot;code&quot;." />
+      <requirements value="Knowing what kind of observation is being made is essential to understanding the observation." />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="CodeableConcept" />
+      </type>
+      <condition value="obs-7" />
+      <isSummary value="true" />
+      <binding>
+        <strength value="example" />
+        <description value="Codes identifying names of simple observations." />
+        <valueSetReference>
+          <reference value="http://endeavourhealth.org/fhir/ValueSet/primarycare-observation-code" />
+        </valueSetReference>
+      </binding>
+      <mapping>
+        <identity value="v2" />
+        <map value="OBX-3" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="code" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="what" />
       </mapping>
     </element>
   </differential>
