@@ -1,63 +1,199 @@
-<?xml version="1.0" encoding="utf-8"?>
-<StructureDefinition xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir ../Schema/fhir-single.xsd">
-	<id value="primarycare-organization"/>
-	<meta>
-		<lastUpdated value="2015-11-01T10:00:00"/>
-	</meta>
-	<url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"/>
-	<name value="PrimaryCare-Organization"/>
-	<display value="Primary Care organization"/>
-	<status value="draft"/>
-	<publisher value="Endeavour Health Charitable Trust"/>
-	<contact>
-		<telecom>
-			<system value="other"/>
-			<value value="http://www.endeavourhealth.org/"/>
-		</telecom>
-	</contact>
-	<date value="2015-11-01"/>
-	<description value="Primary Care organization"/>
-	<fhirVersion value="1.0.2"/>
-	<kind value="resource"/>
-	<constrainedType value="Organization"/>
-	<abstract value="false"/>
-	<base value="http://hl7.org/fhir/StructureDefinition/Organization"/>
-	<differential>
-		<element>
-			<path value="Organization"/>
-			<short value="A grouping of people or organizations with a common purpose"/>
-			<definition value="A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.  Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, etc."/>
-			<min value="0"/>
-			<max value="*"/>
-			<type>
-				<code value="Organization"/>
-			</type>
-		</element>
-		<element>
-			<path value="Organization.identifier.assigner"/>
-			<short value="Organization that issued id (may be just text)"/>
-			<definition value="Organization that issued/manages the identifier."/>
-			<comments value="The reference may be just a text description of the assigner."/>
-			<min value="0"/>
-			<max value="1"/>
-			<type>
-				<code value="Reference"/>
-				<profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"/>
-			</type>
-			<isSummary value="true"/>
-		</element>
-		<element>
-			<path value="Organization.partOf"/>
-			<short value="The organization of which this organization forms a part"/>
-			<definition value="The organization of which this organization forms a part."/>
-			<requirements value="Need to be able to track the hierarchy of organizations within an organization."/>
-			<min value="0"/>
-			<max value="1"/>
-			<type>
-				<code value="Reference"/>
-				<profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization"/>
-			</type>
-			<isSummary value="true"/>
-		</element>
-	</differential>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="primarycare-organization" />
+  <meta>
+    <lastUpdated value="2015-11-01T10:00:00+00:00" />
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1" />
+  </extension>
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
+  <name value="PrimaryCare-Organization" />
+  <display value="Primary Care organization" />
+  <status value="draft" />
+  <publisher value="Endeavour Health Charitable Trust" />
+  <contact>
+    <telecom>
+      <system value="other" />
+      <value value="http://www.endeavourhealth.org/" />
+    </telecom>
+  </contact>
+  <date value="2015-11-01" />
+  <description value="Primary Care organization" />
+  <fhirVersion value="1.0.2" />
+  <kind value="resource" />
+  <constrainedType value="Organization" />
+  <abstract value="false" />
+  <base value="http://hl7.org/fhir/StructureDefinition/Organization" />
+  <differential>
+    <element>
+      <path value="Organization" />
+      <short value="A grouping of people or organizations with a common purpose" />
+      <definition value="A formally or informally recognized grouping of people or organizations formed for the purpose of achieving some form of collective action.  Includes companies, institutions, corporations, departments, community groups, healthcare practice groups, etc." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Organization" />
+      </type>
+      <mapping>
+        <identity value="v2" />
+        <map value="(also see master files messages)" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="Organization(classCode=ORG, determinerCode=INST)" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="Organization" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="administrative.group" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Organization.identifier" />
+      <slicing>
+        <rules value="openAtEnd" />
+      </slicing>
+      <short value="Identifies this organization  across multiple systems" />
+      <definition value="Identifier for the organization that is used to identify the organization across multiple disparate systems." />
+      <requirements value="Organizations are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the organization." />
+      <min value="0" />
+      <max value="*" />
+      <isSummary value="true" />
+    </element>
+    <element>
+      <path value="Organization.identifier.assigner" />
+      <short value="Organization that issued id (may be just text)" />
+      <definition value="Organization that issued/manages the identifier." />
+      <comments value="The reference may be just a text description of the assigner." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="CX.4 / (CX.4,CX.9,CX.10)" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="./IdentifierIssuingAuthority" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Organization.identifier" />
+      <name value="ODSCode" />
+      <short value="Identifies this organization  across multiple systems" />
+      <definition value="Identifier for the organization that is used to identify the organization across multiple disparate systems." />
+      <requirements value="Organizations are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the organization." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Identifier" />
+      </type>
+      <condition value="org-1" />
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="XON.10 / XON.3" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value=".scopes[Role](classCode=IDENT)" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="./Identifiers" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="id" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Organization.identifier.system" />
+      <short value="ODS code" />
+      <definition value="Establishes the namespace in which set of possible id values is unique." />
+      <requirements value="There are many sequences of identifiers.  To perform matching, we need to know what sequence we're dealing with. The system identifies a particular sequence or set of unique identifiers." />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="uri" />
+      </type>
+      <fixedUri value="http://endeavourhealth.org/fhir/identifier/ods-code" />
+      <exampleUri value="http://www.acme.com/identifiers/patient or urn:ietf:rfc:3986 if the Identifier.value itself is a full uri" />
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="CX.4 / EI-2-4" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="II.root or Role.id.root" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="./IdentifierType" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Organization.identifier.value" />
+      <short value="ODS code value" />
+      <definition value="The portion of the identifier typically displayed to the user and which is unique within the context of the system." />
+      <comments value="If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986." />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="string" />
+      </type>
+      <exampleString value="123456" />
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="CX.1 / EI.1" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="II.extension or II.root if system indicates OID or GUID (Or Role.id.extension or root)" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="./Value" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Organization.partOf" />
+      <short value="The organization of which this organization forms a part" />
+      <definition value="The organization of which this organization forms a part." />
+      <requirements value="Need to be able to track the hierarchy of organizations within an organization." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="No equivalent in HL7 v2" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value=".playedBy[classCode=Part].scoper" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="n/a" />
+      </mapping>
+    </element>
+  </differential>
 </StructureDefinition>
