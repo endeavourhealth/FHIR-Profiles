@@ -57,6 +57,18 @@
     </element>
     <element>
       <path value="Condition.extension" />
+      <name value="significance" />
+      <short value="Significant | Not significant | Unspecified significance" />
+      <definition value="The clinical significance of the condition." />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition-significance-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="Condition.extension" />
       <name value="expectedDuration" />
       <short value="Expected condition duration" />
       <definition value="Estimated or actual expected duration of the condition." />
@@ -206,6 +218,56 @@
       </mapping>
     </element>
     <element>
+      <path value="Condition.code.coding.extension" />
+      <slicing>
+        <discriminator value="url" />
+        <rules value="openAtEnd" />
+      </slicing>
+    </element>
+    <element>
+      <path value="Condition.code.coding.extension" />
+      <name value="qualifier" />
+      <short value="Coding Qualifier" />
+      <definition value="Used to qualify or indicate extra information about a coded value e.g. Laterality, Severity, etc." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-coding-qualifier-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="Condition.category" />
+      <short value="complaint | symptom | finding | diagnosis" />
+      <definition value="A category assigned to the condition." />
+      <comments value="The categorization is often highly contextual and may appear poorly differentiated or not very useful in other contexts." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="CodeableConcept" />
+      </type>
+      <isSummary value="true" />
+      <binding>
+        <strength value="preferred" />
+        <description value="A category assigned to the condition." />
+        <valueSetReference>
+          <reference value="http://hl7.org/fhir/ValueSet/condition-category" />
+        </valueSetReference>
+      </binding>
+      <mapping>
+        <identity value="v2" />
+        <map value="'problem' if from PRB-3. 'diagnosis' if from DG1 segment in PV1 message" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value=".code" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="class" />
+      </mapping>
+    </element>
+    <element>
       <path value="Condition.clinicalStatus" />
       <short value="active | relapse | remission | resolved" />
       <definition value="The clinical status of the condition." />
@@ -246,12 +308,6 @@
         <code value="Quantity" />
         <profile value="http://hl7.org/fhir/StructureDefinition/Age" />
       </type>
-      <type>
-        <code value="Period" />
-      </type>
-      <type>
-        <code value="Range" />
-      </type>
       <isSummary value="true" />
       <mapping>
         <identity value="v2" />
@@ -283,12 +339,6 @@
       <type>
         <code value="boolean" />
       </type>
-      <type>
-        <code value="Period" />
-      </type>
-      <type>
-        <code value="Range" />
-      </type>
       <isSummary value="true" />
       <mapping>
         <identity value="rim" />
@@ -297,6 +347,21 @@
       <mapping>
         <identity value="w5" />
         <map value="when.done" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Condition.stage" />
+      <short value="Stage/grade, usually assessed formally" />
+      <definition value="Clinical stage or grade of a condition. May include formal severity assessments." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="BackboneElement" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="rim" />
+        <map value="./inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=&quot;stage/grade&quot;]" />
       </mapping>
     </element>
     <element>
@@ -322,6 +387,45 @@
       <mapping>
         <identity value="rim" />
         <map value=".self" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Condition.evidence" />
+      <short value="Supporting evidence" />
+      <definition value="Supporting Evidence / manifestations that are the basis on which this condition is suspected or confirmed." />
+      <comments value="The evidence may be a simple list of coded symptoms/manifestations, or references to observations or formal assessments, or both." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="BackboneElement" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="rim" />
+        <map value=".outboundRelationship[typeCode=SPRT].target[classCode=OBS, moodCode=EVN]" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Condition.bodySite" />
+      <short value="Anatomical location, if relevant" />
+      <definition value="The anatomical location where this condition manifests itself." />
+      <comments value="May be a summary code, or a reference to a very precise definition of the location, or both." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="CodeableConcept" />
+      </type>
+      <isSummary value="true" />
+      <binding>
+        <strength value="example" />
+        <description value="Codes describing anatomical locations. May include laterality." />
+        <valueSetReference>
+          <reference value="http://hl7.org/fhir/ValueSet/body-site" />
+        </valueSetReference>
+      </binding>
+      <mapping>
+        <identity value="rim" />
+        <map value=".targetBodySiteCode" />
       </mapping>
     </element>
   </differential>
