@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-condition-episodelink-extension" />
   <meta>
@@ -127,6 +127,10 @@
       <type>
         <code value="Reference"/>
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-observation"/>
+      </type>
+      <type>
+        <code value="Reference"/>
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-allergy-intolerance"/>
       </type>
     </element>
     <element>
