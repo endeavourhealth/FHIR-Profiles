@@ -171,6 +171,101 @@
       </mapping>
     </element>
     <element>
+      <path value="Organization.type" />
+      <short value="Kind of organization" />
+      <definition value="The kind of organization that this is." />
+      <comments value="Organizations can be corporations, wards, sections, clinical teams, government departments, etc. Note that code is generally a classifier of the type of organization; in many applications, codes are used to identity a particular organization (say, ward) as opposed to another of the same type - these are identifiers, not codes." />
+      <requirements value="Need to be able to track the kind of organization that this is - different organization types have different uses." />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="CodeableConcept" />
+      </type>
+      <isSummary value="true" />
+      <binding>
+        <strength value="required" />
+        <description value="Used to categorize the organization" />
+        <valueSetReference>
+          <reference value="http://endeavourhealth.org/fhir/ValueSet/primarycare-organization-type" />
+        </valueSetReference>
+      </binding>
+    </element>
+    <element>
+      <path value="Organization.type.coding.system" />
+      <short value="Identity of the terminology system" />
+      <definition value="The identification of the code system that defines the meaning of the symbol in the code." />
+      <comments value="The URI may be an OID (urn:oid:...) or a UUID (urn:uuid:...).  OIDs and UUIDs SHALL be references to the HL7 OID registry. Otherwise, the URI should come from HL7's list of FHIR defined special URIs or it should de-reference to some definition that establish the system clearly and unambiguously." />
+      <requirements value="Need to be unambiguous about the source of the definition of the symbol." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="uri" />
+      </type>
+      <fixedUri value="http://endeavourhealth.org/fhir/ValueSet/primarycare-organization-type" />
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="C*E.3" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="./codeSystem" />
+      </mapping>
+      <mapping>
+        <identity value="orim" />
+        <map value="fhir:Coding.system rdfs:subPropertyOf dt:CDCoding.codeSystem" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Organization.type.coding.version" />
+      <short value="Version of the system - if relevant" />
+      <definition value="The version of the code system which was used when choosing this code. Note that a well-maintained code system does not need the version reported, because the meaning of codes is consistent across versions. However this cannot consistently be assured. and when the meaning is not guaranteed to be consistent, the version SHOULD be exchanged." />
+      <comments value="Where the terminology does not clearly define what string should be used to identify code system versions, the recommendation is to use the date (expressed in FHIR date format) on which that version was officially published as the version date." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="string" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="C*E.7" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="./codeSystemVersion" />
+      </mapping>
+      <mapping>
+        <identity value="orim" />
+        <map value="fhir:Coding.version rdfs:subPropertyOf dt:CDCoding.codeSystemVersion" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Organization.type.coding.userSelected" />
+      <short value="If this coding was chosen directly by the user" />
+      <definition value="Indicates that this coding was chosen by a user directly - i.e. off a pick list of available items (codes or displays)." />
+      <comments value="Amongst a set of alternatives, a directly chosen code is the most appropriate starting point for new translations. There is some ambiguity about what exactly 'directly chosen' implies, and trading partner agreement may be needed to clarify the use of this element and its consequences more completely." />
+      <requirements value="This has been identified as a clinical safety criterium - that this exact system/code pair was chosen explicitly, rather than inferred by the system based on some rules or language processing." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="boolean" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="Sometimes implied by being first" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="CD.codingRationale" />
+      </mapping>
+      <mapping>
+        <identity value="orim" />
+        <map value="fhir:Coding.userSelected fhir:mapsTo dt:CDCoding.codingRationale. fhir:Coding.userSelected fhir:hasMap fhir:Coding.userSelected.map. fhir:Coding.userSelected.map a fhir:Map;   fhir:target dt:CDCoding.codingRationale. fhir:Coding.userSelected\#true a [     fhir:source &quot;true&quot;;     fhir:target dt:CDCoding.codingRationale\#O   ]" />
+      </mapping>
+    </element>
+    <element>
       <path value="Organization.partOf" />
       <short value="The organization of which this organization forms a part" />
       <definition value="The organization of which this organization forms a part." />
