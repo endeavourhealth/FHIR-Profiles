@@ -144,7 +144,7 @@
       <definition value="This will either be a name or a description; e.g. &quot;Aunt Susan&quot;, &quot;my cousin with the red hair&quot;." />
       <requirements value="Allows greater ease in ensuring the same person is being talked about." />
       <min value="0" />
-      <max value="0" />
+      <max value="1" />
       <type>
         <code value="string" />
       </type>
@@ -160,7 +160,7 @@
       <definition value="Administrative Gender - the gender that the relative is considered to have for administration and record keeping purposes." />
       <requirements value="Not all relationship codes imply gender and the relative's gender can be relevant for risk assessments." />
       <min value="0" />
-      <max value="0" />
+      <max value="1" />
       <type>
         <code value="code" />
       </type>
@@ -179,15 +179,12 @@
       <definition value="The actual or approximate date of birth of the relative." />
       <requirements value="Allows calculation of the relative's age." />
       <min value="0" />
-      <max value="0" />
+      <max value="1" />
       <type>
         <code value="Period" />
       </type>
       <type>
         <code value="date" />
-      </type>
-      <type>
-        <code value="string" />
       </type>
       <condition value="fhs-1" />
       <mapping>
@@ -201,16 +198,13 @@
       <definition value="The actual or approximate age of the relative at the time the family member history is recorded." />
       <requirements value="While age can be calculated from date of birth, sometimes recording age directly is more natureal for clinicians." />
       <min value="0" />
-      <max value="0" />
+      <max value="1" />
       <type>
         <code value="Quantity" />
         <profile value="http://hl7.org/fhir/StructureDefinition/Age" />
       </type>
       <type>
         <code value="Range" />
-      </type>
-      <type>
-        <code value="string" />
       </type>
       <condition value="fhs-1" />
       <mapping>
@@ -223,7 +217,7 @@
       <short value="Dead? How old/when?" />
       <definition value="Deceased flag or the actual or approximate age of the relative at the time of death for the family member history record." />
       <min value="0" />
-      <max value="0" />
+      <max value="1" />
       <type>
         <code value="boolean" />
       </type>
@@ -236,9 +230,6 @@
       </type>
       <type>
         <code value="date" />
-      </type>
-      <type>
-        <code value="string" />
       </type>
       <mapping>
         <identity value="rim" />
@@ -334,7 +325,7 @@
       <short value="deceased | permanent disability | etc." />
       <definition value="Indicates what happened as a result of this condition.  If the condition resulted in death, deceased date is captured on the relation." />
       <min value="0" />
-      <max value="0" />
+      <max value="1" />
       <type>
         <code value="CodeableConcept" />
       </type>
@@ -356,7 +347,7 @@
       <definition value="Either the age of onset, range of approximate age or descriptive string can be recorded.  For conditions with multiple occurrences, this describes the first known occurrence." />
       <requirements value="Age of onset of a condition in relatives is predictive of risk for the patient." />
       <min value="0" />
-      <max value="0" />
+      <max value="1" />
       <type>
         <code value="Quantity" />
         <profile value="http://hl7.org/fhir/StructureDefinition/Age" />
@@ -366,9 +357,6 @@
       </type>
       <type>
         <code value="Period" />
-      </type>
-      <type>
-        <code value="string" />
       </type>
       <mapping>
         <identity value="rim" />
@@ -380,7 +368,7 @@
       <short value="Extra information about condition" />
       <definition value="An area where general notes can be placed about this specific condition." />
       <min value="0" />
-      <max value="0" />
+      <max value="1" />
       <type>
         <code value="Annotation" />
       </type>
@@ -394,7 +382,7 @@
       <short value="Individual responsible for the annotation" />
       <definition value="The individual responsible for making the annotation." />
       <min value="0" />
-      <max value="1" />
+      <max value="0" />
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
@@ -418,6 +406,25 @@
       <mapping>
         <identity value="rim" />
         <map value="Act.participant[typeCode=AUT].role" />
+      </mapping>
+    </element>
+    <element>
+      <path value="FamilyMemberHistory.condition.note.time" />
+      <short value="When the annotation was made" />
+      <definition value="Indicates when this particular annotation was made." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="dateTime" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="N/A" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="Act.effectiveTime" />
       </mapping>
     </element>
   </differential>
