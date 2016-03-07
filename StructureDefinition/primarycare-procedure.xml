@@ -120,7 +120,7 @@
       <short value="Classification of the procedure" />
       <definition value="A code that classifies the procedure for searching, sorting and display purposes (e.g. &quot;Surgical Procedure&quot;)." />
       <min value="0" />
-      <max value="0" />
+      <max value="1" />
       <type>
         <code value="CodeableConcept" />
       </type>
@@ -199,7 +199,7 @@
       <short value="Target body sites" />
       <definition value="Detailed and structured anatomical location information. Multiple locations are allowed - e.g. multiple punch biopsies of a lesion." />
       <min value="0" />
-      <max value="0" />
+      <max value="*" />
       <type>
         <code value="CodeableConcept" />
       </type>
