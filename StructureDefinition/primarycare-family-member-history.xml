@@ -139,11 +139,118 @@
       </mapping>
     </element>
     <element>
+      <path value="FamilyMemberHistory.name" />
+      <short value="The family member described" />
+      <definition value="This will either be a name or a description; e.g. &quot;Aunt Susan&quot;, &quot;my cousin with the red hair&quot;." />
+      <requirements value="Allows greater ease in ensuring the same person is being talked about." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="string" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="rim" />
+        <map value="name" />
+      </mapping>
+    </element>
+    <element>
+      <path value="FamilyMemberHistory.gender" />
+      <short value="male | female | other | unknown" />
+      <definition value="Administrative Gender - the gender that the relative is considered to have for administration and record keeping purposes." />
+      <requirements value="Not all relationship codes imply gender and the relative's gender can be relevant for risk assessments." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="code" />
+      </type>
+      <isSummary value="true" />
+      <binding>
+        <strength value="required" />
+        <description value="The gender of a person used for administrative purposes." />
+        <valueSetReference>
+          <reference value="http://hl7.org/fhir/ValueSet/administrative-gender" />
+        </valueSetReference>
+      </binding>
+    </element>
+    <element>
+      <path value="FamilyMemberHistory.born[x]" />
+      <short value="(approximate) date of birth" />
+      <definition value="The actual or approximate date of birth of the relative." />
+      <requirements value="Allows calculation of the relative's age." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="Period" />
+      </type>
+      <type>
+        <code value="date" />
+      </type>
+      <type>
+        <code value="string" />
+      </type>
+      <condition value="fhs-1" />
+      <mapping>
+        <identity value="rim" />
+        <map value="player[classCode=LIV, determinerCode=INSTANCE]. birthDate (could be URG)" />
+      </mapping>
+    </element>
+    <element>
+      <path value="FamilyMemberHistory.age[x]" />
+      <short value="(approximate) age" />
+      <definition value="The actual or approximate age of the relative at the time the family member history is recorded." />
+      <requirements value="While age can be calculated from date of birth, sometimes recording age directly is more natureal for clinicians." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="Quantity" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Age" />
+      </type>
+      <type>
+        <code value="Range" />
+      </type>
+      <type>
+        <code value="string" />
+      </type>
+      <condition value="fhs-1" />
+      <mapping>
+        <identity value="rim" />
+        <map value="participation[typeCode=SBJ].act[classCode=OBS,moodCode=EVN, code=&quot;age&quot;].value" />
+      </mapping>
+    </element>
+    <element>
+      <path value="FamilyMemberHistory.deceased[x]" />
+      <short value="Dead? How old/when?" />
+      <definition value="Deceased flag or the actual or approximate age of the relative at the time of death for the family member history record." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="boolean" />
+      </type>
+      <type>
+        <code value="Quantity" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Age" />
+      </type>
+      <type>
+        <code value="Range" />
+      </type>
+      <type>
+        <code value="date" />
+      </type>
+      <type>
+        <code value="string" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value="player[classCode=LIV, determinerCode=INSTANCE].deceasedInd, deceasedDate (could be URG)  For age, you'd hang an observation off the role" />
+      </mapping>
+    </element>
+    <element>
       <path value="FamilyMemberHistory.note.author[x]" />
       <short value="Individual responsible for the annotation" />
       <definition value="The individual responsible for making the annotation." />
       <min value="0" />
-      <max value="1" />
+      <max value="0" />
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
@@ -167,6 +274,119 @@
       <mapping>
         <identity value="rim" />
         <map value="Act.participant[typeCode=AUT].role" />
+      </mapping>
+    </element>
+    <element>
+      <path value="FamilyMemberHistory.note.time" />
+      <short value="When the annotation was made" />
+      <definition value="Indicates when this particular annotation was made." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="dateTime" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="N/A" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="Act.effectiveTime" />
+      </mapping>
+    </element>
+    <element>
+      <path value="FamilyMemberHistory.condition" />
+      <short value="Condition that the related person had" />
+      <definition value="The significant Conditions (or condition) that the family member had. This is a repeating section to allow a system to represent more than one condition per resource, though there is nothing stopping multiple resources - one per condition." />
+      <comments value="If none of the conditions listed have an outcome of &quot;death&quot; specified, that indicates that none of the specified conditions are known to have been the primary cause of death." />
+      <min value="1" />
+      <max value="*" />
+      <type>
+        <code value="BackboneElement" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value="inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=ActCode#ASSERTION, value&lt;Diagnosis]" />
+      </mapping>
+    </element>
+    <element>
+      <path value="FamilyMemberHistory.condition.code.coding.extension" />
+      <slicing>
+        <discriminator value="url" />
+        <rules value="openAtEnd" />
+      </slicing>
+    </element>
+    <element>
+      <path value="FamilyMemberHistory.condition.code.coding.extension" />
+      <name value="qualifier" />
+      <short value="Coding Qualifier" />
+      <definition value="Used to qualify or indicate extra information about a coded value e.g. Laterality, Severity, etc." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-coding-qualifier-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="FamilyMemberHistory.condition.outcome" />
+      <short value="deceased | permanent disability | etc." />
+      <definition value="Indicates what happened as a result of this condition.  If the condition resulted in death, deceased date is captured on the relation." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="CodeableConcept" />
+      </type>
+      <binding>
+        <strength value="example" />
+        <description value="The result of the condition for the patient; e.g. death, permanent disability, temporary disability, etc." />
+        <valueSetReference>
+          <reference value="http://hl7.org/fhir/ValueSet/condition-outcome" />
+        </valueSetReference>
+      </binding>
+      <mapping>
+        <identity value="rim" />
+        <map value="outboundRelationship[typeCode=OUTC)].target[classCode=OBS, moodCode=EVN, code=ActCode#ASSERTION].value" />
+      </mapping>
+    </element>
+    <element>
+      <path value="FamilyMemberHistory.condition.onset[x]" />
+      <short value="When condition first manifested" />
+      <definition value="Either the age of onset, range of approximate age or descriptive string can be recorded.  For conditions with multiple occurrences, this describes the first known occurrence." />
+      <requirements value="Age of onset of a condition in relatives is predictive of risk for the patient." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="Quantity" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Age" />
+      </type>
+      <type>
+        <code value="Range" />
+      </type>
+      <type>
+        <code value="Period" />
+      </type>
+      <type>
+        <code value="string" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value="inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=&quot;Subject Age at measurement&quot;, value&lt;Diagnosis].value[@xsi:typeCode='TS' or 'IVL_TS']  Use originalText for string" />
+      </mapping>
+    </element>
+    <element>
+      <path value="FamilyMemberHistory.condition.note" />
+      <short value="Extra information about condition" />
+      <definition value="An area where general notes can be placed about this specific condition." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="Annotation" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value="inboundRelationship[typeCode=SUBJ].source[classCode=OBS, moodCode=EVN, code=ActCode#ANNGEN].value" />
       </mapping>
     </element>
     <element>
