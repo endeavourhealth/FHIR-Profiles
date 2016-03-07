@@ -148,7 +148,7 @@
       <alias value="Source" />
       <alias value="Informant" />
       <min value="0" />
-      <max value="1" />
+      <max value="0" />
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
@@ -225,7 +225,7 @@
       <comments value="Decision support would typically raise alerts for 'Unconfirmed', 'Confirmed', and 'Resolved' and ignore a 'Refuted' reaction. In particular, 'Refuted' may be useful for reconciliation of the Adverse Reaction List. Some implementations may choose to make this field mandatory." />
       <alias value="State" />
       <min value="0" />
-      <max value="0" />
+      <max value="1" />
       <type>
         <code value="code" />
       </type>
@@ -257,7 +257,7 @@
       <alias value="Contra-indication" />
       <alias value="Risk" />
       <min value="0" />
-      <max value="0" />
+      <max value="1" />
       <type>
         <code value="code" />
       </type>
@@ -282,7 +282,7 @@
       <alias value="Category" />
       <alias value="Class" />
       <min value="0" />
-      <max value="0" />
+      <max value="1" />
       <type>
         <code value="code" />
       </type>
@@ -313,7 +313,7 @@
       <alias value="Reaction Type" />
       <alias value="Class" />
       <min value="0" />
-      <max value="0" />
+      <max value="1" />
       <type>
         <code value="code" />
       </type>
@@ -336,7 +336,7 @@
       <definition value="Represents the date and/or time of the last known occurrence of a reaction event." />
       <comments value="This date may be replicated by one of the Onset of Reaction dates. Where a textual representation of the date of last occurrence is required e.g. 'In Childhood, '10 years ago' the Comment element should be used." />
       <min value="0" />
-      <max value="0" />
+      <max value="1" />
       <type>
         <code value="dateTime" />
       </type>
@@ -347,7 +347,7 @@
       <short value="Individual responsible for the annotation" />
       <definition value="The individual responsible for making the annotation." />
       <min value="0" />
-      <max value="1" />
+      <max value="0" />
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
@@ -371,6 +371,25 @@
       <mapping>
         <identity value="rim" />
         <map value="Act.participant[typeCode=AUT].role" />
+      </mapping>
+    </element>
+    <element>
+      <path value="AllergyIntolerance.note.time" />
+      <short value="When the annotation was made" />
+      <definition value="Indicates when this particular annotation was made." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="dateTime" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="N/A" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="Act.effectiveTime" />
       </mapping>
     </element>
     <element>
