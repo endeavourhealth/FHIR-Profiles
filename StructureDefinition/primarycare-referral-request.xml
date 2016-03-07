@@ -280,7 +280,7 @@
       <path value="ReferralRequest.requester" />
       <short value="Requester of referral / transfer of care" />
       <definition value="The healthcare provider or provider organization who/which initiated the referral/transfer of care request. Can also be  Patient (a self referral)." />
-      <min value="0" />
+      <min value="1" />
       <max value="1" />
       <type>
         <code value="Reference" />
@@ -310,7 +310,7 @@
       <short value="Receiver of referral / transfer of care request" />
       <definition value="The healthcare provider(s) or provider organization(s) who/which is to receive the referral/transfer of care request." />
       <comments value="There will be a primary receiver. But the request can be received by any number of &quot;copied to&quot; providers or organizations." />
-      <min value="0" />
+      <min value="1" />
       <max value="*" />
       <type>
         <code value="Reference" />
