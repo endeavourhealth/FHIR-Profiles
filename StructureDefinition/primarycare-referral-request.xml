@@ -44,6 +44,7 @@
     <element>
       <path value="ReferralRequest.identifier" />
       <slicing>
+        <discriminator value="system" />
         <rules value="openAtEnd" />
       </slicing>
       <short value="Business identifier" />
@@ -251,26 +252,6 @@
       <mapping>
         <identity value="servd" />
         <map value="./IdentifierIssuingAuthority" />
-      </mapping>
-    </element>
-    <element>
-      <path value="ReferralRequest.identifier" />
-      <name value="localIdentifiers" />
-      <short value="Business identifier" />
-      <definition value="Business identifier that uniquely identifies the referral/care transfer request instance." />
-      <min value="0" />
-      <max value="*" />
-      <type>
-        <code value="Identifier" />
-      </type>
-      <isModifier value="false" />
-      <mapping>
-        <identity value="v2" />
-        <map value="RF1-6 / RF1-11" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="id" />
       </mapping>
     </element>
     <element>
