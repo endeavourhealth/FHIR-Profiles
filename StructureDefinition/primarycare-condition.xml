@@ -242,7 +242,7 @@
       <definition value="A category assigned to the condition." />
       <comments value="The categorization is often highly contextual and may appear poorly differentiated or not very useful in other contexts." />
       <min value="0" />
-      <max value="0" />
+      <max value="1" />
       <type>
         <code value="CodeableConcept" />
       </type>
