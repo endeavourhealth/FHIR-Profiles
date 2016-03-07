@@ -19,7 +19,7 @@
     </telecom>
   </contact>
   <date value="2015-11-01T00:00:00+00:00" />
-  <description value="Placeholder" />
+  <description value="The findings and interpretation of diagnostic tests performed on patients." />
   <requirements value="To support reporting for any diagnostic report into a clinical data repository." />
   <fhirVersion value="1.0.1" />
   <kind value="resource" />
@@ -82,6 +82,36 @@
       </mapping>
     </element>
     <element>
+      <path value="DiagnosticReport.code" />
+      <short value="Name/Code for this diagnostic report" />
+      <definition value="A code or name that describes this diagnostic report." />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="CodeableConcept" />
+      </type>
+      <isSummary value="true" />
+      <binding>
+        <strength value="preferred" />
+        <description value="Codes that describe Diagnostic Reports." />
+        <valueSetReference>
+          <reference value="http://endeavourhealth.org/fhir/ValueSet/primarycare-report-codes" />
+        </valueSetReference>
+      </binding>
+      <mapping>
+        <identity value="v2" />
+        <map value="OBR-4 (HL7 v2 doesn't provide an easy way to indicate both the ordered test and the performed panel)" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="code" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="what" />
+      </mapping>
+    </element>
+    <element>
       <path value="DiagnosticReport.subject" />
       <short value="The subject of the report, usually, but not always, the patient" />
       <definition value="The subject of the report. Usually, but not always, this is a patient. However diagnostic services also perform analyses on specimens collected from a variety of other sources." />
@@ -92,18 +122,6 @@
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
-      </type>
-      <type>
-        <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-group" />
-      </type>
-      <type>
-        <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-device" />
-      </type>
-      <type>
-        <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location" />
       </type>
       <isSummary value="true" />
       <mapping>
@@ -190,14 +208,6 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-diagnostic-order" />
       </type>
-      <type>
-        <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-procedure-request" />
-      </type>
-      <type>
-        <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-referral-request" />
-      </type>
       <mapping>
         <identity value="v2" />
         <map value="ORC? OBR-2/3?" />
@@ -255,6 +265,69 @@
       <mapping>
         <identity value="rim" />
         <map value="outboundRelationship[typeCode=COMP].target" />
+      </mapping>
+    </element>
+    <element>
+      <path value="DiagnosticReport.imagingStudy" />
+      <short value="Reference to full details of imaging associated with the diagnostic report" />
+      <definition value="One or more links to full details of any imaging performed during the diagnostic investigation. Typically, this is imaging performed by DICOM enabled modalities, but this is not required. A fully enabled PACS viewer can use this information to provide views of the source images." />
+      <comments value="ImagingStudy and ImageObjectStudy and the image element are somewhat overlapping - typically, the list of image references in the image element will also be found in one of the imaging study resources. However each caters to different types of displays for different types of purposes. Neither, either, or both may be provided." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/ImagingStudy" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/ImagingObjectSelection" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value="outboundRelationship[typeCode=COMP].target[classsCode=DGIMG, moodCode=EVN]" />
+      </mapping>
+    </element>
+    <element>
+      <path value="DiagnosticReport.image" />
+      <short value="Key images associated with this report" />
+      <definition value="A list of key images associated with this report. The images are generally created during the diagnostic process, and may be directly of the patient, or of treated specimens (i.e. slides of interest)." />
+      <requirements value="Many diagnostic services include images in the report as part of their service." />
+      <alias value="DICOM" />
+      <alias value="Slides" />
+      <alias value="Scans" />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="BackboneElement" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="OBX?" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="outboundRelationship[typeCode=COMP].target" />
+      </mapping>
+    </element>
+    <element>
+      <path value="DiagnosticReport.presentedForm" />
+      <short value="Entire report as issued" />
+      <definition value="Rich text representation of the entire result as issued by the diagnostic service. Multiple formats are allowed but they SHALL be semantically equivalent." />
+      <comments value="&quot;application/pdf&quot; is recommended as the most reliable and interoperable in this context." />
+      <requirements value="Gives Laboratory the ability to provide its own fully formatted report for clinical fidelity." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="Attachment" />
+      </type>
+      <mapping>
+        <identity value="v2" />
+        <map value="OBX" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="text (type=ED)" />
       </mapping>
     </element>
   </differential>
