@@ -51,7 +51,7 @@
       <short value="Who prescription is for" />
       <definition value="A link to a resource representing the person to whom the medication will be given." />
       <comments value="SubstanceAdministration-&gt;subject-&gt;Patient." />
-      <min value="0" />
+      <min value="1" />
       <max value="1" />
       <type>
         <code value="Reference" />
@@ -75,7 +75,7 @@
       <path value="MedicationOrder.prescriber" />
       <short value="Who ordered the medication(s)" />
       <definition value="The healthcare professional responsible for authorizing the prescription." />
-      <min value="0" />
+      <min value="1" />
       <max value="1" />
       <type>
         <code value="Reference" />
