@@ -19,7 +19,7 @@
     </telecom>
   </contact>
   <date value="2015-11-01T00:00:00+00:00" />
-  <description value="Placeholder" />
+  <description value="Measurements and simple assertions made about a patient." />
   <requirements value="Observations are a key aspect of healthcare.  This resource is used to capture those that do not require more sophisticated mechanisms." />
   <fhirVersion value="1.0.1" />
   <kind value="resource" />
@@ -77,32 +77,6 @@
       <mapping>
         <identity value="servd" />
         <map value="./IdentifierIssuingAuthority" />
-      </mapping>
-    </element>
-    <element>
-      <path value="Observation.category" />
-      <short value="Classification of  type of observation" />
-      <definition value="A code that classifies the general type of observation being made.  This is used  for searching, sorting and display purposes." />
-      <comments value="The level of granularity is defined by the category concepts in the value set.   More fine-grained filtering can be performed using the metadata and/or terminology hierarchy in Observation.code." />
-      <min value="0" />
-      <max value="1" />
-      <type>
-        <code value="CodeableConcept" />
-      </type>
-      <binding>
-        <strength value="example" />
-        <description value="Codes for high level observation categories ." />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/observation-category" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="rim" />
-        <map value=".outboundRelationship[typeCode=&quot;COMP].target[classCode=&quot;LIST&quot;, moodCode=&quot;EVN&quot;].code" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="class" />
       </mapping>
     </element>
     <element>
@@ -295,88 +269,6 @@
       </mapping>
     </element>
     <element>
-      <path value="Observation.dataAbsentReason" />
-      <short value="Why the result is missing" />
-      <definition value="Provides a reason why the expected value in the element Observation.value[x] is missing." />
-      <comments value="Null or exceptional values can be represented two ways in FHIR Observations.  One way is to simply include them in the value set and represent the exceptions in the value.  For example, measurement values for a serology test could be  &quot;detected&quot;, &quot;not detected&quot;, &quot;inconclusive&quot;, or  &quot;specimen unsatisfactory&quot;.   The alternate way is to use the value element for actual observations and use the explicit dataAbsentReason element to record exceptional values.  For example, the dataAbsentReason code &quot;error&quot; could be used when the measurement was not completed.  Because of these options, use-case agreements are required to interpret general observations for exceptional values." />
-      <requirements value="For many results it is necessary to handle exceptional values in measurements." />
-      <min value="0" />
-      <max value="1" />
-      <type>
-        <code value="CodeableConcept" />
-      </type>
-      <condition value="obs-6" />
-      <binding>
-        <strength value="extensible" />
-        <description value="Codes specifying why the result (Observation.value[x]) is missing." />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/observation-valueabsentreason" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="v2" />
-        <map value="N/A" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="value.nullFlavor" />
-      </mapping>
-    </element>
-    <element>
-      <path value="Observation.bodySite" />
-      <short value="Observed body part" />
-      <definition value="Indicates the site on the subject's body where the observation was made (i.e. the target site)." />
-      <comments value="Only used if not implicit in code found in Observation.code.  If the use case requires BodySite to be handled as a separate resource instead of an inline coded element (e.g. to identify and track separately) then use the standard extension[ body-site-instance](extension-body-site-instance.html)." />
-      <requirements value="Knowing where the observation is made is important for tracking if multiple sites are possible." />
-      <min value="0" />
-      <max value="1" />
-      <type>
-        <code value="CodeableConcept" />
-      </type>
-      <binding>
-        <strength value="example" />
-        <description value="Codes describing anatomical locations. May include laterality." />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/body-site" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="v2" />
-        <map value="OBX-20" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="targetSiteCode" />
-      </mapping>
-    </element>
-    <element>
-      <path value="Observation.method" />
-      <short value="How it was done" />
-      <definition value="Indicates the mechanism used to perform the observation." />
-      <comments value="Only used if not implicit in code for Observation.code." />
-      <requirements value="In some cases, method can impact results and is thus used for determining whether results can be compared or determining significance of results." />
-      <min value="0" />
-      <max value="1" />
-      <type>
-        <code value="CodeableConcept" />
-      </type>
-      <binding>
-        <strength value="example" />
-        <description value="Methods for simple observations." />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/observation-methods" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="v2" />
-        <map value="OBX-17" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="methodCode" />
-      </mapping>
-    </element>
-    <element>
       <path value="Observation.specimen" />
       <short value="Specimen used for this observation" />
       <definition value="The specimen that was used when this observation was made." />
@@ -508,34 +400,6 @@
       <mapping>
         <identity value="rim" />
         <map value="value" />
-      </mapping>
-    </element>
-    <element>
-      <path value="Observation.component.dataAbsentReason" />
-      <short value="Why the component result is missing" />
-      <definition value="Provides a reason why the expected value in the element Observation.value[x] is missing." />
-      <comments value="&quot;Null&quot; or exceptional values can be represented two ways in FHIR Observations.  One way is to simply include them in the value set and represent the exceptions in the value.  For example, measurement values for a serology test could be  &quot;detected&quot;, &quot;not detected&quot;, &quot;inconclusive&quot;, or  &quot;test not done&quot;.   The alternate way is to use the value element for actual observations and use the explicit dataAbsentReason element to record exceptional values.  For example, the dataAbsentReason code &quot;error&quot; could be used when the measurement was not completed.  Because of these options, use-case agreements are required to interpret general observations for exceptional values." />
-      <requirements value="For many results it is necessary to handle exceptional values in measurements." />
-      <min value="0" />
-      <max value="1" />
-      <type>
-        <code value="CodeableConcept" />
-      </type>
-      <condition value="obs-6" />
-      <binding>
-        <strength value="extensible" />
-        <description value="Codes specifying why the result (Observation.value[x]) is missing." />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/observation-valueabsentreason" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="v2" />
-        <map value="N/A" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="value.nullFlavor" />
       </mapping>
     </element>
   </differential>
