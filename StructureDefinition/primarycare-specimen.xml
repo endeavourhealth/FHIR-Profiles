@@ -19,7 +19,7 @@
     </telecom>
   </contact>
   <date value="2015-11-01T00:00:00+00:00" />
-  <description value="Placeholder" />
+  <description value="A sample to be used for analysis." />
   <fhirVersion value="1.0.1" />
   <kind value="resource" />
   <constrainedType value="Specimen" />
@@ -87,26 +87,14 @@
     </element>
     <element>
       <path value="Specimen.subject" />
-      <short value="Where the specimen came from. This may be from the patient(s) or from the environment or a device" />
-      <definition value="Where the specimen came from. This may be from the patient(s) or from the environment or a device." />
+      <short value="Where the specimen came from." />
+      <definition value="Where the specimen came from." />
       <requirements value="Must know the subject context." />
       <min value="1" />
       <max value="1" />
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
-      </type>
-      <type>
-        <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-group" />
-      </type>
-      <type>
-        <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-device" />
-      </type>
-      <type>
-        <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-substance" />
       </type>
       <isSummary value="true" />
       <mapping>
