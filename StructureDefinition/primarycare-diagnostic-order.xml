@@ -19,7 +19,7 @@
     </telecom>
   </contact>
   <date value="2015-11-01T00:00:00+00:00" />
-  <description value="Placeholder" />
+  <description value="A record of a request for a diagnostic investigation service to be performed." />
   <fhirVersion value="1.0.1" />
   <kind value="resource" />
   <constrainedType value="DiagnosticOrder" />
@@ -53,18 +53,6 @@
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
-      </type>
-      <type>
-        <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-group" />
-      </type>
-      <type>
-        <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location" />
-      </type>
-      <type>
-        <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-device" />
       </type>
       <isSummary value="true" />
       <mapping>
@@ -204,6 +192,33 @@
       <mapping>
         <identity value="rim" />
         <map value=".participation[AUT or PFM]" />
+      </mapping>
+    </element>
+    <element>
+      <path value="DiagnosticOrder.item.code" />
+      <short value="Code to indicate the item (test or panel) being ordered" />
+      <definition value="A code that identifies a particular diagnostic investigation, or panel of investigations, that have been requested." />
+      <comments value="Many laboratory tests and radiology tests embed the specimen/organ system in the test name, for example,  serum or serum/plasma glucose, or a chest xray. The specimen may not be recorded separately from the test code." />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="CodeableConcept" />
+      </type>
+      <isSummary value="true" />
+      <binding>
+        <strength value="preferred" />
+        <description value="Codes for tests/services that can be performed by diagnostic services." />
+        <valueSetReference>
+          <reference value="http://endeavourhealth.org/fhir/ValueSet/primarycare-diagnostic-order-item-type" />
+        </valueSetReference>
+      </binding>
+      <mapping>
+        <identity value="v2" />
+        <map value="OBX-4" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value=".code" />
       </mapping>
     </element>
     <element>
