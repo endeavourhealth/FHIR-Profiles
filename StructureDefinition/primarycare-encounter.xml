@@ -89,6 +89,17 @@
       </mapping>
     </element>
     <element>
+      <path value="Encounter.statusHistory" />
+      <short value="List of past encounter statuses" />
+      <definition value="The status history permits the encounter resource to contain the status history without needing to read through the historical versions of the resource, or even have the server store them." />
+      <comments value="The current status is always found in the current version of the resource, not the status history." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="BackboneElement" />
+      </type>
+    </element>
+    <element>
       <path value="Encounter.type" />
       <short value="Specific type of encounter" />
       <definition value="Specific type of encounter (e.g. telephone consultation, face to face, home visit note)." />
@@ -115,6 +126,35 @@
       <mapping>
         <identity value="w5" />
         <map value="class" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Encounter.priority" />
+      <short value="Indicates the urgency of the encounter" />
+      <definition value="Indicates the urgency of the encounter." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="CodeableConcept" />
+      </type>
+      <binding>
+        <strength value="example" />
+        <description value="Indicates the urgency of the encounter." />
+        <valueSetReference>
+          <reference value="http://hl7.org/fhir/ValueSet/encounter-priority" />
+        </valueSetReference>
+      </binding>
+      <mapping>
+        <identity value="v2" />
+        <map value="PV2-25" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value=".priorityCode" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="grade" />
       </mapping>
     </element>
     <element>
@@ -171,7 +211,7 @@
       <max value="*" />
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-procedure-request" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-referral-request" />
       </type>
     </element>
     <element>
@@ -249,6 +289,21 @@
       <mapping>
         <identity value="w5" />
         <map value="why" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Encounter.hospitalization" />
+      <short value="Details about the admission to a healthcare service" />
+      <definition value="Details about the admission to a healthcare service." />
+      <comments value="An Encounter may cover more than just the inpatient stay. Contexts such as outpatients, community clinics, and aged care facilities are also included.  The duration recorded in the period of this encounter covers the entire scope of this hospitalization record." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="BackboneElement" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value=".outboundRelationship[typeCode=COMP].target[classCode=ENC, moodCode=EVN]" />
       </mapping>
     </element>
     <element>
@@ -383,7 +438,7 @@
       <short value="Another Encounter this encounter is part of" />
       <definition value="Another Encounter of which this encounter is a part of (administratively or in time)." />
       <min value="0" />
-      <max value="1" />
+      <max value="0" />
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter" />
