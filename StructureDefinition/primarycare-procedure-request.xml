@@ -19,7 +19,7 @@
     </telecom>
   </contact>
   <date value="2015-11-01T00:00:00+00:00" />
-  <description value="Placeholder" />
+  <description value="A request for a procedure to be performed. May be a proposal or an order." />
   <fhirVersion value="1.0.1" />
   <kind value="resource" />
   <constrainedType value="ProcedureRequest" />
@@ -76,10 +76,6 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
       </type>
-      <type>
-        <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-group" />
-      </type>
       <isSummary value="true" />
       <mapping>
         <identity value="quick" />
@@ -89,6 +85,25 @@
         <identity value="w5" />
         <map value="who.focus" />
       </mapping>
+    </element>
+    <element>
+      <path value="ProcedureRequest.code.coding.extension" />
+      <slicing>
+        <discriminator value="url" />
+        <rules value="openAtEnd" />
+      </slicing>
+    </element>
+    <element>
+      <path value="ProcedureRequest.code.coding.extension" />
+      <name value="qualifier" />
+      <short value="Coding Qualifier" />
+      <definition value="Used to qualify or indicate extra clinical information about a coded value." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-coding-qualifier-extension" />
+      </type>
     </element>
     <element>
       <path value="ProcedureRequest.reason[x]" />
@@ -212,10 +227,6 @@
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person" />
-      </type>
-      <type>
-        <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-device" />
       </type>
       <isSummary value="true" />
       <mapping>
