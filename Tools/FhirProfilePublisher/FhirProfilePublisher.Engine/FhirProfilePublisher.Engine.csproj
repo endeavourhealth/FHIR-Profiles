@@ -35,6 +35,18 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Hl7.Fhir.DSTU2.Core, Version=0.90.4.20849, Culture=neutral, PublicKeyToken=d706911480550fc3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hl7.Fhir.DSTU2.0.90.4\lib\net45\Hl7.Fhir.DSTU2.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Hl7.Fhir.DSTU2.Specification, Version=0.90.4.20854, Culture=neutral, PublicKeyToken=d706911480550fc3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hl7.Fhir.Specification.DSTU2.0.90.4\lib\net45\Hl7.Fhir.DSTU2.Specification.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.7\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -147,6 +159,12 @@
       <Project>{0eee143d-bb4b-4d15-815f-04b2ba061f45}</Project>
       <Name>FhirProfilePublisher.Converters</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="validation.xml.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
