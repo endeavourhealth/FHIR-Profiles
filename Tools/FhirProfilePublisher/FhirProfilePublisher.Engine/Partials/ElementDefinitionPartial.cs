@@ -31,6 +31,9 @@ namespace Hl7.Fhir.V101
 
         public string GetW5TopLevelGroup()
         {
+            if (mapping == null)
+                return string.Empty;
+
             string w5Group = (mapping
                 .FirstOrDefault(t => t.identity.value == "w5")
                 .WhenNotNull(t => t.map.value) ?? string.Empty)
