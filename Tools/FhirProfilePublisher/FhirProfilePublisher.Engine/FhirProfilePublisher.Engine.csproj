@@ -63,6 +63,7 @@
     <Compile Include="Assets\Styles.cs" />
     <Compile Include="Generator\GenericPageGenerator.cs" />
     <Compile Include="Generator\TreeViewGenerator.cs" />
+    <Compile Include="HtmlGeneratorNewTest.cs" />
     <Compile Include="Objects\ResourceMaturity.cs" />
     <Compile Include="Partials\ElementDefinitionPartial.cs" />
     <Compile Include="Partials\ElementPartial.cs" />
@@ -162,9 +163,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="validation.xml.zip">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

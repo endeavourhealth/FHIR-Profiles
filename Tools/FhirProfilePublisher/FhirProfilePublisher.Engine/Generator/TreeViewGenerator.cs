@@ -19,30 +19,23 @@ namespace FhirProfilePublisher.Engine
             _outputPaths = outputPaths;
         }
 
-        public XElement Generate(ElementDefinition[] elements)
+        public XElement Generate(StructureDefinition structureDefinition)
         {
+            StructureDefinition baseDefinition = _resourceFileSet.GetStructureDefinition(structureDefinition.@base.value);
+            ElementDefinition[] elementDefinitions = Fhir.MergeElementDefinitions(baseDefinition.differential.element, structureDefinition.differential.element);
+
+            return GenerateHtml(elementDefinitions);
+        }
+
+        private XElement GenerateHtml(ElementDefinition[] elementDefinitions)
+        { 
             return Html.Table(new object[]
             {
                 Html.Class(Styles.ResourceTreeClassName),
                 GenerateTableHeader(),
-                GenerateTableBody(elements)
+                GenerateTableBody(elementDefinitions)
             });
         }
-
-        //public XElement Generate(ElementDefinition[] elements)
-        //{
-        //    return Html.Div(new object[]
-        //    {
-        //        BootstrapHtml.Checkbox("Hide removed elements", true),
-        //        Html.Table(new object[]
-        //        {
-        //            Html.Class(Styles.ResourceTreeClassName),
-        //            GenerateTableHeader(),
-        //            GenerateTableBody(elements)
-        //        }),
-        //        Html.Script("text/javascript", Scripts.GetScript(Scripts.TreeViewHelpersScriptFileName))
-        //    });
-        //}
 
         private static string GetTreeViewHelpersJavaScript()
         {

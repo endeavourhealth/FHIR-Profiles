@@ -101,12 +101,9 @@ namespace FhirProfilePublisher.Engine
         {
             StructureDefinition definition = structureDefinitionFile.StructureDefinition;
 
-            StructureDefinition baseDefinition = _resourceFileSet.GetStructureDefinition(definition.@base.value);
-            ElementDefinition[] elementDefinitions = Fhir.MergeElementDefinitions(baseDefinition.differential.element, definition.differential.element);
-
             return BootstrapHtml.GetTabs(new Dictionary<string, object>()
             {
-                { "Structure", GenerateStructureTab(elementDefinitions) },
+                { "Structure", GenerateStructureTab(definition) },
                 { "XML", "Content" },
                 { "JSON", "Content" },
                 { "Examples", "Content" },
@@ -114,10 +111,10 @@ namespace FhirProfilePublisher.Engine
             });
         }
 
-        private XElement GenerateStructureTab(ElementDefinition[] elements)
+        private XElement GenerateStructureTab(StructureDefinition definition)
         {
             TreeViewGenerator treeViewGenerator = new TreeViewGenerator(_resourceFileSet, _outputPaths);
-            return treeViewGenerator.Generate(elements);
+            return treeViewGenerator.Generate(definition);
         }
 
         private XElement GenerateSchemasTab(StructureDefinitionFile structureDefinitionFile)
