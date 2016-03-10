@@ -21,19 +21,19 @@ namespace FhirProfilePublisher.Engine
 
         public XElement Generate(StructureDefinition structureDefinition)
         {
-            StructureDefinition baseDefinition = _resourceFileSet.GetStructureDefinition(structureDefinition.@base.value);
-            ElementDefinition[] elementDefinitions = Fhir.MergeElementDefinitions(baseDefinition.differential.element, structureDefinition.differential.element);
+            TreeFactory factory = new TreeFactory();
+            TreeNode rootNode = factory.GenerateTree(structureDefinition, _resourceFileSet);
 
-            return GenerateHtml(elementDefinitions);
+            return GenerateHtml(rootNode);
         }
 
-        private XElement GenerateHtml(ElementDefinition[] elementDefinitions)
+        private XElement GenerateHtml(TreeNode rootNode)
         { 
             return Html.Table(new object[]
             {
                 Html.Class(Styles.ResourceTreeClassName),
                 GenerateTableHeader(),
-                GenerateTableBody(elementDefinitions)
+                GenerateTableBody(rootNode)
             });
         }
 
@@ -54,30 +54,29 @@ namespace FhirProfilePublisher.Engine
             }));
         }
 
-        private XElement GenerateTableBody(IEnumerable<ElementDefinition> elements)
+        private XElement GenerateTableBody(TreeNode rootNode)
         {
-            ElementNavigator elementNavigator = new ElementNavigator(elements);
-            elementNavigator.SkipExtensionSlice = true;
-
             List<XElement> tableRows = new List<XElement>();
 
+            ElementNavigator elementNavigator = new ElementNavigator(rootNode);
+            //elementNavigator.SkipExtensionSlice = true;
+
             while (elementNavigator.MoveNext())
-                tableRows.Add(GetTableRow(elementNavigator));
+                tableRows.Add(GetTableRow(elementNavigator.CurrentNode));
 
             return Html.TBody(tableRows);
         }
 
-        private XElement GetTableRow(ElementNavigator elementNavigator)
+        private XElement GetTableRow(TreeNode treeNode)
         {
-            ElementDefinition currentElement = elementNavigator.Current;
-            bool hasChildren = elementNavigator.CurrentHasChildren;
+            ElementDefinition currentElement = treeNode.Element;
 
             List<object> result = new List<object>()
             {
-                GetNameAndImagesTableCell(elementNavigator),
+                GetNameAndImagesTableCell(treeNode),
                 GetFlagsTableCell(currentElement),
                 GetCardinalityTableCell(currentElement, null),
-                GetTypeTableCell(currentElement, hasChildren),
+                GetTypeTableCell(treeNode.Element, treeNode.HasChildren),
                 GetDescriptionTableCell(currentElement)
             };
 
@@ -91,20 +90,18 @@ namespace FhirProfilePublisher.Engine
             return Html.Tr(result.ToArray());
         }
 
-        private XElement GetNameAndImagesTableCell(ElementNavigator elementNavigator)
+        private XElement GetNameAndImagesTableCell(TreeNode treeNode)
         {
-            ElementDefinition element = elementNavigator.Current;
-            bool hasChildren = elementNavigator.CurrentHasChildren && (!elementNavigator.Current.IsRemoved());
-            bool[] indents = elementNavigator.GetHierarchyImageDefinition();
+            bool[] indents = GetHierarchyImageDefinition(treeNode);
 
             XElement td = Html.Td(new object[]
             {
                 Html.Class(Styles.HierarchyClassName),
-                Html.Style(Styles.GetBackgroundImageCss(GetBackgroundHierarchyImage(indents, hasChildren))),
+                Html.Style(Styles.GetBackgroundImageCss(GetBackgroundHierarchyImage(indents, treeNode.HasChildren))),
                 GetHierarchyImageElement(Images.IconTreeSpacer),
-                GetHierarchyImages(element, indents),
+                GetHierarchyImages(treeNode.Element, indents),
                 GetHierarchyImageElement(Images.IconTreeSpacerWide),
-                GetDisplayName(elementNavigator.Current)
+                GetDisplayName(treeNode.Element)
             });
 
             return td;
@@ -267,6 +264,29 @@ namespace FhirProfilePublisher.Engine
                 elements.Intersperse(new XText(" | ")).ToArray(),
                 new XText(")")
             };
+        }
+
+        public bool[] GetHierarchyImageDefinition(TreeNode treeNode)
+        {
+            Stack<TreeNode> stack = new Stack<TreeNode>();
+
+            TreeNode current = treeNode;
+
+            while (current.Parent != null)
+            {
+                stack.Push(current);
+                current = current.Parent;
+            }
+
+            List<bool> result = new List<bool>();
+
+            while (stack.Any())
+            {
+                TreeNode node = stack.Pop();
+                result.Add(node.IsLastChild());
+            }
+
+            return result.ToArray();
         }
 
         private string GetBackgroundHierarchyImage(bool[] indents, bool hasChildren)

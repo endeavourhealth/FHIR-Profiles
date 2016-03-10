@@ -74,7 +74,7 @@ namespace Hl7.Fhir.V101
                 string baseUrl = @base.value;
 
                 StructureDefinition baseStructureDefinition = FhirData.Instance.FindStructureDefinition(baseUrl);
-                ElementDefinition elementDefinition = ElementNavigator.GetRootElement(baseStructureDefinition.differential.element);
+                ElementDefinition elementDefinition = GetRootPathElement();
 
                 return Utilities.UpperCaseFirstCharacter(elementDefinition.GetW5TopLevelGroup());
             }

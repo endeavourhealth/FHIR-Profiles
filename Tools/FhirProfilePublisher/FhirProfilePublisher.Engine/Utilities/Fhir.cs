@@ -57,27 +57,6 @@ namespace FhirProfilePublisher.Engine
             return valueSetUri;
         }
 
-        public static ElementDefinition[] MergeElementDefinitions(ElementDefinition[] baseDefinitions, ElementDefinition[] definitions)
-        {
-            List<ElementDefinition> result = new List<ElementDefinition>();
-
-            foreach (ElementDefinition baseDefinition in baseDefinitions)
-            {
-                ElementDefinition definition = definitions.FirstOrDefault(t => t.path.value == baseDefinition.path.value);
-
-                if (definition != null)
-                    result.Add(definition);
-                else
-                    result.Add(baseDefinition);
-            }
-
-            foreach (ElementDefinition definition in definitions)
-                if (!result.Any(t => t.path.value == definition.path.value && t.name.WhenNotNull(s => s.value) == definition.name.WhenNotNull(s => s.value)))
-                    result.Add(definition);
-
-            return result.ToArray();
-        }
-
         public static string GetName(this FilterOperatorlist filterOperator)
         {
             switch (filterOperator)

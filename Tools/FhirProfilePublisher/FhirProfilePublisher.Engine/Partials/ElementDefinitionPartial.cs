@@ -52,7 +52,7 @@ namespace Hl7.Fhir.V101
 
             return false;
         }
-
+        
         public bool IsEmptyExtensionSlice()
         {
             if (path.value.EndsWith(".extension"))

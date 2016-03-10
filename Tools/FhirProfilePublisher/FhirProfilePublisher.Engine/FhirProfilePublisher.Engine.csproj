@@ -63,7 +63,6 @@
     <Compile Include="Assets\Styles.cs" />
     <Compile Include="Generator\GenericPageGenerator.cs" />
     <Compile Include="Generator\TreeViewGenerator.cs" />
-    <Compile Include="HtmlGeneratorNewTest.cs" />
     <Compile Include="Objects\ResourceMaturity.cs" />
     <Compile Include="Partials\ElementDefinitionPartial.cs" />
     <Compile Include="Partials\ElementPartial.cs" />
@@ -77,6 +76,8 @@
     <Compile Include="Objects\OutputFileType.cs" />
     <Compile Include="Objects\ResourceFile.cs" />
     <Compile Include="Objects\OutputPaths.cs" />
+    <Compile Include="Utilities\ElementTree\TreeFactory.cs" />
+    <Compile Include="Utilities\ElementTree\TreeNode.cs" />
     <Compile Include="Utilities\Snomed.cs" />
     <Compile Include="Objects\StructureDefinitionFile.cs" />
     <Compile Include="Objects\ValueSetCode.cs" />

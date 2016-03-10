@@ -111,6 +111,34 @@ namespace FhirProfilePublisher.Engine
             return definition;
         }
 
+        public StructureDefinition[] GetStructureDefinitionAndBases(StructureDefinition structureDefinition)
+        {
+            List<StructureDefinition> result = new List<StructureDefinition>();
+
+            result.Add(structureDefinition);
+
+            StructureDefinition current = structureDefinition;
+
+            while (true)
+            {
+                string baseUrl = current.@base.WhenNotNull(t => t.value);
+
+                if ((baseUrl == "http://hl7.org/fhir/StructureDefinition/")
+                    || (baseUrl == "http://hl7.org/fhir/StructureDefinition")
+                    || (string.IsNullOrWhiteSpace(baseUrl)))
+                    break;
+
+                current = GetStructureDefinition(baseUrl, true);
+
+                if (current == null)
+                    break;
+
+                result.Add(current);
+            }
+
+            return result.ToArray();
+        }
+
         public Link GetStructureDefinitionLink(string canonicalUrl)
         {
             StructureDefinitionFile structureDefinitionFile = _structureDefinitions.SingleOrDefault(t => t.CanonicalUrl == canonicalUrl);
@@ -141,7 +169,7 @@ namespace FhirProfilePublisher.Engine
 
             if (valueSet == null)
                 throw new Exception("ValueSet " + canonicalUrl + " not found.");
-
+             
             return new Link
             (
                 url: valueSet.url.value,
