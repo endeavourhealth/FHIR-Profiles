@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Hl7.Fhir.V101;
 
-namespace FhirProfilePublisher.Engine
+namespace FhirProfilePublisher.Specification
 {
     public class SDTreeNodeNavigator
     {

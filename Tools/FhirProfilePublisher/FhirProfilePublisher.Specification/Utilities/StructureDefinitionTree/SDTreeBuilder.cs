@@ -2,9 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using FhirProfilePublisher.Specification;
 
-namespace FhirProfilePublisher.Engine
+namespace FhirProfilePublisher.Specification
 {
     public class SDTreeBuilder
     {
@@ -27,12 +26,11 @@ namespace FhirProfilePublisher.Engine
 
         private static void GroupSlices(SDTreeNode rootNode)
         {
-            Stack<SDTreeNode> stack = new Stack<SDTreeNode>();
-            stack.Push(rootNode);
+            SDTreeNodeNavigator navigator = new SDTreeNodeNavigator(rootNode);
 
-            while (stack.Any())
+            while (navigator.MoveNext())
             {
-                SDTreeNode node = stack.Pop();
+                SDTreeNode node = navigator.CurrentNode;
 
                 SDTreeNode[] childSlicingEntries = node.Children.Where(t => t.IsSlicingEntry).ToArray();
 
@@ -49,9 +47,6 @@ namespace FhirProfilePublisher.Engine
                         }
                     }
                 }
-
-                foreach (SDTreeNode child in node.Children.Reverse())
-                    stack.Push(child);
             }
         }
 
