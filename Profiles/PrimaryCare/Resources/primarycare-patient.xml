@@ -36,6 +36,10 @@
       <type>
         <code value="Patient" />
       </type>
+      <mapping>
+        <identity value="w5" />
+        <map value="administrative.individual" />
+      </mapping>
     </element>
     <element>
       <path value="Patient.extension" />
