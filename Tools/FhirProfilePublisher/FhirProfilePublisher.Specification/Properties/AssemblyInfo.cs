@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("FhirProfilePublisher.Converters")]
+[assembly: AssemblyTitle("FhirProfilePublisher.Specification")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("FhirProfilePublisher.Converters")]
-[assembly: AssemblyCopyright("Copyright ©  2015")]
+[assembly: AssemblyProduct("FhirProfilePublisher.Specification")]
+[assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("352ac6a5-4704-46fc-a0ec-a54943440a0d")]
+[assembly: Guid("6ffa48a9-39b3-4171-9e39-131f3b00a442")]
 
 // Version information for an assembly consists of the following four values:
 //

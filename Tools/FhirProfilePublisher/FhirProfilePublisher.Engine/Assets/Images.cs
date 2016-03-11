@@ -1,4 +1,5 @@
-﻿using Hl7.Fhir.V101;
+﻿using FhirProfilePublisher.Specification;
+using Hl7.Fhir.V101;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -59,7 +60,7 @@ namespace FhirProfilePublisher.Engine
             string[] imageNames = GetImageNames();
             
             foreach (string imageName in imageNames)
-                Utilities.WriteResourceToDisk(ImagesResourceLocation + imageName, outputPaths.GetOutputPath(OutputFileType.Image, imageName));
+                ResourceHelper.WriteResourceToDisk(ImagesResourceLocation + imageName, outputPaths.GetOutputPath(OutputFileType.Image, imageName));
         }
 
         private static string[] GetImageNames()

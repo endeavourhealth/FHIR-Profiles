@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using FhirProfilePublisher.Specification;
 
 namespace FhirProfilePublisher.Engine
 {
@@ -39,7 +40,7 @@ namespace FhirProfilePublisher.Engine
 
         private static string GetTreeViewHelpersJavaScript()
         {
-            return Utilities.LoadStringResource(Scripts.TreeViewHelpersScriptFileName);
+            return ResourceHelper.LoadStringResource(Scripts.TreeViewHelpersScriptFileName);
         }
 
         private XElement GenerateTableHeader()

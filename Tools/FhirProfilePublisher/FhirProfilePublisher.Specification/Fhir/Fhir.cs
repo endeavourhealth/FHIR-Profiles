@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Hl7.Fhir.V101;
 
-namespace FhirProfilePublisher.Engine
+namespace FhirProfilePublisher.Specification
 {
-    internal static class Fhir
+    public static class Fhir
     {
         public const string ReferenceTypeName = "Reference";
         public const string BackboneElement = "BackboneElement";
@@ -90,7 +90,7 @@ namespace FhirProfilePublisher.Engine
             if (bindingStrength == null)
                 return string.Empty;
 
-            return Utilities.UpperCaseFirstCharacter(bindingStrength.Value.ToString());
+            return StringHelper.UpperCaseFirstCharacter(bindingStrength.Value.ToString());
         }
 
         public static bool HasExtensionProfile(this ElementDefinitionType type)

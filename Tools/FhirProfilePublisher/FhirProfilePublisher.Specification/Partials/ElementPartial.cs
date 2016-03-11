@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FhirProfilePublisher.Engine;
+using FhirProfilePublisher.Specification;
 
 namespace Hl7.Fhir.V101
 {

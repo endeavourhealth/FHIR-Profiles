@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FhirProfilePublisher.Engine
+namespace FhirProfilePublisher.Specification
 {
-    internal class FhirData
+    public class FhirData
     {
         #region Class members
 
@@ -85,7 +85,7 @@ namespace FhirProfilePublisher.Engine
 
         private Bundle LoadBundle(string resourcePath)
         {
-            return XmlHelper.Deserialize<Bundle>(Utilities.LoadStringResource(resourcePath));
+            return XmlHelper.Deserialize<Bundle>(ResourceHelper.LoadStringResource(resourcePath));
         }
 
         private T[] GetBundleEntries<T>(string resourcePath) where T : class

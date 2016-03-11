@@ -24,13 +24,6 @@ namespace FhirProfilePublisher.Engine
             return File.ReadAllText(inputFilename);
         }
 
-        public static string LoadStringResource(string resourceName)
-        {
-            using (Stream stream = Assembly.GetCallingAssembly().GetManifestResourceStream(resourceName))
-                using (StreamReader reader = new StreamReader(stream))
-                    return reader.ReadToEnd();
-        }
-
         public static void WriteUtf8Text(string path, string fileContents)
         {
             File.WriteAllText(path, fileContents, Encoding.UTF8);
@@ -39,13 +32,6 @@ namespace FhirProfilePublisher.Engine
         public static void WriteText(string path, string fileContents)
         {
             File.WriteAllText(path, fileContents);
-        }
-
-        public static void WriteResourceToDisk(string resourceName, string filePath)
-        {
-            using (Stream resource = Assembly.GetCallingAssembly().GetManifestResourceStream(resourceName))
-                using (Stream output = File.OpenWrite(filePath))
-                    resource.CopyTo(output);
         }
 
         public static void LaunchBrowser(string filePath)
@@ -66,14 +52,6 @@ namespace FhirProfilePublisher.Engine
 
             Uri folderUri = new Uri(path2);
             return Uri.UnescapeDataString(folderUri.MakeRelativeUri(pathUri).ToString().Replace('/', Path.DirectorySeparatorChar));
-        }
-
-        public static string UpperCaseFirstCharacter(string input)
-        {
-            if (string.IsNullOrEmpty(input))
-                return input;
-
-            return input.First().ToString().ToUpper() + input.Substring(1);
         }
 
         internal static void EnsureDirectory(string outputDirectory)

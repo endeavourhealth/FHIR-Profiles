@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Hl7.Fhir.V101;
 
-namespace FhirProfilePublisher.Engine
+namespace FhirProfilePublisher.Specification
 {
     internal sealed class FhirSchemas
     {
@@ -50,12 +50,12 @@ namespace FhirProfilePublisher.Engine
         {
             Xsds = new List<string>()
             {
-                Utilities.LoadStringResource(FhirSingleSchemaFilePath),
-                Utilities.LoadStringResource(FhirXHtmlSchemaFilePath),
-                Utilities.LoadStringResource(FhirXmlSchemaFilePath)
+                ResourceHelper.LoadStringResource(FhirSingleSchemaFilePath),
+                ResourceHelper.LoadStringResource(FhirXHtmlSchemaFilePath),
+                ResourceHelper.LoadStringResource(FhirXmlSchemaFilePath)
             }.ToArray();
 
-            Schematron = Utilities.LoadStringResource(FhirSchematronFilePath);
+            Schematron = ResourceHelper.LoadStringResource(FhirSchematronFilePath);
         }
 
         public void ValidateFhirXml(string xml)

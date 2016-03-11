@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FhirProfilePublisher.Engine
+namespace FhirProfilePublisher.Specification
 {
     public static class GenericExtensions
     {

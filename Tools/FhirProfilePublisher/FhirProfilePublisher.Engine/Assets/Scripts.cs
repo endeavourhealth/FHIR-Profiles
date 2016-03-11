@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FhirProfilePublisher.Specification;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace FhirProfilePublisher.Engine
             string[] scriptNames = GetScriptNames();
 
             foreach (string scriptName in scriptNames)
-                Utilities.WriteResourceToDisk(ScriptsResourceLocation + scriptName, outputPaths.GetOutputPath(OutputFileType.Script, scriptName));
+                ResourceHelper.WriteResourceToDisk(ScriptsResourceLocation + scriptName, outputPaths.GetOutputPath(OutputFileType.Script, scriptName));
         }
 
         private static string[] GetScriptNames()
@@ -40,7 +41,7 @@ namespace FhirProfilePublisher.Engine
 
         public static string GetScript(string scriptName)
         {
-            return Utilities.LoadStringResource(ScriptsResourceLocation + TreeViewHelpersScriptFileName);
+            return ResourceHelper.LoadStringResource(ScriptsResourceLocation + TreeViewHelpersScriptFileName);
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using FhirProfilePublisher.Specification;
 
 namespace FhirProfilePublisher.Engine
 {
@@ -40,7 +41,7 @@ namespace FhirProfilePublisher.Engine
             string[] styleNames = GetStyleNames();
 
             foreach (string styleName in styleNames)
-                Utilities.WriteResourceToDisk(StylesheetResourceLocation + styleName, outputPaths.GetOutputPath(OutputFileType.Style, styleName));
+                ResourceHelper.WriteResourceToDisk(StylesheetResourceLocation + styleName, outputPaths.GetOutputPath(OutputFileType.Style, styleName));
         }
 
         private static string[] GetStyleNames()

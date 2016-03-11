@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FhirProfilePublisher.Converters
+namespace FhirProfilePublisher.Specification
 {
     public static class JsonConverter
     {

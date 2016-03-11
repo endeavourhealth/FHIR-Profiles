@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace FhirProfilePublisher.Converters
+namespace FhirProfilePublisher.Specification
 {
     internal class CustomContractResolver : DefaultContractResolver
     {

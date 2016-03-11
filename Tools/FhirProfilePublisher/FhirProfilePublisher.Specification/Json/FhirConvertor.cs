@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FhirProfilePublisher.Converters
+namespace FhirProfilePublisher.Specification
 {
     internal class FhirConvertor : Newtonsoft.Json.JsonConverter
     {

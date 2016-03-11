@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FhirProfilePublisher.Engine;
+using FhirProfilePublisher.Specification;
 
 namespace Hl7.Fhir.V101
 {
@@ -19,7 +19,7 @@ namespace Hl7.Fhir.V101
             if (IsExtension())
                 return "Extension";
 
-            return Utilities.UpperCaseFirstCharacter(kind.value.ToString());
+            return StringHelper.UpperCaseFirstCharacter(kind.value.ToString());
         }
 
         public string GetName()
@@ -76,7 +76,7 @@ namespace Hl7.Fhir.V101
                 StructureDefinition baseStructureDefinition = FhirData.Instance.FindStructureDefinition(baseUrl);
                 ElementDefinition elementDefinition = GetRootPathElement();
 
-                return Utilities.UpperCaseFirstCharacter(elementDefinition.GetW5TopLevelGroup());
+                return StringHelper.UpperCaseFirstCharacter(elementDefinition.GetW5TopLevelGroup());
             }
         }
     }

@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using FhirProfilePublisher.Specification;
 
 namespace FhirProfilePublisher.Engine
 {
@@ -36,8 +37,8 @@ namespace FhirProfilePublisher.Engine
 
         private Templates()
         {
-            _templatePage = Utilities.LoadStringResource(TemplatePageFileName);
-            _templateRedirectPage = Utilities.LoadStringResource(TemplateRedirectPageFileName);
+            _templatePage = ResourceHelper.LoadStringResource(TemplatePageFileName);
+            _templateRedirectPage = ResourceHelper.LoadStringResource(TemplateRedirectPageFileName);
             PageHeader = "FHIR Implementation Guide (Draft)";
             PageTitleSuffix = string.Empty;
         }
