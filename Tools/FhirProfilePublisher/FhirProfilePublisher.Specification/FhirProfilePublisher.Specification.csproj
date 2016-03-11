@@ -57,6 +57,7 @@
     <Compile Include="Specification\FhirConstants.cs" />
     <Compile Include="Specification\FhirData.cs" />
     <Compile Include="Specification\FhirSchemas.cs" />
+    <Compile Include="Specification\PartialClasses\ElementDefinitionTypePartial.cs" />
     <Compile Include="Specification\Schemas\fhir-v1.0.1\fhir-single.cs">
       <DependentUpon>fhir-single.xsd</DependentUpon>
     </Compile>

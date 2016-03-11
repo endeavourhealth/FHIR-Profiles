@@ -121,12 +121,18 @@ namespace FhirProfilePublisher.Specification
         {
             if (IsDataTypeName(dataType))
                 return string.Format(FhirConstants.DataTypeUrl, dataType);
-            else if (IsReference(dataType))
+            else if (dataType == FhirConstants.ReferenceTypeName)
                 return FhirConstants.ReferenceUrl;
             else if (dataType == FhirConstants.BackboneElement)
                 return FhirConstants.BackboneElementUrl;
 
             return string.Empty;
+        }
+
+        public bool IsDataTypeName(string typeName)
+        {
+            return (FhirData.Instance.PrimitiveDataTypeNames.Contains(typeName)
+                || (FhirData.Instance.ComplexDataTypeNames.Contains(typeName)));
         }
 
         public StructureDefinition FindStructureDefinition(string canonicalUrl)
@@ -167,26 +173,6 @@ namespace FhirProfilePublisher.Specification
                 .Select(t => t.name.value)
                 .OrderBy(t => t)
                 .ToArray();
-        }
-
-        public bool IsDataTypeName(string typeName)
-        {
-            return (IsPrimitiveTypeName(typeName) || IsComplexTypeName(typeName));
-        }
-
-        public bool IsPrimitiveTypeName(string typeName)
-        {
-            return PrimitiveDataTypeNames.Contains(typeName);
-        }
-
-        public bool IsComplexTypeName(string typeName)
-        {
-            return ComplexDataTypeNames.Contains(typeName);
-        }
-
-        public bool IsReference(string value)
-        {
-            return (value == FhirConstants.ReferenceTypeName);
         }
 
         #endregion

@@ -11,26 +11,64 @@ namespace FhirProfilePublisher.Specification
         {
         }
 
+        ////////////////////////////////////////////////////////////////////////
+        //
+        // issues
+        // ------
+        //
+        // 1. currently don't see the elements in ancestor SDs - only the direct parent.
+        // 2. don't see elements from data types unless they have been overriden.
+        //
+        //
+        ////////////////////////////////////////////////////////////////////////
+
+
         public SDTreeNode GenerateTree(StructureDefinition structureDefinition, IStructureDefinitionResolver locator)
         {
+            // "index" slices to create unique ElementDefinition.path values
             IndexSlices(structureDefinition.differential.element);
 
+            // Merge differential and the direct base StructureDefinition's differential. -- this needs expanding to include all ancestor base StructureDefinitions
             ElementDefinition[] elements = CreateSnapshot(structureDefinition, locator);
 
+            // Build flat ElementDefinition list into tree
             SDTreeNode rootNode = GenerateTree(elements);
 
+            // Expand out data types
+            AddMissingDataTypeElements(rootNode);
+
+            // group slices under the slice "setup" node
             GroupSlices(rootNode);
 
             return rootNode;
         }
 
+        private static void AddMissingDataTypeElements(SDTreeNode rootNode)
+        {
+            Stack<SDTreeNode> stack = new Stack<SDTreeNode>();
+            stack.Push(rootNode);
+
+            while (stack.Any())
+            {
+                SDTreeNode node = stack.Pop();
+
+                
+
+                
+
+                foreach (SDTreeNode childNode in node.Children.Reverse())
+                    stack.Push(childNode);
+            }
+        }
+
         private static void GroupSlices(SDTreeNode rootNode)
         {
-            SDTreeNodeNavigator navigator = new SDTreeNodeNavigator(rootNode);
+            Stack<SDTreeNode> stack = new Stack<SDTreeNode>();
+            stack.Push(rootNode);
 
-            while (navigator.MoveNext())
+            while (stack.Any())
             {
-                SDTreeNode node = navigator.CurrentNode;
+                SDTreeNode node = stack.Pop();
 
                 SDTreeNode[] childSlicingEntries = node.Children.Where(t => t.IsSlicingEntry).ToArray();
 
@@ -47,6 +85,9 @@ namespace FhirProfilePublisher.Specification
                         }
                     }
                 }
+
+                foreach (SDTreeNode child in node.Children.Reverse())
+                    stack.Push(child);
             }
         }
 

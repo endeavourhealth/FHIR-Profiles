@@ -168,13 +168,13 @@ namespace Hl7.Fhir.V101
             List<string> flags = new List<string>();
 
             if (IsModifier())
-                flags.Add(FhirProfilePublisher.Specification.FhirConstants.FlagSymbolIsModifier);
+                flags.Add(FhirConstants.FlagSymbolIsModifier);
 
             if (IsSummary())
-                flags.Add(FhirProfilePublisher.Specification.FhirConstants.FlagSymbolIsSummary);
+                flags.Add(FhirConstants.FlagSymbolIsSummary);
 
             if (HasInvariants())
-                flags.Add(FhirProfilePublisher.Specification.FhirConstants.FlagSymbolHasInvariants);
+                flags.Add(FhirConstants.FlagSymbolHasInvariants);
 
             return flags.ToArray();
         }
@@ -191,7 +191,7 @@ namespace Hl7.Fhir.V101
 
         public bool AllTypesAreReference()
         {
-            return type.All(t => t.code.value == FhirProfilePublisher.Specification.FhirConstants.ReferenceTypeName);
+            return type.All(t => t.code.value == FhirConstants.ReferenceTypeName);
         }
     }
 }

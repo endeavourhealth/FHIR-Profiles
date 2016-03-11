@@ -100,14 +100,20 @@ namespace FhirProfilePublisher.Engine
                 return Images.IconReference;
             else if (element.type.Length > 1)
                 return Images.IconChoice;
-            else if (element.type.First().code.value.StartsWith("@"))
-                return Images.IconReuse;
-            else if (FhirData.Instance.IsPrimitiveTypeName(element.type.First().code.value))
-                return Images.IconPrimitive;
-            else if (FhirData.Instance.IsReference(element.type.First().code.value))
-                return Images.IconReference;
-            else if (FhirData.Instance.IsComplexTypeName(element.type.First().code.value))
-                return Images.IconDatatype;
+            else // element.type.Length == 1
+            {
+                ElementDefinitionType elementType = element.type.First();
+
+                if (elementType.code.value.StartsWith("@"))
+                    return Images.IconReuse;
+                else if (elementType.IsPrimitiveType())
+                    return Images.IconPrimitive;
+                else if (elementType.IsReference())
+                    return Images.IconReference;
+                else if (elementType.IsComplexType())
+                    return Images.IconDatatype;
+            }
+            
 
             return Images.IconResource;
         }
