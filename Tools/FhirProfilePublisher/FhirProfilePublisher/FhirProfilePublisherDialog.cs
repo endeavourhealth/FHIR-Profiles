@@ -87,7 +87,7 @@ namespace FhirProfilePublisher
                 string htmlFilePath = generator.Generate(tbFileList.Lines, textBox1.Text, content);
 
                 if (cbOpenBrowser.Checked)
-                    Utilities.LaunchBrowser(htmlFilePath);
+                    WebHelper.LaunchBrowser(htmlFilePath);
             }
             finally
             {

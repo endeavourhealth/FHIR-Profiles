@@ -6,9 +6,9 @@ using FhirProfilePublisher.Specification;
 
 namespace FhirProfilePublisher.Engine
 {
-    public class StructureDefinitionTreeBuilder
+    public class SDTreeBuilder
     {
-        public StructureDefinitionTreeBuilder()
+        public SDTreeBuilder()
         {
         }
 

@@ -12,7 +12,7 @@ namespace FhirProfilePublisher.Engine
 {
     internal static class Styles
     {
-        public static readonly string StylesheetResourceLocation = typeof(Styles).Assembly.GetName().Name + ".Assets.Styles.";
+        public static readonly string StylesheetResourceLocation = typeof(Styles).Assembly.GetName().Name + ".WebContent.Styles.";
         public const string StylesheetFileName = "style.css";
         public const string BootstrapStylesheetFileName = "bootstrap.css";
         public const string JQueryUIStylesheetFileName = "jquery-ui.css";

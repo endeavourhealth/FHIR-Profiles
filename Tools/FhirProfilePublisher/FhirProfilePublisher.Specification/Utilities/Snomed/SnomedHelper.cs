@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FhirProfilePublisher.Engine
 {
-    internal static class Snomed
+    public static class SnomedHelper
     {
         public static bool IsSnomedSystemUri(string uri)
         {

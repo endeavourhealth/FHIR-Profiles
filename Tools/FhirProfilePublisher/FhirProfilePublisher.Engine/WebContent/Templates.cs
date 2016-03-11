@@ -12,7 +12,7 @@ namespace FhirProfilePublisher.Engine
 {
     internal class Templates
     {
-        private static readonly string TemplatesResourceLocation = typeof(Styles).Assembly.GetName().Name + ".Assets.Templates.";
+        private static readonly string TemplatesResourceLocation = typeof(Styles).Assembly.GetName().Name + ".WebContent.Templates.";
         private static readonly string TemplatePageFileName = TemplatesResourceLocation + "Page.html";
         private static readonly string TemplateRedirectPageFileName = TemplatesResourceLocation + "RedirectPage.html";
         

@@ -14,7 +14,7 @@ namespace FhirProfilePublisher.Engine
 {
     internal static class Images
     {
-        public static readonly string ImagesResourceLocation = typeof(Images).Assembly.GetName().Name + ".Assets.Images.";
+        public static readonly string ImagesResourceLocation = typeof(Images).Assembly.GetName().Name + ".WebContent.Images.";
 
         public const string EndeavourLogo = "endeavourlogo.png";
         public const string FhirLogo = "fhirlogo.png";

@@ -69,15 +69,17 @@
     <Compile Include="Specification\PartialClasses\StructureDefinitionPartial.cs" />
     <Compile Include="Specification\PartialClasses\ValueSetDefinitionPartial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\General\EnumHelper.cs" />
+    <Compile Include="Utilities\Snomed\SnomedHelper.cs" />
     <Compile Include="Utilities\StructureDefinitionTree\SDTreeNodeNavigator.cs" />
     <Compile Include="Utilities\StructureDefinitionTree\IStructureDefinitionResolver.cs" />
-    <Compile Include="Utilities\StructureDefinitionTree\StructureDefinitionTreeBuilder.cs" />
+    <Compile Include="Utilities\StructureDefinitionTree\SDTreeBuilder.cs" />
     <Compile Include="Utilities\StructureDefinitionTree\SDTreeNode.cs" />
-    <Compile Include="Utilities\Generic\FileHelper.cs" />
-    <Compile Include="Utilities\Generic\GenericExtensions.cs" />
-    <Compile Include="Utilities\Generic\ResourceHelper.cs" />
-    <Compile Include="Utilities\Generic\StringHelper.cs" />
-    <Compile Include="Utilities\Generic\XmlHelper.cs" />
+    <Compile Include="Utilities\General\FileHelper.cs" />
+    <Compile Include="Utilities\General\GenericExtensions.cs" />
+    <Compile Include="Utilities\General\ResourceHelper.cs" />
+    <Compile Include="Utilities\General\StringHelper.cs" />
+    <Compile Include="Utilities\General\XmlHelper.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

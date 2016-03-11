@@ -363,8 +363,8 @@ namespace FhirProfilePublisher.Engine
         {
             object result = code;
 
-            if (Snomed.IsSnomedSystemUri(codeSystem))
-                result = Html.A(Snomed.GetBrowserUrl(code), code);
+            if (SnomedHelper.IsSnomedSystemUri(codeSystem))
+                result = Html.A(SnomedHelper.GetBrowserUrl(code), code);
 
             return result;
         }
@@ -418,7 +418,7 @@ namespace FhirProfilePublisher.Engine
 
         private object GetCodeSystemLink(string systemUri)
         {
-            if (!Utilities.IsHttpUrl(systemUri))
+            if (!WebHelper.IsHttpUrl(systemUri))
                 return systemUri;
 
             return Html.A(systemUri, systemUri);

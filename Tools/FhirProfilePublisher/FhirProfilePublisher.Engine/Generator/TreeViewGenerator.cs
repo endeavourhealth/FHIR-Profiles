@@ -22,7 +22,7 @@ namespace FhirProfilePublisher.Engine
 
         public XElement Generate(StructureDefinition structureDefinition)
         {
-            StructureDefinitionTreeBuilder builder = new StructureDefinitionTreeBuilder();
+            SDTreeBuilder builder = new SDTreeBuilder();
             SDTreeNode rootNode = builder.GenerateTree(structureDefinition, _resourceFileSet);
 
             return GenerateHtml(rootNode);

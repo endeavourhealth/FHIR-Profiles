@@ -11,7 +11,7 @@ namespace FhirProfilePublisher.Engine
 {
     internal static class Scripts
     {
-        public static readonly string ScriptsResourceLocation = typeof(Styles).Assembly.GetName().Name + ".Assets.Scripts.";
+        public static readonly string ScriptsResourceLocation = typeof(Styles).Assembly.GetName().Name + ".WebContent.Scripts.";
         public const string BootstrapScriptFileName = "bootstrap.js";
         public const string JQueryScriptFileName = "jquery-2.1.4.js";
         public const string JQueryUIScriptFileName = "jquery-ui.js";

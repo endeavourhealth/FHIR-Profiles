@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FhirProfilePublisher.Specification;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace FhirProfilePublisher.Engine
     {
         public static string GetDescription(this ResourceMaturity resourceMaturity)
         {
-            return Utilities.GetEnumDescription(resourceMaturity);
+            return EnumHelper.GetEnumDescription(resourceMaturity);
         }
 
         public static string GetAssociatedIcon(this ResourceMaturity resourceMaturity)
