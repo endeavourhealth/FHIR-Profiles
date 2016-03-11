@@ -104,7 +104,7 @@ namespace FhirProfilePublisher.Engine
                 return Images.IconReuse;
             else if (FhirData.Instance.IsPrimitiveTypeName(element.type.First().code.value))
                 return Images.IconPrimitive;
-            else if (Fhir.IsReference(element.type.First().code.value))
+            else if (FhirData.Instance.IsReference(element.type.First().code.value))
                 return Images.IconReference;
             else if (FhirData.Instance.IsComplexTypeName(element.type.First().code.value))
                 return Images.IconDatatype;

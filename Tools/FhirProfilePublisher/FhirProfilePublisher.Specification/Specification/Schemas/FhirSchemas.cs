@@ -12,7 +12,7 @@ namespace FhirProfilePublisher.Specification
         #region Class members
 
         private static readonly string AssemblyName = typeof(FhirSchemas).Assembly.GetName().Name;
-        private static readonly string SchemaFilesPath = AssemblyName + ".Assets.Schemas.fhir_v1._0._1.";
+        private static readonly string SchemaFilesPath = AssemblyName + ".Specification.Schemas.fhir_v1._0._1.";
         private static readonly string FhirSingleSchemaFilePath = SchemaFilesPath + "fhir-single.xsd";
         private static readonly string FhirXHtmlSchemaFilePath = SchemaFilesPath + "fhir-xhtml.xsd";
         private static readonly string FhirXmlSchemaFilePath = SchemaFilesPath + "xml.xsd";

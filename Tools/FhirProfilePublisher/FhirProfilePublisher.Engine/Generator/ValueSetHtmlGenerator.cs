@@ -73,7 +73,7 @@ namespace FhirProfilePublisher.Engine
             });
 
             string description = valueset.description.WhenNotNull(t => t.value);
-            string referenceUrl = valueset.GetExtensionValueAsString(Fhir.ValueSetSourceReferenceExtensionUrl);
+            string referenceUrl = valueset.GetExtensionValueAsString(FhirConstants.ValueSetSourceReferenceExtensionUrl);
 
             if (!string.IsNullOrEmpty(description))
             {
@@ -295,8 +295,8 @@ namespace FhirProfilePublisher.Engine
                 {
                     foreach (ValueSetInclude include in valueset.compose.include)
                     {
-                        string name = include.GetExtensionValueAsString(Fhir.ValueSetSystemNameExtensionUrl);
-                        string url = include.GetExtensionValueAsString(Fhir.ValueSetSystemUrlExtensionUrl);
+                        string name = include.GetExtensionValueAsString(FhirConstants.ValueSetSystemNameExtensionUrl);
+                        string url = include.GetExtensionValueAsString(FhirConstants.ValueSetSystemUrlExtensionUrl);
 
                         Link additionalValueSetLink = null;
 

@@ -20,8 +20,8 @@ namespace FhirProfilePublisher.Specification
         public static void WriteResourceToDisk(string resourceName, string filePath)
         {
             using (Stream resource = Assembly.GetCallingAssembly().GetManifestResourceStream(resourceName))
-            using (Stream output = File.OpenWrite(filePath))
-                resource.CopyTo(output);
+                using (Stream output = File.OpenWrite(filePath))
+                    resource.CopyTo(output);
         }
     }
 }

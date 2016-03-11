@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FhirProfilePublisher.Specification;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,7 @@ namespace FhirProfilePublisher.Engine
         internal void Generate(string fileName, string title, string content)
         {
             string html = GenerateHtml(title, content);
-            Utilities.WriteUtf8Text(_outputPaths.GetOutputPath(OutputFileType.Html, fileName), html);
+            FileHelper.WriteUtf8Text(_outputPaths.GetOutputPath(OutputFileType.Html, fileName), html);
         }
 
         private string GenerateHtml(string title, string content)

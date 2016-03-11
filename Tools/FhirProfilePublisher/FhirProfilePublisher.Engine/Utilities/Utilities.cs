@@ -16,24 +16,6 @@ namespace FhirProfilePublisher.Engine
 {
     public static class Utilities
     {
-        public static string ReadInputFile(string inputFilename)
-        {
-            if (!File.Exists(inputFilename))
-                throw new FileNotFoundException(string.Format("Could not find {0}", inputFilename));
-
-            return File.ReadAllText(inputFilename);
-        }
-
-        public static void WriteUtf8Text(string path, string fileContents)
-        {
-            File.WriteAllText(path, fileContents, Encoding.UTF8);
-        }
-
-        public static void WriteText(string path, string fileContents)
-        {
-            File.WriteAllText(path, fileContents);
-        }
-
         public static void LaunchBrowser(string filePath)
         {
             using (RegistryKey registrykey = Registry.ClassesRoot.OpenSubKey(@"HTTP\shell\open\command", false))
@@ -52,12 +34,6 @@ namespace FhirProfilePublisher.Engine
 
             Uri folderUri = new Uri(path2);
             return Uri.UnescapeDataString(folderUri.MakeRelativeUri(pathUri).ToString().Replace('/', Path.DirectorySeparatorChar));
-        }
-
-        internal static void EnsureDirectory(string outputDirectory)
-        {
-            if (!Directory.Exists(outputDirectory))
-                Directory.CreateDirectory(outputDirectory);
         }
 
         internal static bool IsHttpUrl(string url)

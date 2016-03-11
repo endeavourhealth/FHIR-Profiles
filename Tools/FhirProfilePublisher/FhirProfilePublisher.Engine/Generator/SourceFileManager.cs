@@ -1,4 +1,5 @@
-﻿using Hl7.Fhir.V101;
+﻿using FhirProfilePublisher.Specification;
+using Hl7.Fhir.V101;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,7 +45,7 @@ namespace FhirProfilePublisher.Engine
                     {
                         // calculate relative path properly
                         string redirectHtml = Templates.Instance.GetRedirectPage("../" + file.OutputHtmlFilename);
-                        Utilities.WriteUtf8Text(_outputPaths.GetOutputPath(file.FileType, filename), redirectHtml);
+                        FileHelper.WriteUtf8Text(_outputPaths.GetOutputPath(file.FileType, filename), redirectHtml);
                     }
                 }
             }

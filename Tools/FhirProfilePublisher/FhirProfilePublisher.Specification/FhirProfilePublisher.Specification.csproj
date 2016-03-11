@@ -37,7 +37,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.8.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -53,20 +54,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Fhir\Fhir.cs" />
-    <Compile Include="Fhir\FhirData.cs" />
-    <Compile Include="Fhir\FhirSchemas.cs" />
-    <Compile Include="Fhir\Schemas\fhir-v1.0.1\fhir-single.cs">
+    <Compile Include="Specification\FhirConstants.cs" />
+    <Compile Include="Specification\Data\FhirData.cs" />
+    <Compile Include="Specification\Schemas\FhirSchemas.cs" />
+    <Compile Include="Specification\Schemas\fhir-v1.0.1\fhir-single.cs">
       <DependentUpon>fhir-single.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Json\CustomContractResolver.cs" />
-    <Compile Include="Json\FhirConvertor.cs" />
-    <Compile Include="Json\JsonConverter.cs" />
-    <Compile Include="Partials\ElementDefinitionPartial.cs" />
-    <Compile Include="Partials\ElementPartial.cs" />
-    <Compile Include="Partials\StructureDefinitionPartial.cs" />
-    <Compile Include="Partials\ValueSetDefinitionPartial.cs" />
+    <Compile Include="Conversion\CustomContractResolver.cs" />
+    <Compile Include="Conversion\FhirConvertor.cs" />
+    <Compile Include="Conversion\JsonConverter.cs" />
+    <Compile Include="Specification\Schemas\PartialClasses\ElementDefinitionPartial.cs" />
+    <Compile Include="Specification\Schemas\PartialClasses\ElementPartial.cs" />
+    <Compile Include="Specification\Schemas\PartialClasses\EnumExtensionMethods.cs" />
+    <Compile Include="Specification\Schemas\PartialClasses\StructureDefinitionPartial.cs" />
+    <Compile Include="Specification\Schemas\PartialClasses\ValueSetDefinitionPartial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\FileHelper.cs" />
     <Compile Include="Utilities\GenericExtensions.cs" />
     <Compile Include="Utilities\ResourceHelper.cs" />
     <Compile Include="Utilities\StringHelper.cs" />
@@ -80,14 +83,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Fhir\Schemas\fhir-v1.0.1\fhir-invariants.sch" />
-    <EmbeddedResource Include="Fhir\Schemas\fhir-v1.0.1\fhir-single.xsd">
+    <EmbeddedResource Include="Specification\Schemas\fhir-v1.0.1\fhir-invariants.sch" />
+    <EmbeddedResource Include="Specification\Schemas\fhir-v1.0.1\fhir-single.xsd">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Fhir\Schemas\fhir-v1.0.1\fhir-xhtml.xsd">
+    <EmbeddedResource Include="Specification\Schemas\fhir-v1.0.1\fhir-xhtml.xsd">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Fhir\Schemas\fhir-v1.0.1\xml.xsd">
+    <EmbeddedResource Include="Specification\Schemas\fhir-v1.0.1\xml.xsd">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -102,34 +105,34 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Fhir\Data\fhir-v1.0.1\conceptmaps.xml" />
+    <EmbeddedResource Include="Specification\Data\fhir-v1.0.1\conceptmaps.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Fhir\Data\fhir-v1.0.1\dataelements.xml" />
+    <EmbeddedResource Include="Specification\Data\fhir-v1.0.1\dataelements.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Fhir\Data\fhir-v1.0.1\extension-definitions.xml" />
+    <EmbeddedResource Include="Specification\Data\fhir-v1.0.1\extension-definitions.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Fhir\Data\fhir-v1.0.1\profiles-others.xml" />
+    <EmbeddedResource Include="Specification\Data\fhir-v1.0.1\profiles-others.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Fhir\Data\fhir-v1.0.1\profiles-resources.xml" />
+    <EmbeddedResource Include="Specification\Data\fhir-v1.0.1\profiles-resources.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Fhir\Data\fhir-v1.0.1\profiles-types.xml" />
+    <EmbeddedResource Include="Specification\Data\fhir-v1.0.1\profiles-types.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Fhir\Data\fhir-v1.0.1\search-parameters.xml" />
+    <EmbeddedResource Include="Specification\Data\fhir-v1.0.1\search-parameters.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Fhir\Data\fhir-v1.0.1\v2-tables.xml" />
+    <EmbeddedResource Include="Specification\Data\fhir-v1.0.1\v2-tables.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Fhir\Data\fhir-v1.0.1\v3-codesystems.xml" />
+    <EmbeddedResource Include="Specification\Data\fhir-v1.0.1\v3-codesystems.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Fhir\Data\fhir-v1.0.1\valuesets.xml" />
+    <EmbeddedResource Include="Specification\Data\fhir-v1.0.1\valuesets.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

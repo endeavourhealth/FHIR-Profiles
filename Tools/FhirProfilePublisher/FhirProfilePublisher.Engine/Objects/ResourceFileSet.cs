@@ -79,7 +79,7 @@ namespace FhirProfilePublisher.Engine
         {
             string[] inputFiles = inputFilePaths
                 .Where(t => !string.IsNullOrEmpty(t))
-                .Select(t => Utilities.ReadInputFile(t))
+                .Select(t => FileHelper.ReadInputFile(t))
                 .ToArray();
 
             foreach (string inputFile in inputFiles)

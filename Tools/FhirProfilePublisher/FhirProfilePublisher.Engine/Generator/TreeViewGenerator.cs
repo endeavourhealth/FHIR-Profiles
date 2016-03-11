@@ -47,11 +47,11 @@ namespace FhirProfilePublisher.Engine
         {
             return Html.THead(Html.Tr(new object[]
             {
-                Html.Th(Styles.ResourceTreeNameColumnClassName, Html.A(Fhir.ResourceStructureTableHeaderUrl, "Name")),
-                Html.Th(Styles.ResourceTreeFlagsColumnClassName, Html.A(Fhir.ResourceStructureTableHeaderUrl, "Flags")),
-                Html.Th(Styles.ResourceTreeCardinalityColumnClassName, Html.A(Fhir.ResourceStructureTableHeaderUrl, "Card.")),
-                Html.Th(Styles.ResourceTreeTypeColumnClassName, Html.A(Fhir.ResourceStructureTableHeaderUrl, "Type")),
-                Html.Th(Styles.ResourceTreeDescriptionColumnClassName, Html.A(Fhir.ResourceStructureTableHeaderUrl, "Description & Constraints"))
+                Html.Th(Styles.ResourceTreeNameColumnClassName, Html.A(FhirConstants.ResourceStructureTableHeaderUrl, "Name")),
+                Html.Th(Styles.ResourceTreeFlagsColumnClassName, Html.A(FhirConstants.ResourceStructureTableHeaderUrl, "Flags")),
+                Html.Th(Styles.ResourceTreeCardinalityColumnClassName, Html.A(FhirConstants.ResourceStructureTableHeaderUrl, "Card.")),
+                Html.Th(Styles.ResourceTreeTypeColumnClassName, Html.A(FhirConstants.ResourceStructureTableHeaderUrl, "Type")),
+                Html.Th(Styles.ResourceTreeDescriptionColumnClassName, Html.A(FhirConstants.ResourceStructureTableHeaderUrl, "Description & Constraints"))
             }));
         }
 
@@ -131,7 +131,7 @@ namespace FhirProfilePublisher.Engine
             if (types == null)
             {
                 if (hasChildren)
-                    return Html.Td(GetDataTypeLink(Fhir.BackboneElement));
+                    return Html.Td(GetDataTypeLink(FhirConstants.BackboneElement));
                 else
                     return Html.Td(string.Empty);
             }
@@ -200,7 +200,7 @@ namespace FhirProfilePublisher.Engine
                     {
                         Html.A(valuesetLink.Url, valuesetLink.Display),
                         " (",
-                        Html.A(Fhir.GetBindingStrengthUrl(definition.GetValueSetBindingStrength().Value), definition.GetValueSetBindingStrength().GetDescription()),
+                        Html.A((definition.GetValueSetBindingStrength().GetUrl()), definition.GetValueSetBindingStrength().GetDescription()),
                         ")"
                     })));
                 }
@@ -242,7 +242,7 @@ namespace FhirProfilePublisher.Engine
 
         private XNode GetDataTypeLink(string typeName)
         {
-            string typeUrl = Fhir.GetDataTypeUrl(typeName);
+            string typeUrl = FhirData.Instance.GetDataTypeUrl(typeName);
 
             if (string.IsNullOrWhiteSpace(typeUrl))
                 return new XText(typeName);
@@ -260,7 +260,7 @@ namespace FhirProfilePublisher.Engine
 
             return new object[]
             {
-                GetDataTypeLink(Fhir.ReferenceTypeName),
+                GetDataTypeLink(FhirConstants.ReferenceTypeName),
                 new XText("("),
                 elements.Intersperse(new XText(" | ")).ToArray(),
                 new XText(")")

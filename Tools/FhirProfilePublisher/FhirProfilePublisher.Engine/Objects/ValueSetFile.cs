@@ -53,7 +53,7 @@ namespace FhirProfilePublisher.Engine
         {
             get 
             {
-                string value = ValueSet.GetExtensionValueAsString(Fhir.ResourceMaturityExtensionUrl);
+                string value = ValueSet.GetExtensionValueAsString(FhirConstants.ResourceMaturityExtensionUrl);
                 return (ResourceMaturity)Utilities.ParseInt(value, default(int));
             }
         }

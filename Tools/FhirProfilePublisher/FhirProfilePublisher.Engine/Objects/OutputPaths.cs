@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FhirProfilePublisher.Specification;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -37,7 +38,7 @@ namespace FhirProfilePublisher.Engine
         {
             string path = Path.Combine(_outputDirectory, GetRelativePath(fileType));
 
-            Utilities.EnsureDirectory(path);
+            FileHelper.EnsureDirectory(path);
 
             return path;
         }
@@ -49,7 +50,7 @@ namespace FhirProfilePublisher.Engine
 
         public void WriteUtf8File(OutputFileType fileType, string fileName, string fileContents)
         {
-            Utilities.WriteUtf8Text(GetOutputPath(fileType, fileName), fileContents);
+            FileHelper.WriteUtf8Text(GetOutputPath(fileType, fileName), fileContents);
         }
     }
 }

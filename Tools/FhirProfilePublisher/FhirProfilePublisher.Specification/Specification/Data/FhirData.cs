@@ -12,7 +12,7 @@ namespace FhirProfilePublisher.Specification
         #region Class members
 
         private static readonly string AssemblyName = typeof(FhirSchemas).Assembly.GetName().Name;
-        private static readonly string DataFilesPath = AssemblyName + ".Assets.Fhir.Data.fhir_v1._0._1.";
+        private static readonly string DataFilesPath = AssemblyName + ".Specification.Data.fhir_v1._0._1.";
         private static readonly string ConceptMapsDataFilePath = DataFilesPath + "conceptmaps.xml";
         private static readonly string DataElementsDataFilePath = DataFilesPath + "dataelements.xml";
         private static readonly string ExtensionDefinitionsDataFilePath = DataFilesPath + "extension-definitions.xml";
@@ -104,8 +104,29 @@ namespace FhirProfilePublisher.Specification
 
         public ValueSet FindValueSet(string canonicalUrl)
         {
-            string valueSetUriNormalized = Fhir.NormaliseValueSetUri(canonicalUrl);
+            string valueSetUriNormalized = NormaliseValueSetUri(canonicalUrl);
             return ValueSets.FirstOrDefault(t => t.url.value == valueSetUriNormalized);
+        }
+
+        private static string NormaliseValueSetUri(string valueSetUri)
+        {
+            if (valueSetUri != null)
+                if (valueSetUri.StartsWith(FhirConstants.ValueSetUrlPrefixOld))
+                    return valueSetUri.Replace(FhirConstants.ValueSetUrlPrefixOld, FhirConstants.ValueSetUrlPrefixNew);
+
+            return valueSetUri;
+        }
+
+        public string GetDataTypeUrl(string dataType)
+        {
+            if (IsDataTypeName(dataType))
+                return string.Format(FhirConstants.DataTypeUrl, dataType);
+            else if (IsReference(dataType))
+                return FhirConstants.ReferenceUrl;
+            else if (dataType == FhirConstants.BackboneElement)
+                return FhirConstants.BackboneElementUrl;
+
+            return string.Empty;
         }
 
         public StructureDefinition FindStructureDefinition(string canonicalUrl)
@@ -161,6 +182,11 @@ namespace FhirProfilePublisher.Specification
         public bool IsComplexTypeName(string typeName)
         {
             return ComplexDataTypeNames.Contains(typeName);
+        }
+
+        public bool IsReference(string value)
+        {
+            return (value == FhirConstants.ReferenceTypeName);
         }
 
         #endregion

@@ -72,16 +72,5 @@ namespace FhirProfilePublisher.Specification
 
             xmlDocument.Validate(schemas, null);
         }
-
-        //public static void ValidateWithSchematron(string xml, string schematron)
-        //{
-        //    NMatrix.Schematron.Validator validator = new NMatrix.Schematron.Validator();
-            
-        //    using (StringReader reader = new StringReader(schematron))            
-        //        validator.AddSchema(reader);
-
-        //    using (StringReader reader = new StringReader(xml))
-        //        validator.Validate(reader);
-        //}
     }
 }

@@ -21,10 +21,7 @@ namespace FhirProfilePublisher.Engine
             _treeNode = treeNode;
             _stack = new Stack<TreeNode>();
             _stack.Push(treeNode);
-            SkipExtensionSlice = false;
         }
-
-        public bool SkipExtensionSlice { get; set; }
 
         public ElementDefinition Current
         {
