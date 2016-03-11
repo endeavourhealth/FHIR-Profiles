@@ -55,25 +55,29 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Specification\FhirConstants.cs" />
-    <Compile Include="Specification\Data\FhirData.cs" />
-    <Compile Include="Specification\Schemas\FhirSchemas.cs" />
+    <Compile Include="Specification\FhirData.cs" />
+    <Compile Include="Specification\FhirSchemas.cs" />
     <Compile Include="Specification\Schemas\fhir-v1.0.1\fhir-single.cs">
       <DependentUpon>fhir-single.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Conversion\CustomContractResolver.cs" />
-    <Compile Include="Conversion\FhirConvertor.cs" />
-    <Compile Include="Conversion\JsonConverter.cs" />
-    <Compile Include="Specification\Schemas\PartialClasses\ElementDefinitionPartial.cs" />
-    <Compile Include="Specification\Schemas\PartialClasses\ElementPartial.cs" />
-    <Compile Include="Specification\Schemas\PartialClasses\EnumExtensionMethods.cs" />
-    <Compile Include="Specification\Schemas\PartialClasses\StructureDefinitionPartial.cs" />
-    <Compile Include="Specification\Schemas\PartialClasses\ValueSetDefinitionPartial.cs" />
+    <Compile Include="Utilities\Conversion\CustomContractResolver.cs" />
+    <Compile Include="Utilities\Conversion\FhirConvertor.cs" />
+    <Compile Include="Utilities\Conversion\JsonConverter.cs" />
+    <Compile Include="Specification\PartialClasses\ElementDefinitionPartial.cs" />
+    <Compile Include="Specification\PartialClasses\ElementPartial.cs" />
+    <Compile Include="Specification\PartialClasses\EnumExtensionMethods.cs" />
+    <Compile Include="Specification\PartialClasses\StructureDefinitionPartial.cs" />
+    <Compile Include="Specification\PartialClasses\ValueSetDefinitionPartial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilities\FileHelper.cs" />
-    <Compile Include="Utilities\GenericExtensions.cs" />
-    <Compile Include="Utilities\ResourceHelper.cs" />
-    <Compile Include="Utilities\StringHelper.cs" />
-    <Compile Include="Utilities\XmlHelper.cs" />
+    <Compile Include="Utilities\StructureDefinitionTree\SDTreeNodeNavigator.cs" />
+    <Compile Include="Utilities\StructureDefinitionTree\IStructureDefinitionResolver.cs" />
+    <Compile Include="Utilities\StructureDefinitionTree\StructureDefinitionTreeBuilder.cs" />
+    <Compile Include="Utilities\StructureDefinitionTree\SDTreeNode.cs" />
+    <Compile Include="Utilities\Generic\FileHelper.cs" />
+    <Compile Include="Utilities\Generic\GenericExtensions.cs" />
+    <Compile Include="Utilities\Generic\ResourceHelper.cs" />
+    <Compile Include="Utilities\Generic\StringHelper.cs" />
+    <Compile Include="Utilities\Generic\XmlHelper.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

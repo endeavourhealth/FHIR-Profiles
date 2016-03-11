@@ -8,13 +8,13 @@ using FhirProfilePublisher.Specification;
 
 namespace FhirProfilePublisher.Engine
 {
-    internal class TreeNode
+    public class SDTreeNode
     {
-        private List<TreeNode> _children = new List<TreeNode>();
+        private List<SDTreeNode> _children = new List<SDTreeNode>();
         private string _lastPathElement;
         private string _name;
 
-        public TreeNode Parent { get; set; }
+        public SDTreeNode Parent { get; set; }
         public string Path { get; private set; }
         public ElementDefinition Element { get; private set; }
 
@@ -26,7 +26,7 @@ namespace FhirProfilePublisher.Engine
             }
         }
 
-        public TreeNode[] Children
+        public SDTreeNode[] Children
         {
             get
             {
@@ -42,7 +42,7 @@ namespace FhirProfilePublisher.Engine
             }
         }
 
-        public TreeNode(ElementDefinition element)
+        public SDTreeNode(ElementDefinition element)
         {
             Element = element;
             Path = element.path.WhenNotNull(t => t.value);
@@ -50,13 +50,13 @@ namespace FhirProfilePublisher.Engine
             _name = element.name.WhenNotNull(t => t.value);
         }
 
-        public void AddChild(TreeNode child)
+        public void AddChild(SDTreeNode child)
         {
             _children.Add(child);
             child.Parent = this;
         }
 
-        public void RemoveChild(TreeNode child)
+        public void RemoveChild(SDTreeNode child)
         {
             _children.Remove(child);
             child.Parent = null;
@@ -67,7 +67,7 @@ namespace FhirProfilePublisher.Engine
             if (Parent == null)
                 return true;
 
-            TreeNode lastChild = Parent.Children.LastOrDefault();
+            SDTreeNode lastChild = Parent.Children.LastOrDefault();
 
             if (lastChild == null)
                 throw new Exception("Anomolous tree structure detected");

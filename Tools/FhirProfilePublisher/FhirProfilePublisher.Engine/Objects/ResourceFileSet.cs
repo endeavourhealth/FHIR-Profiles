@@ -9,7 +9,7 @@ using FhirProfilePublisher.Specification;
 
 namespace FhirProfilePublisher.Engine
 {
-    internal class ResourceFileSet
+    internal class ResourceFileSet : IStructureDefinitionResolver
     {
         private List<StructureDefinitionFile> _structureDefinitions = new List<StructureDefinitionFile>();
         private List<ValueSetFile> _valueSets = new List<ValueSetFile>();
@@ -96,6 +96,11 @@ namespace FhirProfilePublisher.Engine
                 _valueSets.Add(new ValueSetFile(fhirProfileXml));
             else
                 throw new NotSupportedException(rootNodeName + " not recognised as FHIR profile resource.");
+        }
+
+        public StructureDefinition GetStructureDefinition(string url)
+        {
+            return GetStructureDefinition(url, true);
         }
 
         public StructureDefinition GetStructureDefinition(string url, bool alsoCheckBaseProfiles = true)

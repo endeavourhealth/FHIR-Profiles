@@ -60,9 +60,6 @@
     <Compile Include="Objects\OutputFileType.cs" />
     <Compile Include="Objects\ResourceFile.cs" />
     <Compile Include="Objects\OutputPaths.cs" />
-    <Compile Include="Utilities\ElementTree\ElementNavigator.cs" />
-    <Compile Include="Utilities\ElementTree\TreeFactory.cs" />
-    <Compile Include="Utilities\ElementTree\TreeNode.cs" />
     <Compile Include="Utilities\Snomed.cs" />
     <Compile Include="Objects\StructureDefinitionFile.cs" />
     <Compile Include="Objects\ValueSetCode.cs" />

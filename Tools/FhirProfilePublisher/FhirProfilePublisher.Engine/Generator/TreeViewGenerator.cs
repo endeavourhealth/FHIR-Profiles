@@ -22,13 +22,13 @@ namespace FhirProfilePublisher.Engine
 
         public XElement Generate(StructureDefinition structureDefinition)
         {
-            TreeFactory factory = new TreeFactory();
-            TreeNode rootNode = factory.GenerateTree(structureDefinition, _resourceFileSet);
+            StructureDefinitionTreeBuilder builder = new StructureDefinitionTreeBuilder();
+            SDTreeNode rootNode = builder.GenerateTree(structureDefinition, _resourceFileSet);
 
             return GenerateHtml(rootNode);
         }
 
-        private XElement GenerateHtml(TreeNode rootNode)
+        private XElement GenerateHtml(SDTreeNode rootNode)
         { 
             return Html.Table(new object[]
             {
@@ -55,20 +55,19 @@ namespace FhirProfilePublisher.Engine
             }));
         }
 
-        private XElement GenerateTableBody(TreeNode rootNode)
+        private XElement GenerateTableBody(SDTreeNode rootNode)
         {
             List<XElement> tableRows = new List<XElement>();
 
-            ElementNavigator elementNavigator = new ElementNavigator(rootNode);
-            //elementNavigator.SkipExtensionSlice = true;
+            SDTreeNodeNavigator nodeNavigator = new SDTreeNodeNavigator(rootNode);
 
-            while (elementNavigator.MoveNext())
-                tableRows.Add(GetTableRow(elementNavigator.CurrentNode));
+            while (nodeNavigator.MoveNext())
+                tableRows.Add(GetTableRow(nodeNavigator.CurrentNode));
 
             return Html.TBody(tableRows);
         }
 
-        private XElement GetTableRow(TreeNode treeNode)
+        private XElement GetTableRow(SDTreeNode treeNode)
         {
             ElementDefinition currentElement = treeNode.Element;
 
@@ -91,7 +90,7 @@ namespace FhirProfilePublisher.Engine
             return Html.Tr(result.ToArray());
         }
 
-        private XElement GetNameAndImagesTableCell(TreeNode treeNode)
+        private XElement GetNameAndImagesTableCell(SDTreeNode treeNode)
         {
             bool[] indents = GetHierarchyImageDefinition(treeNode);
 
@@ -267,11 +266,11 @@ namespace FhirProfilePublisher.Engine
             };
         }
 
-        public bool[] GetHierarchyImageDefinition(TreeNode treeNode)
+        public bool[] GetHierarchyImageDefinition(SDTreeNode treeNode)
         {
-            Stack<TreeNode> stack = new Stack<TreeNode>();
+            Stack<SDTreeNode> stack = new Stack<SDTreeNode>();
 
-            TreeNode current = treeNode;
+            SDTreeNode current = treeNode;
 
             while (current.Parent != null)
             {
@@ -283,7 +282,7 @@ namespace FhirProfilePublisher.Engine
 
             while (stack.Any())
             {
-                TreeNode node = stack.Pop();
+                SDTreeNode node = stack.Pop();
                 result.Add(node.IsLastChild());
             }
 

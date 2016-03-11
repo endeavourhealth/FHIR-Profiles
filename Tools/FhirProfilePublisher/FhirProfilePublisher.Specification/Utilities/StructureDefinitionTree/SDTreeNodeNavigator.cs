@@ -7,19 +7,19 @@ using Hl7.Fhir.V101;
 
 namespace FhirProfilePublisher.Engine
 {
-    internal class ElementNavigator
+    public class SDTreeNodeNavigator
     {
-        private TreeNode _treeNode;
-        private Stack<TreeNode> _stack;
-        private TreeNode _currentNode;
+        private SDTreeNode _treeNode;
+        private Stack<SDTreeNode> _stack;
+        private SDTreeNode _currentNode;
 
-        public ElementNavigator(TreeNode treeNode)
+        public SDTreeNodeNavigator(SDTreeNode treeNode)
         {
             if (treeNode == null)
                 throw new ArgumentNullException("treeNode");
 
             _treeNode = treeNode;
-            _stack = new Stack<TreeNode>();
+            _stack = new Stack<SDTreeNode>();
             _stack.Push(treeNode);
         }
 
@@ -31,7 +31,7 @@ namespace FhirProfilePublisher.Engine
             }
         }
 
-        public TreeNode CurrentNode
+        public SDTreeNode CurrentNode
         {
             get
             {
@@ -54,7 +54,7 @@ namespace FhirProfilePublisher.Engine
 
             _currentNode = _stack.Pop();
 
-            foreach (TreeNode childNode in _currentNode.Children.Reverse())
+            foreach (SDTreeNode childNode in _currentNode.Children.Reverse())
                 _stack.Push(childNode);
 
             return true;

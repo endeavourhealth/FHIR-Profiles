@@ -6,43 +6,43 @@ using FhirProfilePublisher.Specification;
 
 namespace FhirProfilePublisher.Engine
 {
-    internal class TreeFactory
+    public class StructureDefinitionTreeBuilder
     {
-        public TreeFactory()
+        public StructureDefinitionTreeBuilder()
         {
         }
 
-        public TreeNode GenerateTree(StructureDefinition structureDefinition, ResourceFileSet resourceFileSet)
+        public SDTreeNode GenerateTree(StructureDefinition structureDefinition, IStructureDefinitionResolver locator)
         {
             IndexSlices(structureDefinition.differential.element);
 
-            ElementDefinition[] elements = CreateSnapshot(structureDefinition, resourceFileSet);
+            ElementDefinition[] elements = CreateSnapshot(structureDefinition, locator);
 
-            TreeNode rootNode = GenerateTree(elements);
+            SDTreeNode rootNode = GenerateTree(elements);
 
             GroupSlices(rootNode);
 
             return rootNode;
         }
 
-        private static void GroupSlices(TreeNode rootNode)
+        private static void GroupSlices(SDTreeNode rootNode)
         {
-            Stack<TreeNode> stack = new Stack<TreeNode>();
+            Stack<SDTreeNode> stack = new Stack<SDTreeNode>();
             stack.Push(rootNode);
 
             while (stack.Any())
             {
-                TreeNode node = stack.Pop();
+                SDTreeNode node = stack.Pop();
 
-                TreeNode[] childSlicingEntries = node.Children.Where(t => t.IsSlicingEntry).ToArray();
+                SDTreeNode[] childSlicingEntries = node.Children.Where(t => t.IsSlicingEntry).ToArray();
 
                 if (childSlicingEntries.Any())
                 {
-                    foreach (TreeNode childSlicingEntry in childSlicingEntries)
+                    foreach (SDTreeNode childSlicingEntry in childSlicingEntries)
                     {
-                        TreeNode[] childSlices = node.Children.Where(t => t.Path.StartsWith(childSlicingEntry.Path + "#")).ToArray();
+                        SDTreeNode[] childSlices = node.Children.Where(t => t.Path.StartsWith(childSlicingEntry.Path + "#")).ToArray();
 
-                        foreach (TreeNode childSlice in childSlices)
+                        foreach (SDTreeNode childSlice in childSlices)
                         {
                             node.RemoveChild(childSlice);
                             childSlicingEntry.AddChild(childSlice);
@@ -50,7 +50,7 @@ namespace FhirProfilePublisher.Engine
                     }
                 }
 
-                foreach (TreeNode child in node.Children.Reverse())
+                foreach (SDTreeNode child in node.Children.Reverse())
                     stack.Push(child);
             }
         }
@@ -96,14 +96,14 @@ namespace FhirProfilePublisher.Engine
             }
         }
 
-        private static ElementDefinition[] CreateSnapshot(StructureDefinition structure, ResourceFileSet resources)
+        private static ElementDefinition[] CreateSnapshot(StructureDefinition structure, IStructureDefinitionResolver locator)
         {
             ElementDefinition[] elements = structure.differential.WhenNotNull(t => t.element);
 
             if (elements == null)
                 throw new Exception("No differential in definition");
 
-            StructureDefinition baseStructure = resources.GetStructureDefinition(structure.@base.value);
+            StructureDefinition baseStructure = locator.GetStructureDefinition(structure.@base.value);
             ElementDefinition[] baseSnapshotElements = baseStructure.differential.WhenNotNull(t => t.element);
 
             if (baseSnapshotElements == null)
@@ -128,25 +128,25 @@ namespace FhirProfilePublisher.Engine
             return result.ToArray();
         }
 
-        private TreeNode GenerateTree(ElementDefinition[] elements)
+        private SDTreeNode GenerateTree(ElementDefinition[] elements)
         {
             ElementDefinition rootElement = GetRootElement(elements);
 
             if (rootElement == null)
                 throw new Exception("Could not find root element");
 
-            TreeNode rootNode = new TreeNode(rootElement);
+            SDTreeNode rootNode = new SDTreeNode(rootElement);
 
-            Stack<TreeNode> stack = new Stack<TreeNode>();
+            Stack<SDTreeNode> stack = new Stack<SDTreeNode>();
             stack.Push(rootNode);
 
             while (stack.Any())
             {
-                TreeNode node = stack.Pop();
+                SDTreeNode node = stack.Pop();
 
                 foreach (ElementDefinition element in GetChildren(node.Element, elements))
                 {
-                    TreeNode childNode = new TreeNode(element);
+                    SDTreeNode childNode = new SDTreeNode(element);
                     node.AddChild(childNode);
                     stack.Push(childNode);
                 }
