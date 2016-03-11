@@ -41,6 +41,14 @@ namespace FhirProfilePublisher.Specification
             }
         }
 
+        public string LastPathElement
+        {
+            get
+            {
+                return _lastPathElement;
+            }
+        }
+
         public SDTreeNode(ElementDefinition element)
         {
             Element = element;
@@ -59,6 +67,18 @@ namespace FhirProfilePublisher.Specification
         {
             _children.Remove(child);
             child.Parent = null;
+        }
+
+        public void RemoveAllChildren()
+        {
+            foreach (SDTreeNode child in _children.ToArray())
+                RemoveChild(child);
+        }
+
+        public void AddChildren(SDTreeNode[] children)
+        {
+            foreach (SDTreeNode child in children)
+                AddChild(child);
         }
 
         public bool IsLastChild()

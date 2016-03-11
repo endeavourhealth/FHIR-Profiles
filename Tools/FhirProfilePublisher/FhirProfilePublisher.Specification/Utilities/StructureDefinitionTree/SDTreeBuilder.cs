@@ -35,7 +35,7 @@ namespace FhirProfilePublisher.Specification
             SDTreeNode rootNode = GenerateTree(elements);
 
             // Expand out data types
-            AddMissingDataTypeElements(rootNode);
+            AddMissingComplexDataTypeElements(rootNode);
 
             // group slices under the slice "setup" node
             GroupSlices(rootNode);
@@ -43,7 +43,7 @@ namespace FhirProfilePublisher.Specification
             return rootNode;
         }
 
-        private static void AddMissingDataTypeElements(SDTreeNode rootNode)
+        private static void AddMissingComplexDataTypeElements(SDTreeNode rootNode)
         {
             Stack<SDTreeNode> stack = new Stack<SDTreeNode>();
             stack.Push(rootNode);
@@ -52,9 +52,64 @@ namespace FhirProfilePublisher.Specification
             {
                 SDTreeNode node = stack.Pop();
 
-                
+                if (node.Element.type.WhenNotNull(t => t.Count()) == 1)
+                {
+                    ElementDefinitionType elementType = node.Element.type.First();
 
-                
+                    if (elementType.IsPrimitiveType())
+                    {
+                        // do nothing
+                    }
+                    else if (elementType.IsReference())
+                    {
+                        // do nothing
+                    }
+                    else if (elementType.IsComplexType())
+                    {
+                        StructureDefinition dataTypeStructureDefinition = FhirData.Instance.FindDataTypeStructureDefinition(elementType.TypeName);
+
+                        ElementDefinition dataTypeRootElement = dataTypeStructureDefinition.differential.element.GetRootElement();
+                        ElementDefinition[] dataTypeElements = dataTypeStructureDefinition.differential.element.GetChildren(dataTypeRootElement).ToArray();
+
+                        SDTreeNode[] existingChildren = node.Children;
+                        int existingChildNodeIndex = 0;
+
+                        List<SDTreeNode> newChildren = new List<SDTreeNode>();
+
+                        foreach (ElementDefinition dataTypeElement in dataTypeElements)
+                        {
+                            SDTreeNode existingChild = null;
+
+                            if (existingChildNodeIndex < existingChildren.Length)
+                                existingChild = existingChildren[existingChildNodeIndex++];
+                            
+                            string newPath = dataTypeElement.path.value.Substring(dataTypeRootElement.path.value.Length + 1);
+
+                            if ((existingChild != null) && (existingChild.LastPathElement == newPath))
+                            {
+                                newChildren.Add(existingChild);
+                            }
+                            else
+                            {
+                                newChildren.Add(new SDTreeNode(dataTypeElement));
+                            }
+
+                            
+                        }
+
+                        node.RemoveAllChildren();
+                        node.AddChildren(newChildren.ToArray());
+
+                    }
+                    else if (elementType.IsExtension())
+                    {
+                        // do nothing
+                    }
+                    else
+                    {
+                        // do nothing
+                    }
+                }
 
                 foreach (SDTreeNode childNode in node.Children.Reverse())
                     stack.Push(childNode);
@@ -166,7 +221,7 @@ namespace FhirProfilePublisher.Specification
 
         private SDTreeNode GenerateTree(ElementDefinition[] elements)
         {
-            ElementDefinition rootElement = GetRootElement(elements);
+            ElementDefinition rootElement = elements.GetRootElement();
 
             if (rootElement == null)
                 throw new Exception("Could not find root element");
@@ -180,7 +235,7 @@ namespace FhirProfilePublisher.Specification
             {
                 SDTreeNode node = stack.Pop();
 
-                foreach (ElementDefinition element in GetChildren(node.Element, elements))
+                foreach (ElementDefinition element in elements.GetChildren(node.Element))
                 {
                     SDTreeNode childNode = new SDTreeNode(element);
                     node.AddChild(childNode);
@@ -191,31 +246,6 @@ namespace FhirProfilePublisher.Specification
             return rootNode;
         }
 
-        private ElementDefinition GetRootElement(ElementDefinition[] elements)
-        {
-            return elements.Single(t => t.path.value.Split('.').Count() == 1);
-        }
-
-        private ElementDefinition[] GetChildren(ElementDefinition element, ElementDefinition[] elements)
-        {
-            List<ElementDefinition> result = new List<ElementDefinition>();
-
-            result.AddRange(elements.Where(t => IsDirectChildpath(element.path.value, t.path.value)).ToArray());
-
-            //if (parent.HasDataTypeChoice())
-                //result.AddRange(parent.type.Select(t => GenerateFakeDataTypeChoiceElement(_currentElement, t)));
-
-            return result.ToArray();
-        }
-
-        private static bool IsDirectChildpath(string parentpath, string childpath)
-        {
-            if (!childpath.StartsWith(parentpath + "."))
-                return false;
-
-            string childpathWithoutParent = childpath.Remove(0, Math.Min(parentpath.Length + 1, childpath.Length));
-
-            return (!childpathWithoutParent.Contains("."));
-        }
+        
     }
 }

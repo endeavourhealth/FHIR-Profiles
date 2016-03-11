@@ -16,12 +16,25 @@ namespace Hl7.Fhir.V101
 
         public bool IsComplexType()
         {
-            return FhirData.Instance.ComplexDataTypeNames.Contains(code.value);
+            return FhirData.Instance.ComplexDataTypeNames.Contains(code.value) && (!IsExtension());
         }
 
         public bool IsReference()
         {
             return (code.value == FhirConstants.ReferenceTypeName);
+        }
+
+        public bool IsExtension()
+        {
+            return (code.value == FhirConstants.ExtensionTypeName);
+        }
+
+        public string TypeName
+        {
+            get
+            {
+                return code.value;
+            }
         }
     }
 }

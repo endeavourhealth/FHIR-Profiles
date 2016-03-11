@@ -102,12 +102,6 @@ namespace FhirProfilePublisher.Specification
                 .ToArray();
         }
 
-        public ValueSet FindValueSet(string canonicalUrl)
-        {
-            string valueSetUriNormalized = NormaliseValueSetUri(canonicalUrl);
-            return ValueSets.FirstOrDefault(t => t.url.value == valueSetUriNormalized);
-        }
-
         private static string NormaliseValueSetUri(string valueSetUri)
         {
             if (valueSetUri != null)
@@ -115,29 +109,6 @@ namespace FhirProfilePublisher.Specification
                     return valueSetUri.Replace(FhirConstants.ValueSetUrlPrefixOld, FhirConstants.ValueSetUrlPrefixNew);
 
             return valueSetUri;
-        }
-
-        public string GetDataTypeUrl(string dataType)
-        {
-            if (IsDataTypeName(dataType))
-                return string.Format(FhirConstants.DataTypeUrl, dataType);
-            else if (dataType == FhirConstants.ReferenceTypeName)
-                return FhirConstants.ReferenceUrl;
-            else if (dataType == FhirConstants.BackboneElement)
-                return FhirConstants.BackboneElementUrl;
-
-            return string.Empty;
-        }
-
-        public bool IsDataTypeName(string typeName)
-        {
-            return (FhirData.Instance.PrimitiveDataTypeNames.Contains(typeName)
-                || (FhirData.Instance.ComplexDataTypeNames.Contains(typeName)));
-        }
-
-        public StructureDefinition FindStructureDefinition(string canonicalUrl)
-        {
-            return ResourceDefinitions.SingleOrDefault(t => t.url.value == canonicalUrl);
         }
 
         private static string[] GetPrimitiveDataTypeNames(StructureDefinition[] dataTypeDefinitions)
@@ -173,6 +144,41 @@ namespace FhirProfilePublisher.Specification
                 .Select(t => t.name.value)
                 .OrderBy(t => t)
                 .ToArray();
+        }
+
+        public string GetDataTypeUrl(string dataType)
+        {
+            if (IsDataTypeName(dataType))
+                return string.Format(FhirConstants.DataTypeUrl, dataType);
+            else if (dataType == FhirConstants.ReferenceTypeName)
+                return FhirConstants.ReferenceUrl;
+            else if (dataType == FhirConstants.BackboneElement)
+                return FhirConstants.BackboneElementUrl;
+
+            return string.Empty;
+        }
+
+        public bool IsDataTypeName(string typeName)
+        {
+            return (FhirData.Instance.PrimitiveDataTypeNames.Contains(typeName)
+                || (FhirData.Instance.ComplexDataTypeNames.Contains(typeName)));
+        }
+
+        public StructureDefinition FindStructureDefinition(string canonicalUrl)
+        {
+            return ResourceDefinitions.SingleOrDefault(t => t.url.value == canonicalUrl);
+        }
+
+        public StructureDefinition FindDataTypeStructureDefinition(string dataTypeName)
+        {
+            string canonicalUrl = string.Format(FhirConstants.DataTypeCanonicalUrl, dataTypeName);
+            return FindStructureDefinition(canonicalUrl);
+        }
+
+        public ValueSet FindValueSet(string canonicalUrl)
+        {
+            string valueSetUriNormalized = NormaliseValueSetUri(canonicalUrl);
+            return ValueSets.FirstOrDefault(t => t.url.value == valueSetUriNormalized);
         }
 
         #endregion
