@@ -60,6 +60,7 @@ namespace FhirProfilePublisher.Engine
             List<XElement> tableRows = new List<XElement>();
 
             SDTreeNodeNavigator nodeNavigator = new SDTreeNodeNavigator(rootNode);
+            nodeNavigator.IncludeNodesWithZeroMaxCardinality = false;
 
             while (nodeNavigator.MoveNext())
                 tableRows.Add(GetTableRow(nodeNavigator.CurrentNode));
@@ -80,12 +81,8 @@ namespace FhirProfilePublisher.Engine
                 GetDescriptionTableCell(currentElement)
             };
 
-            if (currentElement.IsRemoved())
-            {
-                //result.Add(Html.Class(Styles.StrikethroughStyle));
+            if (treeNode.HasZeroMaxCardinality())
                 result.Add(Html.Class(Styles.RemovedTableRowClassName));
-                //result.Add(Html.Style(Styles.DisplayNoneStyle + Styles.StrikethroughStyle));
-            }
 
             return Html.Tr(result.ToArray());
         }
