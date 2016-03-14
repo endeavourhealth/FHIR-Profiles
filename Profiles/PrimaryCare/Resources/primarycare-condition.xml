@@ -116,6 +116,18 @@
       </type>
     </element>
     <element>
+      <path value="Condition.extension" />
+      <name value="related" />
+      <short value="Related condition" />
+      <definition value="A reference to another condition (target) whose relationship is defined by the relationship type code." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition-related-extension" />
+      </type>
+    </element>
+    <element>
       <path value="Condition.identifier.assigner" />
       <short value="Organization that issued id (may be just text)" />
       <definition value="Organization that issued/manages the identifier." />
@@ -235,37 +247,6 @@
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-coding-qualifier-extension" />
       </type>
-    </element>
-    <element>
-      <path value="Condition.category" />
-      <short value="complaint | symptom | finding | diagnosis" />
-      <definition value="A category assigned to the condition." />
-      <comments value="The categorization is often highly contextual and may appear poorly differentiated or not very useful in other contexts." />
-      <min value="0" />
-      <max value="1" />
-      <type>
-        <code value="CodeableConcept" />
-      </type>
-      <isSummary value="true" />
-      <binding>
-        <strength value="preferred" />
-        <description value="A category assigned to the condition." />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/condition-category" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="v2" />
-        <map value="'problem' if from PRB-3. 'diagnosis' if from DG1 segment in PV1 message" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value=".code" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="class" />
-      </mapping>
     </element>
     <element>
       <path value="Condition.clinicalStatus" />
@@ -411,7 +392,7 @@
       <definition value="The anatomical location where this condition manifests itself." />
       <comments value="May be a summary code, or a reference to a very precise definition of the location, or both." />
       <min value="0" />
-      <max value="0" />
+      <max value="*" />
       <type>
         <code value="CodeableConcept" />
       </type>
