@@ -23,7 +23,7 @@ namespace FhirProfilePublisher.Specification
         ////////////////////////////////////////////////////////////////////////
 
 
-        public SDTreeNode GenerateTree(StructureDefinition structureDefinition, IStructureDefinitionResolver locator)
+        public SDTreeNode GenerateTree(StructureDefinition structureDefinition, IStructureDefinitionResolver locator, bool includeNodesWithZeroMaxCardinality = true)
         {
             // "index" slices to create unique ElementDefinition.path values
             IndexSlices(structureDefinition.differential.element);
@@ -40,7 +40,28 @@ namespace FhirProfilePublisher.Specification
             // group slices under the slice "setup" node
             GroupSlices(rootNode);
 
+            if (!includeNodesWithZeroMaxCardinality)
+                RemoveZeroMaxCardinalityNodes(rootNode);
+
             return rootNode;
+        }
+
+        private static void RemoveZeroMaxCardinalityNodes(SDTreeNode rootNode)
+        {
+            Stack<SDTreeNode> stack = new Stack<SDTreeNode>();
+            stack.Push(rootNode);
+
+            while (stack.Any())
+            {
+                SDTreeNode node = stack.Pop();
+
+                if (node.HasZeroMaxCardinality())
+                    if (node.Parent != null)
+                        node.Parent.RemoveChild(node);
+
+                foreach (SDTreeNode childNode in node.Children.Reverse())
+                    stack.Push(childNode);
+            }
         }
 
         private static void AddMissingComplexDataTypeElements(SDTreeNode rootNode)

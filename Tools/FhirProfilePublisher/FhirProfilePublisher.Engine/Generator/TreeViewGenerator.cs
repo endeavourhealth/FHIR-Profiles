@@ -23,7 +23,7 @@ namespace FhirProfilePublisher.Engine
         public XElement Generate(StructureDefinition structureDefinition)
         {
             SDTreeBuilder builder = new SDTreeBuilder();
-            SDTreeNode rootNode = builder.GenerateTree(structureDefinition, _resourceFileSet);
+            SDTreeNode rootNode = builder.GenerateTree(structureDefinition, _resourceFileSet, false);
 
             return GenerateHtml(rootNode);
         }
@@ -60,7 +60,6 @@ namespace FhirProfilePublisher.Engine
             List<XElement> tableRows = new List<XElement>();
 
             SDTreeNodeNavigator nodeNavigator = new SDTreeNodeNavigator(rootNode);
-            nodeNavigator.IncludeNodesWithZeroMaxCardinality = false;
 
             while (nodeNavigator.MoveNext())
                 tableRows.Add(GetTableRow(nodeNavigator.CurrentNode));

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Hl7.Fhir.V101;
 
 namespace FhirProfilePublisher.Specification
@@ -21,10 +19,7 @@ namespace FhirProfilePublisher.Specification
             _treeNode = treeNode;
             _stack = new Stack<SDTreeNode>();
             _stack.Push(treeNode);
-            IncludeNodesWithZeroMaxCardinality = true;
         }
-
-        public bool IncludeNodesWithZeroMaxCardinality { get; set; }
 
         public ElementDefinition Current
         {
@@ -58,8 +53,7 @@ namespace FhirProfilePublisher.Specification
             _currentNode = _stack.Pop();
 
             foreach (SDTreeNode childNode in _currentNode.Children.Reverse())
-                if (IncludeNodesWithZeroMaxCardinality || (!childNode.HasZeroMaxCardinality()))
-                    _stack.Push(childNode);
+                _stack.Push(childNode);
 
             return true;
         }
