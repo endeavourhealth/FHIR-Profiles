@@ -1,4 +1,4 @@
-﻿using Hl7.Fhir.V101;
+﻿using Hl7.Fhir.V102;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,8 +16,9 @@ namespace FhirProfilePublisher.Specification
         public SDTreeNode Parent { get; set; }
         public string Path { get; private set; }
         public ElementDefinition Element { get; private set; }
+        public bool IsSlice { get; set; }
 
-        public bool IsSlicingEntry
+        public bool IsSetupSlice
         {
             get
             {
@@ -55,6 +56,7 @@ namespace FhirProfilePublisher.Specification
             Path = element.path.WhenNotNull(t => t.value);
             _lastPathElement = element.GetNameFromPath();
             _name = element.name.WhenNotNull(t => t.value);
+            IsSlice = false;
         }
 
         public void AddChild(SDTreeNode child)
@@ -115,6 +117,60 @@ namespace FhirProfilePublisher.Specification
                 return false;
 
             return (treeNode.Element.IsRemoved() || HasZeroMaxCardinality(treeNode.Parent));
+        }
+
+        public string GetDisplayName()
+        {
+            string result = Element.GetNameFromPath();
+
+            string name = Element.name.WhenNotNull(t => t.value);
+
+            if (!string.IsNullOrWhiteSpace(name))
+                result += " [" + name + "]";
+
+            return result;
+        }
+
+        public SDNodeType GetNodeType()
+        {
+            if (IsSetupSlice)
+                return SDNodeType.SetupSlice;
+
+            if (Element.type != null)
+            {
+                if (Element.type.Length == 0)
+                {
+                    return SDNodeType.Unknown;
+                }
+                else if (Element.type.Length == 1)
+                {
+                    ElementDefinitionType elementType = Element.type.Single();
+
+                    if (elementType.IsBackboneElement())
+                        return SDNodeType.Element;
+                    else if (elementType.IsPrimitiveType())
+                        return SDNodeType.PrimitiveType;
+                    else if (elementType.IsReference())
+                        return SDNodeType.Reference;
+                    else if (elementType.IsComplexType())
+                        return SDNodeType.ComplexType;
+                    else if (elementType.IsExtension())
+                        return SDNodeType.Extension;
+                    else if (elementType.IsResource())
+                        return SDNodeType.Resource;
+
+                    return SDNodeType.Unknown;
+                }
+                else
+                {
+                    if (Element.type.AllTypesAreReference())
+                        return SDNodeType.Reference;
+
+                    return SDNodeType.Choice;
+                }
+            }
+
+            return SDNodeType.Unknown;
         }
     }
 }

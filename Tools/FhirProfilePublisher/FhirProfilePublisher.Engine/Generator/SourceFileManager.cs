@@ -1,5 +1,5 @@
 ﻿using FhirProfilePublisher.Specification;
-using Hl7.Fhir.V101;
+using Hl7.Fhir.V102;
 using System;
 using System.Collections.Generic;
 using System.Linq;

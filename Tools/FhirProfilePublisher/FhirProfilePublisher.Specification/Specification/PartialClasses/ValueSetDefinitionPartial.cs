@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FhirProfilePublisher.Specification;
 
-namespace Hl7.Fhir.V101
+namespace Hl7.Fhir.V102
 {
     public partial class ValueSet
     {

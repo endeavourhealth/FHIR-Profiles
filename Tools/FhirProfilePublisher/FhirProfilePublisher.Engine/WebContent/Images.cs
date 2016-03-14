@@ -1,5 +1,5 @@
 ﻿using FhirProfilePublisher.Specification;
-using Hl7.Fhir.V101;
+using Hl7.Fhir.V102;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -88,34 +88,23 @@ namespace FhirProfilePublisher.Engine
                 + ".png";
         }
 
-        public static string GetImageName(ElementDefinition element)
+        public static string GetImageName(SDTreeNode treeNode)
         {
-            string nameFromPath = element.GetNameFromPath();
-            
-            if (nameFromPath == "extension" || nameFromPath == "modifierExtension")
-                return Images.IconExtensionSimple;
-            else if (element.type == null || element.type.Length == 0)
-                return Images.IconElement;
-            else if ((element.type.Length > 1) && (element.AllTypesAreReference()))
-                return Images.IconReference;
-            else if (element.type.Length > 1)
-                return Images.IconChoice;
-            else // element.type.Length == 1
+            SDNodeType nodeType = treeNode.GetNodeType();
+
+            switch (nodeType)
             {
-                ElementDefinitionType elementType = element.type.First();
-
-                if (elementType.code.value.StartsWith("@"))
-                    return Images.IconReuse;
-                else if (elementType.IsPrimitiveType())
-                    return Images.IconPrimitive;
-                else if (elementType.IsReference())
-                    return Images.IconReference;
-                else if (elementType.IsComplexType())
-                    return Images.IconDatatype;
+                case SDNodeType.Resource: return Images.IconResource;
+                case SDNodeType.PrimitiveType: return Images.IconPrimitive;
+                case SDNodeType.ComplexType: return Images.IconDatatype;
+                case SDNodeType.Reference: return Images.IconReference;
+                case SDNodeType.Extension: return Images.IconExtensionSimple;
+                case SDNodeType.SetupSlice: return Images.IconSlice;
+                case SDNodeType.Element: return Images.IconElement;
+                case SDNodeType.Choice: return Images.IconChoice;
+                case SDNodeType.Unknown: return Images.IconBlank;
+                default: throw new NotSupportedException("SDNodeType");
             }
-            
-
-            return Images.IconResource;
         }
 
         public static string GenerateBackgroundHierarchyImage(bool[] indents, bool hasChildren, OutputPaths outputPaths)

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hl7.Fhir.V101
+namespace Hl7.Fhir.V102
 {
     public partial class ElementDefinitionType
     {
@@ -27,6 +27,16 @@ namespace Hl7.Fhir.V101
         public bool IsExtension()
         {
             return (code.value == FhirConstants.ExtensionTypeName);
+        }
+
+        public bool IsResource()
+        {
+            return FhirData.Instance.ResourceNames.Contains(code.value);
+        }
+
+        public bool IsBackboneElement()
+        {
+            return (code.value == FhirConstants.BackboneElement);
         }
 
         public string TypeName

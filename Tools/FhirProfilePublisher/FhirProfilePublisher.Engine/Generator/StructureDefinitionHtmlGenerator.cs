@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-using Hl7.Fhir.V101;
+using Hl7.Fhir.V102;
 using FhirProfilePublisher.Specification;
 
 namespace FhirProfilePublisher.Engine

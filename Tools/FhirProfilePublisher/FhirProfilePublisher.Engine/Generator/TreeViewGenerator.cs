@@ -1,4 +1,4 @@
-﻿using Hl7.Fhir.V101;
+﻿using Hl7.Fhir.V102;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -75,7 +75,7 @@ namespace FhirProfilePublisher.Engine
             {
                 GetNameAndImagesTableCell(treeNode),
                 GetFlagsTableCell(currentElement),
-                GetCardinalityTableCell(currentElement, null),
+                Html.Td(currentElement.GetCardinalityText()),
                 GetTypeTableCell(treeNode.Element, treeNode.HasChildren),
                 GetDescriptionTableCell(currentElement)
             };
@@ -95,9 +95,9 @@ namespace FhirProfilePublisher.Engine
                 Html.Class(Styles.HierarchyClassName),
                 Html.Style(Styles.GetBackgroundImageCss(GetBackgroundHierarchyImage(indents, treeNode.HasChildren))),
                 GetHierarchyImageElement(Images.IconTreeSpacer),
-                GetHierarchyImages(treeNode.Element, indents),
+                GetHierarchyImages(treeNode, indents),
                 GetHierarchyImageElement(Images.IconTreeSpacerWide),
-                GetDisplayName(treeNode.Element)
+                treeNode.GetDisplayName()
             });
 
             return td;
@@ -112,11 +112,6 @@ namespace FhirProfilePublisher.Engine
                 flags = string.Join(" ", definition.GetFlagsSymbols());
 
             return Html.Td(flags);
-        }
-
-        private XElement GetCardinalityTableCell(ElementDefinition definition, ElementDefinition fallback)
-        {
-            return Html.Td(definition.GetCardinalityText());
         }
 
         private XElement GetTypeTableCell(ElementDefinition element, bool hasChildren)
@@ -134,7 +129,7 @@ namespace FhirProfilePublisher.Engine
             if (types.Length == 0)
                 return Html.Td(string.Empty);
 
-            if (element.AllTypesAreReference())
+            if (element.type.AllTypesAreReference())
                 return Html.Td(GetReferenceTypeName(types));
 
             if (types.Length == 1)
@@ -210,15 +205,6 @@ namespace FhirProfilePublisher.Engine
             return Html.Td(lines.ToArray());
         }
 
-        private string GetDisplayName(ElementDefinition element)
-        {
-            if (element.IsExtension())
-                return element.name.WhenNotNull(t => t.value);
-
-            return element.GetNameFromPath();
-        }
-
-
         private object[] GetLabelAndValue(string labelText, object value)
         {
             return new object[]
@@ -291,7 +277,7 @@ namespace FhirProfilePublisher.Engine
             return _outputPaths.GetRelativePath(OutputFileType.Image, imageName);
         }
 
-        private XElement[] GetHierarchyImages(ElementDefinition element, bool[] indents)
+        private XElement[] GetHierarchyImages(SDTreeNode treeNode, bool[] indents)
         {
             List<XElement> images = new List<XElement>();
 
@@ -301,7 +287,7 @@ namespace FhirProfilePublisher.Engine
             if (indents.Any())
                 images.Add(GetHierarchyImageElement(indents[indents.Length - 1] ? Images.IconTreeVJoinEnd : Images.IconTreeVJoin));
 
-            images.Add(GetHierarchyImageElement(Images.GetImageName(element)));
+            images.Add(GetHierarchyImageElement(Images.GetImageName(treeNode)));
 
             return images.ToArray();
         }

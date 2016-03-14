@@ -89,6 +89,14 @@ namespace FhirProfilePublisher
                 if (cbOpenBrowser.Checked)
                     WebHelper.LaunchBrowser(htmlFilePath);
             }
+            catch (ReferenceNotFoundException rnfe)
+            {
+                MessageBox.Show(this, 
+                "Could not publish profiles because of the following error:" + Environment.NewLine + Environment.NewLine + rnfe.Message,
+                "Error",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+            }
             finally
             {
                 Cursor.Current = Cursors.Default;

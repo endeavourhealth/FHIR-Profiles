@@ -1,4 +1,4 @@
-﻿using Hl7.Fhir.V101;
+﻿using Hl7.Fhir.V102;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,24 +7,16 @@ namespace FhirProfilePublisher.Specification
 {
     public class SDTreeBuilder
     {
+        private List<ElementDefinition> _sliceConfigurators;
+
         public SDTreeBuilder()
         {
         }
 
-        ////////////////////////////////////////////////////////////////////////
-        //
-        // issues
-        // ------
-        //
-        // 1. currently don't see the elements in ancestor SDs - only the direct parent.
-        // 2. don't see elements from data types unless they have been overriden.
-        //
-        //
-        ////////////////////////////////////////////////////////////////////////
-
-
         public SDTreeNode GenerateTree(StructureDefinition structureDefinition, IStructureDefinitionResolver locator, bool includeNodesWithZeroMaxCardinality = true)
         {
+            _sliceConfigurators = new List<ElementDefinition>();
+
             // "index" slices to create unique ElementDefinition.path values
             IndexSlices(structureDefinition.differential.element);
 
@@ -82,6 +74,10 @@ namespace FhirProfilePublisher.Specification
                         // do nothing
                     }
                     else if (elementType.IsReference())
+                    {
+                        // do nothing
+                    }
+                    else if (elementType.IsBackboneElement())
                     {
                         // do nothing
                     }
@@ -146,18 +142,19 @@ namespace FhirProfilePublisher.Specification
             {
                 SDTreeNode node = stack.Pop();
 
-                SDTreeNode[] childSlicingEntries = node.Children.Where(t => t.IsSlicingEntry).ToArray();
+                SDTreeNode[] childSetupSlices = node.Children.Where(t => t.IsSetupSlice).ToArray();
 
-                if (childSlicingEntries.Any())
+                if (childSetupSlices.Any())
                 {
-                    foreach (SDTreeNode childSlicingEntry in childSlicingEntries)
+                    foreach (SDTreeNode childSetupSlice in childSetupSlices)
                     {
-                        SDTreeNode[] childSlices = node.Children.Where(t => t.Path.StartsWith(childSlicingEntry.Path + "#")).ToArray();
+                        SDTreeNode[] childSlices = node.Children.Where(t => t.Path.StartsWith(childSetupSlice.Path + "#")).ToArray();
 
                         foreach (SDTreeNode childSlice in childSlices)
                         {
+                            childSlice.IsSlice = true;
                             node.RemoveChild(childSlice);
-                            childSlicingEntry.AddChild(childSlice);
+                            childSetupSlice.AddChild(childSlice);
                         }
                     }
                 }
@@ -266,7 +263,5 @@ namespace FhirProfilePublisher.Specification
 
             return rootNode;
         }
-
-        
     }
 }

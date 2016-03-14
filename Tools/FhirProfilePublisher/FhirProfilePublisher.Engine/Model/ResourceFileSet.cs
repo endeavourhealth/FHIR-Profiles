@@ -1,4 +1,4 @@
-﻿using Hl7.Fhir.V101;
+﻿using Hl7.Fhir.V102;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -112,7 +112,7 @@ namespace FhirProfilePublisher.Engine
                     definition = FhirData.Instance.FindStructureDefinition(url);
 
             if (definition == null)
-                throw new ArgumentException(string.Format("Could not find base definition {0}", url), "definition");
+                throw new ReferenceNotFoundException("StructureDefinition " + url + " not found.");
             
             return definition;
         }
@@ -155,7 +155,7 @@ namespace FhirProfilePublisher.Engine
             StructureDefinition structureDefinition = FhirData.Instance.FindStructureDefinition(canonicalUrl);
 
             if (structureDefinition == null)
-                throw new Exception("StructureDefinition " + canonicalUrl + " not found.");
+                throw new ReferenceNotFoundException("StructureDefinition " + canonicalUrl + " not found.");
 
             return new Link
             (

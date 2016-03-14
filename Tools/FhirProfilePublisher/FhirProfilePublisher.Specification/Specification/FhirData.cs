@@ -1,4 +1,4 @@
-﻿using Hl7.Fhir.V101;
+﻿using Hl7.Fhir.V102;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +12,7 @@ namespace FhirProfilePublisher.Specification
         #region Class members
 
         private static readonly string AssemblyName = typeof(FhirSchemas).Assembly.GetName().Name;
-        private static readonly string DataFilesPath = AssemblyName + ".Specification.Data.fhir_v1._0._1.";
+        private static readonly string DataFilesPath = AssemblyName + ".Specification.Data.fhir_v1._0._2.";
         private static readonly string ConceptMapsDataFilePath = DataFilesPath + "conceptmaps.xml";
         private static readonly string DataElementsDataFilePath = DataFilesPath + "dataelements.xml";
         private static readonly string ExtensionDefinitionsDataFilePath = DataFilesPath + "extension-definitions.xml";
@@ -49,6 +49,7 @@ namespace FhirProfilePublisher.Specification
 
         public string[] PrimitiveDataTypeNames { get; private set; }
         public string[] ComplexDataTypeNames { get; private set; }
+        public string[] ResourceNames { get; private set; }
 
         private FhirData()
         {
@@ -64,6 +65,7 @@ namespace FhirProfilePublisher.Specification
 
             PrimitiveDataTypeNames = GetPrimitiveDataTypeNames(dataTypeDefinitions);
             ComplexDataTypeNames = GetComplexDataTypeNames(dataTypeDefinitions, PrimitiveDataTypeNames);
+            ResourceNames = GetResourceNames(resourceDefinitions);
 
             ResourceDefinitions = resourceDefinitions
                                     .Concat(dataTypeDefinitions)
@@ -141,6 +143,14 @@ namespace FhirProfilePublisher.Specification
         {
             return dataTypeDefinitions
                 .Where(t => !simpleDataTypeNames.Contains(t.name.value))
+                .Select(t => t.name.value)
+                .OrderBy(t => t)
+                .ToArray();
+        }
+
+        private static string[] GetResourceNames(StructureDefinition[] resourceDefinitions)
+        {
+            return resourceDefinitions
                 .Select(t => t.name.value)
                 .OrderBy(t => t)
                 .ToArray();

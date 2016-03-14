@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\FhirProfilePublisherException.cs" />
+    <Compile Include="Exceptions\ReferenceNotFoundException.cs" />
     <Compile Include="WebContent\Templates.cs" />
     <Compile Include="WebContent\Scripts.cs" />
     <Compile Include="WebContent\Images.cs" />

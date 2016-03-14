@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FhirProfilePublisher.Specification;
 
-namespace Hl7.Fhir.V101
+namespace Hl7.Fhir.V102
 {
     public partial class ElementDefinition
     {
@@ -56,34 +56,6 @@ namespace Hl7.Fhir.V101
             return false;
         }
         
-        public bool IsEmptyExtensionSlice()
-        {
-            if (path.value.EndsWith(".extension"))
-            {
-                object[] elements = new object[]
-                {
-                    name,
-                    definition,
-                    mapping,
-                    type,
-                    min,
-                    max,
-                    alias,
-                    comments,
-                    binding
-                };
-
-                if (elements.Any(t => t != null))
-                    return false;
-
-                if (slicing != null)
-                    if ((slicing.discriminator != null) && (slicing.rules != null))
-                        return true;
-            }
-
-            return false;
-        }
-
         public string GetCardinalityText()
         {
             int? min = this.min.WhenNotNull(t => t.value);
@@ -153,16 +125,6 @@ namespace Hl7.Fhir.V101
             return false;
         }
 
-        public bool HasDataTypeChoice()
-        {
-            if (type != null)
-                if (type.Length > 1)
-                    if (!AllTypesAreReference())
-                        return true;
-
-            return false;
-        }
-
         public string[] GetFlagsSymbols()
         {
             List<string> flags = new List<string>();
@@ -187,11 +149,6 @@ namespace Hl7.Fhir.V101
         public string GetFixedValue()
         {
             return Item1.GetValueAsString();
-        }
-
-        public bool AllTypesAreReference()
-        {
-            return type.All(t => t.code.value == FhirConstants.ReferenceTypeName);
         }
     }
 }

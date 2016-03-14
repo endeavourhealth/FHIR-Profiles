@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Hl7.Fhir.V101;
+using Hl7.Fhir.V102;
 
 namespace FhirProfilePublisher.Specification
 {
