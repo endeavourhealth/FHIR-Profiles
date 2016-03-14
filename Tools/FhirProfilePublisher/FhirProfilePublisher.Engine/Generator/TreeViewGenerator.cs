@@ -23,7 +23,7 @@ namespace FhirProfilePublisher.Engine
         public XElement Generate(StructureDefinition structureDefinition)
         {
             SDTreeBuilder builder = new SDTreeBuilder();
-            SDTreeNode rootNode = builder.GenerateTree(structureDefinition, _resourceFileSet);
+            SDTreeNode rootNode = builder.GenerateTree(structureDefinition, _resourceFileSet, false);
 
             return GenerateHtml(rootNode);
         }
@@ -80,12 +80,8 @@ namespace FhirProfilePublisher.Engine
                 GetDescriptionTableCell(currentElement)
             };
 
-            if (currentElement.IsRemoved())
-            {
-                //result.Add(Html.Class(Styles.StrikethroughStyle));
+            if (treeNode.HasZeroMaxCardinality())
                 result.Add(Html.Class(Styles.RemovedTableRowClassName));
-                //result.Add(Html.Style(Styles.DisplayNoneStyle + Styles.StrikethroughStyle));
-            }
 
             return Html.Tr(result.ToArray());
         }

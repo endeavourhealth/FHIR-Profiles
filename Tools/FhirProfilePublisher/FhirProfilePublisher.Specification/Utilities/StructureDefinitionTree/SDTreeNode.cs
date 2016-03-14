@@ -102,7 +102,19 @@ namespace FhirProfilePublisher.Specification
                 result += " (" + _name + ")";
 
             return result;
+        }
 
+        public bool HasZeroMaxCardinality()
+        {
+            return HasZeroMaxCardinality(this);
+        }
+
+        private static bool HasZeroMaxCardinality(SDTreeNode treeNode)
+        {
+            if (treeNode == null)
+                return false;
+
+            return (treeNode.Element.IsRemoved() || HasZeroMaxCardinality(treeNode.Parent));
         }
     }
 }
