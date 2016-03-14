@@ -175,7 +175,7 @@
       <path value="AllergyIntolerance.substance" />
       <short value="Substance, (or class) considered to be responsible for risk" />
       <definition value="Identification of a substance, or a class of substances, that is considered to be responsible for the adverse reaction risk." />
-      <comments value="It is strongly recommended that the substance be coded with a terminology, where possible. Plain text should only be used if there is no appropriate terminology available. Additional details about a substance can be specified in the text." />
+      <comments value="It is strongly recommended that the substance be coded where possible. Plain text should only be used if there is no appropriate terminology available. In addition, a SNOMED AllergyCode may be sent where a direct substance mapping is not available in the source system." />
       <alias value="Agent" />
       <min value="1" />
       <max value="1" />
@@ -217,130 +217,6 @@
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-coding-qualifier-extension" />
       </type>
-    </element>
-    <element>
-      <path value="AllergyIntolerance.status" />
-      <short value="active | unconfirmed | confirmed | inactive | resolved | refuted | entered-in-error" />
-      <definition value="Assertion about certainty associated with the propensity, or potential risk, of a reaction to the identified Substance." />
-      <comments value="Decision support would typically raise alerts for 'Unconfirmed', 'Confirmed', and 'Resolved' and ignore a 'Refuted' reaction. In particular, 'Refuted' may be useful for reconciliation of the Adverse Reaction List. Some implementations may choose to make this field mandatory." />
-      <alias value="State" />
-      <min value="0" />
-      <max value="1" />
-      <type>
-        <code value="code" />
-      </type>
-      <isModifier value="true" />
-      <isSummary value="true" />
-      <binding>
-        <strength value="required" />
-        <description value="Assertion about certainty associated with a propensity, or potential risk, of a reaction to the identified Substance." />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/allergy-intolerance-status" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="v2" />
-        <map value="IAM-17" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="status" />
-      </mapping>
-    </element>
-    <element>
-      <path value="AllergyIntolerance.criticality" />
-      <short value="CRITL | CRITH | CRITU" />
-      <definition value="Estimate of the potential clinical harm, or seriousness, of the reaction to the identified Substance." />
-      <comments value="The default criticality value for any propensity to an adverse reaction should be 'Low Risk', indicating at the very least a relative contraindication to deliberate or voluntary exposure to the Substance. 'High Risk' is flagged if the clinician has identified a propensity for a more serious or potentially life-threatening reaction, such as anaphylaxis, and implies an absolute contraindication to deliberate or voluntary exposure to the substance. If this element is missing, the criticality is unknown (though it may be known elsewhere)." />
-      <alias value="Severity" />
-      <alias value="Seriousness" />
-      <alias value="Contra-indication" />
-      <alias value="Risk" />
-      <min value="0" />
-      <max value="1" />
-      <type>
-        <code value="code" />
-      </type>
-      <isSummary value="true" />
-      <binding>
-        <strength value="required" />
-        <description value="Estimate of the potential clinical harm, or seriousness, of a reaction to an identified Substance." />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/allergy-intolerance-criticality" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="w5" />
-        <map value="grade" />
-      </mapping>
-    </element>
-    <element>
-      <path value="AllergyIntolerance.type" />
-      <short value="allergy | intolerance - Underlying mechanism (if known)" />
-      <definition value="Identification of the underlying physiological mechanism for the reaction risk." />
-      <comments value="Allergic (typically immune-mediated) reactions have been traditionally regarded as an indicator for potential escalation to significant future risk. Contemporary knowledge suggests that some reactions previously thought to be immune-mediated are, in fact, non-immune, but in some cases can still pose a life threatening risk. It is acknowledged that many clinicians may not be in a position to distinguish the mechanism of a particular reaction. Often the term &quot;allergy&quot; is used rather generically and may overlap with the use of &quot;intolerance&quot; - in practice the boundaries between these two concepts may not be well-defined or understood. This data element is included nevertheless, because many legacy systems have captured this attribute. Immunologic testing may provide supporting evidence for the basis of the reaction and the causative substance, but no tests are 100% sensitive or specific for sensitivity to a particular substance. If, as is commonly the case, it is unclear whether the reaction is due to an allergy or an intolerance, then the type element should be omitted from the resource." />
-      <alias value="Category" />
-      <alias value="Class" />
-      <min value="0" />
-      <max value="1" />
-      <type>
-        <code value="code" />
-      </type>
-      <isSummary value="true" />
-      <binding>
-        <strength value="required" />
-        <description value="Identification of the underlying physiological mechanism for a Reaction Risk." />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/allergy-intolerance-type" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="v2" />
-        <map value="IAM-9" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="class" />
-      </mapping>
-    </element>
-    <element>
-      <path value="AllergyIntolerance.category" />
-      <short value="food | medication | environment | other - Category of Substance" />
-      <definition value="Category of the identified Substance." />
-      <comments value="This data element has been included because it is currently being captured in some clinical systems. This data can be derived from the Substance where coding systems are used, and is effectively redundant in that situation." />
-      <alias value="Category" />
-      <alias value="Type" />
-      <alias value="Reaction Type" />
-      <alias value="Class" />
-      <min value="0" />
-      <max value="1" />
-      <type>
-        <code value="code" />
-      </type>
-      <isSummary value="true" />
-      <binding>
-        <strength value="required" />
-        <description value="Category of an identified Substance." />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/allergy-intolerance-category" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="w5" />
-        <map value="class" />
-      </mapping>
-    </element>
-    <element>
-      <path value="AllergyIntolerance.lastOccurence" />
-      <short value="Date(/time) of last known occurrence of a reaction" />
-      <definition value="Represents the date and/or time of the last known occurrence of a reaction event." />
-      <comments value="This date may be replicated by one of the Onset of Reaction dates. Where a textual representation of the date of last occurrence is required e.g. 'In Childhood, '10 years ago' the Comment element should be used." />
-      <min value="0" />
-      <max value="1" />
-      <type>
-        <code value="dateTime" />
-      </type>
-      <isSummary value="true" />
     </element>
     <element>
       <path value="AllergyIntolerance.note.author[x]" />
@@ -410,16 +286,6 @@
         <identity value="rim" />
         <map value="Act.text" />
       </mapping>
-    </element>
-    <element>
-      <path value="AllergyIntolerance.reaction" />
-      <short value="Adverse Reaction Events linked to exposure to substance" />
-      <definition value="Details about each adverse reaction event linked to exposure to the identified Substance." />
-      <min value="0" />
-      <max value="0" />
-      <type>
-        <code value="BackboneElement" />
-      </type>
     </element>
   </differential>
 </StructureDefinition>
