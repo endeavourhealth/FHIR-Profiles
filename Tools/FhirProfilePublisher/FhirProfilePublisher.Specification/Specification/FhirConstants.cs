@@ -13,10 +13,6 @@ namespace FhirProfilePublisher.Specification
         public const string ExtensionTypeName = "Extension";
         public const string BackboneElement = "BackboneElement";
 
-        public const string FlagSymbolIsModifier = "?!";
-        public const string FlagSymbolIsSummary = "Σ";
-        public const string FlagSymbolHasInvariants = "I";
-
         public const string DataTypeCanonicalUrl = "http://hl7.org/fhir/StructureDefinition/{0}";
         public const string ValueSetUrlPrefixOld = "http://hl7.org/fhir/vs/";
         public const string ValueSetUrlPrefixNew = "http://hl7.org/fhir/ValueSet/";

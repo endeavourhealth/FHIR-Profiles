@@ -48,7 +48,6 @@ namespace FhirProfilePublisher.Engine
             return Html.THead(Html.Tr(new object[]
             {
                 Html.Th(Styles.ResourceTreeNameColumnClassName, Html.A(FhirConstants.ResourceStructureTableHeaderUrl, "Name")),
-                Html.Th(Styles.ResourceTreeFlagsColumnClassName, Html.A(FhirConstants.ResourceStructureTableHeaderUrl, "Flags")),
                 Html.Th(Styles.ResourceTreeCardinalityColumnClassName, Html.A(FhirConstants.ResourceStructureTableHeaderUrl, "Card.")),
                 Html.Th(Styles.ResourceTreeTypeColumnClassName, Html.A(FhirConstants.ResourceStructureTableHeaderUrl, "Type")),
                 Html.Th(Styles.ResourceTreeDescriptionColumnClassName, Html.A(FhirConstants.ResourceStructureTableHeaderUrl, "Description & Constraints"))
@@ -74,7 +73,6 @@ namespace FhirProfilePublisher.Engine
             List<object> result = new List<object>()
             {
                 GetNameAndImagesTableCell(treeNode),
-                GetFlagsTableCell(currentElement),
                 Html.Td(currentElement.GetCardinalityText()),
                 GetTypeTableCell(treeNode.Element, treeNode.HasChildren),
                 GetDescriptionTableCell(currentElement)
@@ -103,17 +101,6 @@ namespace FhirProfilePublisher.Engine
             return td;
         }
 
-
-        private XElement GetFlagsTableCell(ElementDefinition definition)
-        {
-            string flags = string.Empty;
-
-            if (!definition.IsRemoved())
-                flags = string.Join(" ", definition.GetFlagsSymbols());
-
-            return Html.Td(flags);
-        }
-
         private XElement GetTypeTableCell(ElementDefinition element, bool hasChildren)
         {
             ElementDefinitionType[] types = element.type;
@@ -140,7 +127,7 @@ namespace FhirProfilePublisher.Engine
             }
 
             if (types.Length > 1)
-                return Html.Td(string.Empty);
+                return Html.Td(types.Select(t => GetNonReferenceTypeName(t)).Intersperse(" | "));
 
             throw new NotSupportedException("Element type not supported.");
 

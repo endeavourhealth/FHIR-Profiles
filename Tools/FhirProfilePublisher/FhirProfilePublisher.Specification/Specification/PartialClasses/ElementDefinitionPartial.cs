@@ -80,65 +80,15 @@ namespace Hl7.Fhir.V102
             return new string[] { };
         }
 
-        public bool IsExtension()
+        public string GetExtensionCanonicalUrl()
         {
             if (type.WhenNotNull(t => t.Length == 1))
                 if (type.Single().code.WhenNotNull(t => t.value.ToLower() == "extension"))
-                    return true;
-
-            return false;
-        }
-
-        public string GetExtensionCanonicalUrl()
-        {
-            if (IsExtension())
-                if (type.WhenNotNull(t => t.Length == 1))
-                    if (type.Single().profile.WhenNotNull(s => s.Length == 1))
-                        return type.Single().profile.Single().value;
+                    if (type.WhenNotNull(t => t.Length == 1))
+                        if (type.Single().profile.WhenNotNull(s => s.Length == 1))
+                            return type.Single().profile.Single().value;
 
             return null;
-        }
-
-        public bool IsModifier()
-        {
-            if (isModifier != null)
-                if (isModifier.valueSpecified)
-                    return isModifier.value;
-
-            return false;
-        }
-
-        public bool IsSummary()
-        {
-            if (isSummary != null)
-                if (isSummary.valueSpecified)
-                    return isSummary.value;
-
-            return false;
-        }
-
-        public bool HasInvariants()
-        {
-            if (constraint != null)
-                return (constraint.Length > 0);
-
-            return false;
-        }
-
-        public string[] GetFlagsSymbols()
-        {
-            List<string> flags = new List<string>();
-
-            if (IsModifier())
-                flags.Add(FhirConstants.FlagSymbolIsModifier);
-
-            if (IsSummary())
-                flags.Add(FhirConstants.FlagSymbolIsSummary);
-
-            if (HasInvariants())
-                flags.Add(FhirConstants.FlagSymbolHasInvariants);
-
-            return flags.ToArray();
         }
 
         public bool HasFixedValue()

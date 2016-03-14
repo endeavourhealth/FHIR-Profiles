@@ -7,16 +7,12 @@ namespace FhirProfilePublisher.Specification
 {
     public class SDTreeBuilder
     {
-        private List<ElementDefinition> _sliceConfigurators;
-
         public SDTreeBuilder()
         {
         }
 
         public SDTreeNode GenerateTree(StructureDefinition structureDefinition, IStructureDefinitionResolver locator, bool includeNodesWithZeroMaxCardinality = true)
         {
-            _sliceConfigurators = new List<ElementDefinition>();
-
             // "index" slices to create unique ElementDefinition.path values
             IndexSlices(structureDefinition.differential.element);
 
@@ -27,140 +23,97 @@ namespace FhirProfilePublisher.Specification
             SDTreeNode rootNode = GenerateTree(elements);
 
             // Expand out data types
-            AddMissingComplexDataTypeElements(rootNode);
+            rootNode.DepthFirstTreeWalk(t => AddMissingComplexDataTypeElements(t));
 
-            // group slices under the slice "setup" node
-            GroupSlices(rootNode);
+            // group slices under the slice "setup" node (except extension slices)
+            rootNode.DepthFirstTreeWalk(t => GroupSlices(t));
 
+            // remove 0..0 nodes and their children
             if (!includeNodesWithZeroMaxCardinality)
-                RemoveZeroMaxCardinalityNodes(rootNode);
+                rootNode.DepthFirstTreeWalk(t => RemoveZeroMaxCardinalityNodes(t));
+
+            // remove setup extension "setup" slice nodes
+            rootNode.DepthFirstTreeWalk(t => RemoveExtensionSetupSlices(t));
 
             return rootNode;
         }
 
-        private static void RemoveZeroMaxCardinalityNodes(SDTreeNode rootNode)
+        private static void RemoveExtensionSetupSlices(SDTreeNode node)
         {
-            Stack<SDTreeNode> stack = new Stack<SDTreeNode>();
-            stack.Push(rootNode);
+            if (node.IsSetupSliceForExtension)
+                node.Parent.RemoveChild(node);
+        }
 
-            while (stack.Any())
+        private static void RemoveZeroMaxCardinalityNodes(SDTreeNode node)
+        {
+            if (node.HasZeroMaxCardinality())
+                if (node.Parent != null)
+                    node.Parent.RemoveChild(node);
+        }
+
+        private static void AddMissingComplexDataTypeElements(SDTreeNode node)
+        {
+            if (node.Element.type.WhenNotNull(t => t.Count()) == 1)
             {
-                SDTreeNode node = stack.Pop();
+                ElementDefinitionType elementType = node.Element.type.First();
 
-                if (node.HasZeroMaxCardinality())
-                    if (node.Parent != null)
-                        node.Parent.RemoveChild(node);
+                if (elementType.IsComplexType())
+                {
+                    StructureDefinition dataTypeStructureDefinition = FhirData.Instance.FindDataTypeStructureDefinition(elementType.TypeName);
 
-                foreach (SDTreeNode childNode in node.Children.Reverse())
-                    stack.Push(childNode);
+                    ElementDefinition dataTypeRootElement = dataTypeStructureDefinition.differential.element.GetRootElement();
+                    ElementDefinition[] dataTypeElements = dataTypeStructureDefinition.differential.element.GetChildren(dataTypeRootElement).ToArray();
+
+                    SDTreeNode[] existingChildren = node.Children;
+                    int existingChildNodeIndex = 0;
+
+                    List<SDTreeNode> newChildren = new List<SDTreeNode>();
+
+                    foreach (ElementDefinition dataTypeElement in dataTypeElements)
+                    {
+                        SDTreeNode existingChild = null;
+
+                        if (existingChildNodeIndex < existingChildren.Length)
+                            existingChild = existingChildren[existingChildNodeIndex++];
+
+                        string newPath = dataTypeElement.path.value.Substring(dataTypeRootElement.path.value.Length + 1);
+
+                        if ((existingChild != null) && (existingChild.LastPathElement == newPath))
+                        {
+                            newChildren.Add(existingChild);
+                        }
+                        else
+                        {
+                            newChildren.Add(new SDTreeNode(dataTypeElement));
+                        }
+
+
+                    }
+
+                    node.RemoveAllChildren();
+                    node.AddChildren(newChildren.ToArray());
+
+                }
             }
         }
 
-        private static void AddMissingComplexDataTypeElements(SDTreeNode rootNode)
+        private static void GroupSlices(SDTreeNode node)
         {
-            Stack<SDTreeNode> stack = new Stack<SDTreeNode>();
-            stack.Push(rootNode);
+            SDTreeNode[] childSetupSlices = node.Children.Where(t => t.IsSetupSlice && (!t.IsSetupSliceForExtension)).ToArray();
 
-            while (stack.Any())
+            if (childSetupSlices.Any())
             {
-                SDTreeNode node = stack.Pop();
-
-                if (node.Element.type.WhenNotNull(t => t.Count()) == 1)
+                foreach (SDTreeNode childSetupSlice in childSetupSlices)
                 {
-                    ElementDefinitionType elementType = node.Element.type.First();
+                    SDTreeNode[] childSlices = node.Children.Where(t => t.Path.StartsWith(childSetupSlice.Path + "#")).ToArray();
 
-                    if (elementType.IsPrimitiveType())
+                    foreach (SDTreeNode childSlice in childSlices)
                     {
-                        // do nothing
-                    }
-                    else if (elementType.IsReference())
-                    {
-                        // do nothing
-                    }
-                    else if (elementType.IsBackboneElement())
-                    {
-                        // do nothing
-                    }
-                    else if (elementType.IsComplexType())
-                    {
-                        StructureDefinition dataTypeStructureDefinition = FhirData.Instance.FindDataTypeStructureDefinition(elementType.TypeName);
-
-                        ElementDefinition dataTypeRootElement = dataTypeStructureDefinition.differential.element.GetRootElement();
-                        ElementDefinition[] dataTypeElements = dataTypeStructureDefinition.differential.element.GetChildren(dataTypeRootElement).ToArray();
-
-                        SDTreeNode[] existingChildren = node.Children;
-                        int existingChildNodeIndex = 0;
-
-                        List<SDTreeNode> newChildren = new List<SDTreeNode>();
-
-                        foreach (ElementDefinition dataTypeElement in dataTypeElements)
-                        {
-                            SDTreeNode existingChild = null;
-
-                            if (existingChildNodeIndex < existingChildren.Length)
-                                existingChild = existingChildren[existingChildNodeIndex++];
-                            
-                            string newPath = dataTypeElement.path.value.Substring(dataTypeRootElement.path.value.Length + 1);
-
-                            if ((existingChild != null) && (existingChild.LastPathElement == newPath))
-                            {
-                                newChildren.Add(existingChild);
-                            }
-                            else
-                            {
-                                newChildren.Add(new SDTreeNode(dataTypeElement));
-                            }
-
-                            
-                        }
-
-                        node.RemoveAllChildren();
-                        node.AddChildren(newChildren.ToArray());
-
-                    }
-                    else if (elementType.IsExtension())
-                    {
-                        // do nothing
-                    }
-                    else
-                    {
-                        // do nothing
+                        childSlice.IsSlice = true;
+                        node.RemoveChild(childSlice);
+                        childSetupSlice.AddChild(childSlice);
                     }
                 }
-
-                foreach (SDTreeNode childNode in node.Children.Reverse())
-                    stack.Push(childNode);
-            }
-        }
-
-        private static void GroupSlices(SDTreeNode rootNode)
-        {
-            Stack<SDTreeNode> stack = new Stack<SDTreeNode>();
-            stack.Push(rootNode);
-
-            while (stack.Any())
-            {
-                SDTreeNode node = stack.Pop();
-
-                SDTreeNode[] childSetupSlices = node.Children.Where(t => t.IsSetupSlice).ToArray();
-
-                if (childSetupSlices.Any())
-                {
-                    foreach (SDTreeNode childSetupSlice in childSetupSlices)
-                    {
-                        SDTreeNode[] childSlices = node.Children.Where(t => t.Path.StartsWith(childSetupSlice.Path + "#")).ToArray();
-
-                        foreach (SDTreeNode childSlice in childSlices)
-                        {
-                            childSlice.IsSlice = true;
-                            node.RemoveChild(childSlice);
-                            childSetupSlice.AddChild(childSlice);
-                        }
-                    }
-                }
-
-                foreach (SDTreeNode child in node.Children.Reverse())
-                    stack.Push(child);
             }
         }
 

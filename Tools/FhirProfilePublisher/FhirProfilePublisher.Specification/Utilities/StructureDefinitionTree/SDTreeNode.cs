@@ -26,6 +26,14 @@ namespace FhirProfilePublisher.Specification
             }
         }
 
+        public bool IsSetupSliceForExtension
+        {
+            get
+            {
+                return (IsSetupSlice && (Path.EndsWith(".extension") || (Path.EndsWith(".modifierExtension"))));
+            }
+        }
+
         public SDTreeNode[] Children
         {
             get
@@ -121,14 +129,21 @@ namespace FhirProfilePublisher.Specification
 
         public string GetDisplayName()
         {
-            string result = Element.GetNameFromPath();
+            if (GetNodeType() == SDNodeType.Extension)
+            {
+                return Element.name.WhenNotNull(t => t.value);
+            }
+            else
+            {
+                string result = Element.GetNameFromPath();
 
-            string name = Element.name.WhenNotNull(t => t.value);
+                string name = Element.name.WhenNotNull(t => t.value);
 
-            if (!string.IsNullOrWhiteSpace(name))
-                result += " [" + name + "]";
+                if (!string.IsNullOrWhiteSpace(name))
+                    result += " [" + name + "]";
 
-            return result;
+                return result;
+            }
         }
 
         public SDNodeType GetNodeType()
@@ -171,6 +186,22 @@ namespace FhirProfilePublisher.Specification
             }
 
             return SDNodeType.Unknown;
+        }
+
+        public void DepthFirstTreeWalk(Action<SDTreeNode> function)
+        {
+            Stack<SDTreeNode> stack = new Stack<SDTreeNode>();
+            stack.Push(this);
+
+            while (stack.Any())
+            {
+                SDTreeNode node = stack.Pop();
+
+                function(node);
+
+                foreach (SDTreeNode childNode in node.Children.Reverse())
+                    stack.Push(childNode);
+            }
         }
     }
 }

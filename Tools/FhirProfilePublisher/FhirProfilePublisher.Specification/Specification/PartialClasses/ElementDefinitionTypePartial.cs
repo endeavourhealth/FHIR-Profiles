@@ -16,7 +16,7 @@ namespace Hl7.Fhir.V102
 
         public bool IsComplexType()
         {
-            return FhirData.Instance.ComplexDataTypeNames.Contains(code.value) && (!IsExtension());
+            return FhirData.Instance.ComplexDataTypeNames.Contains(code.value) && (!IsExtension()) && (!IsBackboneElement() && (!IsReference()));
         }
 
         public bool IsReference()
