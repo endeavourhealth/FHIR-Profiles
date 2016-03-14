@@ -118,15 +118,7 @@ namespace FhirProfilePublisher.Engine
         {
             ElementDefinitionType[] types = element.type;
 
-            if (types == null)
-            {
-                if (hasChildren)
-                    return Html.Td(GetDataTypeLink(FhirConstants.BackboneElement));
-                else
-                    return Html.Td(string.Empty);
-            }
-
-            if (types.Length == 0)
+            if ((types == null) || (types.Length == 0))
                 return Html.Td(string.Empty);
 
             if (element.type.AllTypesAreReference())
