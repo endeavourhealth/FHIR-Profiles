@@ -66,31 +66,6 @@
       <isSummary value="true" />
     </element>
     <element>
-      <path value="Organization.identifier.assigner" />
-      <short value="Organization that issued id (may be just text)" />
-      <definition value="Organization that issued/manages the identifier." />
-      <comments value="The reference may be just a text description of the assigner." />
-      <min value="0" />
-      <max value="1" />
-      <type>
-        <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.4 / (CX.4,CX.9,CX.10)" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./IdentifierIssuingAuthority" />
-      </mapping>
-    </element>
-    <element>
       <path value="Organization.identifier" />
       <name value="odsCode" />
       <short value="Identifies this organization  across multiple systems" />
@@ -649,6 +624,35 @@
       <mapping>
         <identity value="servd" />
         <map value="n/a" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Organization.contact.address.state" />
+      <short value="Sub-unit of country (abbreviations ok)" />
+      <definition value="Sub-unit of a country with limited sovereignty in a federally organized country. A code may be used if codes are in common use (i.e. US 2 letter state codes)." />
+      <alias value="Province" />
+      <alias value="Territory" />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="string" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="XAD.4" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="AD.part[parttype = STA]" />
+      </mapping>
+      <mapping>
+        <identity value="vcard" />
+        <map value="region" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="./Region" />
       </mapping>
     </element>
   </differential>
