@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="primarycare-composition" />
+  <meta>
+    <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
+  </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="2" />
+  </extension>
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-composition" />
+  <name value="PrimaryCare-Composition" />
+  <display value="Primary Care composition" />
+  <status value="draft" />
+  <publisher value="Endeavour Health Charitable Trust" />
+  <contact>
+    <telecom>
+      <system value="other" />
+      <value value="http://www.endeavourhealth.org/" />
+    </telecom>
+  </contact>
+  <date value="2015-11-01T00:00:00+00:00" />
+  <description value="A set of healthcare-related information that is assembled together into a single logical document that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. While a Composition defines the structure, it does not actually contain the content: rather the full content of a document is contained in a Bundle, of which the Composition is the first resource contained." />
+  <fhirVersion value="1.0.1" />
+  <mapping>
+    <identity value="rim" />
+    <uri value="http://hl7.org/v3" />
+    <name value="RIM" />
+  </mapping>
+  <mapping>
+    <identity value="cda" />
+    <uri value="http://hl7.org/v3/cda" />
+    <name value="CDA (R2)" />
+  </mapping>
+  <mapping>
+    <identity value="w5" />
+    <uri value="http://hl7.org/fhir/w5" />
+    <name value="W5 Mapping" />
+  </mapping>
+  <kind value="resource" />
+  <constrainedType value="Composition" />
+  <abstract value="false" />
+  <base value="http://hl7.org/fhir/StructureDefinition/Composition" />
+  <differential>
+    <element>
+      <path value="Composition" />
+      <short value="A set of resources composed into a single coherent clinical statement with clinical attestation" />
+      <definition value="A set of healthcare-related information that is assembled together into a single logical document that provides a single coherent statement of meaning, establishes its own context and that has clinical attestation with regard to who is making the statement. While a Composition defines the structure, it does not actually contain the content: rather the full content of a document is contained in a Bundle, of which the Composition is the first resource contained." />
+      <comments value="While the focus of this specification is on patient-specific clinical statements, this resource can also apply to other healthcare-related statements such as study protocol designs, healthcare invoices and other activities that are not necessarily patient-specific or clinical." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Composition" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value="Document[classCode=&quot;DOC&quot; and moodCode=&quot;EVN&quot; and isNormalAct()]" />
+      </mapping>
+      <mapping>
+        <identity value="cda" />
+        <map value="ClinicalDocument" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="infrastructure.documents" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Composition.identifier.assigner" />
+      <short value="Organization that issued id (may be just text)" />
+      <definition value="Organization that issued/manages the identifier." />
+      <comments value="The reference may be just a text description of the assigner." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="CX.4 / (CX.4,CX.9,CX.10)" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="./IdentifierIssuingAuthority" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Composition.type" />
+      <short value="Kind of composition" />
+      <definition value="Specifies the particular kind of composition (e.g. History and Physical, Discharge Summary, Progress Note). This usually equates to the purpose of making the composition." />
+      <requirements value="Key metadata element describing the composition, used in searching/filtering." />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="CodeableConcept" />
+      </type>
+      <isSummary value="true" />
+      <binding>
+        <strength value="preferred" />
+        <description value="Type of a composition." />
+        <valueSetReference>
+          <reference value="http://endeavourhealth.org/fhir/ValueSet/primarycare-composition-type" />
+        </valueSetReference>
+      </binding>
+      <mapping>
+        <identity value="rim" />
+        <map value="./code" />
+      </mapping>
+      <mapping>
+        <identity value="cda" />
+        <map value=".code" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="class" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Composition.class" />
+      <short value="Categorization of Composition" />
+      <definition value="A categorization for the type of the composition - helps for indexing and searching. This may be implied by or derived from the code specified in the Composition Type." />
+      <comments value="This is a metadata field from [XDS/MHD](http://wiki.ihe.net/index.php?title=Mobile_access_to_Health_Documents_(MHD))." />
+      <requirements value="Helps humans to assess whether the composition is of interest when viewing an index of compositions or documents." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="CodeableConcept" />
+      </type>
+      <isSummary value="true" />
+      <binding>
+        <strength value="example" />
+        <description value="High-level kind of a clinical document at a macro level." />
+        <valueSetReference>
+          <reference value="http://hl7.org/fhir/ValueSet/doc-classcodes" />
+        </valueSetReference>
+      </binding>
+      <mapping>
+        <identity value="rim" />
+        <map value=".outboundRelationship[typeCode=&quot;COMP].target[classCode=&quot;LIST&quot;, moodCode=&quot;EVN&quot;].code" />
+      </mapping>
+      <mapping>
+        <identity value="cda" />
+        <map value="n/a" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="class" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Composition.confidentiality" />
+      <short value="As defined by affinity domain" />
+      <definition value="The code specifying the level of confidentiality of the Composition." />
+      <comments value="The exact use of this element, and enforcement and issues related to highly sensitive documents are out of scope for the base specification, and delegated to implementation profiles (see security section)." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="code" />
+      </type>
+      <isModifier value="true" />
+      <isSummary value="true" />
+      <binding>
+        <strength value="required" />
+        <description value="Codes specifying the level of confidentiality of the composition." />
+        <valueSetReference>
+          <reference value="http://hl7.org/fhir/ValueSet/v3-Confidentiality" />
+        </valueSetReference>
+      </binding>
+      <mapping>
+        <identity value="rim" />
+        <map value=".confidentialityCode" />
+      </mapping>
+      <mapping>
+        <identity value="cda" />
+        <map value=".confidentialityCode" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Composition.subject" />
+      <short value="Who and/or what the composition is about" />
+      <definition value="Who the composition is about." />
+      <requirements value="Essential metadata for searching for the composition. Identifies who and/or what the composition/document is about." />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="rim" />
+        <map value=".participation[typeCode=&quot;SBJ&quot;].role[typeCode=&quot;PAT&quot;]" />
+      </mapping>
+      <mapping>
+        <identity value="cda" />
+        <map value=".recordTarget" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="who.focus" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Composition.author" />
+      <short value="Who and/or what authored the composition" />
+      <definition value="Identifies who is responsible for the information in the composition, not necessarily who typed it in." />
+      <requirements value="Identifies who is responsible for the content." />
+      <min value="1" />
+      <max value="*" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="rim" />
+        <map value=".participation[typeCode=&quot;AUT&quot;].role[classCode=&quot;ASSIGNED&quot;]" />
+      </mapping>
+      <mapping>
+        <identity value="cda" />
+        <map value=".author.assignedAuthor" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="who.author" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Composition.attester.party" />
+      <short value="Who attested the composition" />
+      <definition value="Who attested the composition in the specified way." />
+      <requirements value="Identifies who has taken on the responsibility for accuracy of the composition content." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="rim" />
+        <map value="./role[classCode=&quot;ASSIGNED&quot; and isNormalRole]/player[determinerCode=&quot;INST&quot; and classCode=(&quot;DEV&quot;, &quot;PSN&quot;) and isNormalEntity()] or ./role[classCode=&quot;ASSIGNED&quot; and isNormalRole and not(player)]/scoper[determinerCode=&quot;INST&quot; and classCode=&quot;ORG&quot; and isNormalEntity()]" />
+      </mapping>
+      <mapping>
+        <identity value="cda" />
+        <map value=".authenticator.assignedEnttty" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="who.witness" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Composition.custodian" />
+      <short value="Organization which maintains the composition" />
+      <definition value="Identifies the organization or group who is responsible for ongoing maintenance of and access to the composition/document information." />
+      <comments value="This is useful when documents are derived from a composition - provides guidance for how to get the latest version of the document. This is optional because this is sometimes not known by the authoring system, and can be inferred by context. However it is important that this information be known when working with a derived document, so providing a custodian is encouraged." />
+      <requirements value="Identifies where to go to find the current version, where to report issues, etc." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="rim" />
+        <map value=".participation[typeCode=&quot;RCV&quot;].role[classCode=&quot;CUST&quot;].scoper[classCode=&quot;ORG&quot; and determinerCode=&quot;INST&quot;]" />
+      </mapping>
+      <mapping>
+        <identity value="cda" />
+        <map value=".custodian.assignedCustodian" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Composition.encounter" />
+      <short value="Context of the Composition" />
+      <definition value="Describes the clinical encounter or type of care this documentation is associated with." />
+      <requirements value="Provides context for the composition and supports searching." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="rim" />
+        <map value="unique(highest(./outboundRelationship[typeCode=&quot;SUBJ&quot; and isNormalActRelationship()], priorityNumber)/target[moodCode=&quot;EVN&quot; and classCode=(&quot;ENC&quot;, &quot;PCPR&quot;) and isNormalAct])" />
+      </mapping>
+      <mapping>
+        <identity value="cda" />
+        <map value=".componentOf.encompassingEncounter" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="context" />
+      </mapping>
+    </element>
+  </differential>
+</StructureDefinition>
