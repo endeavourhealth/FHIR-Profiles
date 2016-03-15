@@ -45,25 +45,6 @@
       </mapping>
     </element>
     <element>
-      <path value="Encounter.extension" />
-      <slicing>
-        <discriminator value="url" />
-        <rules value="openAtEnd" />
-      </slicing>
-    </element>
-    <element>
-      <path value="Encounter.extension" />
-      <name value="purpose" />
-      <short value="Clinical purpose of encounter" />
-      <definition value="Specific clinical purpose of encounter (e.g. child health, antenatal, assessment)." />
-      <min value="0" />
-      <max value="1" />
-      <type>
-        <code value="Extension" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter-purpose-extension" />
-      </type>
-    </element>
-    <element>
       <path value="Encounter.identifier.assigner" />
       <short value="Organization that issued id (may be just text)" />
       <definition value="Organization that issued/manages the identifier." />
