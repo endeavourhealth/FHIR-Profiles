@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="primarycare-condition-significance-extension" />
+  <id value="primarycare-diagnostic-report-interpretation-extension" />
   <meta>
     <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
   </extension>
-  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition-significance-extension" />
-  <name value="PrimaryCare-ConditionSignificance-Extension" />
-  <display value="Primary Care condition significance extension" />
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-diagnostic-report-interpretation-extension" />
+  <name value="PrimaryCare-DiagnosticReportInterpretation-Extension" />
+  <display value="Primary Care diagnostic report interpretation extension" />
   <status value="draft" />
   <publisher value="Endeavour Health Charitable Trust" />
   <contact>
@@ -19,19 +19,19 @@
     </telecom>
   </contact>
   <date value="2015-11-01T00:00:00+00:00" />
-  <description value="Used to indicate the clinical significance of a Condition." />
+  <description value="The assessment made based on the result of the diagnostic report." />
   <fhirVersion value="1.0.1" />
   <kind value="datatype" />
   <constrainedType value="Extension" />
   <abstract value="false" />
   <contextType value="resource" />
-  <context value="Condition" />
+  <context value="DiagnosticReport" />
   <base value="http://hl7.org/fhir/StructureDefinition/Extension" />
   <differential>
     <element>
       <path value="Extension" />
-      <short value="Condition significance" />
-      <definition value="Used to indicate the clinical significance of a Condition." />
+      <short value="Abnormal, Normal, etc." />
+      <definition value="The assessment made based on the result of the diagnostic report." />
       <min value="0" />
       <max value="*" />
       <type>
@@ -53,25 +53,27 @@
       <type>
         <code value="uri" />
       </type>
-      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition-expectedduration-extension" />
+      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-diagnostic-report-interpretation-extension" />
       <mapping>
         <identity value="rim" />
         <map value="N/A" />
       </mapping>
     </element>
     <element>
-      <path value="Extension.valueCode" />
-      <name value="valueCode" />
-      <short value="Condition significance code" />
+      <path value="Extension.valueCodeableConcept" />
+      <name value="valueCodeableConcept" />
+      <short value="Interpretation code" />
       <definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
       <min value="1" />
       <max value="1" />
       <type>
-        <code value="code" />
+        <code value="CodeableConcept" />
       </type>
       <binding>
-        <strength value="required" />
-        <valueSetUri value="http://endeavourhealth.org/fhir/ValueSet/primarycare-condition-significance" />
+        <strength value="extensible" />
+        <valueSetReference>
+          <reference value="http://hl7.org/fhir/ValueSet/observation-interpretation" />
+        </valueSetReference>
       </binding>
       <mapping>
         <identity value="rim" />

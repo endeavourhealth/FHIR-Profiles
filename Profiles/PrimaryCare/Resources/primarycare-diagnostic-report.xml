@@ -57,6 +57,37 @@
       </mapping>
     </element>
     <element>
+      <path value="DiagnosticReport.extension" />
+      <slicing>
+        <discriminator value="url" />
+        <rules value="openAtEnd" />
+      </slicing>
+    </element>
+    <element>
+      <path value="DiagnosticReport.extension" />
+      <name value="interpretation" />
+      <short value="Abnormal, Normal, etc." />
+      <definition value="The assessment made based on the result of the diagnostic report." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-diagnostic-report-interpretation-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="DiagnosticReport.extension" />
+      <name value="comments" />
+      <short value="Report comments" />
+      <definition value="Comments about the report." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-diagnostic-report-comment-extension" />
+      </type>
+    </element>
+    <element>
       <path value="DiagnosticReport.identifier.assigner" />
       <short value="Organization that issued id (may be just text)" />
       <definition value="Organization that issued/manages the identifier." />
@@ -265,69 +296,6 @@
       <mapping>
         <identity value="rim" />
         <map value="outboundRelationship[typeCode=COMP].target" />
-      </mapping>
-    </element>
-    <element>
-      <path value="DiagnosticReport.imagingStudy" />
-      <short value="Reference to full details of imaging associated with the diagnostic report" />
-      <definition value="One or more links to full details of any imaging performed during the diagnostic investigation. Typically, this is imaging performed by DICOM enabled modalities, but this is not required. A fully enabled PACS viewer can use this information to provide views of the source images." />
-      <comments value="ImagingStudy and ImageObjectStudy and the image element are somewhat overlapping - typically, the list of image references in the image element will also be found in one of the imaging study resources. However each caters to different types of displays for different types of purposes. Neither, either, or both may be provided." />
-      <min value="0" />
-      <max value="0" />
-      <type>
-        <code value="Reference" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/ImagingStudy" />
-      </type>
-      <type>
-        <code value="Reference" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/ImagingObjectSelection" />
-      </type>
-      <mapping>
-        <identity value="rim" />
-        <map value="outboundRelationship[typeCode=COMP].target[classsCode=DGIMG, moodCode=EVN]" />
-      </mapping>
-    </element>
-    <element>
-      <path value="DiagnosticReport.image" />
-      <short value="Key images associated with this report" />
-      <definition value="A list of key images associated with this report. The images are generally created during the diagnostic process, and may be directly of the patient, or of treated specimens (i.e. slides of interest)." />
-      <requirements value="Many diagnostic services include images in the report as part of their service." />
-      <alias value="DICOM" />
-      <alias value="Slides" />
-      <alias value="Scans" />
-      <min value="0" />
-      <max value="0" />
-      <type>
-        <code value="BackboneElement" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="OBX?" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="outboundRelationship[typeCode=COMP].target" />
-      </mapping>
-    </element>
-    <element>
-      <path value="DiagnosticReport.presentedForm" />
-      <short value="Entire report as issued" />
-      <definition value="Rich text representation of the entire result as issued by the diagnostic service. Multiple formats are allowed but they SHALL be semantically equivalent." />
-      <comments value="&quot;application/pdf&quot; is recommended as the most reliable and interoperable in this context." />
-      <requirements value="Gives Laboratory the ability to provide its own fully formatted report for clinical fidelity." />
-      <min value="0" />
-      <max value="0" />
-      <type>
-        <code value="Attachment" />
-      </type>
-      <mapping>
-        <identity value="v2" />
-        <map value="OBX" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="text (type=ED)" />
       </mapping>
     </element>
   </differential>
