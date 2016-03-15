@@ -19,6 +19,9 @@ namespace FhirProfilePublisher.Specification
             // Merge differential and the direct base StructureDefinition's differential. -- this needs expanding to include all ancestor base StructureDefinitions
             ElementDefinition[] elements = CreateSnapshot(structureDefinition, locator);
 
+            // Add fake missing parents
+            elements = AddFakeMissingParents(elements);
+
             // Build flat ElementDefinition list into tree
             SDTreeNode rootNode = GenerateTree(elements);
 
@@ -36,6 +39,18 @@ namespace FhirProfilePublisher.Specification
             rootNode.DepthFirstTreeWalk(t => RemoveExtensionSetupSlices(t));
 
             return rootNode;
+        }
+
+        private ElementDefinition[] AddFakeMissingParents(ElementDefinition[] elementDefinitions)
+        {
+            foreach (ElementDefinition elementDefinition in elementDefinitions)
+            {
+                string path = elementDefinition.path.value;
+
+                // walk up each path item testing for existence of parent element
+            }
+
+            return elementDefinitions;
         }
 
         private static void RemoveExtensionSetupSlices(SDTreeNode node)
