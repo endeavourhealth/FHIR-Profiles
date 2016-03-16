@@ -1,9 +1,12 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-diagnostic-report-comment-extension" />
   <meta>
     <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
   </meta>
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+    <valueInteger value="1" />
+  </extension>
   <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-diagnostic-report-comment-extension" />
   <name value="PrimaryCare-DiagnosticReportComment-Extension" />
   <status value="draft" />

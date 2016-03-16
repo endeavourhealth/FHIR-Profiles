@@ -1,11 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-composition" />
   <meta>
     <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
-    <valueInteger value="2" />
+    <valueInteger value="1" />
   </extension>
   <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-composition" />
   <name value="PrimaryCare-Composition" />
