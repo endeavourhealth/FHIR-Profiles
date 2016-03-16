@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="primarycare-medication-authorization" />
+  <id value="primarycare-medication-authorisation" />
   <meta>
     <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
   </extension>
-  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-authorization" />
-  <name value="PrimaryCare-MedicationAuthorization" />
-  <display value="Primary Care medication authorization" />
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-authorisation" />
+  <name value="PrimaryCare-MedicationAuthorisation" />
+  <display value="Primary Care medication authorisation" />
   <status value="draft" />
   <publisher value="Endeavour Health Charitable Trust" />
   <contact>
@@ -19,7 +19,7 @@
     </telecom>
   </contact>
   <date value="2015-11-01T00:00:00+00:00" />
-  <description value="Medication authorizations, or courses, are  “templates” for a prescription. Active or past. They contain enough information for a prescription to be issued or for it to be transcribed into another record as a reference (e.g. secondary care noting the primary care information would be a subset). What it is, who authorised it, when it was authorised, reference to last issue, overall compliance for that course, special instructions etc." />
+  <description value="Medication authorisations, or courses, are  “templates” for a prescription. Active or past. They contain enough information for a prescription to be issued or for it to be transcribed into another record as a reference (e.g. secondary care noting the primary care information would be a subset). What it is, who authorised it, when it was authorised, reference to last issue, overall compliance for that course, special instructions etc." />
   <fhirVersion value="1.0.1" />
   <kind value="resource" />
   <constrainedType value="MedicationStatement" />
@@ -61,7 +61,7 @@
       <max value="1" />
       <type>
         <code value="Extension" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-authorization-quantity-extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-authorisation-quantity-extension" />
       </type>
     </element>
     <element>

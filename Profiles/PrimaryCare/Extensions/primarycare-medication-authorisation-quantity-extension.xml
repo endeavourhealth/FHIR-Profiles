@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="primarycare-medication-authorization-quantity-extension" />
+  <id value="primarycare-medication-authorisation-quantity-extension" />
   <meta>
     <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
   </meta>
-    <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
+  <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
   </extension>
-  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-authorization-quantity-extension" />
-  <name value="PrimaryCare-MedicationAuthorizationQuantity-Extension" />
-  <display value="Primary Care medication authorization quantity extension" />
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-authorisation-quantity-extension" />
+  <name value="PrimaryCare-MedicationAuthorisationQuantity-Extension" />
+  <display value="Primary Care medication authorisation quantity extension" />
   <status value="draft" />
   <publisher value="Endeavour Health Charitable Trust" />
   <contact>
@@ -54,7 +54,7 @@
       <type>
         <code value="uri" />
       </type>
-      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-authorization-quantity-extension" />
+      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-authorisation-quantity-extension" />
       <mapping>
         <identity value="rim" />
         <map value="N/A" />
