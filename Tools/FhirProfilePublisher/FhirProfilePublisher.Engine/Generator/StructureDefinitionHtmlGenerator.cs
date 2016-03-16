@@ -49,6 +49,9 @@ namespace FhirProfilePublisher.Engine
         {
             StructureDefinition definition = structureDefinitionFile.StructureDefinition;
 
+            if ((definition.id == null) || (string.IsNullOrEmpty(definition.id.value)))
+                throw new NoIdException("StructureDefinition does not have id field populated");
+
             string content = Html.Div(new object[]
             {
                 Html.H3(GetNameHeader(definition)),

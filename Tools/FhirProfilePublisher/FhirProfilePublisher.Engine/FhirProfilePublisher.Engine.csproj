@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Exceptions\FhirProfilePublisherException.cs" />
+    <Compile Include="Exceptions\NoIdException.cs" />
     <Compile Include="Exceptions\ReferenceNotFoundException.cs" />
     <Compile Include="WebContent\Templates.cs" />
     <Compile Include="WebContent\Scripts.cs" />

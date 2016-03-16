@@ -13,6 +13,12 @@ namespace FhirProfilePublisher.Specification
 
         public SDTreeNode GenerateTree(StructureDefinition structureDefinition, IStructureDefinitionResolver locator, bool includeNodesWithZeroMaxCardinality = true)
         {
+            // process ElementDefinition list
+            //
+            // to create list where path values are unique (by indexing slices)
+            // and where there are no orphan children by creating fake parents
+            //
+
             // "index" slices to create unique ElementDefinition.path values
             IndexSlices(structureDefinition.differential.element);
 
@@ -22,8 +28,18 @@ namespace FhirProfilePublisher.Specification
             // Add fake missing parents
             elements = AddFakeMissingParents(elements);
 
+
+            // build tree
+            //
+            //
+
             // Build flat ElementDefinition list into tree
             SDTreeNode rootNode = GenerateTree(elements);
+
+
+            // process tree
+            //
+            //
 
             // Expand out data types
             rootNode.DepthFirstTreeWalk(t => AddMissingComplexDataTypeElements(t));
@@ -43,14 +59,42 @@ namespace FhirProfilePublisher.Specification
 
         private ElementDefinition[] AddFakeMissingParents(ElementDefinition[] elementDefinitions)
         {
+            List<ElementDefinition> result = new List<ElementDefinition>();
+
             foreach (ElementDefinition elementDefinition in elementDefinitions)
             {
-                string path = elementDefinition.path.value;
+                string path = elementDefinition.path.WhenNotNull(t => t.value) ?? string.Empty;
 
                 // walk up each path item testing for existence of parent element
+
+                string pathTemporary = string.Empty;
+
+                foreach (string pathItem in path.Split('.'))
+                {
+                    pathTemporary += pathItem;
+
+                    // if the parent doesn't exist
+                    // or we haven't already created a fake parent
+
+                    if (!((elementDefinitions.Any(t => t.path.value == pathTemporary))
+                        || (result.Any(t => t.path.value == pathTemporary))))
+                    {
+                        // create a fake parent
+
+                        ElementDefinition fakeElement = new ElementDefinition();
+                        fakeElement.IsFake = true;
+                        fakeElement.path = new @string();
+                        fakeElement.path.value = pathTemporary;
+                        result.Add(fakeElement);
+                    }
+
+                    pathTemporary += ".";
+                }
+
+                result.Add(elementDefinition);
             }
 
-            return elementDefinitions;
+            return result.ToArray();
         }
 
         private static void RemoveExtensionSetupSlices(SDTreeNode node)
@@ -74,28 +118,33 @@ namespace FhirProfilePublisher.Specification
 
                 if (elementType.IsComplexType())
                 {
-                    StructureDefinition dataTypeStructureDefinition = FhirData.Instance.FindDataTypeStructureDefinition(elementType.TypeName);
+                    StructureDefinition dataTypeDefinition = FhirData.Instance.FindDataTypeStructureDefinition(elementType.TypeName);
 
-                    ElementDefinition dataTypeRootElement = dataTypeStructureDefinition.differential.element.GetRootElement();
-                    ElementDefinition[] dataTypeElements = dataTypeStructureDefinition.differential.element.GetChildren(dataTypeRootElement).ToArray();
-
-                    SDTreeNode[] existingChildren = node.Children;
-                    int existingChildNodeIndex = 0;
+                    ElementDefinition dataTypeRootElement = dataTypeDefinition.differential.element.GetRootElement();
+                    ElementDefinition[] dataTypeElements = dataTypeDefinition.differential.element.GetChildren(dataTypeRootElement).ToArray();
 
                     List<SDTreeNode> newChildren = new List<SDTreeNode>();
 
                     foreach (ElementDefinition dataTypeElement in dataTypeElements)
                     {
-                        SDTreeNode existingChild = null;
+                        string lastPathElement = dataTypeElement.path.value.Substring(dataTypeRootElement.path.value.Length + 1);
 
-                        if (existingChildNodeIndex < existingChildren.Length)
-                            existingChild = existingChildren[existingChildNodeIndex++];
+                        SDTreeNode existingChild = node.Children.FirstOrDefault(t => t.LastPathElement == lastPathElement);
 
-                        string newPath = dataTypeElement.path.value.Substring(dataTypeRootElement.path.value.Length + 1);
-
-                        if ((existingChild != null) && (existingChild.LastPathElement == newPath))
+                        if (existingChild != null)
                         {
-                            newChildren.Add(existingChild);
+                            if (!existingChild.Element.IsFake)
+                            {
+                                newChildren.Add(existingChild);
+                            }
+                            else
+                            {
+                                SDTreeNode fakeReplacement = new SDTreeNode(dataTypeElement);
+                                SDTreeNode[] childsChildren = existingChild.Children;
+                                existingChild.RemoveAllChildren();
+                                fakeReplacement.AddChildren(childsChildren);
+                                newChildren.Add(fakeReplacement);
+                            }
                         }
                         else
                         {
