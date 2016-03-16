@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="primarycare-condition-significance-extension" />
+  <id value="primarycare-problem-lastreviewed-extension" />
   <meta>
     <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
   </extension>
-  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition-significance-extension" />
-  <name value="PrimaryCare-ConditionSignificance-Extension" />
-  <display value="Primary Care condition significance extension" />
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-problem-lastreviewed-extension" />
+  <name value="PrimaryCare-ProblemLastReviewed-Extension" />
+  <display value="Primary Care problem last reviewed extension" />
   <status value="draft" />
   <publisher value="Endeavour Health Charitable Trust" />
   <contact>
@@ -19,7 +19,7 @@
     </telecom>
   </contact>
   <date value="2015-11-01T00:00:00+00:00" />
-  <description value="Used to indicate the clinical significance of a Condition." />
+  <description value="Estimated or actual date or date-time the problem was last reviewed." />
   <fhirVersion value="1.0.1" />
   <kind value="datatype" />
   <constrainedType value="Extension" />
@@ -30,8 +30,9 @@
   <differential>
     <element>
       <path value="Extension" />
-      <short value="Condition significance" />
-      <definition value="Used to indicate the clinical significance of a Condition." />
+      <name value="extension" />
+      <short value="Last reviewed" />
+      <definition value="Estimated or actual date or date-time the problem was last reviewed, in the opinion of the clinician." />
       <min value="0" />
       <max value="*" />
       <type>
@@ -53,26 +54,31 @@
       <type>
         <code value="uri" />
       </type>
-      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition-expectedduration-extension" />
+      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-problem-lastreviewed-extension" />
       <mapping>
         <identity value="rim" />
         <map value="N/A" />
       </mapping>
     </element>
     <element>
-      <path value="Extension.valueCode" />
-      <name value="valueCode" />
-      <short value="Condition significance code" />
-      <definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
-      <min value="1" />
+      <path value="Extension.value[x]" />
+      <short value="Estimated or actual date, date-time, or age" />
+      <definition value="Estimated or actual date or date-time the condition was last reviewed, in the opinion of the clinician." />
+      <min value="0" />
       <max value="1" />
       <type>
-        <code value="code" />
+        <code value="dateTime" />
       </type>
-      <binding>
-        <strength value="required" />
-        <valueSetUri value="http://endeavourhealth.org/fhir/ValueSet/primarycare-condition-significance" />
-      </binding>
+      <type>
+        <code value="Quantity" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Age" />
+      </type>
+      <type>
+        <code value="Range" />
+      </type>
+      <type>
+        <code value="Period" />
+      </type>
       <mapping>
         <identity value="rim" />
         <map value="N/A" />

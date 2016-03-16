@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="primarycare-condition-episodelink-extension" />
+  <id value="primarycare-condition-partofproblemepisode-extension" />
   <meta>
     <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
   </meta>
-  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition-episodelink-extension" />
-  <name value="PrimaryCare-ConditionEpisodeLink-Extension" />
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition-partofproblemepisode-extension" />
+  <name value="PrimaryCare-ConditionPartOfProblemEpisode-Extension" />
   <status value="draft" />
   <publisher value="Endeavour Health Charitable Trust" />
   <contact>
@@ -15,7 +15,7 @@
     </telecom>
   </contact>
   <date value="2015-11-01T00:00:00+00:00" />
-  <description value="Follow-on observation(s) linked to a condition episode e.g. Reviews" />
+  <description value="A problem episode of which this condition is part of. The episodicity type (Review, Flare, End) indicates the type of relationship that exists between this follow-on condition and the target problem episode." />
   <fhirVersion value="1.0.1" />
   <mapping>
     <identity value="rim" />
@@ -32,13 +32,17 @@
     <element>
       <path value="Extension" />
       <name value="extension" />
-      <short value="Episode observation link" />
-      <definition value="Optional Extensions Element - found in all resources." />
+      <short value="The problem episode this condition is part of." />
+      <definition value="A problem episode of which this condition is part of. The episodicity type (Review, Flare, End) indicates the type of relationship that exists between this follow-on condition and the target problem episode." />
       <min value="0" />
       <max value="*" />
       <type>
         <code value="Element" />
       </type>
+      <mapping>
+        <identity value="rim" />
+        <map value="N/A" />
+      </mapping>
     </element>
     <element>
       <path value="Extension.extension" />
@@ -49,9 +53,10 @@
     </element>
     <element>
       <path value="Extension.extension" />
-      <name value="type" />
-      <definition value="The type of relationship that exists between a condition and the target follow-on observation" />
-      <comments value="Allows the specification of the relationship type between a condition and the target follow-on observation. review | flare | end" />
+      <name value="episodicity" />
+      <short value="review | flare | end" />
+      <definition value="The type of relationship that exists between a follow-on condition and the target problem onset." />
+      <comments value="Allows the specification of the relationship type between a follow-on condition and the target problem onset -  review | flare | end" />
       <min value="1" />
       <max value="1" />
       <type>
@@ -80,7 +85,7 @@
       <type>
         <code value="uri" />
       </type>
-      <fixedUri value="type" />
+      <fixedUri value="episodicity" />
       <mapping>
         <identity value="rim" />
         <map value="N/A" />
@@ -88,8 +93,7 @@
     </element>
     <element>
       <path value="Extension.extension.valueCode" />
-      <short value="Value of extension" />
-      <definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
+      <short value="review | flare | end" />
       <min value="1" />
       <max value="1" />
       <type>
@@ -97,7 +101,7 @@
       </type>
       <binding>
         <strength value="required" />
-        <valueSetUri value="http://endeavourhealth.org/fhir/ValueSet/primarycare-condition-episodelinktype" />
+        <valueSetUri value="http://endeavourhealth.org/fhir/ValueSet/primarycare-condition-episodicity" />
       </binding>
       <mapping>
         <identity value="rim" />
@@ -107,8 +111,8 @@
     <element>
       <path value="Extension.extension" />
       <name value="target" />
-      <short value="Target observation" />
-      <comments value="A reference to the follow-on observation linked to the condition episode" />
+      <short value="Target problem episode" />
+      <comments value="A reference to the problem episode of which this condition is part of. " />
       <min value="1" />
       <max value="1" />
       <type>
@@ -144,19 +148,14 @@
       </mapping>
     </element>
     <element>
-      <path value="Extension.extension.value[x]" />
+      <path value="Extension.extension.valueReference" />
       <name value="valueReference" />
-      <short value="Value of extension" />
-      <definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
+      <short value="Target problem" />
       <min value="1" />
       <max value="1" />
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-observation" />
-      </type>
-      <type>
-        <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-allergy-intolerance" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-problem" />
       </type>
       <mapping>
         <identity value="rim" />
@@ -173,6 +172,10 @@
       <type>
         <code value="id" />
       </type>
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
     </element>
     <element>
       <path value="Extension.url" />
@@ -185,7 +188,7 @@
       <type>
         <code value="uri" />
       </type>
-      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition-episodelink-extension" />
+      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition-partofproblemepisode-extension" />
       <mapping>
         <identity value="rim" />
         <map value="N/A" />

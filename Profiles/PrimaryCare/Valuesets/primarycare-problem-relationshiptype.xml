@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ValueSet xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir http://hl7.org/fhir/valueset.xsd">
-	<id value="primarycare-condition-relationshiptype"/>
+	<id value="primarycare-problem-relationshiptype"/>
 	<meta>
 		<lastUpdated value="2015-09-24T15:19:37.151+00:00"/>
 		<profile value="http://hl7.org/fhir/StructureDefinition/valueset-shareable-definition"/>
@@ -8,35 +8,35 @@
 	<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
 		<valueInteger value="1"/>
 	</extension>
-	<url value="http://endeavourhealth.org/fhir/ValueSet/primarycare-condition-relationshiptype"/>
+	<url value="http://endeavourhealth.org/fhir/ValueSet/primarycare-problem-relationshiptype"/>
 	<version value="1.0.0"/>
-	<name value="PrimaryCare-Condition-RelationshipType"/>
+	<name value="PrimaryCare-Problem-RelationshipType"/>
 	<status value="draft"/>
 	<publisher value="Endeavour Health Charitable Trust"/>
-	<description value="A set of codes specifying the kind of relationship that exists with a target condition."/>
+	<description value="A set of codes specifying the kind of relationship that exists with a target problem."/>
 	<codeSystem>
-		<system value="http://endeavourhealth.org/fhir/ValueSet/primarycare-condition-relationshiptype"/>
+		<system value="http://endeavourhealth.org/fhir/ValueSet/primarycare-problem-relationshiptype"/>
 		<version value="1.0.0"/>
 		<caseSensitive value="true"/>
 		<concept>
 			<code value="combined"/>
 			<display value="Combined"/>
-			<definition value="This condition is combined/merged with the target condition to form a single logical condition."/>
+			<definition value="This problem is combined/merged with the target problem to form a single logical problem."/>
 		</concept>
 		<concept>
 			<code value="grouped"/>
 			<display value="Grouped"/>
-			<definition value="This condition is part of a group that includes the target condition as a member of the group."/>
+			<definition value="This problem is part of a group that includes the target problem as a member of the group."/>
 		</concept>
 		<concept>
 			<code value="replaces"/>
 			<display value="Replaces"/>
-			<definition value="This condition replaces a previous condition (i.e. a revised diagnosis). The target condition is now obsolete."/>
+			<definition value="This problem replaces a previous problem (i.e. a revised diagnosis). The target problem is now obsolete."/>
 		</concept>
 		<concept>
 			<code value="evolved-from"/>
 			<display value="Evolved From"/>
-			<definition value="This condition has evolved from the target condition."/>
+			<definition value="This problem has evolved from the target problem"/>
 		</concept>
 	</codeSystem>
 </ValueSet>

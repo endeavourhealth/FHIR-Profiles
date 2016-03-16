@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="primarycare-condition" />
+  <id value="primarycare-problem" />
   <meta>
     <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
   </extension>
-  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition" />
-  <name value="PrimaryCare-Condition" />
-  <display value="Primary Care condition" />
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-problem" />
+  <name value="PrimaryCare-Problem" />
+  <display value="Primary Care problem" />
   <status value="draft" />
   <publisher value="Endeavour Health Charitable Trust" />
   <contact>
@@ -19,6 +19,7 @@
     </telecom>
   </contact>
   <date value="2015-11-01T00:00:00+00:00" />
+  <description value="Use to record detailed information about the onset of a health problem episode recognised by a clinician." />
   <fhirVersion value="1.0.1" />
   <kind value="resource" />
   <constrainedType value="Condition" />
@@ -27,8 +28,8 @@
   <differential>
     <element>
       <path value="Condition" />
-      <short value="Detailed information about conditions, problems or diagnoses" />
-      <definition value="Use to record detailed information about conditions, problems or diagnoses recognized by a clinician. There are many uses including: recording a diagnosis during an encounter; populating a problem list or a summary statement, such as a discharge summary." />
+      <short value="Detailed information about clinical problems" />
+      <definition value="Use to record detailed information about the onset of a health problem episode recognised by a clinician." />
       <min value="0" />
       <max value="*" />
       <type>
@@ -57,14 +58,62 @@
     </element>
     <element>
       <path value="Condition.extension" />
-      <name value="partOfProblemEpisode" />
-      <short value="The problem episode this condition is part of." />
-      <definition value="A problem episode of which this condition is part of. The episodicity type (Review, Flare, End) indicates the type of relationship that exists between this follow-on condition and the target problem episode." />
+      <name value="significance" />
+      <short value="Significant | Not significant | Unspecified significance" />
+      <definition value="The clinical significance of the problem." />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-problem-significance-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="Condition.extension" />
+      <name value="expectedDuration" />
+      <short value="Expected problem duration" />
+      <definition value="Estimated or actual expected duration of the problem." />
       <min value="0" />
       <max value="1" />
       <type>
         <code value="Extension" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition-partofproblemepisode-extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-problem-expectedduration-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="Condition.extension" />
+      <name value="lastReviewed" />
+      <short value="Estimated or actual date, date-time, or age of last review" />
+      <definition value="Estimated or actual date or date-time the condition was last reviewed, in the opinion of the clinician." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-problem-lastreviewed-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="Condition.extension" />
+      <name value="related" />
+      <short value="Related problem - combined | grouped | replaces | evolved-from" />
+      <definition value="A reference to another problem (target) whose relationship is defined by the relationship type code." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-problem-related-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="Condition.extension" />
+      <name value="associated" />
+      <short value="Associated resource" />
+      <definition value="A reference to another resource (e.g. MedicationOrder, Observation, ReferralRequest etc.) associated/linked to this condition." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-problem-associated-extension" />
       </type>
     </element>
     <element>

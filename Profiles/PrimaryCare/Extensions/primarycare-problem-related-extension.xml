@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="primarycare-condition-related-extension" />
+  <id value="primarycare-problem-related-extension" />
   <meta>
     <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
   </meta>
-  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition-related-extension" />
-  <name value="PrimaryCare-ConditionRelated-Extension" />
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-problem-related-extension" />
+  <name value="PrimaryCare-ProblemRelated-Extension" />
   <status value="draft" />
   <publisher value="Endeavour Health Charitable Trust" />
   <contact>
@@ -15,7 +15,7 @@
     </telecom>
   </contact>
   <date value="2015-11-01T00:00:00+00:00" />
-  <description value="A reference to another condition (target) whose relationship is defined by the relationship type code." />
+  <description value="A reference to another problem(target) whose relationship is defined by the relationship type code." />
   <fhirVersion value="1.0.1" />
   <mapping>
     <identity value="rim" />
@@ -32,8 +32,8 @@
     <element>
       <path value="Extension" />
       <name value="extension" />
-      <short value="Related condition" />
-      <definition value="A reference to another condition (target) whose relationship is defined by the relationship type code." />
+      <short value="Related problem" />
+      <definition value="A reference to another problem (target) whose relationship is defined by the relationship type code." />
       <min value="0" />
       <max value="*" />
       <type>
@@ -54,8 +54,8 @@
     <element>
       <path value="Extension.extension" />
       <name value="type" />
-      <short value="Relationship type" />
-      <definition value="A code specifying the kind of relationship that exists with the target condition." />
+      <short value="Relationship type - combined | grouped | replaces | evolved-from" />
+      <definition value="A code specifying the kind of relationship that exists with the target problem. " />
       <min value="1" />
       <max value="1" />
       <type>
@@ -93,7 +93,7 @@
     </element>
     <element>
       <path value="Extension.extension.valueCode" />
-      <short value="Relationship type" />
+      <short value="combined | grouped | replaces | evolved-from" />
       <min value="1" />
       <max value="1" />
       <type>
@@ -101,7 +101,7 @@
       </type>
       <binding>
         <strength value="required" />
-        <valueSetUri value="http://endeavourhealth.org/fhir/ValueSet/primarycare-condition-relationshiptype" />
+        <valueSetUri value="http://endeavourhealth.org/fhir/ValueSet/primarycare-problem-relationshiptype" />
       </binding>
       <mapping>
         <identity value="rim" />
@@ -111,8 +111,8 @@
     <element>
       <path value="Extension.extension" />
       <name value="target" />
-      <short value="Target condition" />
-      <comments value="A reference to the condition resource that is related to this condition." />
+      <short value="Target problem" />
+      <comments value="A reference to the target problem resource that is related to this problem." />
       <min value="1" />
       <max value="1" />
       <type>
@@ -151,12 +151,12 @@
     <element>
       <path value="Extension.extension.valueReference" />
       <name value="valueReference" />
-      <short value="Related condition" />
+      <short value="Related problem" />
       <min value="1" />
       <max value="1" />
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-problem" />
       </type>
       <mapping>
         <identity value="rim" />
@@ -189,7 +189,7 @@
       <type>
         <code value="uri" />
       </type>
-      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition-related-extension" />
+      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-problem-related-extension" />
       <mapping>
         <identity value="rim" />
         <map value="N/A" />

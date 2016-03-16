@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="primarycare-condition-expectedduration-extension" />
+  <id value="primarycare-problem-associated-extension" />
   <meta>
     <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
   </extension>
-  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition-expectedduration-extension" />
-  <name value="PrimaryCare-ConditionExpectedDuration-Extension" />
-  <display value="Primary Care condition expected duration extension" />
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-problem-associated-extension" />
+  <name value="PrimaryCare-ProblemAssociated-Extension" />
+  <display value="Primary Care problem associated extension" />
   <status value="draft" />
   <publisher value="Endeavour Health Charitable Trust" />
   <contact>
@@ -19,7 +19,7 @@
     </telecom>
   </contact>
   <date value="2015-11-01T00:00:00+00:00" />
-  <description value="Estimated or actual expected duration of the condition." />
+  <description value="A reference to another resource (e.g. MedicationOrder, Observation, ReferralRequest etc.) associated/linked to this problem." />
   <fhirVersion value="1.0.1" />
   <kind value="datatype" />
   <constrainedType value="Extension" />
@@ -30,7 +30,9 @@
   <differential>
     <element>
       <path value="Extension" />
-      <definition value="Optional Extensions Element - found in all resources." />
+      <name value="extension" />
+      <short value="Associated resource" />
+      <definition value="A reference to another resource associated to this problem." />
       <min value="0" />
       <max value="*" />
       <type>
@@ -52,22 +54,22 @@
       <type>
         <code value="uri" />
       </type>
-      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition-expectedduration-extension" />
+      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-problem-associated-extension" />
       <mapping>
         <identity value="rim" />
         <map value="N/A" />
       </mapping>
     </element>
     <element>
-      <path value="Extension.value[x]" />
-      <name value="valueQuantity" />
-      <short value="Expected duration" />
-      <definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
+      <path value="Extension.valueReference" />
+      <name value="valueReference" />
+      <short value="Associated resource" />
+      <definition value="A resource that is associated to this one." />
       <min value="0" />
       <max value="1" />
       <type>
-        <code value="Quantity" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/Duration" />
+        <code value="Reference" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Resource" />
       </type>
       <mapping>
         <identity value="rim" />

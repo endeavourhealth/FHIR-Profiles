@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ValueSet xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir http://hl7.org/fhir/valueset.xsd">
-	<id value="primarycare-condition-significance"/>
+	<id value="primarycare-problem-significance"/>
 	<meta>
 		<lastUpdated value="2015-10-27T00:00:00+00:00"/>
 		<profile value="http://hl7.org/fhir/StructureDefinition/valueset-shareable-definition"/>
@@ -8,9 +8,9 @@
 	<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
 		<valueInteger value="1" />
 	</extension>
-	<url value="http://endeavourhealth.org/fhir/ValueSet/primarycare-condition-significance"/>
+	<url value="http://endeavourhealth.org/fhir/ValueSet/primarycare-problem-significance"/>
 	<version value="1.0.0"/>
-	<name value="PrimaryCare-ConditionSignificance"/>
+	<name value="PrimaryCare-ProblemSignificance"/>
 	<status value="draft"/>
 	<publisher value="Endeavour Health Charitable Trust"/>
 	<contact>
@@ -20,7 +20,7 @@
 		</telecom>
 	</contact>
 	<date value="2015-10-27T00:00:00+00:00"/>
-	<description value="List of codes that can be used to indicate the clinical significance of a Condition."/>
+	<description value="List of codes that can be used to indicate the clinical significance of a Problem"/>
 	<copyright value="This value set includes content from SNOMED CT, which is copyright © 2002+ International Health Terminology Standards Development Organisation (IHTSDO), and distributed by agreement between IHTSDO and HL7. Implementer use of SNOMED CT is not covered by this agreement."/>
 	<compose>
 		<include>
