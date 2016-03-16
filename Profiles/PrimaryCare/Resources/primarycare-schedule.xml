@@ -64,6 +64,18 @@
       </type>
     </element>
     <element>
+      <path value="Schedule.extension" />
+      <name value="location" />
+      <short value="Location that the schedule is being run from.  Need not be populated where the location is implicit in the booking." />
+      <definition value="Optional Extensions Element - found in all resources." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location-extension" />
+      </type>
+    </element>
+    <element>
       <path value="Schedule.identifier.use" />
       <short value="usual | official | temp | secondary (If known)" />
       <definition value="The purpose of this identifier." />
@@ -121,12 +133,35 @@
       </mapping>
     </element>
     <element>
+      <path value="Schedule.identifier.period" />
+      <short value="Time period when id is/was valid for use" />
+      <definition value="Time period during which identifier is/was valid for use." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="Period" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="CX.7 + CX.8" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="Role.effectiveTime or implied by context" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="./StartDate and ./EndDate" />
+      </mapping>
+    </element>
+    <element>
       <path value="Schedule.identifier.assigner" />
       <short value="Organization that issued id (may be just text)" />
       <definition value="Organization that issued/manages the identifier." />
       <comments value="The reference may be just a text description of the assigner." />
       <min value="0" />
-      <max value="1" />
+      <max value="0" />
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
@@ -221,21 +256,12 @@
     </element>
     <element>
       <path value="Schedule.actor" />
-      <short value="The resource this Schedule resource is providing availability information for. These are expected to usually be one of HealthcareService, Location, Practitioner, Device, Patient or RelatedPerson" />
-      <definition value="The resource this Schedule resource is providing availability information for. These are expected to usually be one of HealthcareService, Location, Practitioner, Device, Patient or RelatedPerson." />
+      <short value="The Practitioner (or primary/first Practitioner) providing care for this Schedule.  Additional practitioners should be added to the additionalActors element." />
       <min value="1" />
       <max value="1" />
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
-      </type>
-      <type>
-        <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-healthcare-service" />
-      </type>
-      <type>
-        <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location" />
       </type>
       <isSummary value="true" />
       <mapping>
@@ -292,7 +318,7 @@
       <short value="End time with inclusive boundary, if not ongoing" />
       <definition value="The end of the period. If the end of the period is missing, it means that the period is ongoing. The start may be in the past, and the end date in the future, which means that period is expected/planned to end at that time." />
       <comments value="The high value includes any matching date/time. i.e. 2012-02-03T10:00:00 is in a period that has a end value of 2012-02-03." />
-      <min value="1" />
+      <min value="0" />
       <max value="1" />
       <type>
         <code value="dateTime" />
