@@ -57,11 +57,131 @@
       <name value="quantity" />
       <short value="Amount of medication to supply" />
       <definition value="Optional Extensions Element - found in all resources." />
-      <min value="1" />
+      <min value="0" />
       <max value="1" />
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-authorisation-quantity-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="MedicationStatement.extension" />
+      <name value="numberOfRepeatsAllowed" />
+      <short value="Number of issues allowed" />
+      <definition value="Number of issues allowed in the authorisation." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-authorisation-numberofrepeatsallowed-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="MedicationStatement.extension" />
+      <name value="numberOfRepeatsIssued" />
+      <short value="Number of issues issued" />
+      <definition value="Number of prescriptions issued within authorisation." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-authorisation-numberofrepeatsissued-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="MedicationStatement.extension" />
+      <name value="expectedSupplyDuration" />
+      <short value="Expected supply duration" />
+      <definition value="Number of days supply per issue." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-authorisation-expectedsupplyduration-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="MedicationStatement.extension" />
+      <name value="pharmacyText" />
+      <short value="Pharmacy text" />
+      <definition value="Instructions or additional information included in prescription for use by the pharmacy." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-pharmacytext-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="MedicationStatement.extension" />
+      <name value="patientText" />
+      <short value="Patient text" />
+      <definition value="Instructions or additional information included in prescription for use by the patient." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patienttext-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="MedicationStatement.extension" />
+      <name value="private" />
+      <short value="Private prescription flag" />
+      <definition value="Used to indicate a private prescription." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-privateprescription-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="MedicationStatement.extension" />
+      <name value="firstIssueDate" />
+      <short value="First issue date" />
+      <definition value="Date (and time if available) when a prescription was first issued for this authorisation." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-authorisation-firstissuedate-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="MedicationStatement.extension" />
+      <name value="mostRecentIssueDate" />
+      <short value="Most recent issue date" />
+      <definition value="Date (and time if available) of most recent prescription issue for this authorisation." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-authorisation-mostrecentissuedate-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="MedicationStatement.extension" />
+      <name value="prescribedAsContraception" />
+      <short value="Prescribed as contraception flag" />
+      <definition value="Used to indicate a prescription is prescribed as a contraception." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-prescribedascontraception-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="MedicationStatement.extension" />
+      <name value="cancellation" />
+      <short value="Authorisation cancellation detail" />
+      <definition value="Indicates that the authorisation has been cancelled." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-authorisation-cancellation-extension" />
       </type>
     </element>
     <element>
