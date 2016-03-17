@@ -28,7 +28,7 @@
   <context value="Schedule" />
   <base value="http://hl7.org/fhir/StructureDefinition/Extension" />
   <differential>
-    	<element>
+		<element>
 			<path value="Extension"/>
 			<definition value="Optional Extensions Element - found in all resources."/>
 			<min value="0"/>
@@ -62,7 +62,7 @@
       <max value="1" />
       <type>
         <code value="Reference" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/Practitioner" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
       </type>
       <mapping>
         <identity value="rim" />
