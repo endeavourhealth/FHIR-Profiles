@@ -548,6 +548,62 @@
       </mapping>
     </element>
     <element>
+      <path value="Patient.telecom.system" />
+      <short value="phone | fax | email | pager | other" />
+      <definition value="Telecommunications form for contact point - what communications system is required to make use of the contact." />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="code" />
+      </type>
+      <condition value="cpt-2" />
+      <isSummary value="true" />
+      <binding>
+        <strength value="required" />
+        <description value="Telecommunications form for contact point" />
+        <valueSetReference>
+          <reference value="http://hl7.org/fhir/ValueSet/contact-point-system" />
+        </valueSetReference>
+      </binding>
+      <mapping>
+        <identity value="v2" />
+        <map value="XTN.3" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="./scheme" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="./ContactPointType" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Patient.telecom.value" />
+      <short value="The actual contact point details" />
+      <definition value="The actual contact point details, in a form that is meaningful to the designated communication system (i.e. phone number or email address)." />
+      <comments value="Additional text data such as phone extension numbers, or notes about use of the contact are sometimes included in the value." />
+      <requirements value="Need to support legacy numbers that are not in a tightly controlled format." />
+      <min value="1" />
+      <max value="1" />
+      <type>
+        <code value="string" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="XTN.1 (or XTN.12)" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="./url" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="./Value" />
+      </mapping>
+    </element>
+    <element>
       <path value="Patient.telecom.period" />
       <short value="Time period when the contact point was/is in use" />
       <definition value="Time period when the contact point was/is in use." />
@@ -865,6 +921,30 @@
       </mapping>
     </element>
     <element>
+      <path value="Patient.contact.name.period" />
+      <short value="Time period when name was/is in use" />
+      <definition value="Indicates the period of time when this name was valid for the named person." />
+      <requirements value="Allows names to be placed in historical context." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="Period" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="XPN.13 + XPN.14" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="./usablePeriod[type=&quot;IVL&lt;TS&gt;&quot;]" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="./StartDate and ./EndDate" />
+      </mapping>
+    </element>
+    <element>
       <path value="Patient.contact.address.state" />
       <short value="Sub-unit of country (abbreviations ok)" />
       <definition value="Sub-unit of a country with limited sovereignty in a federally organized country. A code may be used if codes are in common use (i.e. US 2 letter state codes)." />
@@ -891,6 +971,34 @@
       <mapping>
         <identity value="servd" />
         <map value="./Region" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Patient.contact.address.period" />
+      <short value="Time period when address was/is in use" />
+      <definition value="Time period when address was/is in use." />
+      <requirements value="Allows addresses to be placed in historical context." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="Period" />
+      </type>
+      <examplePeriod>
+        <start value="2010-03-23" />
+        <end value="2010-07-01" />
+      </examplePeriod>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="XAD.12 / XAD.13 + XAD.14" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="./usablePeriod[type=&quot;IVL&lt;TS&gt;&quot;]" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="./StartDate and ./EndDate" />
       </mapping>
     </element>
     <element>
@@ -959,6 +1067,31 @@
       <mapping>
         <identity value="cda" />
         <map value="n/a" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Patient.communication.language.coding.userSelected" />
+      <short value="If this coding was chosen directly by the user" />
+      <definition value="Indicates that this coding was chosen by a user directly - i.e. off a pick list of available items (codes or displays)." />
+      <comments value="Amongst a set of alternatives, a directly chosen code is the most appropriate starting point for new translations. There is some ambiguity about what exactly 'directly chosen' implies, and trading partner agreement may be needed to clarify the use of this element and its consequences more completely." />
+      <requirements value="This has been identified as a clinical safety criterium - that this exact system/code pair was chosen explicitly, rather than inferred by the system based on some rules or language processing." />
+      <min value="0" />
+      <max value="0" />
+      <type>
+        <code value="boolean" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="Sometimes implied by being first" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="CD.codingRationale" />
+      </mapping>
+      <mapping>
+        <identity value="orim" />
+        <map value="fhir:Coding.userSelected fhir:mapsTo dt:CDCoding.codingRationale. fhir:Coding.userSelected fhir:hasMap fhir:Coding.userSelected.map. fhir:Coding.userSelected.map a fhir:Map;   fhir:target dt:CDCoding.codingRationale. fhir:Coding.userSelected\#true a [     fhir:source &quot;true&quot;;     fhir:target dt:CDCoding.codingRationale\#O   ]" />
       </mapping>
     </element>
     <element>
