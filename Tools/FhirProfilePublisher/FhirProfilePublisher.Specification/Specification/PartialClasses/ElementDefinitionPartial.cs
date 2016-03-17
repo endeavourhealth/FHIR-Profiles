@@ -114,5 +114,13 @@ namespace Hl7.Fhir.V102
         {
             return Item1.GetValueAsString();
         }
+
+        public override string ToString()
+        {
+            if (path != null)
+                return path.value;
+
+            return base.ToString();
+        }
     }
 }
