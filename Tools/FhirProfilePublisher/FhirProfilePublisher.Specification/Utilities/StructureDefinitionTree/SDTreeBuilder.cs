@@ -185,6 +185,10 @@ namespace FhirProfilePublisher.Specification
 
                     }
 
+                    foreach (SDTreeNode childNode in node.Children)
+                        if (newChildren.All(t => t.LastPathElement != childNode.LastPathElement))
+                            newChildren.Add(childNode);
+
                     node.RemoveAllChildren();
                     node.AddChildren(newChildren.ToArray());
 
