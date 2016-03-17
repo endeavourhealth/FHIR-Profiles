@@ -42,6 +42,9 @@ namespace Hl7.Fhir.V102
             if (element == null)
                 return null;
 
+            if (element.max.WhenNotNull(t => t.value) == "0")
+                return null;
+
             return element.type;
         }
 
