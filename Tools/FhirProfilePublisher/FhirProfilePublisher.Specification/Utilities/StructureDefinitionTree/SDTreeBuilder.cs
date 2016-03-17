@@ -11,7 +11,7 @@ namespace FhirProfilePublisher.Specification
         {
         }
 
-        public SDTreeNode GenerateTree(StructureDefinition structureDefinition, IStructureDefinitionResolver locator, bool includeNodesWithZeroMaxCardinality = true)
+        public SDTreeNode GenerateTree(StructureDefinition structureDefinition, IStructureDefinitionResolver resolver, bool includeNodesWithZeroMaxCardinality = true)
         {
             // process ElementDefinition list
             //
@@ -19,11 +19,16 @@ namespace FhirProfilePublisher.Specification
             // and where there are no orphan children by creating fake parents
             //
 
+            ElementDefinition[] elements = structureDefinition.differential.WhenNotNull(t => t.element);
+
+            // sanity checks
+            PerformDifferentialElementsSanityCheck(elements, false);
+
             // "index" slices to create unique ElementDefinition.path values
-            IndexSlices(structureDefinition.differential.element);
+            IndexSlices(elements);
 
             // Merge differential and the direct base StructureDefinition's differential. -- this needs expanding to include all ancestor base StructureDefinitions
-            ElementDefinition[] elements = CreateSnapshot(structureDefinition, locator);
+            elements = CreateSnapshot(structureDefinition, resolver);
 
             // Add fake missing parents
             elements = AddFakeMissingParents(elements);
@@ -56,6 +61,32 @@ namespace FhirProfilePublisher.Specification
 
             return rootNode;
         }
+
+        private void PerformDifferentialElementsSanityCheck(ElementDefinition[] elements, bool checkPathForUniqueness)
+        {
+            if ((elements == null))
+                throw new ArgumentException("StructureDefinition does not have differential element list populated");
+
+            // sanity check #2 - all have path values
+            if (!(elements.All(t => (t.path != null) && (!string.IsNullOrWhiteSpace(t.path.value)))))
+                throw new ArgumentException("StructureDefinition has element with null or empty path value");
+
+            // sanity check #3 - elements don't contain # character
+            if (elements.Any(t => (t.path.value.Contains("#"))))
+                throw new ArgumentException("StructureDefinition has element with path value containing a # character");
+
+            // sanity check #4 - elements have unique path values
+            if (checkPathForUniqueness)
+                VerifyPathIsUnique(elements);
+                    
+        }
+
+        private void VerifyPathIsUnique(ElementDefinition[] elements)
+        {
+            if ((elements.DistinctBy(t => t.path.value).Count() != elements.Count()))
+                throw new ArgumentException("StructureDefinition has elements with non-unique path values");
+        }
+
 
         private ElementDefinition[] AddFakeMissingParents(ElementDefinition[] elementDefinitions)
         {
