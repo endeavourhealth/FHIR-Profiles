@@ -47,6 +47,85 @@
       </mapping>
     </element>
     <element>
+      <path value="MedicationOrder.extension" />
+      <slicing>
+        <discriminator value="url" />
+        <rules value="openAtEnd" />
+      </slicing>
+    </element>
+    <element>
+      <path value="MedicationOrder.extension" />
+      <name value="authorisation" />
+      <short value="Authorisation link" />
+      <definition value="A link to the medication authorisation that this order is part of." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-order-authorisation-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="MedicationOrder.extension" />
+      <name value="estimatedNHSCost" />
+      <short value="Estimated NHS cost" />
+      <definition value="Estimated cost of the prescription to the NHS." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-order-estimatednhscost-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="MedicationOrder.extension" />
+      <name value="pharmacyText" />
+      <short value="Pharmacy text" />
+      <definition value="Instructions or additional information included in prescription for use by the pharmacy." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-pharmacytext-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="MedicationOrder.extension" />
+      <name value="patientText" />
+      <short value="Patient text" />
+      <definition value="Instructions or additional information included in prescription for use by the patient." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patienttext-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="MedicationOrder.extension" />
+      <name value="private" />
+      <short value="Private prescription flag" />
+      <definition value="Used to indicate a private prescription." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-privateprescription-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="MedicationOrder.extension" />
+      <name value="prescribedAsContraception" />
+      <short value="Prescribed as contraception flag" />
+      <definition value="Used to indicate a prescription is prescribed as a contraception." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-prescribedascontraception-extension" />
+      </type>
+    </element>
+    <element>
       <path value="MedicationOrder.patient" />
       <short value="Who prescription is for" />
       <definition value="A link to a resource representing the person to whom the medication will be given." />

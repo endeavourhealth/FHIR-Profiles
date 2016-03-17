@@ -144,9 +144,9 @@
     </element>
     <element>
       <path value="Extension.extension" />
-      <name value="notes" />
-      <short value="Notes about cancellation" />
-      <definition value="May include notes about cancellation details" />
+      <name value="note" />
+      <short value="Cancellation note" />
+      <definition value="May include notes and comments about the cancellation." />
       <min value="0" />
       <max value="1" />
       <type>
@@ -168,7 +168,7 @@
       <type>
         <code value="uri" />
       </type>
-      <fixedUri value="notes" />
+      <fixedUri value="note" />
       <mapping>
         <identity value="rim" />
         <map value="N/A" />
