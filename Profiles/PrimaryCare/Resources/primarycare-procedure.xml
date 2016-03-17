@@ -67,7 +67,7 @@
       </type>
     </element>
     <element>
-      <path value="ProcedureRequest.identifier.id" />
+      <path value="Procedure.identifier.id" />
       <representation value="xmlAttr" />
       <short value="xml:id (or equivalent in JSON)" />
       <definition value="unique id for the element within a resource (for internal references)." />
@@ -82,7 +82,7 @@
       </mapping>
     </element>
     <element>
-      <path value="ProcedureRequest.identifier.use" />
+      <path value="Procedure.identifier.use" />
       <short value="usual | official | temp | secondary (If known)" />
       <definition value="The purpose of this identifier." />
       <comments value="This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary id for a permanent one. Applications can assume that an identifier is permanent unless it explicitly says that it is temporary." />
@@ -111,7 +111,7 @@
       </mapping>
     </element>
     <element>
-      <path value="ProcedureRequest.identifier.type" />
+      <path value="Procedure.identifier.type" />
       <short value="Description of identifier" />
       <definition value="A coded type for the identifier that can be used to determine which identifier to use for a specific purpose." />
       <comments value="This element deals only with general categories of identifiers.  It SHOULD not be used for codes that correspond 1..1 with the Identifier.system. Some identifiers may fall into multiple categories due to common usage.   Where the system is known, a type is unnecessary because the type is always part of the system definition. However systems often need to handle identifiers where the system is not known. There is not a 1:1 relationship between type and system, since many different systems have the same type." />
@@ -139,7 +139,7 @@
       </mapping>
     </element>
     <element>
-      <path value="ProcedureRequest.identifier.period" />
+      <path value="Procedure.identifier.period" />
       <short value="Time period when id is/was valid for use" />
       <definition value="Time period during which identifier is/was valid for use." />
       <min value="0" />
@@ -162,7 +162,7 @@
       </mapping>
     </element>
     <element>
-      <path value="ProcedureRequest.identifier.assigner" />
+      <path value="Procedure.identifier.assigner" />
       <short value="Organization that issued id (may be just text)" />
       <definition value="Organization that issued/manages the identifier." />
       <comments value="The reference may be just a text description of the assigner." />
