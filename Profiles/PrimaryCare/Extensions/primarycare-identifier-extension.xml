@@ -13,7 +13,7 @@
   <status value="draft" />
   <publisher value="Endeavour Health Charitable Trust" />
   <date value="2015-09-22T20:02:49+10:00" />
-  <description value="Base StructureDefinition for Extension Type" />
+  <description value="" />
   <requirements value="The ability to add extensions in a structured way is what keeps FHIR resources simple." />
   <fhirVersion value="1.0.1" />
   <kind value="datatype" />

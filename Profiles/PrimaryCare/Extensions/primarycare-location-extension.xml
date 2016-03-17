@@ -9,7 +9,7 @@
   </extension>
   <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location-extension" />
   <name value="PrimaryCare-Location-Extension" />
-  <display value="Primary Care Additional Actor" />
+  <display value="Primary Care Location Actor" />
   <status value="draft" />
   <publisher value="Endeavour Health Charitable Trust" />
   <contact>
