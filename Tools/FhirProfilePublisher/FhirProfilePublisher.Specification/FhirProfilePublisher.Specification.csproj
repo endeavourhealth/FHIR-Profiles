@@ -58,7 +58,6 @@
     <Compile Include="Specification\FhirData.cs" />
     <Compile Include="Specification\FhirSchemas.cs" />
     <Compile Include="Specification\PartialClasses\ElementDefinitionArray.cs" />
-    <Compile Include="Specification\PartialClasses\ElementDefinitionTypeArray.cs" />
     <Compile Include="Specification\PartialClasses\ElementDefinitionTypePartial.cs" />
     <Compile Include="Specification\Schemas\fhir-v1.0.2\fhir-single.xsd.cs" />
     <Compile Include="Utilities\Conversion\CustomContractResolver.cs" />

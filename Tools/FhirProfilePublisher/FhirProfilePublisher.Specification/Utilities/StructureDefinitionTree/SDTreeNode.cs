@@ -178,7 +178,7 @@ namespace FhirProfilePublisher.Specification
                 }
                 else
                 {
-                    if (Element.type.AllTypesAreReference())
+                    if (Element.type.Any(t => t.IsReference()))
                         return SDNodeType.Reference;
 
                     return SDNodeType.Choice;

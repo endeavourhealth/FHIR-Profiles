@@ -74,7 +74,7 @@ namespace FhirProfilePublisher.Engine
             {
                 GetNameAndImagesTableCell(treeNode),
                 Html.Td(currentElement.GetCardinalityText()),
-                GetTypeTableCell(treeNode.Element, treeNode.HasChildren),
+                GetTypeTableCell(treeNode.Element.WhenNotNull(t => t.type)),
                 GetDescriptionTableCell(currentElement)
             };
 
@@ -101,36 +101,53 @@ namespace FhirProfilePublisher.Engine
             return td;
         }
 
-        private XElement GetTypeTableCell(ElementDefinition element, bool hasChildren)
+        private XElement GetTypeTableCell(ElementDefinitionType[] types)
         {
-            ElementDefinitionType[] types = element.type;
+            string result = string.Empty;
 
-            if ((types == null) || (types.Length == 0))
+            if (types == null)
                 return Html.Td(string.Empty);
 
-            if (element.type.AllTypesAreReference())
-                return Html.Td(GetReferenceTypeName(types));
-
-            if (types.Length == 1)
+            if (types.Length == 0)
+            {
+                return Html.Td(string.Empty);
+            }
+            else if (types.Length == 1)
             {
                 ElementDefinitionType type = types.Single();
 
-                string extensionUri = element.GetExtensionCanonicalUrl();
-
-                if (!string.IsNullOrEmpty(extensionUri))
+                if (type.IsReference())
                 {
-                    StructureDefinition structureDefinition = _resourceFileSet.GetStructureDefinition(type.profile.First().value);
-                    return Html.Td(GetDataTypeLink(structureDefinition.GetExtensionType()));
+                    return Html.Td(GetReferenceTypeName(new ElementDefinitionType[] { type }));
                 }
+                else if (type.IsExtension())
+                {
+                    uri profileUri = type.profile.WhenNotNull(t => t.FirstOrDefault());
+                    
+                    if (profileUri != null)
+                    {
+                        StructureDefinition structureDefinition = _resourceFileSet.GetStructureDefinition(profileUri.value);
+                        ElementDefinitionType[] elementDefinitionTypes = structureDefinition.GetSimpleExtensionType();
 
-                return Html.Td(GetNonReferenceTypeName(type));
+                        return GetTypeTableCell(elementDefinitionTypes);
+                    }
+                    else
+                    {
+                        return Html.Td(string.Empty);
+                    }                 
+                }
+                else
+                {
+                    return Html.Td(GetNonReferenceTypeName(type));
+                }
             }
+            else
+            {
+                if (types.All(t => t.IsReference()))
+                    return Html.Td(GetReferenceTypeName(types));
 
-            if (types.Length > 1)
                 return Html.Td(types.Select(t => GetNonReferenceTypeName(t)).Intersperse(" | "));
-
-            throw new NotSupportedException("Element type not supported.");
-
+            }
         }
 
         private XElement GetDescriptionTableCell(ElementDefinition definition)

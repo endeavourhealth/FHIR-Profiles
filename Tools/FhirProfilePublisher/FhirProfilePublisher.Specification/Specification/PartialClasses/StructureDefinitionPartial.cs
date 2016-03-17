@@ -32,7 +32,7 @@ namespace Hl7.Fhir.V102
             return (display ?? name).value;
         }
 
-        public string GetExtensionType()
+        public ElementDefinitionType[] GetSimpleExtensionType()
         {
             if (!IsExtension())
                 throw new ArgumentException("Not an extension definition", "extensionDefinition");
@@ -40,14 +40,9 @@ namespace Hl7.Fhir.V102
             ElementDefinition element = differential.element.FirstOrDefault(t => t.path.value == "Extension.value[x]");
 
             if (element == null)
-                return "Unknown";
+                return null;
 
-            ElementDefinitionType elementDefinitionType = element.type.WhenNotNull(t => t.FirstOrDefault());
-
-            if (elementDefinitionType == null)
-                return "Unknown";
-
-            return elementDefinitionType.code.value;
+            return element.type;
         }
 
         public string GetExtensionValueAsString(string url)
@@ -78,6 +73,11 @@ namespace Hl7.Fhir.V102
 
                 return StringHelper.UpperCaseFirstCharacter(elementDefinition.GetW5TopLevelGroup());
             }
+        }
+
+        public override string ToString()
+        {
+            return name.WhenNotNull(t => t.value);
         }
     }
 }
