@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-schedule" />
   <meta>
-    <lastUpdated value="2015-11-01T10:00:00+00:00" />
+    <lastUpdated value="2016-03-21T23:50:21.844+00:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -28,11 +28,16 @@
   <differential>
     <element>
       <path value="Schedule" />
-      <short value="A container for slot(s) of time that may be available for booking appointments" />
+      <short value="A pre-scheduled time period associated with one or more practitioners and optionally a location, containing a number of bookable slots." />
       <definition value="A container for slot(s) of time that may be available for booking appointments." />
       <alias value="Availability" />
       <min value="0" />
       <max value="*" />
+      <base>
+        <path value="Schedule" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="Schedule" />
       </type>
@@ -55,9 +60,15 @@
     <element>
       <path value="Schedule.extension" />
       <name value="additionalActors" />
+      <short value="Additional practitioners providing care at for this schedule" />
       <definition value="Optional Extensions Element - found in all resources." />
       <min value="0" />
       <max value="*" />
+      <base>
+        <path value="Schedule.extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-additional-actor-extension" />
@@ -66,14 +77,64 @@
     <element>
       <path value="Schedule.extension" />
       <name value="location" />
-      <short value="Location that the schedule is being run from.  Need not be populated where the location is implicit in the booking." />
+      <short value="Location that the schedule is being run from.  Need not be populated where the location is implicit in the booking" />
       <definition value="Optional Extensions Element - found in all resources." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Schedule.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location-extension" />
       </type>
+    </element>
+    <element>
+      <path value="Schedule.id" />
+      <short value="Logical id of this artifact - must be a globally unique identifier" />
+      <definition value="The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes." />
+      <comments value="The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID." />
+      <min value="1" />
+      <max value="1" />
+      <base>
+        <path value="Resource.id" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="id" />
+      </type>
+      <isSummary value="true" />
+    </element>
+    <element>
+      <path value="Schedule.identifier" />
+      <short value="May be used to carry supplier specific business identifiers, or non-globally unique identifiers" />
+      <definition value="External Ids for this item." />
+      <min value="0" />
+      <max value="*" />
+      <base>
+        <path value="Schedule.identifier" />
+        <min value="0" />
+        <max value="*" />
+      </base>
+      <type>
+        <code value="Identifier" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="rim" />
+        <map value=".id" />
+      </mapping>
+      <mapping>
+        <identity value="ical" />
+        <map value="UID" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="id" />
+      </mapping>
     </element>
     <element>
       <path value="Schedule.identifier.use" />
@@ -83,6 +144,11 @@
       <requirements value="Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Schedule.identifier.use" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="code" />
       </type>
@@ -112,6 +178,11 @@
       <requirements value="Allows users to make use of identifiers when the identifier system is not known." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Schedule.identifier.type" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="CodeableConcept" />
       </type>
@@ -133,11 +204,76 @@
       </mapping>
     </element>
     <element>
+      <path value="Schedule.identifier.system" />
+      <short value="The namespace for the identifier" />
+      <definition value="Establishes the namespace in which set of possible id values is unique." />
+      <requirements value="There are many sequences of identifiers.  To perform matching, we need to know what sequence we're dealing with. The system identifies a particular sequence or set of unique identifiers." />
+      <min value="1" />
+      <max value="1" />
+      <base>
+        <path value="Identifier.system" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="uri" />
+      </type>
+      <exampleUri value="http://www.acme.com/identifiers/patient or urn:ietf:rfc:3986 if the Identifier.value itself is a full uri" />
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="CX.4 / EI-2-4" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="II.root or Role.id.root" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="./IdentifierType" />
+      </mapping>
+    </element>
+    <element>
+      <path value="Schedule.identifier.value" />
+      <short value="Value must be unique within the above system" />
+      <definition value="The portion of the identifier typically displayed to the user and which is unique within the context of the system." />
+      <comments value="If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986." />
+      <min value="1" />
+      <max value="1" />
+      <base>
+        <path value="Identifier.value" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="string" />
+      </type>
+      <exampleString value="123456" />
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="CX.1 / EI.1" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="II.extension or II.root if system indicates OID or GUID (Or Role.id.extension or root)" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="./Value" />
+      </mapping>
+    </element>
+    <element>
       <path value="Schedule.identifier.period" />
       <short value="Time period when id is/was valid for use" />
       <definition value="Time period during which identifier is/was valid for use." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Schedule.identifier.period" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="Period" />
       </type>
@@ -162,6 +298,11 @@
       <comments value="The reference may be just a text description of the assigner." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Schedule.identifier.assigner" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
@@ -186,6 +327,11 @@
       <definition value="The schedule type can be used for the categorization of healthcare services or other appointment types." />
       <min value="0" />
       <max value="*" />
+      <base>
+        <path value="Schedule.type" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="CodeableConcept" />
       </type>
@@ -212,6 +358,11 @@
       <comments value="Where the terminology does not clearly define what string should be used to identify code system versions, the recommendation is to use the date (expressed in FHIR date format) on which that version was officially published as the version date." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Schedule.type.coding.version" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="string" />
       </type>
@@ -237,6 +388,11 @@
       <requirements value="This has been identified as a clinical safety criterium - that this exact system/code pair was chosen explicitly, rather than inferred by the system based on some rules or language processing." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Schedule.type.coding.userSelected" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="boolean" />
       </type>
@@ -256,9 +412,15 @@
     </element>
     <element>
       <path value="Schedule.actor" />
-      <short value="The Practitioner (or primary/first Practitioner) providing care for this Schedule.  Additional practitioners should be added to the additionalActors element." />
+      <short value="The Practitioner (or primary/first Practitioner) providing care for this Schedule.  Additional practitioners should be added to the additionalActors element" />
+      <definition value="The resource this Schedule resource is providing availability information for. These are expected to usually be one of HealthcareService, Location, Practitioner, Device, Patient or RelatedPerson." />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="Schedule.actor" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
@@ -279,6 +441,11 @@
       <definition value="The period of time that the slots that are attached to this Schedule resource cover (even if none exist). These  cover the amount of time that an organization's planning horizon; the interval for which they are currently accepting appointments. This does not define a &quot;template&quot; for planning outside these dates." />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="Schedule.planningHorizon" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Period" />
       </type>
@@ -299,6 +466,11 @@
       <comments value="If the low element is missing, the meaning is that the low boundary is not known." />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="Schedule.planningHorizon.start" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="dateTime" />
       </type>
@@ -320,6 +492,11 @@
       <comments value="The high value includes any matching date/time. i.e. 2012-02-03T10:00:00 is in a period that has a end value of 2012-02-03." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Schedule.planningHorizon.end" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="dateTime" />
       </type>
