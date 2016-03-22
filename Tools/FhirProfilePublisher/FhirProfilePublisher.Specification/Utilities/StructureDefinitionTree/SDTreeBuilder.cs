@@ -282,9 +282,30 @@ namespace FhirProfilePublisher.Specification
                     result.Add(baseElement);
             }
 
+            List<ElementDefinition> elementsToAddToBeginning = new List<ElementDefinition>();
+
+            string[] baseBaseElementNames = new string[]
+            {
+                "id",
+                "meta",
+                "implicitRules",
+                "language",
+                "text",
+                "contained"
+            };
+
             foreach (ElementDefinition element in elements)
+            {
                 if (!result.Any(t => t == element))
-                    result.Add(element);
+                {
+                    if (baseBaseElementNames.Contains(element.GetLastPathValue()))
+                        elementsToAddToBeginning.Add(element);
+                    else
+                        result.Add(element);
+                }
+            }
+
+            result.InsertRange(0, elementsToAddToBeginning);
 
             return result.ToArray();
         }

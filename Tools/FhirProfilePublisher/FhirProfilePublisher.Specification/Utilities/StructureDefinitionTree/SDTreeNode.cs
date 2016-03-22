@@ -62,7 +62,7 @@ namespace FhirProfilePublisher.Specification
         {
             Element = element;
             Path = element.path.WhenNotNull(t => t.value);
-            _lastPathElement = element.GetNameFromPath();
+            _lastPathElement = element.GetLastPathValue();
             _name = element.name.WhenNotNull(t => t.value);
             IsSlice = false;
         }
@@ -135,7 +135,7 @@ namespace FhirProfilePublisher.Specification
             }
             else
             {
-                string result = Element.GetNameFromPath();
+                string result = Element.GetLastPathValue();
 
                 string name = Element.name.WhenNotNull(t => t.value);
 
