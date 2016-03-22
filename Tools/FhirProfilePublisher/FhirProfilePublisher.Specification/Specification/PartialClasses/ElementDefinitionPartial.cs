@@ -81,7 +81,7 @@ namespace Hl7.Fhir.V102
             return min.ToString() + ".." + max;
         }
 
-        public string GetNameFromPath()
+        public string GetLastPathValue()
         {
             return path.value.Split('.').Last();
         }
