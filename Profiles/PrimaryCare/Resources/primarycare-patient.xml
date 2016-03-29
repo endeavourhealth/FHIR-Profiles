@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-patient" />
   <meta>
-    <lastUpdated value="2015-11-01T10:00:00+00:00" />
+    <lastUpdated value="2016-03-29T12:23:26.664+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -40,6 +40,24 @@
         <identity value="w5" />
         <map value="administrative.individual" />
       </mapping>
+    </element>
+    <element>
+      <path value="Patient.extension" />
+      <slicing>
+        <discriminator value="url" />
+        <rules value="openAtEnd" />
+      </slicing>
+    </element>
+    <element>
+      <path value="Patient.extension" />
+      <name value="registrationType" />
+      <definition value="Optional Extensions Element - found in all resources." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient-registration-type-extension" />
+      </type>
     </element>
     <element>
       <path value="Patient.identifier" />
