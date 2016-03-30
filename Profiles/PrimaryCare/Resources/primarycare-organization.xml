@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-organization" />
   <meta>
-    <lastUpdated value="2015-11-01T10:00:00+00:00" />
+    <lastUpdated value="2016-03-30T21:22:57.226+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -19,7 +19,7 @@
     </telecom>
   </contact>
   <date value="2015-11-01" />
-  <description value="Primary Care organization" />
+  <description value="One or more people or organisations with a common purpose of function (e.g. a General Practice). This includes public, private or voluntary sector organisations whose activities encompass the funding or provision of health care and support services." />
   <fhirVersion value="1.0.2" />
   <kind value="resource" />
   <constrainedType value="Organization" />
@@ -32,6 +32,11 @@
       <definition value="One or more people with a common purpose of function (e.g. a General Practice). This includes public, private or voluntary sector organizations whose activities encompass the funding or provision of health care and support services." />
       <min value="0" />
       <max value="*" />
+      <base>
+        <path value="Organization" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="Organization" />
       </type>
@@ -66,10 +71,32 @@
       <definition value="Optional Extensions Element - found in all resources." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Organization.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location-extension" />
       </type>
+    </element>
+    <element>
+      <path value="Organization.id" />
+      <short value="Logical id of this artifact.  Must be populated with a globally unique identifier, except where resource is being sent to the server for creation when it must NOT be populated" />
+      <definition value="The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes." />
+      <comments value="The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID." />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="Resource.id" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="id" />
+      </type>
+      <isSummary value="true" />
     </element>
     <element>
       <path value="Organization.identifier" />
@@ -82,16 +109,26 @@
       <requirements value="Organizations are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the organization." />
       <min value="0" />
       <max value="*" />
+      <base>
+        <path value="Organization.identifier" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <isSummary value="true" />
     </element>
     <element>
       <path value="Organization.identifier" />
       <name value="odsCode" />
-      <short value="Identifies this organization  across multiple systems" />
+      <short value="Organisation Data Service code" />
       <definition value="Identifier for the organization that is used to identify the organization across multiple disparate systems." />
       <requirements value="Organizations are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the organization." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Organization.identifier" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Identifier" />
       </type>
@@ -115,6 +152,26 @@
       </mapping>
     </element>
     <element>
+      <path value="Organization.identifier.id" />
+      <representation value="xmlAttr" />
+      <short value="xml:id (or equivalent in JSON)" />
+      <definition value="unique id for the element within a resource (for internal references)." />
+      <min value="0" />
+      <max value="0" />
+      <base>
+        <path value="Element.id" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="id" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
+    </element>
+    <element>
       <path value="Organization.identifier.use" />
       <short value="usual | official | temp | secondary (If known)" />
       <definition value="The purpose of this identifier." />
@@ -122,6 +179,11 @@
       <requirements value="Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Organization.identifier.use" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="code" />
       </type>
@@ -151,6 +213,11 @@
       <requirements value="Allows users to make use of identifiers when the identifier system is not known." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Organization.identifier.type" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="CodeableConcept" />
       </type>
@@ -173,11 +240,15 @@
     </element>
     <element>
       <path value="Organization.identifier.system" />
-      <short value="The namespace for the identifier" />
       <definition value="Establishes the namespace in which set of possible id values is unique." />
       <requirements value="There are many sequences of identifiers.  To perform matching, we need to know what sequence we're dealing with. The system identifies a particular sequence or set of unique identifiers." />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="Organization.identifier.system" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="uri" />
       </type>
@@ -199,11 +270,16 @@
     </element>
     <element>
       <path value="Organization.identifier.value" />
-      <short value="The value that is unique" />
+      <short value="ODS code value" />
       <definition value="The portion of the identifier typically displayed to the user and which is unique within the context of the system." />
       <comments value="If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986." />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="Organization.identifier.value" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="string" />
       </type>
@@ -228,6 +304,11 @@
       <definition value="Time period during which identifier is/was valid for use." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Organization.identifier.period" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="Period" />
       </type>
@@ -252,6 +333,11 @@
       <comments value="The reference may be just a text description of the assigner." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Organization.identifier.assigner" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://hl7.org/fhir/StructureDefinition/Organization" />
@@ -272,12 +358,17 @@
     </element>
     <element>
       <path value="Organization.identifier" />
-      <name value="systemSupplierIdentifier" />
-      <short value="Identifies this organization  across multiple systems" />
+      <name value="localIdentifier" />
+      <short value="Business identifier issued locally or by system supplier" />
       <definition value="Identifier for the organization that is used to identify the organization across multiple disparate systems." />
       <requirements value="Organizations are known by a variety of ids. Some institutions maintain several, and most collect identifiers for exchange with other organizations concerning the organization." />
       <min value="0" />
       <max value="*" />
+      <base>
+        <path value="Organization.identifier" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="Identifier" />
       </type>
@@ -301,6 +392,26 @@
       </mapping>
     </element>
     <element>
+      <path value="Organization.identifier.id" />
+      <representation value="xmlAttr" />
+      <short value="xml:id (or equivalent in JSON)" />
+      <definition value="unique id for the element within a resource (for internal references)." />
+      <min value="0" />
+      <max value="0" />
+      <base>
+        <path value="Element.id" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="id" />
+      </type>
+      <mapping>
+        <identity value="rim" />
+        <map value="n/a" />
+      </mapping>
+    </element>
+    <element>
       <path value="Organization.identifier.use" />
       <short value="usual | official | temp | secondary (If known)" />
       <definition value="The purpose of this identifier." />
@@ -308,6 +419,11 @@
       <requirements value="Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Organization.identifier.use" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="code" />
       </type>
@@ -337,6 +453,11 @@
       <requirements value="Allows users to make use of identifiers when the identifier system is not known." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Organization.identifier.type" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="CodeableConcept" />
       </type>
@@ -359,11 +480,16 @@
     </element>
     <element>
       <path value="Organization.identifier.system" />
-      <short value="The system suppliers identifier namespace, e.g. http://supplier.co.uk/identifier" />
+      <short value="The local or system suppliers identifier namespace, e.g. http://supplier.co.uk/identifier" />
       <definition value="Establishes the namespace in which set of possible id values is unique." />
       <requirements value="There are many sequences of identifiers.  To perform matching, we need to know what sequence we're dealing with. The system identifies a particular sequence or set of unique identifiers." />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="Organization.identifier.system" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="uri" />
       </type>
@@ -384,11 +510,16 @@
     </element>
     <element>
       <path value="Organization.identifier.value" />
-      <short value="The value that is unique" />
+      <short value="Local or system supplier identifier value" />
       <definition value="The portion of the identifier typically displayed to the user and which is unique within the context of the system." />
       <comments value="If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986." />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="Organization.identifier.value" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="string" />
       </type>
@@ -413,6 +544,11 @@
       <definition value="Time period during which identifier is/was valid for use." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Organization.identifier.period" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="Period" />
       </type>
@@ -443,6 +579,11 @@
       <definition value="Optional Extensions Element - found in all resources." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Organization.active.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-date-extension" />
@@ -454,6 +595,11 @@
       <definition value="Optional Extensions Element - found in all resources." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Organization.active.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-date-extension" />
@@ -467,6 +613,11 @@
       <requirements value="Need to be able to track the kind of organization that this is - different organization types have different uses." />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="Organization.type" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="CodeableConcept" />
       </type>
@@ -503,6 +654,11 @@
       <requirements value="Allows for translations and alternate encodings within a code system.  Also supports communication of the same instance to systems requiring different encodings." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Organization.type.coding" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Coding" />
       </type>
@@ -528,6 +684,11 @@
       <requirements value="Need to be unambiguous about the source of the definition of the symbol." />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="Organization.type.coding.system" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="uri" />
       </type>
@@ -553,6 +714,11 @@
       <comments value="Where the terminology does not clearly define what string should be used to identify code system versions, the recommendation is to use the date (expressed in FHIR date format) on which that version was officially published as the version date." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Organization.type.coding.version" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="string" />
       </type>
@@ -577,6 +743,11 @@
       <requirements value="Need to refer to a particular code in the system." />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="Organization.type.coding.code" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="code" />
       </type>
@@ -601,6 +772,11 @@
       <requirements value="Need to be able to carry a human-readable meaning of the code for readers that do not know  the system." />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="Organization.type.coding.display" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="string" />
       </type>
@@ -626,6 +802,11 @@
       <requirements value="This has been identified as a clinical safety criterium - that this exact system/code pair was chosen explicitly, rather than inferred by the system based on some rules or language processing." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Organization.type.coding.userSelected" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="boolean" />
       </type>
@@ -650,6 +831,11 @@
       <requirements value="Need to use the name as the label of the organization." />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="Organization.name" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="string" />
       </type>
@@ -676,6 +862,11 @@
       <requirements value="Human contact for the organization." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Organization.telecom" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="ContactPoint" />
       </type>
@@ -699,6 +890,11 @@
       <definition value="Telecommunications form for contact point - what communications system is required to make use of the contact." />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="Organization.telecom.system" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="code" />
       </type>
@@ -732,6 +928,11 @@
       <requirements value="Need to support legacy numbers that are not in a tightly controlled format." />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="Organization.telecom.value" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="string" />
       </type>
@@ -757,6 +958,11 @@
       <requirements value="Need to track the way a person uses this contact, so a user can choose which is appropriate for their purpose." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Organization.telecom.use" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="code" />
       </type>
@@ -788,6 +994,11 @@
       <definition value="Time period when the contact point was/is in use." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Organization.telecom.period" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="Period" />
       </type>
@@ -813,6 +1024,11 @@
       <requirements value="May need to keep track of the organization's addresses for contacting, billing or reporting requirements." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Organization.address" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="Address" />
       </type>
@@ -838,6 +1054,11 @@
       <requirements value="Allows an appropriate address to be chosen from a list of many." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Organization.address.use" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="code" />
       </type>
@@ -872,6 +1093,11 @@
       <alias value="Territory" />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Organization.address.state" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="string" />
       </type>
@@ -900,6 +1126,11 @@
       <requirements value="Allows addresses to be placed in historical context." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Organization.address.period" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="Period" />
       </type>
@@ -928,6 +1159,11 @@
       <requirements value="Need to be able to track the hierarchy of organizations within an organization." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Organization.partOf" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
@@ -954,6 +1190,11 @@
       <requirements value="Need to keep track of assigned contact points within bigger organization." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Organization.contact" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="BackboneElement" />
       </type>
@@ -969,6 +1210,11 @@
       <comments value="Where the terminology does not clearly define what string should be used to identify code system versions, the recommendation is to use the date (expressed in FHIR date format) on which that version was officially published as the version date." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Organization.contact.purpose.coding.version" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="string" />
       </type>
@@ -994,6 +1240,11 @@
       <requirements value="This has been identified as a clinical safety criterium - that this exact system/code pair was chosen explicitly, rather than inferred by the system based on some rules or language processing." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Organization.contact.purpose.coding.userSelected" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="boolean" />
       </type>
@@ -1019,6 +1270,11 @@
       <requirements value="Allows the appropriate name for a particular context of use to be selected from among a set of names." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Organization.contact.name.use" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="code" />
       </type>
@@ -1052,6 +1308,11 @@
       <alias value="surname" />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="Organization.contact.name.family" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="string" />
       </type>
@@ -1075,6 +1336,11 @@
       <definition value="Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the start of the name." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Organization.contact.name.prefix" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="string" />
       </type>
@@ -1098,6 +1364,11 @@
       <definition value="Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the end of the name." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Organization.contact.name.suffix" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="string" />
       </type>
@@ -1118,6 +1389,11 @@
       <requirements value="Allows names to be placed in historical context." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Organization.contact.name.period" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="Period" />
       </type>
@@ -1141,6 +1417,11 @@
       <definition value="Telecommunications form for contact point - what communications system is required to make use of the contact." />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="Organization.contact.telecom.system" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="code" />
       </type>
@@ -1174,6 +1455,11 @@
       <requirements value="Need to support legacy numbers that are not in a tightly controlled format." />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="Organization.contact.telecom.value" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="string" />
       </type>
@@ -1199,6 +1485,11 @@
       <requirements value="Need to track the way a person uses this contact, so a user can choose which is appropriate for their purpose." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Organization.contact.telecom.use" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="code" />
       </type>
@@ -1230,6 +1521,11 @@
       <definition value="Time period when the contact point was/is in use." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Organization.contact.telecom.period" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="Period" />
       </type>
@@ -1255,6 +1551,11 @@
       <requirements value="Allows an appropriate address to be chosen from a list of many." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Organization.contact.address.use" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="code" />
       </type>
@@ -1289,6 +1590,11 @@
       <alias value="Territory" />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Organization.contact.address.state" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="string" />
       </type>
@@ -1317,6 +1623,11 @@
       <requirements value="Allows addresses to be placed in historical context." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Organization.contact.address.period" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="Period" />
       </type>
