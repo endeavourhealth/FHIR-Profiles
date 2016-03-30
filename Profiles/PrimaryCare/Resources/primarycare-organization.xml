@@ -181,7 +181,7 @@
       <type>
         <code value="uri" />
       </type>
-      <fixedUri value="http://endeavourhealth.org/fhir/identifier#odscode" />
+      <fixedUri value="http://fhir.nhs.net/Id/ods-organization-code" />
       <exampleUri value="http://www.acme.com/identifiers/patient or urn:ietf:rfc:3986 if the Identifier.value itself is a full uri" />
       <isSummary value="true" />
       <mapping>

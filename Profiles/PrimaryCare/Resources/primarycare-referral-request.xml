@@ -165,7 +165,7 @@
       <type>
         <code value="uri" />
       </type>
-      <fixedUri value="http://endeavourhealth.org/fhir/identifier/ubrn" />
+      <fixedUri value="http://endeavourhealth.org/fhir/Identifier/ubrn" />
       <exampleUri value="http://www.acme.com/identifiers/patient or urn:ietf:rfc:3986 if the Identifier.value itself is a full uri" />
       <isSummary value="true" />
       <mapping>
