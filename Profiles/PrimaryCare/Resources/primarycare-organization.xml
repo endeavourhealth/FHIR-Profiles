@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-organization" />
   <meta>
-    <lastUpdated value="2016-03-31T14:49:21.481+01:00" />
+    <lastUpdated value="2016-03-31T20:54:12.944+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -78,7 +78,7 @@
       </base>
       <type>
         <code value="Extension" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-mainlocation-extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location-extension" />
       </type>
     </element>
     <element>
@@ -577,6 +577,7 @@
     <element>
       <path value="Organization.active.extension" />
       <name value="activePeriod" />
+      <short value="Date the organization became active, and if inactive, date the organization became inactive" />
       <definition value="Optional Extensions Element - found in all resources." />
       <min value="0" />
       <max value="1" />
