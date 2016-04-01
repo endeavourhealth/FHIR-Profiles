@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-practitioner" />
   <meta>
-    <lastUpdated value="2015-11-01T10:00:00+00:00" />
+    <lastUpdated value="2016-04-01T13:55:47.217+01:00" />
   </meta>
   <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
   <name value="PrimaryCare-Practitioner" />
@@ -30,6 +30,11 @@
       <comments value="Note that a cab driver no longer fits the bill. You probably would be interested in the organization rather than the individual?" />
       <min value="0" />
       <max value="*" />
+      <base>
+        <path value="Practitioner" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="Practitioner" />
       </type>
@@ -57,6 +62,11 @@
       <comments value="The reference may be just a text description of the assigner." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Practitioner.identifier.assigner" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
@@ -81,6 +91,11 @@
       <definition value="The organization where the Practitioner performs the roles associated." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Practitioner.practitionerRole.managingOrganization" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
@@ -96,6 +111,11 @@
       <definition value="The location(s) at which this practitioner provides care." />
       <min value="0" />
       <max value="*" />
+      <base>
+        <path value="Practitioner.practitionerRole.location" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location" />
@@ -114,27 +134,17 @@
       </mapping>
     </element>
     <element>
-      <path value="Practitioner.practitionerRole.healthcareService" />
-      <short value="The list of healthcare services that this worker provides for this role's Organization/Location(s)" />
-      <definition value="The list of healthcare services that this worker provides for this role's Organization/Location(s)." />
-      <min value="0" />
-      <max value="*" />
-      <type>
-        <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-healthcare-service" />
-      </type>
-      <mapping>
-        <identity value="rim" />
-        <map value="./target[classCode=&quot;indirectAuthority].id?" />
-      </mapping>
-    </element>
-    <element>
       <path value="Practitioner.qualification.identifier.assigner" />
       <short value="Organization that issued id (may be just text)" />
       <definition value="Organization that issued/manages the identifier." />
       <comments value="The reference may be just a text description of the assigner." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Practitioner.qualification.identifier.assigner" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
@@ -159,6 +169,11 @@
       <definition value="Organization that regulates and issues the qualification." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Practitioner.qualification.issuer" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />

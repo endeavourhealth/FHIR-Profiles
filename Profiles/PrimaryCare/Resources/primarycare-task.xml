@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-task" />
   <meta>
-    <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
+    <lastUpdated value="2016-04-01T14:01:24.842+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -27,6 +27,11 @@
       <alias value="Request" />
       <min value="0" />
       <max value="*" />
+      <base>
+        <path value="Order" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="Order" />
       </type>
@@ -54,6 +59,11 @@
       <comments value="test" />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="Order.extension" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-task-type-extension" />
@@ -65,6 +75,11 @@
       <short value="Status of the task" />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="Order.extension" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-task-status-extension" />
@@ -76,6 +91,11 @@
       <short value="Priority of the task" />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="Order.extension" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-task-priority-extension" />
@@ -88,6 +108,11 @@
       <comments value="The reference may be just a text description of the assigner." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Order.identifier.assigner" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
@@ -114,17 +139,22 @@
       <alias value="Patient" />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Order.subject" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="Reference" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Group" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Device" />
+      </type>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
-      </type>
-      <type>
-        <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-group" />
-      </type>
-      <type>
-        <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-device" />
       </type>
       <type>
         <code value="Reference" />
@@ -152,6 +182,11 @@
       <alias value="Practitioner" />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Order.source" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
@@ -180,13 +215,18 @@
       <definition value="Who is intended to fulfill the order." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Order.target" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Device" />
       </type>
       <type>
         <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-device" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
       </type>
       <type>
         <code value="Reference" />

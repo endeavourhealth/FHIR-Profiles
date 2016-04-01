@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-observation" />
   <meta>
-    <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
+    <lastUpdated value="2016-04-01T13:59:33.201+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -38,6 +38,11 @@
       <alias value="Tests" />
       <min value="0" />
       <max value="*" />
+      <base>
+        <path value="Observation" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="Observation" />
       </type>
@@ -61,6 +66,11 @@
       <definition value="unique id for the element within a resource (for internal references)." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Observation.identifier.id" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="id" />
       </type>
@@ -77,6 +87,11 @@
       <requirements value="Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Observation.identifier.use" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="code" />
       </type>
@@ -106,6 +121,11 @@
       <requirements value="Allows users to make use of identifiers when the identifier system is not known." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Observation.identifier.type" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="CodeableConcept" />
       </type>
@@ -133,6 +153,11 @@
       <comments value="If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Observation.identifier.value" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="string" />
       </type>
@@ -157,6 +182,11 @@
       <definition value="Time period during which identifier is/was valid for use." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Observation.identifier.period" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="Period" />
       </type>
@@ -181,6 +211,11 @@
       <comments value="The reference may be just a text description of the assigner." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Observation.identifier.assigner" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
@@ -206,6 +241,11 @@
       <requirements value="Knowing what kind of observation is being made is essential to understanding the observation." />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="Observation.code" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="CodeableConcept" />
       </type>
@@ -244,6 +284,11 @@
       <definition value="Used to qualify or indicate extra information about a coded value e.g. Laterality, Severity, etc." />
       <min value="0" />
       <max value="*" />
+      <base>
+        <path value="Observation.code.coding.extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-coding-qualifier-extension" />
@@ -257,6 +302,11 @@
       <requirements value="Observations have no value if you don't know who or what they're about." />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="Observation.subject" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
@@ -282,6 +332,11 @@
       <requirements value="For some observations it may be important to know the link between an observation and a particular encounter." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Observation.encounter" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter" />
@@ -307,6 +362,11 @@
       <requirements value="Knowing when an observation was deemed true is important to its relevance as well as determining trends." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Observation.effective[x]" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="dateTime" />
       </type>
@@ -334,6 +394,11 @@
       <requirements value="May give a degree of confidence in the observation and also indicates where follow-up questions should be directed." />
       <min value="1" />
       <max value="*" />
+      <base>
+        <path value="Observation.performer" />
+        <min value="1" />
+        <max value="*" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
@@ -372,6 +437,11 @@
       <requirements value="An observation exists to have a value, though it may not if it is in error, or it represents a group of observations." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Observation.value[x]" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Quantity" />
       </type>
@@ -401,6 +471,11 @@
       <comments value="Observations are not made on specimens themselves; they are made on a subject, but usually by the means of a specimen. Note that although specimens are often involved, they are not always tracked and reported explicitly. Also note that observation resources may be used in contexts that track the specimen explicitly (e.g. Diagnostic Report)." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Observation.specimen" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-specimen" />
@@ -415,35 +490,16 @@
       </mapping>
     </element>
     <element>
-      <path value="Observation.device" />
-      <short value="(Measurement) Device" />
-      <definition value="The device used to generate the observation data." />
-      <comments value="An extension should be used if further typing of the device is needed.  Devices used to support obtaining an observation can be represented using either extension or through the Observation.related element." />
-      <min value="0" />
-      <max value="1" />
-      <type>
-        <code value="Reference" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-device" />
-      </type>
-      <type>
-        <code value="Reference" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/DeviceMetric" />
-      </type>
-      <mapping>
-        <identity value="v2" />
-        <map value="OBX-17 / PRT -10" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="participation[typeCode=DEV]" />
-      </mapping>
-    </element>
-    <element>
       <path value="Observation.related.target" />
       <short value="Resource that is related to this one" />
       <definition value="A reference to the observation resource that is related to this observation." />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="Observation.related.target" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-observation" />
@@ -460,6 +516,11 @@
       <requirements value="Knowing what kind of observation is being made is essential to understanding the observation." />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="Observation.component.code" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="CodeableConcept" />
       </type>
@@ -499,6 +560,11 @@
       <definition value="Used to qualify or indicate extra information about a coded value e.g. Laterality, Severity, etc." />
       <min value="0" />
       <max value="*" />
+      <base>
+        <path value="Observation.component.code.coding.extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-coding-qualifier-extension" />
@@ -512,6 +578,11 @@
       <requirements value="An observation exists to have a value, though it may not if it is in error, or it represents a group of observations." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Observation.component.value[x]" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Quantity" />
       </type>
