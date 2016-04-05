@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-immunization" />
   <meta>
-    <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
+    <lastUpdated value="2016-04-05T17:47:25.277+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -52,6 +52,11 @@
       <definition value="Describes the event of a patient being administered a vaccination or a record of a vaccination as reported by a patient, a clinician or another party and may include vaccine reaction information and what vaccination protocol was followed." />
       <min value="0" />
       <max value="*" />
+      <base>
+        <path value="Immunization" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="Immunization" />
       </type>
@@ -69,11 +74,33 @@
       </mapping>
     </element>
     <element>
+      <path value="Immunization.id" />
+      <short value="Logical id of this artifact.  Must be populated with a globally unique identifier, except where resource is being sent to the server for creation when it must NOT be populated" />
+      <definition value="The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes." />
+      <comments value="The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID." />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="Resource.id" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="id" />
+      </type>
+      <isSummary value="true" />
+    </element>
+    <element>
       <path value="Immunization.patient" />
       <short value="Who was immunized" />
       <definition value="The patient who either received or did not receive the immunization." />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="Immunization.patient" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
@@ -97,6 +124,11 @@
       <definition value="Clinician who administered the vaccine." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Immunization.performer" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
@@ -125,6 +157,11 @@
       <comments value="Other participants - delegate to Provenance resource." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Immunization.requester" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
@@ -148,6 +185,11 @@
       <definition value="The visit or admission or other contact between patient and health care provider the immunization was performed as part of." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Immunization.encounter" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter" />
@@ -171,6 +213,11 @@
       <definition value="Name of vaccine manufacturer." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Immunization.manufacturer" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
@@ -194,6 +241,11 @@
       <definition value="The service delivery location where the vaccine administration occurred." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Immunization.location" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location" />
@@ -217,6 +269,11 @@
       <definition value="The individual responsible for making the annotation." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Immunization.note.author[x]" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://hl7.org/fhir/StructureDefinition/Practitioner" />
@@ -248,6 +305,11 @@
       <definition value="Indicates when this particular annotation was made." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Immunization.note.time" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="dateTime" />
       </type>
@@ -267,6 +329,11 @@
       <definition value="Details of the reaction." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Immunization.reaction.detail" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-observation" />
@@ -286,6 +353,11 @@
       <definition value="Indicates the authority who published the protocol.  E.g. ACIP." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Immunization.vaccinationProtocol.authority" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />

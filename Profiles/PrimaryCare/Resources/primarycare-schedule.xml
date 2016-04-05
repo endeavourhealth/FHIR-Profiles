@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-schedule" />
   <meta>
-    <lastUpdated value="2016-03-21T23:50:21.844+00:00" />
+    <lastUpdated value="2016-04-05T17:46:53.269+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -93,7 +93,7 @@
     </element>
     <element>
       <path value="Schedule.id" />
-      <short value="Logical id of this artifact - must be a globally unique identifier" />
+      <short value="Logical id of this artifact.  Must be populated with a globally unique identifier, except where resource is being sent to the server for creation when it must NOT be populated" />
       <definition value="The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes." />
       <comments value="The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID." />
       <min value="1" />

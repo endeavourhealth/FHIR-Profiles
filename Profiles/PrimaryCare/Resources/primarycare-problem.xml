@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-problem" />
   <meta>
-    <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
+    <lastUpdated value="2016-04-05T17:46:48.54+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -32,6 +32,11 @@
       <definition value="Use to record detailed information about the onset of a health problem episode recognised by a clinician." />
       <min value="0" />
       <max value="*" />
+      <base>
+        <path value="Condition" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="Condition" />
       </type>
@@ -63,6 +68,11 @@
       <definition value="The clinical significance of the problem." />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="Condition.extension" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-problem-significance-extension" />
@@ -75,6 +85,11 @@
       <definition value="Estimated or actual expected duration of the problem." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Condition.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-problem-expectedduration-extension" />
@@ -87,6 +102,11 @@
       <definition value="Estimated or actual date or date-time the condition was last reviewed, in the opinion of the clinician." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Condition.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-problem-lastreviewed-extension" />
@@ -99,6 +119,11 @@
       <definition value="A reference to another problem (target) whose relationship is defined by the relationship type code." />
       <min value="0" />
       <max value="*" />
+      <base>
+        <path value="Condition.extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-problem-related-extension" />
@@ -111,10 +136,32 @@
       <definition value="A reference to another resource (e.g. MedicationOrder, Observation, ReferralRequest etc.) associated/linked to this condition." />
       <min value="0" />
       <max value="*" />
+      <base>
+        <path value="Condition.extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-problem-associated-extension" />
       </type>
+    </element>
+    <element>
+      <path value="Condition.id" />
+      <short value="Logical id of this artifact.  Must be populated with a globally unique identifier, except where resource is being sent to the server for creation when it must NOT be populated" />
+      <definition value="The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes." />
+      <comments value="The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID." />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="Resource.id" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="id" />
+      </type>
+      <isSummary value="true" />
     </element>
     <element>
       <path value="Condition.identifier.id" />
@@ -123,6 +170,11 @@
       <definition value="unique id for the element within a resource (for internal references)." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Condition.identifier.id" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="id" />
       </type>
@@ -139,6 +191,11 @@
       <requirements value="Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Condition.identifier.use" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="code" />
       </type>
@@ -168,6 +225,11 @@
       <requirements value="Allows users to make use of identifiers when the identifier system is not known." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Condition.identifier.type" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="CodeableConcept" />
       </type>
@@ -194,6 +256,11 @@
       <definition value="Time period during which identifier is/was valid for use." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Condition.identifier.period" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="Period" />
       </type>
@@ -218,6 +285,11 @@
       <comments value="The reference may be just a text description of the assigner." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Condition.identifier.assigner" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
@@ -242,6 +314,11 @@
       <definition value="Indicates the patient who the condition record is associated with." />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="Condition.patient" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
@@ -267,6 +344,11 @@
       <comments value="This record indicates the encounter this particular record is associated with.  In the case of a &quot;new&quot; diagnosis reflecting ongoing/revised information about the condition, this might be distinct from the first encounter in which the underlying condition was first &quot;known&quot;." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Condition.encounter" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter" />
@@ -291,6 +373,11 @@
       <definition value="Individual who is making the condition statement." />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="Condition.asserter" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
@@ -327,6 +414,11 @@
       <definition value="Used to qualify or indicate extra information about a coded value e.g. Laterality, Severity, etc." />
       <min value="0" />
       <max value="*" />
+      <base>
+        <path value="Condition.code.coding.extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-coding-qualifier-extension" />
@@ -338,6 +430,11 @@
       <definition value="The clinical status of the condition." />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="Condition.clinicalStatus" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="code" />
       </type>
@@ -366,6 +463,11 @@
       <comments value="Age is generally used when the patient reports an age at which the Condition began to occur." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Condition.onset[x]" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="dateTime" />
       </type>
@@ -394,6 +496,11 @@
       <comments value="There is no explicit distinction between resolution and remission because in many cases the distinction is not clear. Age is generally used when the patient reports an age at which the Condition abated.  If there is no abatement element, it is unknown whether the condition has resolved or entered remission; applications and users should generally assume that the condition is still valid." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Condition.abatement[x]" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="dateTime" />
       </type>
@@ -420,6 +527,11 @@
       <definition value="Clinical stage or grade of a condition. May include formal severity assessments." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Condition.stage" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="BackboneElement" />
       </type>
@@ -435,6 +547,11 @@
       <definition value="Reference to a formal record of the evidence on which the staging assessment is based." />
       <min value="0" />
       <max value="*" />
+      <base>
+        <path value="Condition.stage.assessment" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-clinical-impression" />
@@ -461,6 +578,11 @@
       <comments value="The evidence may be a simple list of coded symptoms/manifestations, or references to observations or formal assessments, or both." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Condition.evidence" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="BackboneElement" />
       </type>

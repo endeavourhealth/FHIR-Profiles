@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-allergy-intolerance" />
   <meta>
-    <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
+    <lastUpdated value="2016-04-05T17:46:46.862+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -37,6 +37,11 @@
       <alias value="Adverse Reaction" />
       <min value="0" />
       <max value="*" />
+      <base>
+        <path value="AllergyIntolerance" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="AllergyIntolerance" />
       </type>
@@ -60,10 +65,32 @@
       <comments value="This record indicates the encounter this particular record is associated with." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="AllergyIntolerance.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://hl7.org/fhir/StructureDefinition/encounter-associatedEncounter" />
       </type>
+    </element>
+    <element>
+      <path value="AllergyIntolerance.id" />
+      <short value="Logical id of this artifact.  Must be populated with a globally unique identifier, except where resource is being sent to the server for creation when it must NOT be populated" />
+      <definition value="The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes." />
+      <comments value="The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID." />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="Resource.id" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="id" />
+      </type>
+      <isSummary value="true" />
     </element>
     <element>
       <path value="AllergyIntolerance.identifier.id" />
@@ -72,6 +99,11 @@
       <definition value="unique id for the element within a resource (for internal references)." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="AllergyIntolerance.identifier.id" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="id" />
       </type>
@@ -88,6 +120,11 @@
       <requirements value="Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="AllergyIntolerance.identifier.use" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="code" />
       </type>
@@ -117,6 +154,11 @@
       <requirements value="Allows users to make use of identifiers when the identifier system is not known." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="AllergyIntolerance.identifier.type" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="CodeableConcept" />
       </type>
@@ -143,6 +185,11 @@
       <definition value="Time period during which identifier is/was valid for use." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="AllergyIntolerance.identifier.period" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="Period" />
       </type>
@@ -167,6 +214,11 @@
       <comments value="The reference may be just a text description of the assigner." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="AllergyIntolerance.identifier.assigner" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
@@ -192,6 +244,11 @@
       <alias value="Author" />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="AllergyIntolerance.recorder" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
@@ -217,6 +274,11 @@
       <alias value="Patient" />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="AllergyIntolerance.patient" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
@@ -244,6 +306,11 @@
       <alias value="Informant" />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="AllergyIntolerance.reporter" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
@@ -274,6 +341,11 @@
       <alias value="Agent" />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="AllergyIntolerance.substance" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="CodeableConcept" />
       </type>
@@ -308,6 +380,11 @@
       <definition value="Used to qualify or indicate extra information about a coded value." />
       <min value="0" />
       <max value="*" />
+      <base>
+        <path value="AllergyIntolerance.substance.coding.extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-coding-qualifier-extension" />
@@ -319,6 +396,11 @@
       <definition value="The individual responsible for making the annotation." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="AllergyIntolerance.note.author[x]" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
@@ -350,6 +432,11 @@
       <definition value="Indicates when this particular annotation was made." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="AllergyIntolerance.note.time" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="dateTime" />
       </type>
@@ -369,6 +456,11 @@
       <definition value="The text of the annotation." />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="AllergyIntolerance.note.text" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="string" />
       </type>
@@ -396,6 +488,11 @@
       <definition value="Used to qualify or indicate extra information about a coded value." />
       <min value="0" />
       <max value="*" />
+      <base>
+        <path value="AllergyIntolerance.reaction.manifestation.coding.extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-coding-qualifier-extension" />
@@ -407,6 +504,11 @@
       <definition value="The individual responsible for making the annotation." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="AllergyIntolerance.reaction.note.author[x]" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://hl7.org/fhir/StructureDefinition/Practitioner" />
@@ -438,6 +540,11 @@
       <definition value="Indicates when this particular annotation was made." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="AllergyIntolerance.reaction.note.time" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="dateTime" />
       </type>

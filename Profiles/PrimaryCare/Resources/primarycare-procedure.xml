@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-procedure" />
   <meta>
-    <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
+    <lastUpdated value="2016-04-05T17:46:50.886+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -35,6 +35,11 @@
       <definition value="An action that is or was performed on a patient. This can be a physical intervention like an operation, or less invasive like counseling or hypnotherapy." />
       <min value="0" />
       <max value="*" />
+      <base>
+        <path value="Procedure" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="Procedure" />
       </type>
@@ -61,10 +66,32 @@
       <definition value="A date, when the statement was documented." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Procedure.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-daterecorded-extension" />
       </type>
+    </element>
+    <element>
+      <path value="Procedure.id" />
+      <short value="Logical id of this artifact.  Must be populated with a globally unique identifier, except where resource is being sent to the server for creation when it must NOT be populated" />
+      <definition value="The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes." />
+      <comments value="The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID." />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="Resource.id" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="id" />
+      </type>
+      <isSummary value="true" />
     </element>
     <element>
       <path value="Procedure.identifier.id" />
@@ -73,6 +100,11 @@
       <definition value="unique id for the element within a resource (for internal references)." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Procedure.identifier.id" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="id" />
       </type>
@@ -89,6 +121,11 @@
       <requirements value="Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Procedure.identifier.use" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="code" />
       </type>
@@ -118,6 +155,11 @@
       <requirements value="Allows users to make use of identifiers when the identifier system is not known." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Procedure.identifier.type" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="CodeableConcept" />
       </type>
@@ -144,6 +186,11 @@
       <definition value="Time period during which identifier is/was valid for use." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Procedure.identifier.period" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="Period" />
       </type>
@@ -168,6 +215,11 @@
       <comments value="The reference may be just a text description of the assigner." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Procedure.identifier.assigner" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
@@ -192,6 +244,11 @@
       <definition value="The person on which the procedure was performed." />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="Procedure.subject" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
@@ -211,28 +268,6 @@
       </mapping>
     </element>
     <element>
-      <path value="Procedure.category" />
-      <short value="Classification of the procedure" />
-      <definition value="A code that classifies the procedure for searching, sorting and display purposes (e.g. &quot;Surgical Procedure&quot;)." />
-      <min value="0" />
-      <max value="1" />
-      <type>
-        <code value="CodeableConcept" />
-      </type>
-      <isSummary value="true" />
-      <binding>
-        <strength value="example" />
-        <description value="A code that classifies a procedure for searching, sorting and display purposes." />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/procedure-category" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="rim" />
-        <map value=".outboundRelationship[typeCode=&quot;COMP].target[classCode=&quot;LIST&quot;, moodCode=&quot;EVN&quot;].code" />
-      </mapping>
-    </element>
-    <element>
       <path value="Procedure.code.coding.extension" />
       <slicing>
         <discriminator value="url" />
@@ -246,6 +281,11 @@
       <definition value="Used to qualify or indicate extra clinical information about a coded value e.g. Laterality, Severity, etc." />
       <min value="0" />
       <max value="*" />
+      <base>
+        <path value="Procedure.code.coding.extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-coding-qualifier-extension" />
@@ -257,6 +297,11 @@
       <definition value="Set this to true if the record is saying that the procedure was NOT performed." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Procedure.notPerformed" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="boolean" />
       </type>
@@ -273,6 +318,11 @@
       <definition value="A code indicating why the procedure was not performed." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Procedure.reasonNotPerformed" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="CodeableConcept" />
       </type>
@@ -290,38 +340,17 @@
       </mapping>
     </element>
     <element>
-      <path value="Procedure.bodySite" />
-      <short value="Target body sites" />
-      <definition value="Detailed and structured anatomical location information. Multiple locations are allowed - e.g. multiple punch biopsies of a lesion." />
-      <min value="0" />
-      <max value="*" />
-      <type>
-        <code value="CodeableConcept" />
-      </type>
-      <isSummary value="true" />
-      <binding>
-        <strength value="example" />
-        <description value="Codes describing anatomical locations. May include laterality." />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/body-site" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="v2" />
-        <map value="OBX-20" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value=".targetSiteCode" />
-      </mapping>
-    </element>
-    <element>
       <path value="Procedure.reason[x]" />
       <short value="Reason procedure performed" />
       <definition value="The reason why the procedure was performed. This may be due to a Condition, may be coded entity of some type, or may simply be present as text." />
       <comments value="e.g. endoscopy for dilatation and biopsy, combination diagnosis and therapeutic." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Procedure.reason[x]" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="CodeableConcept" />
       </type>
@@ -348,6 +377,11 @@
       <definition value="Limited to 'real' people rather than equipment." />
       <min value="1" />
       <max value="*" />
+      <base>
+        <path value="Procedure.performer" />
+        <min value="1" />
+        <max value="*" />
+      </base>
       <type>
         <code value="BackboneElement" />
       </type>
@@ -363,6 +397,11 @@
       <definition value="The practitioner who was involved in the procedure." />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="Procedure.performer.actor" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
@@ -394,11 +433,16 @@
       </mapping>
     </element>
     <element>
-      <path value="Procedure.performed[x]" />
+      <path value="Procedure.performedDateTime" />
       <short value="Date the procedure was performed" />
       <definition value="The date(time)/period over which the procedure was performed." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Procedure.performed[x]" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="dateTime" />
       </type>
@@ -422,6 +466,11 @@
       <definition value="The encounter during which the procedure was performed." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Procedure.encounter" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter" />
@@ -447,6 +496,11 @@
       <requirements value="Ties a procedure to where the records are likely kept." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Procedure.location" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location" />
@@ -464,6 +518,11 @@
       <comments value="If outcome contains narrative text only, it can be captured using the CodeableConcept.text." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Procedure.outcome" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="CodeableConcept" />
       </type>
@@ -487,6 +546,11 @@
       <comments value="There could potentially be multiple reports - e.g. if this was a procedure which took multiple biopsies resulting in a number of anatomical pathology reports." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Procedure.report" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-diagnostic-report" />
@@ -503,6 +567,11 @@
       <comments value="If complications are only expressed by the narrative text, they can be captured using the CodeableConcept.text." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Procedure.complication" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="CodeableConcept" />
       </type>
@@ -524,6 +593,11 @@
       <definition value="If the procedure required specific follow up - e.g. removal of sutures. The followup may be represented as a simple note, or could potentially be more complex in which case the CarePlan resource can be used." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Procedure.followUp" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="CodeableConcept" />
       </type>
@@ -545,6 +619,11 @@
       <definition value="A reference to a resource that contains details of the request for this procedure." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Procedure.request" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-care-plan" />
@@ -568,6 +647,11 @@
       <definition value="The individual responsible for making the annotation." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Procedure.notes.author[x]" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
@@ -599,6 +683,11 @@
       <definition value="Indicates when this particular annotation was made." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Procedure.notes.time" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="dateTime" />
       </type>
@@ -618,6 +707,11 @@
       <definition value="A device that is implanted, removed or otherwise manipulated (calibration, battery replacement, fitting a prosthesis, attaching a wound-vac, etc.) as a focal portion of the Procedure." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Procedure.focalDevice" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="BackboneElement" />
       </type>
@@ -628,6 +722,11 @@
       <definition value="The device that was manipulated (changed) during the procedure." />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="Procedure.focalDevice.manipulated" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-device" />
@@ -641,6 +740,11 @@
       <requirements value="Used for tracking contamination, etc." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Procedure.used" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-device" />

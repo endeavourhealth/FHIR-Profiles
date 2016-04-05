@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-medication-authorisation" />
   <meta>
-    <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
+    <lastUpdated value="2016-04-05T17:46:43.853+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -32,6 +32,11 @@
       <definition value="Medication authorisations, or courses, are  “templates” for a prescription. Active or past. They contain enough information for a prescription to be issued or for it to be transcribed into another record as a reference (e.g. secondary care noting the primary care information would be a subset). What it is, who authorised it, when it was authorised, reference to last issue, overall compliance for that course, special instructions etc." />
       <min value="0" />
       <max value="*" />
+      <base>
+        <path value="MedicationStatement" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="MedicationStatement" />
       </type>
@@ -59,6 +64,11 @@
       <definition value="Optional Extensions Element - found in all resources." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="MedicationStatement.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-authorisation-quantity-extension" />
@@ -71,6 +81,11 @@
       <definition value="Number of issues allowed in the authorisation." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="MedicationStatement.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-authorisation-numberofrepeatsallowed-extension" />
@@ -83,6 +98,11 @@
       <definition value="Number of prescriptions issued within authorisation." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="MedicationStatement.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-authorisation-numberofrepeatsissued-extension" />
@@ -95,6 +115,11 @@
       <definition value="Number of days supply per issue." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="MedicationStatement.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-authorisation-expectedsupplyduration-extension" />
@@ -107,6 +132,11 @@
       <definition value="Instructions or additional information included in prescription for use by the pharmacy." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="MedicationStatement.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-pharmacytext-extension" />
@@ -119,6 +149,11 @@
       <definition value="Instructions or additional information included in prescription for use by the patient." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="MedicationStatement.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patienttext-extension" />
@@ -131,6 +166,11 @@
       <definition value="Used to indicate a private prescription." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="MedicationStatement.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-privateprescription-extension" />
@@ -143,6 +183,11 @@
       <definition value="Date (and time if available) when a prescription was first issued for this authorisation." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="MedicationStatement.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-authorisation-firstissuedate-extension" />
@@ -155,6 +200,11 @@
       <definition value="Date (and time if available) of most recent prescription issue for this authorisation." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="MedicationStatement.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-authorisation-mostrecentissuedate-extension" />
@@ -167,6 +217,11 @@
       <definition value="Used to indicate a prescription is prescribed as a contraception." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="MedicationStatement.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-prescribedascontraception-extension" />
@@ -179,10 +234,32 @@
       <definition value="Indicates that the authorisation has been cancelled." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="MedicationStatement.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-authorisation-cancellation-extension" />
       </type>
+    </element>
+    <element>
+      <path value="MedicationStatement.id" />
+      <short value="Logical id of this artifact.  Must be populated with a globally unique identifier, except where resource is being sent to the server for creation when it must NOT be populated" />
+      <definition value="The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes." />
+      <comments value="The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID." />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="Resource.id" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="id" />
+      </type>
+      <isSummary value="true" />
     </element>
     <element>
       <path value="MedicationStatement.identifier.id" />
@@ -191,6 +268,11 @@
       <definition value="unique id for the element within a resource (for internal references)." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="MedicationStatement.identifier.id" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="id" />
       </type>
@@ -207,6 +289,11 @@
       <requirements value="Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="MedicationStatement.identifier.use" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="code" />
       </type>
@@ -236,6 +323,11 @@
       <requirements value="Allows users to make use of identifiers when the identifier system is not known." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="MedicationStatement.identifier.type" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="CodeableConcept" />
       </type>
@@ -262,6 +354,11 @@
       <definition value="Time period during which identifier is/was valid for use." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="MedicationStatement.identifier.period" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="Period" />
       </type>
@@ -286,6 +383,11 @@
       <comments value="The reference may be just a text description of the assigner." />
       <min value="0" />
       <max value="0" />
+      <base>
+        <path value="MedicationStatement.identifier.assigner" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://hl7.org/fhir/StructureDefinition/Organization" />
@@ -310,6 +412,11 @@
       <definition value="The person or animal who is/was taking the medication." />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="MedicationStatement.patient" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
@@ -333,6 +440,11 @@
       <definition value="The person who provided the information about the taking of this medication." />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="MedicationStatement.informationSource" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
@@ -348,6 +460,11 @@
       <definition value="A reason for why the medication is being/was taken." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="MedicationStatement.reasonForUse[x]" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="CodeableConcept" />
       </type>
@@ -371,6 +488,11 @@
       <comments value="If only a code is specified, then it needs to be a code for a specific product.  If more information is required, then the use of the medication resource is recommended.  Note: do not use Medication.name to describe the medication this statement concerns. When the only available information is a text description of the medication, Medication.code.text should be used." />
       <min value="1" />
       <max value="1" />
+      <base>
+        <path value="MedicationStatement.medication[x]" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="CodeableConcept" />
       </type>
