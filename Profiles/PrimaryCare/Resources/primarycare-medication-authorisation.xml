@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-medication-authorisation" />
   <meta>
-    <lastUpdated value="2016-04-06T17:30:00.422+01:00" />
+    <lastUpdated value="2016-04-06T17:46:57.146+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -518,8 +518,8 @@
     </element>
     <element>
       <path value="MedicationStatement.dateAsserted" />
-      <short value="When the authorisation was asserted?" />
-      <definition value="The date when the medication authorisation was asserted by the information source." />
+      <short value="Medication authorisation date" />
+      <definition value="The date (and time if available) of the medication authorisation." />
       <min value="1" />
       <max value="1" />
       <base>
@@ -637,11 +637,12 @@
       </binding>
     </element>
     <element>
-      <path value="MedicationStatement.effectiveDateTime" />
-      <short value="Medication authorisation date" />
-      <definition value="The date (and time if available) of the medication authorisation." />
+      <path value="MedicationStatement.effective[x]" />
+      <short value="Over what period was medication consumed?" />
+      <definition value="The interval of time during which it is being asserted that the patient was taking the medication (or was not taking, when the wasNotGiven element is true)." />
+      <comments value="If the medication is still being taken at the time the statement is recorded, the &quot;end&quot; date will be omitted." />
       <min value="0" />
-      <max value="1" />
+      <max value="0" />
       <base>
         <path value="MedicationStatement.effective[x]" />
         <min value="0" />
@@ -649,6 +650,9 @@
       </base>
       <type>
         <code value="dateTime" />
+      </type>
+      <type>
+        <code value="Period" />
       </type>
       <isSummary value="true" />
       <mapping>
@@ -662,7 +666,7 @@
     </element>
     <element>
       <path value="MedicationStatement.note" />
-      <short value="Further information about the statement" />
+      <short value="Further information about the authorisation " />
       <definition value="Provides extra information about the medication authorisation that is not conveyed by the other attributes." />
       <min value="0" />
       <max value="1" />
@@ -696,7 +700,7 @@
     <element>
       <path value="MedicationStatement.medication[x]" />
       <short value="What medication was taken" />
-      <definition value="Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications." />
+      <definition value="Identifies the medication being authorised. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications." />
       <comments value="If only a code is specified, then it needs to be a code for a specific product.  If more information is required, then the use of the medication resource is recommended.  Note: do not use Medication.name to describe the medication this statement concerns. When the only available information is a text description of the medication, Medication.code.text should be used." />
       <min value="1" />
       <max value="1" />
@@ -740,6 +744,53 @@
       <mapping>
         <identity value="rim" />
         <map value="SubstanceAdministration&gt;Component&gt;SubstanceAdministrationRequest" />
+      </mapping>
+    </element>
+    <element>
+      <path value="MedicationStatement.dosage.timing" />
+      <short value="When/how often is medication taken" />
+      <definition value="The timing schedule for giving the medication to the patient.  The Schedule data type allows many different expressions, for example.  &quot;Every  8 hours&quot;; &quot;Three times a day&quot;; &quot;1/2 an hour before breakfast for 10 days from 23-Dec 2011:&quot;;  &quot;15 Oct 2013, 17 Oct 2013 and 1 Nov 2013&quot;." />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="MedicationStatement.dosage.timing" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="Timing" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="rim" />
+        <map value=".effectiveTime" />
+      </mapping>
+    </element>
+    <element>
+      <path value="MedicationStatement.dosage.route" />
+      <short value="How the medication enters the body" />
+      <definition value="A code specifying the route or physiological path of administration of a therapeutic agent into or onto a subject." />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="MedicationStatement.dosage.route" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="CodeableConcept" />
+      </type>
+      <isSummary value="true" />
+      <binding>
+        <strength value="example" />
+        <description value="A coded concept describing the route or physiological path of administration of a therapeutic agent into or onto the body of a subject." />
+        <valueSetReference>
+          <reference value="http://hl7.org/fhir/ValueSet/route-codes" />
+        </valueSetReference>
+      </binding>
+      <mapping>
+        <identity value="rim" />
+        <map value=".routeCode" />
       </mapping>
     </element>
   </differential>
