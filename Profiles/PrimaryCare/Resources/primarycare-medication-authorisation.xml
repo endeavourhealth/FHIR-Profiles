@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-medication-authorisation" />
   <meta>
-    <lastUpdated value="2016-04-05T17:46:43.853+01:00" />
+    <lastUpdated value="2016-04-06T15:50:27.682+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -349,6 +349,66 @@
       </mapping>
     </element>
     <element>
+      <path value="MedicationStatement.identifier.system" />
+      <short value="The namespace for the identifier" />
+      <definition value="Establishes the namespace in which set of possible id values is unique." />
+      <requirements value="There are many sequences of identifiers.  To perform matching, we need to know what sequence we're dealing with. The system identifies a particular sequence or set of unique identifiers." />
+      <min value="1" />
+      <max value="1" />
+      <base>
+        <path value="Identifier.system" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="uri" />
+      </type>
+      <exampleUri value="http://www.acme.com/identifiers/patient or urn:ietf:rfc:3986 if the Identifier.value itself is a full uri" />
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="CX.4 / EI-2-4" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="II.root or Role.id.root" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="./IdentifierType" />
+      </mapping>
+    </element>
+    <element>
+      <path value="MedicationStatement.identifier.value" />
+      <short value="The value that is unique" />
+      <definition value="The portion of the identifier typically displayed to the user and which is unique within the context of the system." />
+      <comments value="If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986." />
+      <min value="1" />
+      <max value="1" />
+      <base>
+        <path value="Identifier.value" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="string" />
+      </type>
+      <exampleString value="123456" />
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="CX.1 / EI.1" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="II.extension or II.root if system indicates OID or GUID (Or Role.id.extension or root)" />
+      </mapping>
+      <mapping>
+        <identity value="servd" />
+        <map value="./Value" />
+      </mapping>
+    </element>
+    <element>
       <path value="MedicationStatement.identifier.period" />
       <short value="Time period when id is/was valid for use" />
       <definition value="Time period during which identifier is/was valid for use." />
@@ -453,6 +513,76 @@
       <mapping>
         <identity value="w5" />
         <map value="who.source" />
+      </mapping>
+    </element>
+    <element>
+      <path value="MedicationStatement.dateAsserted" />
+      <short value="When the statement was asserted?" />
+      <definition value="The date when the medication statement was asserted by the information source." />
+      <min value="1" />
+      <max value="1" />
+      <base>
+        <path value="MedicationStatement.dateAsserted" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="dateTime" />
+      </type>
+      <isSummary value="true" />
+    </element>
+    <element>
+      <path value="MedicationStatement.wasNotTaken" />
+      <short value="True if medication is/was not being taken" />
+      <definition value="Set this to true if the record is saying that the medication was NOT taken." />
+      <min value="0" />
+      <max value="0" />
+      <base>
+        <path value="MedicationStatement.wasNotTaken" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="boolean" />
+      </type>
+      <meaningWhenMissing value="If this is missing, then the medication was taken" />
+      <isModifier value="true" />
+      <isSummary value="true" />
+      <mapping>
+        <identity value="rim" />
+        <map value="SubstanceAdministration.actionNegationInd" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="status" />
+      </mapping>
+    </element>
+    <element>
+      <path value="MedicationStatement.reasonNotTaken" />
+      <short value="True if asserting medication was not given" />
+      <definition value="A code indicating why the medication was not taken." />
+      <min value="0" />
+      <max value="0" />
+      <base>
+        <path value="MedicationStatement.reasonNotTaken" />
+        <min value="0" />
+        <max value="*" />
+      </base>
+      <type>
+        <code value="CodeableConcept" />
+      </type>
+      <condition value="mst-1" />
+      <isSummary value="true" />
+      <binding>
+        <strength value="example" />
+        <description value="A set of codes indicating the reason why the MedicationAdministration is negated." />
+        <valueSetReference>
+          <reference value="http://hl7.org/fhir/ValueSet/reason-medication-not-given-codes" />
+        </valueSetReference>
+      </binding>
+      <mapping>
+        <identity value="rim" />
+        <map value="SubstanceAdministration-&gt;Reason-&gt;Observation-&gt;Value" />
       </mapping>
     </element>
     <element>
