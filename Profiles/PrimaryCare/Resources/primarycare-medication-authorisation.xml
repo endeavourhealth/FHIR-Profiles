@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-medication-authorisation" />
   <meta>
-    <lastUpdated value="2016-04-06T15:50:27.682+01:00" />
+    <lastUpdated value="2016-04-06T17:30:00.422+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -469,7 +469,7 @@
     <element>
       <path value="MedicationStatement.patient" />
       <short value="Who is/was taking  the medication" />
-      <definition value="The person or animal who is/was taking the medication." />
+      <definition value="The person who is/was taking the medication." />
       <min value="1" />
       <max value="1" />
       <base>
@@ -497,7 +497,8 @@
     </element>
     <element>
       <path value="MedicationStatement.informationSource" />
-      <definition value="The person who provided the information about the taking of this medication." />
+      <short value="Who authorised the medication" />
+      <definition value="The healthcare professional responsible for authorising the medication." />
       <min value="1" />
       <max value="1" />
       <base>
@@ -517,8 +518,8 @@
     </element>
     <element>
       <path value="MedicationStatement.dateAsserted" />
-      <short value="When the statement was asserted?" />
-      <definition value="The date when the medication statement was asserted by the information source." />
+      <short value="When the authorisation was asserted?" />
+      <definition value="The date when the medication authorisation was asserted by the information source." />
       <min value="1" />
       <max value="1" />
       <base>
@@ -530,6 +531,30 @@
         <code value="dateTime" />
       </type>
       <isSummary value="true" />
+    </element>
+    <element>
+      <path value="MedicationStatement.status" />
+      <short value="active | completed | entered-in-error | intended" />
+      <definition value="A code representing the state of the medication authorisation.  Generally this will be active or completed." />
+      <min value="1" />
+      <max value="1" />
+      <base>
+        <path value="MedicationStatement.status" />
+        <min value="1" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="code" />
+      </type>
+      <isModifier value="true" />
+      <isSummary value="true" />
+      <binding>
+        <strength value="required" />
+        <description value="A set of codes indicating the current status of a MedicationStatement." />
+        <valueSetReference>
+          <reference value="http://hl7.org/fhir/ValueSet/medication-statement-status" />
+        </valueSetReference>
+      </binding>
     </element>
     <element>
       <path value="MedicationStatement.wasNotTaken" />
@@ -612,6 +637,63 @@
       </binding>
     </element>
     <element>
+      <path value="MedicationStatement.effectiveDateTime" />
+      <short value="Medication authorisation date" />
+      <definition value="The date (and time if available) of the medication authorisation." />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="MedicationStatement.effective[x]" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="dateTime" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="rim" />
+        <map value="SubstanceAdministration.effectiveTime" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="when.done" />
+      </mapping>
+    </element>
+    <element>
+      <path value="MedicationStatement.note" />
+      <short value="Further information about the statement" />
+      <definition value="Provides extra information about the medication authorisation that is not conveyed by the other attributes." />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="MedicationStatement.note" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="string" />
+      </type>
+      <isSummary value="true" />
+    </element>
+    <element>
+      <path value="MedicationStatement.supportingInformation" />
+      <short value="Additional supporting information" />
+      <comments value="Likely references would be to Observation or Condition." />
+      <min value="0" />
+      <max value="0" />
+      <base>
+        <path value="MedicationStatement.supportingInformation" />
+        <min value="0" />
+        <max value="*" />
+      </base>
+      <type>
+        <code value="Reference" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Resource" />
+      </type>
+      <isSummary value="true" />
+    </element>
+    <element>
       <path value="MedicationStatement.medication[x]" />
       <short value="What medication was taken" />
       <definition value="Identifies the medication being administered. This is either a link to a resource representing the details of the medication or a simple attribute carrying a code that identifies the medication from a known list of medications." />
@@ -638,6 +720,26 @@
       <mapping>
         <identity value="w5" />
         <map value="what" />
+      </mapping>
+    </element>
+    <element>
+      <path value="MedicationStatement.dosage" />
+      <short value="Details of how medication is taken" />
+      <definition value="Indicates how the medication is/was used by the patient." />
+      <min value="0" />
+      <max value="*" />
+      <base>
+        <path value="MedicationStatement.dosage" />
+        <min value="0" />
+        <max value="*" />
+      </base>
+      <type>
+        <code value="BackboneElement" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="rim" />
+        <map value="SubstanceAdministration&gt;Component&gt;SubstanceAdministrationRequest" />
       </mapping>
     </element>
   </differential>
