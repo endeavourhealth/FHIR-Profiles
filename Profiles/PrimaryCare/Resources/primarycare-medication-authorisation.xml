@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-medication-authorisation" />
   <meta>
-    <lastUpdated value="2016-04-06T17:46:57.146+01:00" />
+    <lastUpdated value="2016-04-08T10:04:19.508+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -683,6 +683,7 @@
     <element>
       <path value="MedicationStatement.supportingInformation" />
       <short value="Additional supporting information" />
+      <definition value="Allows linking the MedicationStatement to the underlying MedicationOrder, or to other information that supports the MedicationStatement." />
       <comments value="Likely references would be to Observation or Condition." />
       <min value="0" />
       <max value="0" />

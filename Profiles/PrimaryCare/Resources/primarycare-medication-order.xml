@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-medication-order" />
   <meta>
-    <lastUpdated value="2016-04-07T10:22:27.278+01:00" />
+    <lastUpdated value="2016-04-08T10:38:49.28+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -19,7 +19,7 @@
     </telecom>
   </contact>
   <date value="2015-11-01T00:00:00+00:00" />
-  <description value="Base StructureDefinition for MedicationOrder Resource" />
+  <description value="A prescription issue - an order for the supply of the medication." />
   <fhirVersion value="1.0.1" />
   <kind value="resource" />
   <constrainedType value="MedicationOrder" />
@@ -128,23 +128,6 @@
     </element>
     <element>
       <path value="MedicationOrder.extension" />
-      <name value="private" />
-      <short value="Private prescription flag" />
-      <definition value="Used to indicate a private prescription." />
-      <min value="0" />
-      <max value="1" />
-      <base>
-        <path value="MedicationOrder.extension" />
-        <min value="0" />
-        <max value="1" />
-      </base>
-      <type>
-        <code value="Extension" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-privateprescription-extension" />
-      </type>
-    </element>
-    <element>
-      <path value="MedicationOrder.extension" />
       <name value="prescribedAsContraception" />
       <short value="Prescribed as contraception flag" />
       <definition value="Used to indicate a prescription is prescribed as a contraception." />
@@ -158,6 +141,22 @@
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-prescribedascontraception-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="MedicationOrder.extension" />
+      <name value="medicationSupplyType" />
+      <short value="Indicates the legal/contractual nature of a prescription" />
+      <min value="1" />
+      <max value="1" />
+      <base>
+        <path value="MedicationOrder.extension" />
+        <min value="1" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-supply-type-extension" />
       </type>
     </element>
     <element>
@@ -330,6 +329,34 @@
       <mapping>
         <identity value="servd" />
         <map value="./StartDate and ./EndDate" />
+      </mapping>
+    </element>
+    <element>
+      <path value="MedicationOrder.dateWritten" />
+      <short value="When prescription was authorized" />
+      <definition value="The date (and perhaps time) when the prescription was written." />
+      <min value="1" />
+      <max value="1" />
+      <base>
+        <path value="MedicationOrder.dateWritten" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="dateTime" />
+      </type>
+      <isSummary value="true" />
+      <mapping>
+        <identity value="v2" />
+        <map value="RXE-32-Original Order Date/Time / ORC-9-Date/Time of Transaction" />
+      </mapping>
+      <mapping>
+        <identity value="rim" />
+        <map value="author.time" />
+      </mapping>
+      <mapping>
+        <identity value="w5" />
+        <map value="when.recorded" />
       </mapping>
     </element>
     <element>
