@@ -242,11 +242,11 @@
       <short value="Who recorded the sensitivity" />
       <definition value="Individual who recorded the record and takes responsibility for its conten." />
       <alias value="Author" />
-      <min value="1" />
+      <min value="0" />
       <max value="1" />
       <base>
         <path value="AllergyIntolerance.recorder" />
-        <min value="1" />
+        <min value="0" />
         <max value="1" />
       </base>
       <type>
@@ -308,8 +308,8 @@
       <max value="0" />
       <base>
         <path value="AllergyIntolerance.reporter" />
-        <min value="0" />
-        <max value="0" />
+      <min value="0" />
+      <max value="0" />
       </base>
       <type>
         <code value="Reference" />
@@ -343,7 +343,7 @@
       <max value="1" />
       <base>
         <path value="AllergyIntolerance.substance" />
-        <min value="1" />
+      <min value="1" />
         <max value="1" />
       </base>
       <type>
@@ -398,8 +398,8 @@
       <max value="0" />
       <base>
         <path value="AllergyIntolerance.note.author[x]" />
-        <min value="0" />
-        <max value="0" />
+      <min value="0" />
+      <max value="0" />
       </base>
       <type>
         <code value="Reference" />
@@ -434,8 +434,8 @@
       <max value="0" />
       <base>
         <path value="AllergyIntolerance.note.time" />
-        <min value="0" />
-        <max value="0" />
+      <min value="0" />
+      <max value="0" />
       </base>
       <type>
         <code value="dateTime" />

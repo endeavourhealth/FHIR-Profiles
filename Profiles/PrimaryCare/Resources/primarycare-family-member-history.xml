@@ -60,7 +60,7 @@
       <name value="recorder" />
       <short value="Who recorded the family history" />
       <definition value="Individual who recorded the record and takes responsibility for its content." />
-      <min value="1" />
+      <min value="0" />
       <max value="1" />
       <type>
         <code value="Extension" />

@@ -375,11 +375,11 @@
       <path value="Procedure.performer" />
       <short value="The people who performed the procedure" />
       <definition value="Limited to 'real' people rather than equipment." />
-      <min value="1" />
+      <min value="0" />
       <max value="*" />
       <base>
         <path value="Procedure.performer" />
-        <min value="1" />
+        <min value="0" />
         <max value="*" />
       </base>
       <type>
@@ -498,7 +498,7 @@
       <max value="1" />
       <base>
         <path value="Procedure.location" />
-        <min value="0" />
+      <min value="0" />
         <max value="1" />
       </base>
       <type>
@@ -520,8 +520,8 @@
       <max value="0" />
       <base>
         <path value="Procedure.outcome" />
-        <min value="0" />
-        <max value="0" />
+      <min value="0" />
+      <max value="0" />
       </base>
       <type>
         <code value="CodeableConcept" />
@@ -548,8 +548,8 @@
       <max value="0" />
       <base>
         <path value="Procedure.report" />
-        <min value="0" />
-        <max value="0" />
+      <min value="0" />
+      <max value="0" />
       </base>
       <type>
         <code value="Reference" />
@@ -621,8 +621,8 @@
       <max value="0" />
       <base>
         <path value="Procedure.request" />
-        <min value="0" />
-        <max value="0" />
+      <min value="0" />
+      <max value="0" />
       </base>
       <type>
         <code value="Reference" />
@@ -685,8 +685,8 @@
       <max value="0" />
       <base>
         <path value="Procedure.notes.time" />
-        <min value="0" />
-        <max value="0" />
+      <min value="0" />
+      <max value="0" />
       </base>
       <type>
         <code value="dateTime" />
@@ -709,8 +709,8 @@
       <max value="0" />
       <base>
         <path value="Procedure.focalDevice" />
-        <min value="0" />
-        <max value="0" />
+      <min value="0" />
+      <max value="0" />
       </base>
       <type>
         <code value="BackboneElement" />
@@ -724,7 +724,7 @@
       <max value="1" />
       <base>
         <path value="Procedure.focalDevice.manipulated" />
-        <min value="1" />
+      <min value="1" />
         <max value="1" />
       </base>
       <type>
