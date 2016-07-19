@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-medication-authorisation-cancellation-extension" />
   <meta>
-    <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
+    <lastUpdated value="2016-07-19T14:26:49.724+10:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -54,7 +54,7 @@
       <path value="Extension.extension" />
       <name value="performer" />
       <short value="Who is responsible for the cancellation" />
-      <min value="1" />
+      <min value="0" />
       <max value="1" />
       <type>
         <code value="Element" />
