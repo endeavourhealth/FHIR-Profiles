@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-organization" />
   <meta>
-    <lastUpdated value="2016-03-31T20:54:12.944+01:00" />
+    <lastUpdated value="2016-07-31T15:07:12.944+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -604,7 +604,7 @@
       </type>
       <isSummary value="true" />
       <binding>
-        <strength value="required" />
+        <strength value="extensible" />
         <description value="Used to categorize the organization" />
         <valueSetReference>
           <reference value="http://endeavourhealth.org/fhir/ValueSet/primarycare-organization-type" />
