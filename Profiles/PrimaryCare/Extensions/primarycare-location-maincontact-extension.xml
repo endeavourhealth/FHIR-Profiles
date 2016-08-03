@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="primarycare-location-main-contact" />
+  <meta>
+    <lastUpdated value="2016-08-03T10:44:01.995+01:00" />
+  </meta>
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location-main-contact" />
+  <name value="PrimaryCare-Location-Main-Contact" />
+  <status value="draft" />
+  <publisher value="Endeavour Health Charitable Trust" />
+  <contact>
+    <telecom>
+      <system value="other" />
+      <value value="http://www.endeavourhealth.org/" />
+    </telecom>
+  </contact>
+  <date value="2016-08-03T00:00:00+01:00" />
+  <description value="Primary care location main contact" />
+  <requirements value="The ability to add extensions in a structured way is what keeps FHIR resources simple." />
+  <fhirVersion value="1.0.2" />
+  <kind value="datatype" />
+  <constrainedType value="Extension" />
+  <abstract value="false" />
+  <contextType value="resource" />
+  <context value="Location" />
+  <base value="http://hl7.org/fhir/StructureDefinition/Extension" />
+  <differential>
+    <element>
+      <path value="Extension" />
+      <base>
+        <path value="Extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
+    </element>
+    <element>
+      <path value="Extension.url" />
+      <representation value="xmlAttr" />
+      <base>
+        <path value="Extension.url" />
+        <min value="1" />
+        <max value="1" />
+      </base>
+      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location-main-contact" />
+    </element>
+    <element>
+      <path value="Extension.value[x]" />
+      <min value="1" />
+      <base>
+        <path value="Extension.value[x]" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="string" />
+      </type>
+      <type>
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
+      </type>
+    </element>
+  </differential>
+</StructureDefinition>
