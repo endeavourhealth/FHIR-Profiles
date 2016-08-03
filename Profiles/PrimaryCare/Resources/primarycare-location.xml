@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-location" />
   <meta>
-    <lastUpdated value="2016-08-03T10:55:02.347+01:00" />
+    <lastUpdated value="2016-08-03T11:02:57.639+01:00" />
   </meta>
   <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location" />
   <name value="PrimaryCare-Location" />
@@ -48,9 +48,14 @@
       <definition value="Person who is the main contact at this organisation" />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Location.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location-main-contact" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location-main-contact-extension" />
       </type>
     </element>
     <element>

@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-patient" />
   <meta>
-    <lastUpdated value="2016-03-29T12:23:26.664+01:00" />
+    <lastUpdated value="2016-08-03T11:22:06.115+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -18,7 +18,7 @@
       <value value="http://www.endeavourhealth.org/" />
     </telecom>
   </contact>
-  <date value="2015-11-01" />
+  <date value="2015-11-01T00:00:00+00:00" />
   <description value="Primary Care patient" />
   <fhirVersion value="1.0.2" />
   <kind value="resource" />
@@ -28,18 +28,14 @@
   <differential>
     <element>
       <path value="Patient" />
-      <short value="Information about an individual or animal receiving health care services" />
-      <definition value="Demographics and other administrative information about an individual or animal receiving care or other health-related services." />
-      <alias value="SubjectOfCare Client Resident" />
-      <min value="0" />
-      <max value="*" />
+      <base>
+        <path value="Patient" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="Patient" />
       </type>
-      <mapping>
-        <identity value="w5" />
-        <map value="administrative.individual" />
-      </mapping>
     </element>
     <element>
       <path value="Patient.extension" />
@@ -54,1071 +50,435 @@
       <definition value="Optional Extensions Element - found in all resources." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Patient.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient-registration-type-extension" />
       </type>
     </element>
     <element>
+      <path value="Patient.extension" />
+      <name value="residentialInstituteCode" />
+      <short value="Residential instutute code" />
+      <definition value="Residential instutute code" />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="Patient.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient-residential-institute-code-extension" />
+      </type>
+    </element>
+    <element>
       <path value="Patient.identifier" />
       <slicing>
+        <discriminator value="system" />
         <rules value="openAtEnd" />
       </slicing>
-      <short value="An identifier for this patient" />
-      <definition value="An identifier for this patient." />
-      <requirements value="Patients are almost always assigned specific numerical identifiers." />
-      <min value="0" />
-      <max value="*" />
-      <isSummary value="true" />
+      <base>
+        <min value="0" />
+        <max value="*" />
+      </base>
     </element>
     <element>
       <path value="Patient.identifier" />
       <name value="nhsNumber" />
-      <short value="An identifier for this patient" />
-      <definition value="An identifier for this patient." />
-      <requirements value="Patients are almost always assigned specific numerical identifiers." />
-      <min value="0" />
       <max value="1" />
-      <type>
-        <code value="Identifier" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="PID-3" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="id" />
-      </mapping>
-      <mapping>
-        <identity value="cda" />
-        <map value=".id" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="id" />
-      </mapping>
+      <base>
+        <path value="Patient.identifier" />
+        <min value="0" />
+        <max value="1" />
+      </base>
     </element>
     <element>
       <path value="Patient.identifier.use" />
-      <short value="usual | official | temp | secondary (If known)" />
-      <definition value="The purpose of this identifier." />
-      <comments value="This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary id for a permanent one. Applications can assume that an identifier is permanent unless it explicitly says that it is temporary." />
-      <requirements value="Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="code" />
-      </type>
-      <isModifier value="true" />
-      <isSummary value="true" />
-      <binding>
-        <strength value="required" />
-        <description value="Identifies the purpose for this identifier, if known ." />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/identifier-use" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="v2" />
-        <map value="N/A" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Role.code or implied by context" />
-      </mapping>
+      <base>
+        <path value="Patient.identifier.use" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="Patient.identifier.type" />
-      <short value="Description of identifier" />
-      <definition value="A coded type for the identifier that can be used to determine which identifier to use for a specific purpose." />
-      <comments value="This element deals only with general categories of identifiers.  It SHOULD not be used for codes that correspond 1..1 with the Identifier.system. Some identifiers may fall into multiple categories due to common usage.   Where the system is known, a type is unnecessary because the type is always part of the system definition. However systems often need to handle identifiers where the system is not known. There is not a 1:1 relationship between type and system, since many different systems have the same type." />
-      <requirements value="Allows users to make use of identifiers when the identifier system is not known." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="CodeableConcept" />
-      </type>
-      <isSummary value="true" />
-      <binding>
-        <strength value="extensible" />
-        <description value="A coded type for an identifier that can be used to determine which identifier to use for a specific purpose." />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/identifier-type" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.5" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Role.code or implied by context" />
-      </mapping>
+      <base>
+        <path value="Patient.identifier.type" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="Patient.identifier.system" />
-      <short value="The namespace for the identifier" />
-      <definition value="Establishes the namespace in which set of possible id values is unique." />
-      <requirements value="There are many sequences of identifiers.  To perform matching, we need to know what sequence we're dealing with. The system identifies a particular sequence or set of unique identifiers." />
       <min value="1" />
-      <max value="1" />
-      <type>
-        <code value="uri" />
-      </type>
+      <base>
+        <path value="Patient.identifier.system" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <fixedUri value="http://fhir.nhs.net/Id/nhs-number" />
       <exampleUri value="http://www.acme.com/identifiers/patient or urn:ietf:rfc:3986 if the Identifier.value itself is a full uri" />
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.4 / EI-2-4" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="II.root or Role.id.root" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./IdentifierType" />
-      </mapping>
     </element>
     <element>
       <path value="Patient.identifier.value" />
       <short value="Ten numeric digit NHS number" />
-      <definition value="The portion of the identifier typically displayed to the user and which is unique within the context of the system." />
-      <comments value="If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986." />
       <min value="1" />
-      <max value="1" />
-      <type>
-        <code value="string" />
-      </type>
+      <base>
+        <path value="Patient.identifier.value" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <exampleString value="123456" />
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.1 / EI.1" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="II.extension or II.root if system indicates OID or GUID (Or Role.id.extension or root)" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./Value" />
-      </mapping>
     </element>
     <element>
       <path value="Patient.identifier.period" />
-      <short value="Time period when id is/was valid for use" />
-      <definition value="Time period during which identifier is/was valid for use." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="Period" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.7 + CX.8" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Role.effectiveTime or implied by context" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./StartDate and ./EndDate" />
-      </mapping>
+      <base>
+        <path value="Patient.identifier.period" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="Patient.identifier.assigner" />
-      <short value="Organization that issued id (may be just text)" />
-      <definition value="Organization that issued/manages the identifier." />
-      <comments value="The reference may be just a text description of the assigner." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="Reference" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/Organization" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.4 / (CX.4,CX.9,CX.10)" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./IdentifierIssuingAuthority" />
-      </mapping>
+      <base>
+        <path value="Patient.identifier.assigner" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="Patient.identifier" />
       <name value="localIdentifier" />
-      <short value="An identifier for this patient" />
-      <definition value="An identifier for this patient." />
-      <requirements value="Patients are almost always assigned specific numerical identifiers." />
-      <min value="0" />
-      <max value="*" />
-      <type>
-        <code value="Identifier" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="PID-3" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="id" />
-      </mapping>
-      <mapping>
-        <identity value="cda" />
-        <map value=".id" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="id" />
-      </mapping>
+      <base>
+        <path value="Patient.identifier" />
+        <min value="0" />
+        <max value="*" />
+      </base>
     </element>
     <element>
       <path value="Patient.identifier.use" />
-      <short value="usual | official | temp | secondary (If known)" />
-      <definition value="The purpose of this identifier." />
-      <comments value="This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary id for a permanent one. Applications can assume that an identifier is permanent unless it explicitly says that it is temporary." />
-      <requirements value="Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="code" />
-      </type>
-      <isModifier value="true" />
-      <isSummary value="true" />
-      <binding>
-        <strength value="required" />
-        <description value="Identifies the purpose for this identifier, if known ." />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/identifier-use" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="v2" />
-        <map value="N/A" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Role.code or implied by context" />
-      </mapping>
+      <base>
+        <path value="Patient.identifier.use" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="Patient.identifier.type" />
-      <short value="Description of identifier" />
-      <definition value="A coded type for the identifier that can be used to determine which identifier to use for a specific purpose." />
-      <comments value="This element deals only with general categories of identifiers.  It SHOULD not be used for codes that correspond 1..1 with the Identifier.system. Some identifiers may fall into multiple categories due to common usage.   Where the system is known, a type is unnecessary because the type is always part of the system definition. However systems often need to handle identifiers where the system is not known. There is not a 1:1 relationship between type and system, since many different systems have the same type." />
-      <requirements value="Allows users to make use of identifiers when the identifier system is not known." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="CodeableConcept" />
-      </type>
-      <isSummary value="true" />
-      <binding>
-        <strength value="extensible" />
-        <description value="A coded type for an identifier that can be used to determine which identifier to use for a specific purpose." />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/identifier-type" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.5" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Role.code or implied by context" />
-      </mapping>
+      <base>
+        <path value="Patient.identifier.type" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="Patient.identifier.system" />
       <short value="The local identifier namespace, e.g. http://trust.nhs.uk/identifier" />
-      <definition value="Establishes the namespace in which set of possible id values is unique." />
-      <requirements value="There are many sequences of identifiers.  To perform matching, we need to know what sequence we're dealing with. The system identifies a particular sequence or set of unique identifiers." />
       <min value="1" />
-      <max value="1" />
-      <type>
-        <code value="uri" />
-      </type>
+      <base>
+        <path value="Patient.identifier.system" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <exampleUri value="http://www.acme.com/identifiers/patient or urn:ietf:rfc:3986 if the Identifier.value itself is a full uri" />
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.4 / EI-2-4" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="II.root or Role.id.root" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./IdentifierType" />
-      </mapping>
     </element>
     <element>
       <path value="Patient.identifier.value" />
-      <short value="The value that is unique" />
-      <definition value="The portion of the identifier typically displayed to the user and which is unique within the context of the system." />
-      <comments value="If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986." />
       <min value="1" />
-      <max value="1" />
-      <type>
-        <code value="string" />
-      </type>
+      <base>
+        <path value="Patient.identifier.value" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <exampleString value="123456" />
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.1 / EI.1" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="II.extension or II.root if system indicates OID or GUID (Or Role.id.extension or root)" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./Value" />
-      </mapping>
     </element>
     <element>
       <path value="Patient.identifier.period" />
-      <short value="Time period when id is/was valid for use" />
-      <definition value="Time period during which identifier is/was valid for use." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="Period" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.7 + CX.8" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Role.effectiveTime or implied by context" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./StartDate and ./EndDate" />
-      </mapping>
+      <base>
+        <path value="Patient.identifier.period" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="Patient.name.use" />
-      <short value="usual | official | temp | nickname | anonymous | old | maiden" />
-      <definition value="Identifies the purpose for this name." />
-      <comments value="This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary or old name etc.for a current/permanent one. Applications can assume that a name is current unless it explicitly says that it is temporary or old." />
-      <requirements value="Allows the appropriate name for a particular context of use to be selected from among a set of names." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="code" />
-      </type>
-      <isModifier value="true" />
-      <isSummary value="true" />
-      <binding>
-        <strength value="required" />
-        <description value="The use of a human name" />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/name-use" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="v2" />
-        <map value="XPN.7, but often indicated by which field contains the name" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="unique(./use)" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./NamePurpose" />
-      </mapping>
+      <base>
+        <path value="Patient.name.use" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="Patient.name.family" />
-      <short value="Family name (often called 'Surname')" />
-      <definition value="The part of a name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father." />
-      <comments value="For family name, hyphenated names such as &quot;Smith-Jones&quot; are a single name, but names with spaces such as &quot;Smith Jones&quot; are broken into multiple parts." />
-      <alias value="surname" />
       <min value="1" />
       <max value="1" />
-      <type>
-        <code value="string" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="XPN.1" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="./part[partType = FAM]" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./FamilyName" />
-      </mapping>
+      <base>
+        <path value="Patient.name.family" />
+        <min value="1" />
+        <max value="1" />
+      </base>
     </element>
     <element>
       <path value="Patient.name.given" />
-      <short value="Given names (not always 'first'). Includes middle names" />
-      <definition value="Given name." />
-      <comments value="If only initials are recorded, they may be used in place of the full name.  Not called &quot;first name&quot; since given names do not always come first." />
-      <alias value="first name" />
-      <alias value="middle name" />
-      <min value="0" />
       <max value="1" />
-      <type>
-        <code value="string" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="XPN.2 + XPN.3" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="./part[partType = GIV]" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./GivenNames" />
-      </mapping>
+      <base>
+        <path value="Patient.name.given" />
+        <min value="0" />
+        <max value="1" />
+      </base>
     </element>
     <element>
       <path value="Patient.name.prefix" />
-      <short value="Parts that come before the name" />
-      <definition value="Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the start of the name." />
-      <min value="0" />
       <max value="1" />
-      <type>
-        <code value="string" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="XPN.5" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="./part[partType = PFX]" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./TitleCode" />
-      </mapping>
+      <base>
+        <path value="Patient.name.prefix" />
+        <min value="0" />
+        <max value="1" />
+      </base>
     </element>
     <element>
       <path value="Patient.name.suffix" />
-      <short value="Parts that come after the name" />
-      <definition value="Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the end of the name." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="string" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="XPN/4" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="./part[partType = SFX]" />
-      </mapping>
+      <base>
+        <path value="Patient.name.suffix" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="Patient.name.period" />
-      <short value="Time period when name was/is in use" />
-      <definition value="Indicates the period of time when this name was valid for the named person." />
-      <requirements value="Allows names to be placed in historical context." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="Period" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="XPN.13 + XPN.14" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="./usablePeriod[type=&quot;IVL&lt;TS&gt;&quot;]" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./StartDate and ./EndDate" />
-      </mapping>
+      <base>
+        <path value="Patient.name.period" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="Patient.telecom.system" />
-      <short value="phone | fax | email | pager | other" />
-      <definition value="Telecommunications form for contact point - what communications system is required to make use of the contact." />
       <min value="1" />
-      <max value="1" />
-      <type>
-        <code value="code" />
-      </type>
-      <condition value="cpt-2" />
-      <isSummary value="true" />
-      <binding>
-        <strength value="required" />
-        <description value="Telecommunications form for contact point" />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/contact-point-system" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="v2" />
-        <map value="XTN.3" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="./scheme" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./ContactPointType" />
-      </mapping>
+      <base>
+        <path value="Patient.telecom.system" />
+        <min value="1" />
+        <max value="1" />
+      </base>
     </element>
     <element>
       <path value="Patient.telecom.value" />
-      <short value="The actual contact point details" />
-      <definition value="The actual contact point details, in a form that is meaningful to the designated communication system (i.e. phone number or email address)." />
-      <comments value="Additional text data such as phone extension numbers, or notes about use of the contact are sometimes included in the value." />
-      <requirements value="Need to support legacy numbers that are not in a tightly controlled format." />
       <min value="1" />
-      <max value="1" />
-      <type>
-        <code value="string" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="XTN.1 (or XTN.12)" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="./url" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./Value" />
-      </mapping>
+      <base>
+        <path value="Patient.telecom.value" />
+        <min value="1" />
+        <max value="1" />
+      </base>
     </element>
     <element>
       <path value="Patient.telecom.period" />
-      <short value="Time period when the contact point was/is in use" />
-      <definition value="Time period when the contact point was/is in use." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="Period" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="N/A" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="./useablePeriod[type=&quot;IVL&lt;TS&gt;&quot;]" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./StartDate and ./EndDate" />
-      </mapping>
+      <base>
+        <path value="Patient.telecom.period" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="Patient.gender" />
-      <short value="male | female | other | unknown" />
-      <definition value="Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes." />
-      <comments value="The gender may not match the biological sex as determined by genetics, or the individual's preferred identification. Note that for both humans and particularly animals, there are other legitimate possibilities than M and F, though the vast majority of systems and contexts only support M and F.  Systems providing decision support or enforcing business rules should ideally do this on the basis of Observations dealing with the specific gender aspect of interest (anatomical, chromosonal, social, etc.)  However, because these observations are infrequently recorded, defaulting to the administrative gender is common practice.  Where such defaulting occurs, rule enforcement should allow for the variation between administrative and biological, chromosonal and other gender aspects.  For example, an alert about a hysterectomy on a male should be handled as a warning or overrideable error, not a &quot;hard&quot; error." />
-      <requirements value="Needed for identification of the individual, in combination with (at least) name and birth date. Gender of individual drives many clinical processes." />
       <min value="1" />
-      <max value="1" />
-      <type>
-        <code value="code" />
-      </type>
-      <isSummary value="true" />
-      <binding>
-        <strength value="required" />
-        <description value="The gender of a person used for administrative purposes." />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/administrative-gender" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="v2" />
-        <map value="PID-8" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="player[classCode=PSN|ANM and determinerCode=INSTANCE]/administrativeGender" />
-      </mapping>
-      <mapping>
-        <identity value="cda" />
-        <map value=".patient.administrativeGenderCode" />
-      </mapping>
+      <base>
+        <path value="Patient.gender" />
+        <min value="1" />
+        <max value="1" />
+      </base>
     </element>
     <element>
       <path value="Patient.birthDate" />
-      <short value="The date of birth for the individual" />
-      <definition value="The date of birth for the individual." />
-      <comments value="At least an estimated year should be provided as a guess if the real DOB is unknown  There is a standard extension &quot;patient-birthTime&quot; available that should be used where Time is required (such as in maternaty/infant care systems)." />
-      <requirements value="Age of the individual drives many clinical processes." />
       <min value="1" />
-      <max value="1" />
-      <type>
-        <code value="date" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="PID-7" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="player[classCode=PSN|ANM and determinerCode=INSTANCE]/birthTime" />
-      </mapping>
-      <mapping>
-        <identity value="cda" />
-        <map value=".patient.birthTime" />
-      </mapping>
-      <mapping>
-        <identity value="loinc" />
-        <map value="21112-8" />
-      </mapping>
+      <base>
+        <path value="Patient.birthDate" />
+        <min value="1" />
+        <max value="1" />
+      </base>
     </element>
     <element>
       <path value="Patient.address.state" />
-      <short value="Sub-unit of country (abbreviations ok)" />
-      <definition value="Sub-unit of a country with limited sovereignty in a federally organized country. A code may be used if codes are in common use (i.e. US 2 letter state codes)." />
-      <alias value="Province" />
-      <alias value="Territory" />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="string" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="XAD.4" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="AD.part[parttype = STA]" />
-      </mapping>
-      <mapping>
-        <identity value="vcard" />
-        <map value="region" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./Region" />
-      </mapping>
+      <base>
+        <path value="Patient.address.state" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="Patient.address.period" />
-      <short value="Time period when address was/is in use" />
-      <definition value="Time period when address was/is in use." />
-      <requirements value="Allows addresses to be placed in historical context." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="Period" />
-      </type>
+      <base>
+        <path value="Patient.address.period" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <examplePeriod>
         <start value="2010-03-23" />
         <end value="2010-07-01" />
       </examplePeriod>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="XAD.12 / XAD.13 + XAD.14" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="./usablePeriod[type=&quot;IVL&lt;TS&gt;&quot;]" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./StartDate and ./EndDate" />
-      </mapping>
     </element>
     <element>
       <path value="Patient.maritalStatus.coding.userSelected" />
-      <short value="If this coding was chosen directly by the user" />
-      <definition value="Indicates that this coding was chosen by a user directly - i.e. off a pick list of available items (codes or displays)." />
-      <comments value="Amongst a set of alternatives, a directly chosen code is the most appropriate starting point for new translations. There is some ambiguity about what exactly 'directly chosen' implies, and trading partner agreement may be needed to clarify the use of this element and its consequences more completely." />
-      <requirements value="This has been identified as a clinical safety criterium - that this exact system/code pair was chosen explicitly, rather than inferred by the system based on some rules or language processing." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="boolean" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="Sometimes implied by being first" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="CD.codingRationale" />
-      </mapping>
-      <mapping>
-        <identity value="orim" />
-        <map value="fhir:Coding.userSelected fhir:mapsTo dt:CDCoding.codingRationale. fhir:Coding.userSelected fhir:hasMap fhir:Coding.userSelected.map. fhir:Coding.userSelected.map a fhir:Map;   fhir:target dt:CDCoding.codingRationale. fhir:Coding.userSelected\#true a [     fhir:source &quot;true&quot;;     fhir:target dt:CDCoding.codingRationale\#O   ]" />
-      </mapping>
+      <base>
+        <path value="Patient.maritalStatus.coding.userSelected" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="Patient.contact.relationship.coding.userSelected" />
-      <short value="If this coding was chosen directly by the user" />
-      <definition value="Indicates that this coding was chosen by a user directly - i.e. off a pick list of available items (codes or displays)." />
-      <comments value="Amongst a set of alternatives, a directly chosen code is the most appropriate starting point for new translations. There is some ambiguity about what exactly 'directly chosen' implies, and trading partner agreement may be needed to clarify the use of this element and its consequences more completely." />
-      <requirements value="This has been identified as a clinical safety criterium - that this exact system/code pair was chosen explicitly, rather than inferred by the system based on some rules or language processing." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="boolean" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="Sometimes implied by being first" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="CD.codingRationale" />
-      </mapping>
-      <mapping>
-        <identity value="orim" />
-        <map value="fhir:Coding.userSelected fhir:mapsTo dt:CDCoding.codingRationale. fhir:Coding.userSelected fhir:hasMap fhir:Coding.userSelected.map. fhir:Coding.userSelected.map a fhir:Map;   fhir:target dt:CDCoding.codingRationale. fhir:Coding.userSelected\#true a [     fhir:source &quot;true&quot;;     fhir:target dt:CDCoding.codingRationale\#O   ]" />
-      </mapping>
+      <base>
+        <path value="Patient.contact.relationship.coding.userSelected" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="Patient.contact.name.use" />
-      <short value="usual | official | temp | nickname | anonymous | old | maiden" />
-      <definition value="Identifies the purpose for this name." />
-      <comments value="This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary or old name etc.for a current/permanent one. Applications can assume that a name is current unless it explicitly says that it is temporary or old." />
-      <requirements value="Allows the appropriate name for a particular context of use to be selected from among a set of names." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="code" />
-      </type>
-      <isModifier value="true" />
-      <isSummary value="true" />
-      <binding>
-        <strength value="required" />
-        <description value="The use of a human name" />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/name-use" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="v2" />
-        <map value="XPN.7, but often indicated by which field contains the name" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="unique(./use)" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./NamePurpose" />
-      </mapping>
+      <base>
+        <path value="Patient.contact.name.use" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="Patient.contact.name.family" />
-      <short value="Family name (often called 'Surname')" />
-      <definition value="The part of a name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father." />
-      <comments value="For family name, hyphenated names such as &quot;Smith-Jones&quot; are a single name, but names with spaces such as &quot;Smith Jones&quot; are broken into multiple parts." />
-      <alias value="surname" />
       <min value="1" />
       <max value="1" />
-      <type>
-        <code value="string" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="XPN.1" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="./part[partType = FAM]" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./FamilyName" />
-      </mapping>
+      <base>
+        <path value="Patient.contact.name.family" />
+        <min value="1" />
+        <max value="1" />
+      </base>
     </element>
     <element>
       <path value="Patient.contact.name.given" />
-      <short value="Given names (not always 'first'). Includes middle names" />
-      <definition value="Given name." />
-      <comments value="If only initials are recorded, they may be used in place of the full name.  Not called &quot;first name&quot; since given names do not always come first." />
-      <alias value="first name" />
-      <alias value="middle name" />
-      <min value="0" />
       <max value="1" />
-      <type>
-        <code value="string" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="XPN.2 + XPN.3" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="./part[partType = GIV]" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./GivenNames" />
-      </mapping>
+      <base>
+        <path value="Patient.contact.name.given" />
+        <min value="0" />
+        <max value="1" />
+      </base>
     </element>
     <element>
       <path value="Patient.contact.name.prefix" />
-      <short value="Parts that come before the name" />
-      <definition value="Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the start of the name." />
-      <min value="0" />
       <max value="1" />
-      <type>
-        <code value="string" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="XPN.5" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="./part[partType = PFX]" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./TitleCode" />
-      </mapping>
+      <base>
+        <path value="Patient.contact.name.prefix" />
+        <min value="0" />
+        <max value="1" />
+      </base>
     </element>
     <element>
       <path value="Patient.contact.name.suffix" />
-      <short value="Parts that come after the name" />
-      <definition value="Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the end of the name." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="string" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="XPN/4" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="./part[partType = SFX]" />
-      </mapping>
+      <base>
+        <path value="Patient.contact.name.suffix" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="Patient.contact.name.period" />
-      <short value="Time period when name was/is in use" />
-      <definition value="Indicates the period of time when this name was valid for the named person." />
-      <requirements value="Allows names to be placed in historical context." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="Period" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="XPN.13 + XPN.14" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="./usablePeriod[type=&quot;IVL&lt;TS&gt;&quot;]" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./StartDate and ./EndDate" />
-      </mapping>
+      <base>
+        <path value="Patient.contact.name.period" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="Patient.contact.address.state" />
-      <short value="Sub-unit of country (abbreviations ok)" />
-      <definition value="Sub-unit of a country with limited sovereignty in a federally organized country. A code may be used if codes are in common use (i.e. US 2 letter state codes)." />
-      <alias value="Province" />
-      <alias value="Territory" />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="string" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="XAD.4" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="AD.part[parttype = STA]" />
-      </mapping>
-      <mapping>
-        <identity value="vcard" />
-        <map value="region" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./Region" />
-      </mapping>
+      <base>
+        <path value="Patient.contact.address.state" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="Patient.contact.address.period" />
-      <short value="Time period when address was/is in use" />
-      <definition value="Time period when address was/is in use." />
-      <requirements value="Allows addresses to be placed in historical context." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="Period" />
-      </type>
+      <base>
+        <path value="Patient.contact.address.period" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <examplePeriod>
         <start value="2010-03-23" />
         <end value="2010-07-01" />
       </examplePeriod>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="XAD.12 / XAD.13 + XAD.14" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="./usablePeriod[type=&quot;IVL&lt;TS&gt;&quot;]" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./StartDate and ./EndDate" />
-      </mapping>
     </element>
     <element>
       <path value="Patient.contact.organization" />
-      <short value="Organization that is associated with the contact" />
-      <definition value="Organization on behalf of which the contact is acting or for which the contact is working." />
-      <requirements value="For guardians or business related contacts, the organization is relevant." />
-      <min value="0" />
-      <max value="1" />
+      <base>
+        <path value="Patient.contact.organization" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
       </type>
-      <condition value="pat-1" />
-      <mapping>
-        <identity value="v2" />
-        <map value="NK1-13, NK1-30, NK1-31, NK1-32, NK1-41" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="scoper" />
-      </mapping>
-      <mapping>
-        <identity value="cda" />
-        <map value="n/a" />
-      </mapping>
     </element>
     <element>
       <path value="Patient.contact.period" />
-      <short value="The period during which this contact person or organization is valid to be contacted relating to this patient" />
-      <definition value="The period during which this contact person or organization is valid to be contacted relating to this patient." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="Period" />
-      </type>
-      <mapping>
-        <identity value="rim" />
-        <map value="effectiveTime" />
-      </mapping>
-      <mapping>
-        <identity value="cda" />
-        <map value="n/a" />
-      </mapping>
+      <base>
+        <path value="Patient.contact.period" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name">
         <valueString value="Animal" />
       </extension>
       <path value="Patient.animal" />
-      <short value="This patient is known to be an animal (non-human)" />
-      <definition value="This patient is known to be an animal." />
-      <comments value="The animal element is labeled &quot;Is Modifier&quot; since patients may be non-human. Systems SHALL either handle patient details appropriately (e.g. inform users patient is not human) or reject declared animal records.   The absense of the animal element does not imply that the patient is a human. If a system requires such a positive assertion that the patient is human, an extension will be required.  (Do not use a species of homo-sapiens in animal species, as this would incorrectly infer that the patient is an animal)." />
-      <requirements value="Many clinical systems are extended to care for animal patients as well as human." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="BackboneElement" />
-      </type>
-      <isModifier value="true" />
-      <isSummary value="true" />
-      <mapping>
-        <identity value="rim" />
-        <map value="player[classCode=ANM]" />
-      </mapping>
-      <mapping>
-        <identity value="cda" />
-        <map value="n/a" />
-      </mapping>
+      <base>
+        <path value="Patient.animal" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="Patient.communication.language.coding.userSelected" />
-      <short value="If this coding was chosen directly by the user" />
-      <definition value="Indicates that this coding was chosen by a user directly - i.e. off a pick list of available items (codes or displays)." />
-      <comments value="Amongst a set of alternatives, a directly chosen code is the most appropriate starting point for new translations. There is some ambiguity about what exactly 'directly chosen' implies, and trading partner agreement may be needed to clarify the use of this element and its consequences more completely." />
-      <requirements value="This has been identified as a clinical safety criterium - that this exact system/code pair was chosen explicitly, rather than inferred by the system based on some rules or language processing." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="boolean" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="Sometimes implied by being first" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="CD.codingRationale" />
-      </mapping>
-      <mapping>
-        <identity value="orim" />
-        <map value="fhir:Coding.userSelected fhir:mapsTo dt:CDCoding.codingRationale. fhir:Coding.userSelected fhir:hasMap fhir:Coding.userSelected.map. fhir:Coding.userSelected.map a fhir:Map;   fhir:target dt:CDCoding.codingRationale. fhir:Coding.userSelected\#true a [     fhir:source &quot;true&quot;;     fhir:target dt:CDCoding.codingRationale\#O   ]" />
-      </mapping>
+      <base>
+        <path value="Patient.communication.language.coding.userSelected" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="Patient.careProvider" />
-      <short value="Patient's nominated primary care provider" />
-      <definition value="Patient's nominated care provider." />
-      <comments value="This may be the primary care provider (in a GP context), or it may be a patient nominated care manager in a community/disablity setting, or even organization that will provide people to perform the care provider roles.  This is not to be used to record Care Teams, these should be recorded on either the CarePlan or EpisodeOfCare resources." />
-      <min value="0" />
-      <max value="*" />
+      <base>
+        <path value="Patient.careProvider" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
@@ -1127,64 +487,30 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
       </type>
-      <mapping>
-        <identity value="v2" />
-        <map value="PD1-4" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="subjectOf.CareEvent.performer.AssignedEntity" />
-      </mapping>
-      <mapping>
-        <identity value="cda" />
-        <map value="n/a" />
-      </mapping>
     </element>
     <element>
       <path value="Patient.managingOrganization" />
-      <short value="Organization that is the custodian of the patient record" />
-      <definition value="Organization that is the custodian of the patient record." />
-      <comments value="There is only one managing organization for a specific patient record. Other organizations will have their own Patient record, and may use the Link property to join the records together (or a Person resource which can include confidence ratings for the association)." />
-      <requirements value="Need to know who recognizes this patient record, manages and updates it." />
-      <min value="0" />
-      <max value="1" />
+      <base>
+        <path value="Patient.managingOrganization" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
       </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="rim" />
-        <map value="scoper" />
-      </mapping>
-      <mapping>
-        <identity value="cda" />
-        <map value=".providerOrganization" />
-      </mapping>
     </element>
     <element>
       <path value="Patient.link.other" />
-      <short value="The other patient resource that the link refers to" />
-      <definition value="The other patient resource that the link refers to." />
-      <min value="1" />
-      <max value="1" />
+      <base>
+        <path value="Patient.link.other" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
       </type>
-      <isModifier value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="PID-3, MRG-1" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="id" />
-      </mapping>
-      <mapping>
-        <identity value="cda" />
-        <map value="n/a" />
-      </mapping>
     </element>
   </differential>
 </StructureDefinition>
