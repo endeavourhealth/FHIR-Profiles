@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-patient" />
   <meta>
-    <lastUpdated value="2016-08-03T11:55:05.938+01:00" />
+    <lastUpdated value="2016-08-04T18:27:05.364+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -84,9 +84,30 @@
       <definition value="The PDS verification status of the NHS number" />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Patient.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-nhs-number-verification-status-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="Patient.extension" />
+      <name value="spineSensitive" />
+      <definition value="Optional Extensions Element - found in all resources." />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="Patient.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient-spine-sensitive-extension" />
       </type>
     </element>
     <element>

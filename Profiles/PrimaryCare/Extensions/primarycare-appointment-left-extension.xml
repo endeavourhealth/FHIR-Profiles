@@ -1,27 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="primarycare-nhs-number-verification-status-extension" />
+  <id value="primarycare-appointment-left-extension" />
   <meta>
-    <lastUpdated value="2016-08-04T18:24:24.66+01:00" />
+    <lastUpdated value="2016-08-04T18:58:20.581+01:00" />
   </meta>
-  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-nhs-number-verification-status-extension" />
-  <name value="PrimaryCare-NhsNumberVerificationStatus-Extension" />
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-appointment-left-extension" />
+  <name value="PrimaryCare-AppointmentLeft-Extension" />
   <status value="draft" />
   <contact>
     <telecom>
       <system value="other" />
-      <value value="http://www.endeavourhealth.org/" />
+      <value value="http://endeavourhealth.org" />
     </telecom>
   </contact>
-  <date value="2016-08-03T00:00:00+01:00" />
-  <description value="Provides the verification status of the NHS number" />
+  <description value="Actual time the patient left their appointment (rather than the scheduled end time)" />
   <requirements value="The ability to add extensions in a structured way is what keeps FHIR resources simple." />
   <fhirVersion value="1.0.2" />
   <kind value="datatype" />
   <constrainedType value="Extension" />
   <abstract value="false" />
   <contextType value="resource" />
-  <context value="Patient" />
+  <context value="Appointment" />
   <base value="http://hl7.org/fhir/StructureDefinition/Extension" />
   <differential>
     <element>
@@ -40,11 +39,10 @@
         <min value="1" />
         <max value="1" />
       </base>
-      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-nhs-number-verification-status-extension" />
+      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-appointment-left-extension" />
     </element>
     <element>
-      <path value="Extension.valueCodeableConcept" />
-      <short value="Verification status of the NHS number" />
+      <path value="Extension.value[x]" />
       <min value="1" />
       <base>
         <path value="Extension.value[x]" />
@@ -52,12 +50,11 @@
         <max value="1" />
       </base>
       <type>
-        <code value="CodeableConcept" />
+        <code value="dateTime" />
       </type>
-      <binding>
-        <strength value="required" />
-        <description value="NHS number verification status" />
-      </binding>
+      <type>
+        <code value="time" />
+      </type>
     </element>
   </differential>
 </StructureDefinition>
