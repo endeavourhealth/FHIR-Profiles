@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-appointment-delay-extension" />
   <meta>
-    <lastUpdated value="2016-08-04T18:52:57.946+01:00" />
+    <lastUpdated value="2016-08-05T13:14:22.819+01:00" />
   </meta>
   <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-appointment-delay-extension" />
   <name value="PrimaryCare-AppointmentDelay-Extension" />
@@ -43,7 +43,7 @@
       <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-appointment-delay-extension" />
     </element>
     <element>
-      <path value="Extension.valuePeriod" />
+      <path value="Extension.valueQuantity" />
       <min value="1" />
       <base>
         <path value="Extension.value[x]" />
@@ -51,7 +51,8 @@
         <max value="1" />
       </base>
       <type>
-        <code value="Period" />
+        <code value="Quantity" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Duration" />
       </type>
     </element>
   </differential>

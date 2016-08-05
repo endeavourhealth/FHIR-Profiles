@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-appointment-wait-extension" />
   <meta>
-    <lastUpdated value="2016-08-04T18:44:16.969+01:00" />
+    <lastUpdated value="2016-08-05T13:14:03.976+01:00" />
   </meta>
   <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-appointment-wait-extension" />
   <name value="PrimaryCare-AppointmentWait-Extension" />
@@ -14,7 +14,7 @@
     </telecom>
   </contact>
   <date value="2016-08-04T00:00:00+01:00" />
-  <description value="The total time that the patient waited for their appointment. This time includes time waited if the patient was earlier for their appointment&#xD;&#xA;" />
+  <description value="The total time that the patient waited for their appointment. This time includes time waited if the patient was early&#xD;&#xA; for their appointment&#xD;&#xA;" />
   <requirements value="The ability to add extensions in a structured way is what keeps FHIR resources simple." />
   <fhirVersion value="1.0.2" />
   <kind value="datatype" />
@@ -43,7 +43,7 @@
       <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-appointment-wait-extension" />
     </element>
     <element>
-      <path value="Extension.valuePeriod" />
+      <path value="Extension.valueQuantity" />
       <min value="1" />
       <base>
         <path value="Extension.value[x]" />
@@ -51,7 +51,8 @@
         <max value="1" />
       </base>
       <type>
-        <code value="Period" />
+        <code value="Quantity" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/Duration" />
       </type>
     </element>
   </differential>
