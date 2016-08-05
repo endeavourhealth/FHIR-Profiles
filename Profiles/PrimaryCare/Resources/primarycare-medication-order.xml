@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-medication-order" />
   <meta>
-    <lastUpdated value="2016-04-08T10:38:49.28+01:00" />
+    <lastUpdated value="2016-08-05T10:48:30.285+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -20,7 +20,6 @@
   </contact>
   <date value="2015-11-01T00:00:00+00:00" />
   <description value="A prescription issue - an order for the supply of the medication." />
-  <fhirVersion value="1.0.1" />
   <kind value="resource" />
   <constrainedType value="MedicationOrder" />
   <abstract value="false" />
@@ -28,11 +27,6 @@
   <differential>
     <element>
       <path value="MedicationOrder" />
-      <short value="Prescription of medication to for patient" />
-      <definition value="An order for both supply of the medication and the instructions for administration of the medication to a patient. The resource is called &quot;MedicationOrder&quot; rather than &quot;MedicationPrescription&quot; to generalize the use across inpatient and outpatient settings as well as for care plans, etc." />
-      <alias value="Prescription" />
-      <min value="0" />
-      <max value="*" />
       <base>
         <path value="MedicationOrder" />
         <min value="0" />
@@ -41,15 +35,6 @@
       <type>
         <code value="MedicationOrder" />
       </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="rim" />
-        <map value="CombinedMedicationRequest" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="clinical.medication" />
-      </mapping>
     </element>
     <element>
       <path value="MedicationOrder.extension" />
@@ -160,212 +145,97 @@
       </type>
     </element>
     <element>
-      <path value="MedicationOrder.id" />
-      <short value="Logical id of this artifact.  Must be populated with a globally unique identifier, except where resource is being sent to the server for creation when it must NOT be populated" />
-      <definition value="The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes." />
-      <comments value="The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID." />
+      <path value="MedicationOrder.extension" />
+      <name value="dateRecorded" />
+      <short value="Date this medication was recorded" />
+      <definition value="Optional Extensions Element - found in all resources." />
       <min value="0" />
       <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-recorded-date-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="MedicationOrder.extension" />
+      <name value="recordedBy" />
+      <short value="Who recorded this medication" />
+      <definition value="Optional Extensions Element - found in all resources." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-recorded-by-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="MedicationOrder.id" />
+      <short value="Logical id of this artifact.  Must be populated with a globally unique identifier, except where resource is being sent to the server for creation when it must NOT be populated" />
       <base>
         <path value="Resource.id" />
         <min value="0" />
         <max value="1" />
       </base>
-      <type>
-        <code value="id" />
-      </type>
-      <isSummary value="true" />
     </element>
     <element>
       <path value="MedicationOrder.identifier.use" />
-      <short value="usual | official | temp | secondary (If known)" />
-      <definition value="The purpose of this identifier." />
-      <comments value="This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary id for a permanent one. Applications can assume that an identifier is permanent unless it explicitly says that it is temporary." />
-      <requirements value="Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers." />
-      <min value="0" />
       <max value="0" />
       <base>
         <path value="Identifier.use" />
         <min value="0" />
         <max value="1" />
       </base>
-      <type>
-        <code value="code" />
-      </type>
-      <isModifier value="true" />
-      <isSummary value="true" />
-      <binding>
-        <strength value="required" />
-        <description value="Identifies the purpose for this identifier, if known ." />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/identifier-use" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="v2" />
-        <map value="N/A" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Role.code or implied by context" />
-      </mapping>
     </element>
     <element>
       <path value="MedicationOrder.identifier.type" />
-      <short value="Description of identifier" />
-      <definition value="A coded type for the identifier that can be used to determine which identifier to use for a specific purpose." />
-      <comments value="This element deals only with general categories of identifiers.  It SHOULD not be used for codes that correspond 1..1 with the Identifier.system. Some identifiers may fall into multiple categories due to common usage.   Where the system is known, a type is unnecessary because the type is always part of the system definition. However systems often need to handle identifiers where the system is not known. There is not a 1:1 relationship between type and system, since many different systems have the same type." />
-      <requirements value="Allows users to make use of identifiers when the identifier system is not known." />
-      <min value="0" />
       <max value="0" />
       <base>
         <path value="Identifier.type" />
         <min value="0" />
         <max value="1" />
       </base>
-      <type>
-        <code value="CodeableConcept" />
-      </type>
-      <isSummary value="true" />
-      <binding>
-        <strength value="extensible" />
-        <description value="A coded type for an identifier that can be used to determine which identifier to use for a specific purpose." />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/identifier-type" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.5" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Role.code or implied by context" />
-      </mapping>
     </element>
     <element>
       <path value="MedicationOrder.identifier.system" />
-      <short value="The namespace for the identifier" />
-      <definition value="Establishes the namespace in which set of possible id values is unique." />
-      <requirements value="There are many sequences of identifiers.  To perform matching, we need to know what sequence we're dealing with. The system identifies a particular sequence or set of unique identifiers." />
       <min value="1" />
-      <max value="1" />
       <base>
         <path value="Identifier.system" />
         <min value="0" />
         <max value="1" />
       </base>
-      <type>
-        <code value="uri" />
-      </type>
       <exampleUri value="http://www.acme.com/identifiers/patient or urn:ietf:rfc:3986 if the Identifier.value itself is a full uri" />
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.4 / EI-2-4" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="II.root or Role.id.root" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./IdentifierType" />
-      </mapping>
     </element>
     <element>
       <path value="MedicationOrder.identifier.value" />
-      <short value="The value that is unique" />
-      <definition value="The portion of the identifier typically displayed to the user and which is unique within the context of the system." />
-      <comments value="If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986." />
       <min value="1" />
-      <max value="1" />
       <base>
         <path value="Identifier.value" />
         <min value="0" />
         <max value="1" />
       </base>
-      <type>
-        <code value="string" />
-      </type>
       <exampleString value="123456" />
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.1 / EI.1" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="II.extension or II.root if system indicates OID or GUID (Or Role.id.extension or root)" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./Value" />
-      </mapping>
     </element>
     <element>
       <path value="MedicationOrder.identifier.period" />
-      <short value="Time period when id is/was valid for use" />
-      <definition value="Time period during which identifier is/was valid for use." />
-      <min value="0" />
       <max value="0" />
       <base>
         <path value="Identifier.period" />
         <min value="0" />
         <max value="1" />
       </base>
-      <type>
-        <code value="Period" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.7 + CX.8" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Role.effectiveTime or implied by context" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./StartDate and ./EndDate" />
-      </mapping>
     </element>
     <element>
       <path value="MedicationOrder.dateWritten" />
-      <short value="When prescription was authorized" />
-      <definition value="The date (and perhaps time) when the prescription was written." />
       <min value="1" />
-      <max value="1" />
       <base>
         <path value="MedicationOrder.dateWritten" />
         <min value="0" />
         <max value="1" />
       </base>
-      <type>
-        <code value="dateTime" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="RXE-32-Original Order Date/Time / ORC-9-Date/Time of Transaction" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="author.time" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="when.recorded" />
-      </mapping>
     </element>
     <element>
       <path value="MedicationOrder.patient" />
-      <short value="Who prescription is for" />
-      <definition value="A link to a resource representing the person to whom the medication will be given." />
-      <comments value="SubstanceAdministration-&gt;subject-&gt;Patient." />
       <min value="1" />
-      <max value="1" />
       <base>
         <path value="MedicationOrder.patient" />
         <min value="1" />
@@ -375,26 +245,10 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
       </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="PID-3-Patient ID List" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="subject.role" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="who.focus" />
-      </mapping>
     </element>
     <element>
       <path value="MedicationOrder.prescriber" />
-      <short value="Who ordered the medication(s)" />
-      <definition value="The healthcare professional responsible for authorizing the prescription." />
       <min value="1" />
-      <max value="1" />
       <base>
         <path value="MedicationOrder.prescriber" />
         <min value="1" />
@@ -404,27 +258,9 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
       </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="RXE-13-Ordering Provider's DEA Number / RXO-14-Ordering Provider's DEA Number / RXE-14-Pharmacist/Treatment Supplier's Verifier ID / RXO-15-Pharmacist/Treatment Supplier's Verifier ID / ORC-12-Ordering Provider / PRT-5-Participation Person: PRT-4-Participation='OP' (all but last deprecated)" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="author.role" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="who.actor" />
-      </mapping>
     </element>
     <element>
       <path value="MedicationOrder.encounter" />
-      <short value="Created during encounter/admission/stay" />
-      <definition value="A link to a resource that identifies the particular occurrence of contact between patient and health care provider." />
-      <comments value="SubstanceAdministration-&gt;component-&gt;EncounterEvent." />
-      <min value="0" />
-      <max value="1" />
       <base>
         <path value="MedicationOrder.encounter" />
         <min value="0" />
@@ -434,26 +270,9 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter" />
       </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="PV1-19-Visit Number" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="componentOf.patientEncounter" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="context" />
-      </mapping>
     </element>
     <element>
       <path value="MedicationOrder.reason[x]" />
-      <short value="Reason or indication for writing the prescription" />
-      <definition value="Can be the reason or the indication for writing the prescription." />
-      <min value="0" />
-      <max value="1" />
       <base>
         <path value="MedicationOrder.reason[x]" />
         <min value="0" />
@@ -466,34 +285,9 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition" />
       </type>
-      <isSummary value="true" />
-      <binding>
-        <strength value="example" />
-        <description value="Codes indicating why the medication was ordered." />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/condition-code" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="v2" />
-        <map value="ORC-16-Order Control Code Reason /RXE-27-Give Indication/RXO-20-Indication / RXD-21-Indication / RXG-22-Indication / RXA-19-Indication" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="reason.observation or reason.observation[code=ASSERTION].value" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="why" />
-      </mapping>
     </element>
     <element>
       <path value="MedicationOrder.medication[x]" />
-      <short value="Medication to be taken" />
-      <definition value="Identifies the medication being administered. This is a link to a resource that represents the medication which may be the details of the medication or simply an attribute carrying a code that identifies the medication from a known list of medications." />
-      <comments value="If only a code is specified, then it needs to be a code for a specific product.  If more information is required, then the use of the medication resource is recommended.  Note: do not use Medication.name to describe the prescribed medication. When the only available information is a text description of the medication, Medication.code.text should be used." />
-      <min value="1" />
-      <max value="1" />
       <base>
         <path value="MedicationOrder.medication[x]" />
         <min value="1" />
@@ -506,27 +300,9 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication" />
       </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="RXE-2-Give Code / RXO-1-Requested Give Code / RXC-2-Component Code" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="consumable.administrableMedication" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="what" />
-      </mapping>
     </element>
     <element>
       <path value="MedicationOrder.dispenseRequest.medication[x]" />
-      <short value="Product to be supplied" />
-      <definition value="Identifies the medication being administered. This is a link to a resource that represents the medication which may be the details of the medication or simply an attribute carrying a code that identifies the medication from a known list of medications." />
-      <comments value="If only a code is specified, then it needs to be a code for a specific product.  If more information is required, then the use of the medication resource is recommended." />
-      <min value="0" />
-      <max value="1" />
       <base>
         <path value="MedicationOrder.dispenseRequest.medication[x]" />
         <min value="0" />
@@ -539,22 +315,9 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication" />
       </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="RXE-2-Give Code / RXO-1-Requested Give Code / RXD-2-Dispense/Give Code" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="consumable.role" />
-      </mapping>
     </element>
     <element>
       <path value="MedicationOrder.priorPrescription" />
-      <short value="An order/prescription that this supersedes" />
-      <definition value="A link to a resource representing an earlier order or prescription that this order supersedes." />
-      <min value="0" />
-      <max value="1" />
       <base>
         <path value="MedicationOrder.priorPrescription" />
         <min value="0" />
@@ -564,7 +327,6 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-order" />
       </type>
-      <isSummary value="true" />
     </element>
   </differential>
 </StructureDefinition>

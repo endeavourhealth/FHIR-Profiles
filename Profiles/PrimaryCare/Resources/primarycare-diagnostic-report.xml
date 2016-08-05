@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-diagnostic-report" />
   <meta>
-    <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
+    <lastUpdated value="2016-08-05T10:35:55.134+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -20,8 +20,6 @@
   </contact>
   <date value="2015-11-01T00:00:00+00:00" />
   <description value="The findings and interpretation of diagnostic tests performed on patients." />
-  <requirements value="To support reporting for any diagnostic report into a clinical data repository." />
-  <fhirVersion value="1.0.1" />
   <kind value="resource" />
   <constrainedType value="DiagnosticReport" />
   <abstract value="false" />
@@ -29,32 +27,14 @@
   <differential>
     <element>
       <path value="DiagnosticReport" />
-      <short value="A Diagnostic report - a combination of request information, atomic results, images, interpretation, as well as formatted reports" />
-      <definition value="The findings and interpretation of diagnostic  tests performed on patients, groups of patients, devices, and locations, and/or specimens derived from these. The report includes clinical context such as requesting and provider information, and some mix of atomic results, images, textual and coded interpretations, and formatted representation of diagnostic reports." />
-      <comments value="This is intended to capture a single report, and is not suitable for use in displaying summary information that covers multiple reports.  For example, this resource has not been designed for laboratory cumulative reporting formats nor detailed structured reports for sequencing." />
-      <alias value="Report" />
-      <alias value="Test" />
-      <alias value="Result" />
-      <alias value="Results" />
-      <alias value="Labs" />
-      <alias value="Laboratory" />
-      <min value="0" />
-      <max value="*" />
+      <base>
+        <path value="DiagnosticReport" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="DiagnosticReport" />
       </type>
-      <mapping>
-        <identity value="v2" />
-        <map value="ORU -&gt; OBR" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Observation[classCode=OBS, moodCode=EVN]" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="clinical.diagnostics" />
-      </mapping>
     </element>
     <element>
       <path value="DiagnosticReport.extension" />
@@ -70,6 +50,11 @@
       <definition value="The assessment made based on the result of the diagnostic report." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="DiagnosticReport.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-diagnostic-report-interpretation-extension" />
@@ -82,224 +67,137 @@
       <definition value="Comments about the report." />
       <min value="0" />
       <max value="*" />
+      <base>
+        <path value="DiagnosticReport.extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-diagnostic-report-comment-extension" />
       </type>
     </element>
     <element>
+      <path value="DiagnosticReport.extension" />
+      <name value="dateRecorded" />
+      <short value="When this report was recorded" />
+      <definition value="Optional Extensions Element - found in all resources." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-recorded-date-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="DiagnosticReport.extension" />
+      <name value="recordedBy" />
+      <short value="Who recorded this report" />
+      <definition value="Optional Extensions Element - found in all resources." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-recorded-by-extension" />
+      </type>
+    </element>
+    <element>
       <path value="DiagnosticReport.identifier.id" />
       <representation value="xmlAttr" />
-      <short value="xml:id (or equivalent in JSON)" />
-      <definition value="unique id for the element within a resource (for internal references)." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="id" />
-      </type>
-      <mapping>
-        <identity value="rim" />
-        <map value="n/a" />
-      </mapping>
+      <base>
+        <path value="DiagnosticReport.identifier.id" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="DiagnosticReport.identifier.use" />
-      <short value="usual | official | temp | secondary (If known)" />
-      <definition value="The purpose of this identifier." />
-      <comments value="This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary id for a permanent one. Applications can assume that an identifier is permanent unless it explicitly says that it is temporary." />
-      <requirements value="Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="code" />
-      </type>
-      <isModifier value="true" />
-      <isSummary value="true" />
-      <binding>
-        <strength value="required" />
-        <description value="Identifies the purpose for this identifier, if known ." />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/identifier-use" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="v2" />
-        <map value="N/A" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Role.code or implied by context" />
-      </mapping>
+      <base>
+        <path value="DiagnosticReport.identifier.use" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="DiagnosticReport.identifier.type" />
-      <short value="Description of identifier" />
-      <definition value="A coded type for the identifier that can be used to determine which identifier to use for a specific purpose." />
-      <comments value="This element deals only with general categories of identifiers.  It SHOULD not be used for codes that correspond 1..1 with the Identifier.system. Some identifiers may fall into multiple categories due to common usage.   Where the system is known, a type is unnecessary because the type is always part of the system definition. However systems often need to handle identifiers where the system is not known. There is not a 1:1 relationship between type and system, since many different systems have the same type." />
-      <requirements value="Allows users to make use of identifiers when the identifier system is not known." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="CodeableConcept" />
-      </type>
-      <isSummary value="true" />
-      <binding>
-        <strength value="extensible" />
-        <description value="A coded type for an identifier that can be used to determine which identifier to use for a specific purpose." />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/identifier-type" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.5" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Role.code or implied by context" />
-      </mapping>
+      <base>
+        <path value="DiagnosticReport.identifier.type" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="DiagnosticReport.identifier.period" />
-      <short value="Time period when id is/was valid for use" />
-      <definition value="Time period during which identifier is/was valid for use." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="Period" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.7 + CX.8" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Role.effectiveTime or implied by context" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./StartDate and ./EndDate" />
-      </mapping>
+      <base>
+        <path value="DiagnosticReport.identifier.period" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="DiagnosticReport.identifier.assigner" />
-      <short value="Organization that issued id (may be just text)" />
-      <definition value="Organization that issued/manages the identifier." />
-      <comments value="The reference may be just a text description of the assigner." />
-      <min value="0" />
       <max value="0" />
+      <base>
+        <path value="DiagnosticReport.identifier.assigner" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
       </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.4 / (CX.4,CX.9,CX.10)" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./IdentifierIssuingAuthority" />
-      </mapping>
     </element>
     <element>
       <path value="DiagnosticReport.code" />
-      <short value="Name/Code for this diagnostic report" />
-      <definition value="A code or name that describes this diagnostic report." />
-      <min value="1" />
-      <max value="1" />
-      <type>
-        <code value="CodeableConcept" />
-      </type>
-      <isSummary value="true" />
+      <base>
+        <path value="DiagnosticReport.code" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <binding>
         <strength value="preferred" />
-        <description value="Codes that describe Diagnostic Reports." />
         <valueSetReference>
           <reference value="http://endeavourhealth.org/fhir/ValueSet/primarycare-report-codes" />
         </valueSetReference>
       </binding>
-      <mapping>
-        <identity value="v2" />
-        <map value="OBR-4 (HL7 v2 doesn't provide an easy way to indicate both the ordered test and the performed panel)" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="code" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="what" />
-      </mapping>
     </element>
     <element>
       <path value="DiagnosticReport.subject" />
       <short value="The subject of the report" />
       <definition value="The subject of the report.." />
-      <requirements value="SHALL know the subject context." />
-      <alias value="Patient" />
-      <min value="1" />
-      <max value="1" />
+      <base>
+        <path value="DiagnosticReport.subject" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
       </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="PID-3 (no HL7 v2 mapping for Group or Device)" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="participation[typeCode=SBJ]" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="who.focus" />
-      </mapping>
     </element>
     <element>
       <path value="DiagnosticReport.encounter" />
-      <short value="Health care event when test ordered" />
-      <definition value="The link to the health care event (encounter) when the order was made." />
-      <min value="0" />
-      <max value="1" />
+      <base>
+        <path value="DiagnosticReport.encounter" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter" />
       </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="PV1-19" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN]" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="context" />
-      </mapping>
     </element>
     <element>
       <path value="DiagnosticReport.performer" />
-      <short value="Responsible Diagnostic Service" />
-      <definition value="The diagnostic service that is responsible for issuing the report." />
-      <comments value="This is not necessarily the source of the atomic data items. It is the entity that takes responsibility for the clinical report." />
-      <requirements value="Need to know whom to contact if there are queries about the results. Also may need to track the source of reports for secondary data analysis." />
-      <alias value="Laboratory" />
-      <alias value="Service" />
-      <alias value="Practitioner" />
-      <alias value="Department" />
-      <alias value="Company" />
-      <min value="1" />
-      <max value="1" />
+      <base>
+        <path value="DiagnosticReport.performer" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
@@ -308,90 +206,42 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
       </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="PRT-8 (where this PRT-4-Participation = &quot;PO&quot;)" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="participation[typeCode=AUT].role[classCode=ASSIGN].scoper" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="who.witness" />
-      </mapping>
     </element>
     <element>
       <path value="DiagnosticReport.request" />
-      <short value="What was requested" />
-      <definition value="Details concerning a test or procedure requested." />
-      <comments value="Note: Usually there is one test request for each result, however in some circumstances multiple test requests may be represented using a single test result resource. Note that there are also cases where one request leads to multiple reports." />
-      <requirements value="Need to be able to track completion of requests based on reports issued and also to report what diagnostic tests were requested (not always the same as what is delivered)." />
-      <min value="0" />
-      <max value="*" />
+      <base>
+        <path value="DiagnosticReport.request" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-diagnostic-order" />
       </type>
-      <mapping>
-        <identity value="v2" />
-        <map value="ORC? OBR-2/3?" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="outboundRelationship[typeCode=FLFS].target" />
-      </mapping>
     </element>
     <element>
       <path value="DiagnosticReport.specimen" />
-      <short value="Specimens this report is based on" />
-      <definition value="Details about the specimens on which this diagnostic report is based." />
-      <comments value="If the specimen is sufficiently specified with a code in the test result name, then this additional data may be redundant. If there are multiple specimens, these may be represented per Observation or group." />
-      <requirements value="Need to be able to report information about the collected specimens on which the report is based." />
-      <min value="0" />
-      <max value="*" />
+      <base>
+        <path value="DiagnosticReport.specimen" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-specimen" />
       </type>
-      <mapping>
-        <identity value="v2" />
-        <map value="SPM" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="participation[typeCode=SBJ]" />
-      </mapping>
     </element>
     <element>
       <path value="DiagnosticReport.result" />
-      <short value="Observations - simple, or complex nested groups" />
-      <definition value="Observations that are part of this diagnostic report. Observations can be simple name/value pairs (e.g. &quot;atomic&quot; results), or they can be grouping observations that include references to other members of the group (e.g. &quot;panels&quot;)." />
-      <requirements value="Need to support individual results, or report groups of results, where the result grouping is arbitrary, but meaningful. This structure is recursive - observations can contain observations." />
-      <alias value="Data" />
-      <alias value="Atomic Value" />
-      <alias value="Result" />
-      <alias value="Atomic result" />
-      <alias value="Data" />
-      <alias value="Test" />
-      <alias value="Analyte" />
-      <alias value="Battery" />
-      <alias value="Organizer" />
-      <min value="0" />
-      <max value="*" />
+      <base>
+        <path value="DiagnosticReport.result" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-observation" />
       </type>
-      <mapping>
-        <identity value="v2" />
-        <map value="OBXs" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="outboundRelationship[typeCode=COMP].target" />
-      </mapping>
     </element>
   </differential>
 </StructureDefinition>

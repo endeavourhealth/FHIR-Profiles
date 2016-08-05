@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-specimen" />
   <meta>
-    <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
+    <lastUpdated value="2016-08-05T10:59:12.822+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -20,7 +20,6 @@
   </contact>
   <date value="2015-11-01T00:00:00+00:00" />
   <description value="A sample to be used for analysis." />
-  <fhirVersion value="1.0.1" />
   <kind value="resource" />
   <constrainedType value="Specimen" />
   <abstract value="false" />
@@ -28,298 +27,171 @@
   <differential>
     <element>
       <path value="Specimen" />
-      <short value="Sample for analysis" />
-      <definition value="A sample to be used for analysis." />
-      <min value="0" />
-      <max value="*" />
+      <base>
+        <path value="Specimen" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="Specimen" />
       </type>
-      <mapping>
-        <identity value="rim" />
-        <map value="Role[classCode=SPEC]" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="clinical.diagnostics" />
-      </mapping>
+    </element>
+    <element>
+      <path value="Specimen.extension" />
+      <slicing>
+        <discriminator value="url" />
+        <rules value="openAtEnd" />
+      </slicing>
+    </element>
+    <element>
+      <path value="Specimen.extension" />
+      <name value="dateRecorded" />
+      <short value="When this specimen was recorded" />
+      <definition value="Optional Extensions Element - found in all resources." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-recorded-date-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="Specimen.extension" />
+      <name value="recordedBy" />
+      <short value="Who recorded this specimen" />
+      <definition value="Optional Extensions Element - found in all resources." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-recorded-by-extension" />
+      </type>
     </element>
     <element>
       <path value="Specimen.identifier.id" />
       <representation value="xmlAttr" />
-      <short value="xml:id (or equivalent in JSON)" />
-      <definition value="unique id for the element within a resource (for internal references)." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="id" />
-      </type>
-      <mapping>
-        <identity value="rim" />
-        <map value="n/a" />
-      </mapping>
+      <base>
+        <path value="Specimen.identifier.id" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="Specimen.identifier.use" />
-      <short value="usual | official | temp | secondary (If known)" />
-      <definition value="The purpose of this identifier." />
-      <comments value="This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary id for a permanent one. Applications can assume that an identifier is permanent unless it explicitly says that it is temporary." />
-      <requirements value="Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="code" />
-      </type>
-      <isModifier value="true" />
-      <isSummary value="true" />
-      <binding>
-        <strength value="required" />
-        <description value="Identifies the purpose for this identifier, if known ." />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/identifier-use" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="v2" />
-        <map value="N/A" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Role.code or implied by context" />
-      </mapping>
+      <base>
+        <path value="Specimen.identifier.use" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="Specimen.identifier.type" />
-      <short value="Description of identifier" />
-      <definition value="A coded type for the identifier that can be used to determine which identifier to use for a specific purpose." />
-      <comments value="This element deals only with general categories of identifiers.  It SHOULD not be used for codes that correspond 1..1 with the Identifier.system. Some identifiers may fall into multiple categories due to common usage.   Where the system is known, a type is unnecessary because the type is always part of the system definition. However systems often need to handle identifiers where the system is not known. There is not a 1:1 relationship between type and system, since many different systems have the same type." />
-      <requirements value="Allows users to make use of identifiers when the identifier system is not known." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="CodeableConcept" />
-      </type>
-      <isSummary value="true" />
-      <binding>
-        <strength value="extensible" />
-        <description value="A coded type for an identifier that can be used to determine which identifier to use for a specific purpose." />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/identifier-type" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.5" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Role.code or implied by context" />
-      </mapping>
+      <base>
+        <path value="Specimen.identifier.type" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="Specimen.identifier.period" />
-      <short value="Time period when id is/was valid for use" />
-      <definition value="Time period during which identifier is/was valid for use." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="Period" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.7 + CX.8" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Role.effectiveTime or implied by context" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./StartDate and ./EndDate" />
-      </mapping>
+      <base>
+        <path value="Specimen.identifier.period" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="Specimen.identifier.assigner" />
-      <short value="Organization that issued id (may be just text)" />
-      <definition value="Organization that issued/manages the identifier." />
-      <comments value="The reference may be just a text description of the assigner." />
-      <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Specimen.identifier.assigner" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
       </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.4 / (CX.4,CX.9,CX.10)" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./IdentifierIssuingAuthority" />
-      </mapping>
     </element>
     <element>
       <path value="Specimen.parent" />
-      <short value="Specimen from which this specimen originated" />
-      <definition value="Reference to the parent (source) specimen which is used when the specimen was either derived from or a component of another specimen." />
-      <comments value="The parent specimen could be the source from which the current specimen is derived by some processing step (e.g. an aliquot or isolate or extracted nucleic acids from clinical samples) or one of many specimens that were combined to create a pooled sample." />
-      <min value="0" />
-      <max value="*" />
+      <base>
+        <path value="Specimen.parent" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-specimen" />
       </type>
-      <mapping>
-        <identity value="rim" />
-        <map value=".scoper (if parent) .player.scopesRole[classCode=SPEC].player (if child)" />
-      </mapping>
     </element>
     <element>
       <path value="Specimen.subject" />
       <short value="Where the specimen came from." />
       <definition value="Where the specimen came from." />
-      <requirements value="Must know the subject context." />
-      <min value="1" />
-      <max value="1" />
+      <base>
+        <path value="Specimen.subject" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
       </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="rim" />
-        <map value=".scoper  or  .scoper.playsRole" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="who.focus" />
-      </mapping>
     </element>
     <element>
       <path value="Specimen.accessionIdentifier.id" />
       <representation value="xmlAttr" />
-      <short value="xml:id (or equivalent in JSON)" />
-      <definition value="unique id for the element within a resource (for internal references)." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="id" />
-      </type>
-      <mapping>
-        <identity value="rim" />
-        <map value="n/a" />
-      </mapping>
+      <base>
+        <path value="Specimen.accessionIdentifier.id" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="Specimen.accessionIdentifier.use" />
-      <short value="usual | official | temp | secondary (If known)" />
-      <definition value="The purpose of this identifier." />
-      <comments value="This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary id for a permanent one. Applications can assume that an identifier is permanent unless it explicitly says that it is temporary." />
-      <requirements value="Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="code" />
-      </type>
-      <isModifier value="true" />
-      <isSummary value="true" />
-      <binding>
-        <strength value="required" />
-        <description value="Identifies the purpose for this identifier, if known ." />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/identifier-use" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="v2" />
-        <map value="N/A" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Role.code or implied by context" />
-      </mapping>
+      <base>
+        <path value="Specimen.accessionIdentifier.use" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="Specimen.accessionIdentifier.type" />
-      <short value="Description of identifier" />
-      <definition value="A coded type for the identifier that can be used to determine which identifier to use for a specific purpose." />
-      <comments value="This element deals only with general categories of identifiers.  It SHOULD not be used for codes that correspond 1..1 with the Identifier.system. Some identifiers may fall into multiple categories due to common usage.   Where the system is known, a type is unnecessary because the type is always part of the system definition. However systems often need to handle identifiers where the system is not known. There is not a 1:1 relationship between type and system, since many different systems have the same type." />
-      <requirements value="Allows users to make use of identifiers when the identifier system is not known." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="CodeableConcept" />
-      </type>
-      <isSummary value="true" />
-      <binding>
-        <strength value="extensible" />
-        <description value="A coded type for an identifier that can be used to determine which identifier to use for a specific purpose." />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/identifier-type" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.5" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Role.code or implied by context" />
-      </mapping>
+      <base>
+        <path value="Specimen.accessionIdentifier.type" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="Specimen.accessionIdentifier.period" />
-      <short value="Time period when id is/was valid for use" />
-      <definition value="Time period during which identifier is/was valid for use." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="Period" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.7 + CX.8" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Role.effectiveTime or implied by context" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./StartDate and ./EndDate" />
-      </mapping>
+      <base>
+        <path value="Specimen.accessionIdentifier.period" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="Specimen.accessionIdentifier.assigner" />
-      <short value="Organization that issued id (may be just text)" />
-      <definition value="Organization that issued/manages the identifier." />
-      <comments value="The reference may be just a text description of the assigner." />
-      <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Specimen.accessionIdentifier.assigner" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
       </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.4 / (CX.4,CX.9,CX.10)" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./IdentifierIssuingAuthority" />
-      </mapping>
     </element>
     <element>
       <path value="Specimen.collection.extension" />
@@ -335,6 +207,11 @@
       <definition value="Specimen fasting status indicator." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Specimen.collection.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-specimen-fasting-extension" />
@@ -342,169 +219,85 @@
     </element>
     <element>
       <path value="Specimen.collection.collector" />
-      <short value="Who collected the specimen" />
-      <definition value="Person who collected the specimen." />
-      <min value="0" />
-      <max value="1" />
+      <base>
+        <path value="Specimen.collection.collector" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
       </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="PRT" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value=".participation[typeCode=PFM].role" />
-      </mapping>
     </element>
     <element>
       <path value="Specimen.treatment.additive" />
-      <short value="Material used in the processing step" />
-      <definition value="Material used in the processing step." />
-      <min value="0" />
-      <max value="*" />
+      <base>
+        <path value="Specimen.treatment.additive" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-substance" />
       </type>
-      <mapping>
-        <identity value="v2" />
-        <map value="SPM-6" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value=".participation[typeCode=CSM].role[classCode=ADTV].code" />
-      </mapping>
     </element>
     <element>
       <path value="Specimen.container.identifier.id" />
       <representation value="xmlAttr" />
-      <short value="xml:id (or equivalent in JSON)" />
-      <definition value="unique id for the element within a resource (for internal references)." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="id" />
-      </type>
-      <mapping>
-        <identity value="rim" />
-        <map value="n/a" />
-      </mapping>
+      <base>
+        <path value="Specimen.container.identifier.id" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="Specimen.container.identifier.use" />
-      <short value="usual | official | temp | secondary (If known)" />
-      <definition value="The purpose of this identifier." />
-      <comments value="This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary id for a permanent one. Applications can assume that an identifier is permanent unless it explicitly says that it is temporary." />
-      <requirements value="Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="code" />
-      </type>
-      <isModifier value="true" />
-      <isSummary value="true" />
-      <binding>
-        <strength value="required" />
-        <description value="Identifies the purpose for this identifier, if known ." />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/identifier-use" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="v2" />
-        <map value="N/A" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Role.code or implied by context" />
-      </mapping>
+      <base>
+        <path value="Specimen.container.identifier.use" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="Specimen.container.identifier.type" />
-      <short value="Description of identifier" />
-      <definition value="A coded type for the identifier that can be used to determine which identifier to use for a specific purpose." />
-      <comments value="This element deals only with general categories of identifiers.  It SHOULD not be used for codes that correspond 1..1 with the Identifier.system. Some identifiers may fall into multiple categories due to common usage.   Where the system is known, a type is unnecessary because the type is always part of the system definition. However systems often need to handle identifiers where the system is not known. There is not a 1:1 relationship between type and system, since many different systems have the same type." />
-      <requirements value="Allows users to make use of identifiers when the identifier system is not known." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="CodeableConcept" />
-      </type>
-      <isSummary value="true" />
-      <binding>
-        <strength value="extensible" />
-        <description value="A coded type for an identifier that can be used to determine which identifier to use for a specific purpose." />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/identifier-type" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.5" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Role.code or implied by context" />
-      </mapping>
+      <base>
+        <path value="Specimen.container.identifier.type" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="Specimen.container.identifier.period" />
-      <short value="Time period when id is/was valid for use" />
-      <definition value="Time period during which identifier is/was valid for use." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="Period" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.7 + CX.8" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Role.effectiveTime or implied by context" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./StartDate and ./EndDate" />
-      </mapping>
+      <base>
+        <path value="Specimen.container.identifier.period" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="Specimen.container.identifier.assigner" />
-      <short value="Organization that issued id (may be just text)" />
-      <definition value="Organization that issued/manages the identifier." />
-      <comments value="The reference may be just a text description of the assigner." />
-      <min value="0" />
       <max value="0" />
+      <base>
+        <path value="Specimen.container.identifier.assigner" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
       </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.4 / (CX.4,CX.9,CX.10)" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./IdentifierIssuingAuthority" />
-      </mapping>
     </element>
     <element>
       <path value="Specimen.container.additive[x]" />
-      <short value="Additive associated with container" />
-      <definition value="Introduced substance to preserve, maintain or enhance the specimen. Examples: Formalin, Citrate, EDTA." />
-      <min value="0" />
-      <max value="1" />
+      <base>
+        <path value="Specimen.container.additive[x]" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="CodeableConcept" />
       </type>
@@ -512,21 +305,6 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-substance" />
       </type>
-      <binding>
-        <strength value="example" />
-        <description value="Substance added to specimen container" />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/v2-0371" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="v2" />
-        <map value="SAC-27" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value=".scopesRole[classCode=ADTV].player" />
-      </mapping>
     </element>
   </differential>
 </StructureDefinition>

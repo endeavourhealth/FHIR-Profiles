@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="primarycare-observation-external-document-extension" />
+  <meta>
+    <lastUpdated value="2016-08-05T11:27:09.811+01:00" />
+  </meta>
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-observation-external-document-extension" />
+  <name value="PrimaryCare-ObservationExternalDocument-Extension" />
+  <status value="draft" />
+  <contact>
+    <telecom>
+      <system value="other" />
+      <value value="http://endeavourhealth.org" />
+    </telecom>
+  </contact>
+  <date value="2016-08-05T00:00:00+01:00" />
+  <description value="Base StructureDefinition for Extension Type" />
+  <requirements value="The ability to add extensions in a structured way is what keeps FHIR resources simple." />
+  <fhirVersion value="1.0.2" />
+  <kind value="datatype" />
+  <constrainedType value="Extension" />
+  <abstract value="false" />
+  <contextType value="resource" />
+  <context value="Observation" />
+  <base value="http://hl7.org/fhir/StructureDefinition/Extension" />
+  <differential>
+    <element>
+      <path value="Extension" />
+      <base>
+        <path value="Extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
+    </element>
+    <element>
+      <path value="Extension.url" />
+      <representation value="xmlAttr" />
+      <base>
+        <path value="Extension.url" />
+        <min value="1" />
+        <max value="1" />
+      </base>
+      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-observation-external-document-extension" />
+    </element>
+    <element>
+      <path value="Extension.valueCodeableConcept" />
+      <short value="Provides a reference to an externally held document" />
+      <min value="1" />
+      <base>
+        <path value="Extension.value[x]" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="CodeableConcept" />
+      </type>
+    </element>
+  </differential>
+</StructureDefinition>

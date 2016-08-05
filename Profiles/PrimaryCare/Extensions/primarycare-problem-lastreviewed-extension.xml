@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-problem-lastreviewed-extension" />
   <meta>
-    <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
+    <lastUpdated value="2016-08-05T09:32:19.133+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -32,40 +32,110 @@
       <path value="Extension" />
       <name value="extension" />
       <short value="Last reviewed" />
-      <definition value="Estimated or actual date or date-time the problem was last reviewed, in the opinion of the clinician." />
-      <min value="0" />
-      <max value="*" />
+      <definition value="Estimated or actual date or date-time the problem was last reviewed, and by whom, in the opinion of the clinician." />
+      <base>
+        <path value="Extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
+    </element>
+    <element>
+      <path value="Extension.extension" />
+      <slicing>
+        <discriminator value="url" />
+        <rules value="openAtEnd" />
+      </slicing>
+    </element>
+    <element>
+      <path value="Extension.extension" />
+      <name value="performer" />
+      <max value="1" />
+      <base>
+        <path value="Extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
+    </element>
+    <element>
+      <path value="Extension.extension.url" />
+      <representation value="xmlAttr" />
+      <base>
+        <path value="Extension.url" />
+        <min value="1" />
+        <max value="1" />
+      </base>
+      <fixedUri value="performer" />
+    </element>
+    <element>
+      <path value="Extension.extension.valueReference" />
+      <short value="Practitioner that performed the review" />
+      <min value="1" />
+      <base>
+        <path value="Extension.value[x]" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
-        <code value="Element" />
+        <code value="Reference" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
       </type>
-      <mapping>
-        <identity value="rim" />
-        <map value="N/A" />
-      </mapping>
+    </element>
+    <element>
+      <path value="Extension.extension" />
+      <name value="date" />
+      <min value="1" />
+      <max value="1" />
+      <base>
+        <path value="Extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
+    </element>
+    <element>
+      <path value="Extension.extension.url" />
+      <representation value="xmlAttr" />
+      <base>
+        <path value="Extension.url" />
+        <min value="1" />
+        <max value="1" />
+      </base>
+      <fixedUri value="date" />
+    </element>
+    <element>
+      <path value="Extension.extension.value[x]" />
+      <min value="1" />
+      <base>
+        <path value="Extension.value[x]" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="date" />
+      </type>
+      <type>
+        <code value="dateTime" />
+      </type>
     </element>
     <element>
       <path value="Extension.url" />
       <representation value="xmlAttr" />
-      <short value="identifies the meaning of the extension" />
-      <definition value="Source of the definition for the extension code - a logical name or a URL." />
-      <comments value="The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension, with the code for the extension after a #." />
-      <min value="1" />
-      <max value="1" />
-      <type>
-        <code value="uri" />
-      </type>
+      <base>
+        <path value="Extension.url" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-problem-lastreviewed-extension" />
-      <mapping>
-        <identity value="rim" />
-        <map value="N/A" />
-      </mapping>
     </element>
     <element>
       <path value="Extension.value[x]" />
       <short value="Estimated or actual date, date-time, or age" />
       <definition value="Estimated or actual date or date-time the condition was last reviewed, in the opinion of the clinician." />
-      <min value="0" />
-      <max value="1" />
+      <max value="0" />
+      <base>
+        <path value="Extension.value[x]" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="dateTime" />
       </type>
@@ -79,10 +149,6 @@
       <type>
         <code value="Period" />
       </type>
-      <mapping>
-        <identity value="rim" />
-        <map value="N/A" />
-      </mapping>
     </element>
   </differential>
 </StructureDefinition>

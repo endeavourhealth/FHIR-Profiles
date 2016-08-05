@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-immunization" />
   <meta>
-    <lastUpdated value="2016-04-05T17:47:25.277+01:00" />
+    <lastUpdated value="2016-08-05T10:43:31.649+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -20,27 +20,6 @@
   </contact>
   <date value="2015-11-01T00:00:00+00:00" />
   <description value="Describes the event of a patient being administered a vaccination or a record of a vaccination as reported by a patient, a clinician or another party and may include vaccine reaction information and what vaccination protocol was followed." />
-  <fhirVersion value="1.0.1" />
-  <mapping>
-    <identity value="v2" />
-    <uri value="http://hl7.org/v2" />
-    <name value="HL7 v2" />
-  </mapping>
-  <mapping>
-    <identity value="rim" />
-    <uri value="http://hl7.org/v3" />
-    <name value="RIM" />
-  </mapping>
-  <mapping>
-    <identity value="w5" />
-    <uri value="http://hl7.org/fhir/w5" />
-    <name value="W5 Mapping" />
-  </mapping>
-  <mapping>
-    <identity value="cda" />
-    <uri value="http://hl7.org/v3/cda" />
-    <name value="CDA (R2)" />
-  </mapping>
   <kind value="resource" />
   <constrainedType value="Immunization" />
   <abstract value="false" />
@@ -48,10 +27,6 @@
   <differential>
     <element>
       <path value="Immunization" />
-      <short value="Immunization event information" />
-      <definition value="Describes the event of a patient being administered a vaccination or a record of a vaccination as reported by a patient, a clinician or another party and may include vaccine reaction information and what vaccination protocol was followed." />
-      <min value="0" />
-      <max value="*" />
       <base>
         <path value="Immunization" />
         <min value="0" />
@@ -60,42 +35,49 @@
       <type>
         <code value="Immunization" />
       </type>
-      <mapping>
-        <identity value="v2" />
-        <map value="VXU_V04" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="SubstanceAdministration" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="clinical.medication" />
-      </mapping>
+    </element>
+    <element>
+      <path value="Immunization.extension" />
+      <slicing>
+        <discriminator value="url" />
+        <rules value="openAtEnd" />
+      </slicing>
+    </element>
+    <element>
+      <path value="Immunization.extension" />
+      <name value="dateRecorded" />
+      <short value="When this immunization was recorded" />
+      <definition value="Optional Extensions Element - found in all resources." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-recorded-date-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="Immunization.extension" />
+      <name value="recordedBy" />
+      <short value="Who recorded this immunization" />
+      <definition value="Optional Extensions Element - found in all resources." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-recorded-by-extension" />
+      </type>
     </element>
     <element>
       <path value="Immunization.id" />
       <short value="Logical id of this artifact.  Must be populated with a globally unique identifier, except where resource is being sent to the server for creation when it must NOT be populated" />
-      <definition value="The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes." />
-      <comments value="The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID." />
-      <min value="0" />
-      <max value="1" />
       <base>
         <path value="Resource.id" />
         <min value="0" />
         <max value="1" />
       </base>
-      <type>
-        <code value="id" />
-      </type>
-      <isSummary value="true" />
     </element>
     <element>
       <path value="Immunization.patient" />
-      <short value="Who was immunized" />
-      <definition value="The patient who either received or did not receive the immunization." />
-      <min value="1" />
-      <max value="1" />
       <base>
         <path value="Immunization.patient" />
         <min value="1" />
@@ -105,25 +87,9 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
       </type>
-      <mapping>
-        <identity value="v2" />
-        <map value="PID-3" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value=".partipication[ttypeCode=].role" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="who.focus" />
-      </mapping>
     </element>
     <element>
       <path value="Immunization.performer" />
-      <short value="Who administered vaccine" />
-      <definition value="Clinician who administered the vaccine." />
-      <min value="0" />
-      <max value="1" />
       <base>
         <path value="Immunization.performer" />
         <min value="0" />
@@ -133,30 +99,9 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
       </type>
-      <mapping>
-        <identity value="v2" />
-        <map value="RXA-10" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value=".participation[typeCode=PRF].COCT_MT090102UV" />
-      </mapping>
-      <mapping>
-        <identity value="cda" />
-        <map value="ClinicalDocument/component/StructuredBody/component/section/entry/substanceAdministration/performer/assignedEntity/assignedPerson/name" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="who.actor" />
-      </mapping>
     </element>
     <element>
       <path value="Immunization.requester" />
-      <short value="Who ordered vaccination" />
-      <definition value="Clinician who ordered the vaccination." />
-      <comments value="Other participants - delegate to Provenance resource." />
-      <min value="0" />
-      <max value="1" />
       <base>
         <path value="Immunization.requester" />
         <min value="0" />
@@ -166,25 +111,9 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
       </type>
-      <mapping>
-        <identity value="v2" />
-        <map value="ORC-12" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="outboundRelationship.target[classCode=SBADM].participation[typeCode=AUT].COCT_MT090102UV" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="who.cause" />
-      </mapping>
     </element>
     <element>
       <path value="Immunization.encounter" />
-      <short value="Encounter administered as part of" />
-      <definition value="The visit or admission or other contact between patient and health care provider the immunization was performed as part of." />
-      <min value="0" />
-      <max value="1" />
       <base>
         <path value="Immunization.encounter" />
         <min value="0" />
@@ -194,25 +123,9 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter" />
       </type>
-      <mapping>
-        <identity value="v2" />
-        <map value="PV1-19" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="component-&gt;EncounterEvent" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="context" />
-      </mapping>
     </element>
     <element>
       <path value="Immunization.manufacturer" />
-      <short value="Vaccine manufacturer" />
-      <definition value="Name of vaccine manufacturer." />
-      <min value="0" />
-      <max value="1" />
       <base>
         <path value="Immunization.manufacturer" />
         <min value="0" />
@@ -222,25 +135,9 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
       </type>
-      <mapping>
-        <identity value="v2" />
-        <map value="RXA-17" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value=".participation[typeCode=CSM].role[classCode=INST].scopedRole.scoper[classCode=ORG]" />
-      </mapping>
-      <mapping>
-        <identity value="cda" />
-        <map value="ClinicalDocument/component/StructuredBody/component/section/entry/substanceAdministration/consumable/manfacturedProduct/manufacuturerOrganization/name" />
-      </mapping>
     </element>
     <element>
       <path value="Immunization.location" />
-      <short value="Where vaccination occurred" />
-      <definition value="The service delivery location where the vaccine administration occurred." />
-      <min value="0" />
-      <max value="1" />
       <base>
         <path value="Immunization.location" />
         <min value="0" />
@@ -250,85 +147,27 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-location" />
       </type>
-      <mapping>
-        <identity value="v2" />
-        <map value="RXA-27  (or RXA-11, deprecated as of v2.7)" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value=".participation[typeCode=LOC].COCT_MT240000UV" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="where" />
-      </mapping>
     </element>
     <element>
       <path value="Immunization.note.author[x]" />
-      <short value="Individual responsible for the annotation" />
-      <definition value="The individual responsible for making the annotation." />
-      <min value="0" />
       <max value="0" />
       <base>
         <path value="Immunization.note.author[x]" />
         <min value="0" />
         <max value="0" />
       </base>
-      <type>
-        <code value="Reference" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/Practitioner" />
-      </type>
-      <type>
-        <code value="Reference" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/Patient" />
-      </type>
-      <type>
-        <code value="Reference" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/RelatedPerson" />
-      </type>
-      <type>
-        <code value="string" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="N/A" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Act.participant[typeCode=AUT].role" />
-      </mapping>
     </element>
     <element>
       <path value="Immunization.note.time" />
-      <short value="When the annotation was made" />
-      <definition value="Indicates when this particular annotation was made." />
-      <min value="0" />
       <max value="0" />
       <base>
         <path value="Immunization.note.time" />
         <min value="0" />
         <max value="0" />
       </base>
-      <type>
-        <code value="dateTime" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="N/A" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Act.effectiveTime" />
-      </mapping>
     </element>
     <element>
       <path value="Immunization.reaction.detail" />
-      <short value="Additional information on reaction" />
-      <definition value="Details of the reaction." />
-      <min value="0" />
-      <max value="1" />
       <base>
         <path value="Immunization.reaction.detail" />
         <min value="0" />
@@ -338,21 +177,9 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-observation" />
       </type>
-      <mapping>
-        <identity value="v2" />
-        <map value="OBX-5" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value=".value" />
-      </mapping>
     </element>
     <element>
       <path value="Immunization.vaccinationProtocol.authority" />
-      <short value="Who is responsible for protocol" />
-      <definition value="Indicates the authority who published the protocol.  E.g. ACIP." />
-      <min value="0" />
-      <max value="1" />
       <base>
         <path value="Immunization.vaccinationProtocol.authority" />
         <min value="0" />
@@ -362,10 +189,6 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
       </type>
-      <mapping>
-        <identity value="rim" />
-        <map value="outboundRelationship[typeCode=INST].target[classCode=SBADM].inboundRelationship[typeCode=COMP].source[classCode=SBADM].participation[typeCode=AUT].COCT_MT090200UV" />
-      </mapping>
     </element>
   </differential>
 </StructureDefinition>

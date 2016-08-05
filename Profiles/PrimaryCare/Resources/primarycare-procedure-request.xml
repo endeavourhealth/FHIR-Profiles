@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-procedure-request" />
   <meta>
-    <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
+    <lastUpdated value="2016-08-05T11:20:53.215+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -20,7 +20,6 @@
   </contact>
   <date value="2015-11-01T00:00:00+00:00" />
   <description value="A request for a procedure to be performed. May be a proposal or an order." />
-  <fhirVersion value="1.0.1" />
   <kind value="resource" />
   <constrainedType value="ProcedureRequest" />
   <abstract value="false" />
@@ -28,158 +27,112 @@
   <differential>
     <element>
       <path value="ProcedureRequest" />
-      <short value="A request for a procedure to be performed" />
-      <definition value="A request for a procedure to be performed. May be a proposal or an order." />
-      <min value="0" />
-      <max value="*" />
+      <base>
+        <path value="ProcedureRequest" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="ProcedureRequest" />
       </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="w5" />
-        <map value="clinical.general" />
-      </mapping>
+    </element>
+    <element>
+      <path value="ProcedureRequest.extension" />
+      <slicing>
+        <discriminator value="url" />
+        <rules value="openAtEnd" />
+      </slicing>
+    </element>
+    <element>
+      <path value="ProcedureRequest.extension" />
+      <name value="location" />
+      <short value="Proposed location for the procedure to take place" />
+      <definition value="Optional Extensions Element - found in all resources." />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="ProcedureRequest.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-procedure-request-location-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="ProcedureRequest.extension" />
+      <name value="scheduleText" />
+      <short value="Textual description of the schedule, from when the request was recorded" />
+      <definition value="Optional Extensions Element - found in all resources." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-procedure-request-schedule-text-extension" />
+      </type>
     </element>
     <element>
       <path value="ProcedureRequest.identifier.id" />
       <representation value="xmlAttr" />
-      <short value="xml:id (or equivalent in JSON)" />
-      <definition value="unique id for the element within a resource (for internal references)." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="id" />
-      </type>
-      <mapping>
-        <identity value="rim" />
-        <map value="n/a" />
-      </mapping>
+      <base>
+        <path value="ProcedureRequest.identifier.id" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="ProcedureRequest.identifier.use" />
-      <short value="usual | official | temp | secondary (If known)" />
-      <definition value="The purpose of this identifier." />
-      <comments value="This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary id for a permanent one. Applications can assume that an identifier is permanent unless it explicitly says that it is temporary." />
-      <requirements value="Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="code" />
-      </type>
-      <isModifier value="true" />
-      <isSummary value="true" />
-      <binding>
-        <strength value="required" />
-        <description value="Identifies the purpose for this identifier, if known ." />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/identifier-use" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="v2" />
-        <map value="N/A" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Role.code or implied by context" />
-      </mapping>
+      <base>
+        <path value="ProcedureRequest.identifier.use" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="ProcedureRequest.identifier.type" />
-      <short value="Description of identifier" />
-      <definition value="A coded type for the identifier that can be used to determine which identifier to use for a specific purpose." />
-      <comments value="This element deals only with general categories of identifiers.  It SHOULD not be used for codes that correspond 1..1 with the Identifier.system. Some identifiers may fall into multiple categories due to common usage.   Where the system is known, a type is unnecessary because the type is always part of the system definition. However systems often need to handle identifiers where the system is not known. There is not a 1:1 relationship between type and system, since many different systems have the same type." />
-      <requirements value="Allows users to make use of identifiers when the identifier system is not known." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="CodeableConcept" />
-      </type>
-      <isSummary value="true" />
-      <binding>
-        <strength value="extensible" />
-        <description value="A coded type for an identifier that can be used to determine which identifier to use for a specific purpose." />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/identifier-type" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.5" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Role.code or implied by context" />
-      </mapping>
+      <base>
+        <path value="ProcedureRequest.identifier.type" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="ProcedureRequest.identifier.period" />
-      <short value="Time period when id is/was valid for use" />
-      <definition value="Time period during which identifier is/was valid for use." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="Period" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.7 + CX.8" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Role.effectiveTime or implied by context" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./StartDate and ./EndDate" />
-      </mapping>
+      <base>
+        <path value="ProcedureRequest.identifier.period" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="ProcedureRequest.identifier.assigner" />
-      <short value="Organization that issued id (may be just text)" />
-      <definition value="Organization that issued/manages the identifier." />
-      <comments value="The reference may be just a text description of the assigner." />
-      <min value="0" />
       <max value="0" />
+      <base>
+        <path value="ProcedureRequest.identifier.assigner" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
       </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.4 / (CX.4,CX.9,CX.10)" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./IdentifierIssuingAuthority" />
-      </mapping>
     </element>
     <element>
       <path value="ProcedureRequest.subject" />
-      <short value="Who the procedure should be done to" />
-      <definition value="The person, animal or group that should receive the procedure." />
-      <min value="1" />
-      <max value="1" />
+      <base>
+        <path value="ProcedureRequest.subject" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
       </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="quick" />
-        <map value="ClinicalStatement.subject" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="who.focus" />
-      </mapping>
     </element>
     <element>
       <path value="ProcedureRequest.code.coding.extension" />
@@ -195,6 +148,11 @@
       <definition value="Used to qualify or indicate extra clinical information about a coded value." />
       <min value="0" />
       <max value="*" />
+      <base>
+        <path value="ProcedureRequest.code.coding.extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-coding-qualifier-extension" />
@@ -202,10 +160,11 @@
     </element>
     <element>
       <path value="ProcedureRequest.reason[x]" />
-      <short value="Why procedure should occur" />
-      <definition value="The reason why the procedure is being proposed or ordered. This procedure request may be motivated by a Condition for instance." />
-      <min value="0" />
-      <max value="1" />
+      <base>
+        <path value="ProcedureRequest.reason[x]" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="CodeableConcept" />
       </type>
@@ -213,45 +172,26 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-condition" />
       </type>
-      <isSummary value="true" />
-      <binding>
-        <strength value="example" />
-        <description value="A code that explains the reason why a procedure is  required." />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/procedure-reason" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="quick" />
-        <map value="Action.indication.reason" />
-      </mapping>
     </element>
     <element>
       <path value="ProcedureRequest.encounter" />
-      <short value="Encounter request created during" />
-      <definition value="The encounter within which the procedure proposal or request was created." />
-      <min value="0" />
-      <max value="1" />
+      <base>
+        <path value="ProcedureRequest.encounter" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter" />
       </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="quick" />
-        <map value="ClinicalStatement.encounter" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="context" />
-      </mapping>
     </element>
     <element>
       <path value="ProcedureRequest.performer" />
-      <short value="Who should perform the procedure" />
-      <definition value="For example, the surgeon, anaethetist, endoscopist, etc." />
-      <min value="0" />
-      <max value="1" />
+      <base>
+        <path value="ProcedureRequest.performer" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
@@ -268,18 +208,15 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person" />
       </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="w5" />
-        <map value="who.actor" />
-      </mapping>
     </element>
     <element>
       <path value="ProcedureRequest.notes.author[x]" />
-      <short value="Individual responsible for the annotation" />
-      <definition value="The individual responsible for making the annotation." />
-      <min value="0" />
       <max value="0" />
+      <base>
+        <path value="ProcedureRequest.notes.author[x]" />
+        <min value="0" />
+        <max value="0" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
@@ -295,41 +232,23 @@
       <type>
         <code value="string" />
       </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="N/A" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Act.participant[typeCode=AUT].role" />
-      </mapping>
     </element>
     <element>
       <path value="ProcedureRequest.notes.time" />
-      <short value="When the annotation was made" />
-      <definition value="Indicates when this particular annotation was made." />
-      <min value="0" />
       <max value="0" />
-      <type>
-        <code value="dateTime" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="N/A" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Act.effectiveTime" />
-      </mapping>
+      <base>
+        <path value="ProcedureRequest.notes.time" />
+        <min value="0" />
+        <max value="0" />
+      </base>
     </element>
     <element>
       <path value="ProcedureRequest.orderer" />
-      <short value="Who made request" />
-      <definition value="The healthcare professional responsible for proposing or ordering the procedure." />
-      <min value="0" />
-      <max value="1" />
+      <base>
+        <path value="ProcedureRequest.orderer" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-practitioner" />
@@ -342,15 +261,6 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person" />
       </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="quick" />
-        <map value="ClinicalStatement.statementAuthor" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="who.author" />
-      </mapping>
     </element>
   </differential>
 </StructureDefinition>

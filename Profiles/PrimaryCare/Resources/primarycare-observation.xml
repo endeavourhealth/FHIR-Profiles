@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-observation" />
   <meta>
-    <lastUpdated value="2016-04-01T13:59:33.201+01:00" />
+    <lastUpdated value="2016-08-05T11:27:58.762+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -20,8 +20,6 @@
   </contact>
   <date value="2015-11-01T00:00:00+00:00" />
   <description value="Measurements and simple assertions made about a patient." />
-  <requirements value="Observations are a key aspect of healthcare.  This resource is used to capture those that do not require more sophisticated mechanisms." />
-  <fhirVersion value="1.0.1" />
   <kind value="resource" />
   <constrainedType value="Observation" />
   <abstract value="false" />
@@ -29,15 +27,6 @@
   <differential>
     <element>
       <path value="Observation" />
-      <short value="Measurements and simple assertions" />
-      <definition value="Measurements and simple assertions made about a patient, device or other subject." />
-      <comments value="Used for simple observations such as device measurements, laboratory atomic results, vital signs, height, weight, smoking status, comments, etc.  Other resources are used to provide context for observations such as lab reports, etc." />
-      <alias value="Vital Signs" />
-      <alias value="Measurement" />
-      <alias value="Results" />
-      <alias value="Tests" />
-      <min value="0" />
-      <max value="*" />
       <base>
         <path value="Observation" />
         <min value="0" />
@@ -46,170 +35,109 @@
       <type>
         <code value="Observation" />
       </type>
-      <mapping>
-        <identity value="v2" />
-        <map value="OBX" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Observation[classCode=OBS, moodCode=EVN]" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="clinical.diagnostics" />
-      </mapping>
+    </element>
+    <element>
+      <path value="Observation.extension" />
+      <slicing>
+        <discriminator value="url" />
+        <rules value="openAtEnd" />
+      </slicing>
+    </element>
+    <element>
+      <path value="Observation.extension" />
+      <name value="dateRecorded" />
+      <short value="When this observation was recorded" />
+      <definition value="Optional Extensions Element - found in all resources." />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="Observation.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-recorded-date-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="Observation.extension" />
+      <name value="recordedBy" />
+      <short value="When this observation was recorded" />
+      <definition value="Optional Extensions Element - found in all resources." />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="Observation.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-recorded-by-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="Observation.extension" />
+      <name value="externalDocument" />
+      <short value="Reference to an externally held document" />
+      <definition value="Optional Extensions Element - found in all resources." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-observation-external-document-extension" />
+      </type>
     </element>
     <element>
       <path value="Observation.identifier.id" />
       <representation value="xmlAttr" />
-      <short value="xml:id (or equivalent in JSON)" />
-      <definition value="unique id for the element within a resource (for internal references)." />
-      <min value="0" />
       <max value="0" />
       <base>
         <path value="Observation.identifier.id" />
         <min value="0" />
         <max value="0" />
       </base>
-      <type>
-        <code value="id" />
-      </type>
-      <mapping>
-        <identity value="rim" />
-        <map value="n/a" />
-      </mapping>
     </element>
     <element>
       <path value="Observation.identifier.use" />
-      <short value="usual | official | temp | secondary (If known)" />
-      <definition value="The purpose of this identifier." />
-      <comments value="This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary id for a permanent one. Applications can assume that an identifier is permanent unless it explicitly says that it is temporary." />
-      <requirements value="Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers." />
-      <min value="0" />
       <max value="0" />
       <base>
         <path value="Observation.identifier.use" />
         <min value="0" />
         <max value="0" />
       </base>
-      <type>
-        <code value="code" />
-      </type>
-      <isModifier value="true" />
-      <isSummary value="true" />
-      <binding>
-        <strength value="required" />
-        <description value="Identifies the purpose for this identifier, if known ." />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/identifier-use" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="v2" />
-        <map value="N/A" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Role.code or implied by context" />
-      </mapping>
     </element>
     <element>
       <path value="Observation.identifier.type" />
-      <short value="Description of identifier" />
-      <definition value="A coded type for the identifier that can be used to determine which identifier to use for a specific purpose." />
-      <comments value="This element deals only with general categories of identifiers.  It SHOULD not be used for codes that correspond 1..1 with the Identifier.system. Some identifiers may fall into multiple categories due to common usage.   Where the system is known, a type is unnecessary because the type is always part of the system definition. However systems often need to handle identifiers where the system is not known. There is not a 1:1 relationship between type and system, since many different systems have the same type." />
-      <requirements value="Allows users to make use of identifiers when the identifier system is not known." />
-      <min value="0" />
       <max value="0" />
       <base>
         <path value="Observation.identifier.type" />
         <min value="0" />
         <max value="0" />
       </base>
-      <type>
-        <code value="CodeableConcept" />
-      </type>
-      <isSummary value="true" />
-      <binding>
-        <strength value="extensible" />
-        <description value="A coded type for an identifier that can be used to determine which identifier to use for a specific purpose." />
-        <valueSetReference>
-          <reference value="http://hl7.org/fhir/ValueSet/identifier-type" />
-        </valueSetReference>
-      </binding>
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.5" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Role.code or implied by context" />
-      </mapping>
     </element>
     <element>
       <path value="Observation.identifier.value" />
-      <short value="The value that is unique" />
-      <definition value="The portion of the identifier typically displayed to the user and which is unique within the context of the system." />
-      <comments value="If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986." />
-      <min value="0" />
       <max value="0" />
       <base>
         <path value="Observation.identifier.value" />
         <min value="0" />
         <max value="0" />
       </base>
-      <type>
-        <code value="string" />
-      </type>
       <exampleString value="123456" />
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.1 / EI.1" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="II.extension or II.root if system indicates OID or GUID (Or Role.id.extension or root)" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./Value" />
-      </mapping>
     </element>
     <element>
       <path value="Observation.identifier.period" />
-      <short value="Time period when id is/was valid for use" />
-      <definition value="Time period during which identifier is/was valid for use." />
-      <min value="0" />
       <max value="0" />
       <base>
         <path value="Observation.identifier.period" />
         <min value="0" />
         <max value="0" />
       </base>
-      <type>
-        <code value="Period" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.7 + CX.8" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="Role.effectiveTime or implied by context" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./StartDate and ./EndDate" />
-      </mapping>
     </element>
     <element>
       <path value="Observation.identifier.assigner" />
-      <short value="Organization that issued id (may be just text)" />
-      <definition value="Organization that issued/manages the identifier." />
-      <comments value="The reference may be just a text description of the assigner." />
-      <min value="0" />
       <max value="0" />
       <base>
         <path value="Observation.identifier.assigner" />
@@ -220,55 +148,20 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-organization" />
       </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="CX.4 / (CX.4,CX.9,CX.10)" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper" />
-      </mapping>
-      <mapping>
-        <identity value="servd" />
-        <map value="./IdentifierIssuingAuthority" />
-      </mapping>
     </element>
     <element>
       <path value="Observation.code" />
-      <short value="Type of observation (code / type)" />
-      <definition value="Describes what was observed. Sometimes this is called the observation &quot;name&quot;." />
-      <requirements value="Knowing what kind of observation is being made is essential to understanding the observation." />
-      <min value="1" />
-      <max value="1" />
       <base>
         <path value="Observation.code" />
         <min value="1" />
         <max value="1" />
       </base>
-      <type>
-        <code value="CodeableConcept" />
-      </type>
-      <isSummary value="true" />
       <binding>
         <strength value="example" />
-        <description value="Codes identifying names of simple observations." />
         <valueSetReference>
           <reference value="http://endeavourhealth.org/fhir/ValueSet/primarycare-observation-code" />
         </valueSetReference>
       </binding>
-      <mapping>
-        <identity value="v2" />
-        <map value="OBX-3" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="code" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="what" />
-      </mapping>
     </element>
     <element>
       <path value="Observation.code.coding.extension" />
@@ -298,10 +191,6 @@
       <path value="Observation.subject" />
       <short value="Who this is about" />
       <definition value="The patient whose characteristics (direct or indirect) are described by the observation and into whose record the observation is placed.  Comments: Indirect characteristics may be those of a specimen, fetus, donor,  other observer (for example a relative or EMT), or any observation made about the subject." />
-      <comments value="One would expect this element to be a cardinality  of 1..1.  The only circumstance in which the subject can be missing is when the observation is made by a device that does not know the patient. In this case, the observation SHALL be matched to a patient through some context/channel matching technique, and at this point, the observation should be updated.  If the target of the observation is different than the subject, the general extension [observation-focal-subject](extension-observation-focal-subject.html).  may be used.  However, the distinction between the patient's own value for an observation versus that of the fetus, or the donor or blood product unit, etc., are often specified in the observation code." />
-      <requirements value="Observations have no value if you don't know who or what they're about." />
-      <min value="0" />
-      <max value="1" />
       <base>
         <path value="Observation.subject" />
         <min value="0" />
@@ -311,27 +200,9 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient" />
       </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="PID-3" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="participation[typeCode=SBJ]" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="who.focus" />
-      </mapping>
     </element>
     <element>
       <path value="Observation.encounter" />
-      <short value="Healthcare event during which this observation is made" />
-      <definition value="The healthcare event  (e.g. a patient and healthcare provider interaction) during which this observation is made." />
-      <requirements value="For some observations it may be important to know the link between an observation and a particular encounter." />
-      <min value="0" />
-      <max value="1" />
       <base>
         <path value="Observation.encounter" />
         <min value="0" />
@@ -341,59 +212,19 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter" />
       </type>
-      <mapping>
-        <identity value="v2" />
-        <map value="PV1" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="inboundRelationship[typeCode=COMP].source[classCode=ENC, moodCode=EVN]" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="context" />
-      </mapping>
     </element>
     <element>
       <path value="Observation.effective[x]" />
-      <short value="Clinically relevant time/time-period for observation" />
       <definition value="The time or the observed value is asserted as being true. For biological subjects - e.g. human patients - this is usually called the &quot;physiologically relevant time&quot;. This is usually either the time of the procedure or of specimen collection, but very often the source of the date/time is not known, only the date/time itself." />
-      <comments value="At least a date should be present unless this observation is a historical report." />
-      <requirements value="Knowing when an observation was deemed true is important to its relevance as well as determining trends." />
-      <min value="0" />
-      <max value="1" />
       <base>
         <path value="Observation.effective[x]" />
-      <min value="0" />
+        <min value="0" />
         <max value="1" />
       </base>
-      <type>
-        <code value="dateTime" />
-      </type>
-      <type>
-        <code value="Period" />
-      </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="OBX-14, and/or OBX-19 after v2.4  (depends on who observation made)" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="effectiveTime" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="when.done" />
-      </mapping>
     </element>
     <element>
       <path value="Observation.performer" />
-      <short value="Who is responsible for the observation" />
-      <definition value="Who was responsible for asserting the observed value as &quot;true&quot;." />
-      <requirements value="May give a degree of confidence in the observation and also indicates where follow-up questions should be directed." />
       <min value="1" />
-      <max value="*" />
       <base>
         <path value="Observation.performer" />
         <min value="1" />
@@ -415,31 +246,13 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-related-person" />
       </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="OBX.15 / (Practitioner)  OBX-16,  PRT-5:PRT-4='RO' /  (Device)  OBX-18 , PRT-10:PRT-4='EQUIP' / (Organization)  OBX-23,  PRT-8:PRT-4='PO'" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="participation[typeCode=PRF]" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="who.actor" />
-      </mapping>
     </element>
     <element>
       <path value="Observation.value[x]" />
-      <short value="Actual result" />
-      <definition value="The information determined as a result of making the observation, if the information has a simple value." />
       <comments value="Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived." />
-      <requirements value="An observation exists to have a value, though it may not if it is in error, or it represents a group of observations." />
-      <min value="0" />
-      <max value="1" />
       <base>
         <path value="Observation.value[x]" />
-      <min value="0" />
+        <min value="0" />
         <max value="1" />
       </base>
       <type>
@@ -454,23 +267,9 @@
       <type>
         <code value="Ratio" />
       </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="OBX.2, OBX.5, OBX.6" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="value" />
-      </mapping>
     </element>
     <element>
       <path value="Observation.specimen" />
-      <short value="Specimen used for this observation" />
-      <definition value="The specimen that was used when this observation was made." />
-      <comments value="Observations are not made on specimens themselves; they are made on a subject, but usually by the means of a specimen. Note that although specimens are often involved, they are not always tracked and reported explicitly. Also note that observation resources may be used in contexts that track the specimen explicitly (e.g. Diagnostic Report)." />
-      <min value="0" />
-      <max value="1" />
       <base>
         <path value="Observation.specimen" />
         <min value="0" />
@@ -480,21 +279,10 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-specimen" />
       </type>
-      <mapping>
-        <identity value="v2" />
-        <map value="SPM segment" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="participation[typeCode=SPC].specimen" />
-      </mapping>
     </element>
     <element>
       <path value="Observation.related.target" />
-      <short value="Resource that is related to this one" />
       <definition value="A reference to the observation resource that is related to this observation." />
-      <min value="1" />
-      <max value="1" />
       <base>
         <path value="Observation.related.target" />
         <min value="1" />
@@ -504,47 +292,20 @@
         <code value="Reference" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-observation" />
       </type>
-      <mapping>
-        <identity value="rim" />
-        <map value=".targetObservation" />
-      </mapping>
     </element>
     <element>
       <path value="Observation.component.code" />
-      <short value="Type of component observation (code / type)" />
-      <definition value="Describes what was observed. Sometimes this is called the observation &quot;code&quot;." />
-      <requirements value="Knowing what kind of observation is being made is essential to understanding the observation." />
-      <min value="1" />
-      <max value="1" />
       <base>
         <path value="Observation.component.code" />
-      <min value="1" />
+        <min value="1" />
         <max value="1" />
       </base>
-      <type>
-        <code value="CodeableConcept" />
-      </type>
-      <condition value="obs-7" />
-      <isSummary value="true" />
       <binding>
         <strength value="example" />
-        <description value="Codes identifying names of simple observations." />
         <valueSetReference>
           <reference value="http://endeavourhealth.org/fhir/ValueSet/primarycare-observation-code" />
         </valueSetReference>
       </binding>
-      <mapping>
-        <identity value="v2" />
-        <map value="OBX-3" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="code" />
-      </mapping>
-      <mapping>
-        <identity value="w5" />
-        <map value="what" />
-      </mapping>
     </element>
     <element>
       <path value="Observation.component.code.coding.extension" />
@@ -572,12 +333,7 @@
     </element>
     <element>
       <path value="Observation.component.value[x]" />
-      <short value="Actual component result" />
-      <definition value="The information determined as a result of making the observation, if the information has a simple value." />
       <comments value="Normally, an observation will have either a value or a set of related observations. A few observations (e.g. Apgar score) may have both a value and related observations (for an Apgar score, the observations from which the measure is derived). If a value is present, the datatype for this element should be determined by Observation.code." />
-      <requirements value="An observation exists to have a value, though it may not if it is in error, or it represents a group of observations." />
-      <min value="0" />
-      <max value="1" />
       <base>
         <path value="Observation.component.value[x]" />
         <min value="0" />
@@ -595,15 +351,6 @@
       <type>
         <code value="Ratio" />
       </type>
-      <isSummary value="true" />
-      <mapping>
-        <identity value="v2" />
-        <map value="OBX.2, OBX.5, OBX.6" />
-      </mapping>
-      <mapping>
-        <identity value="rim" />
-        <map value="value" />
-      </mapping>
     </element>
   </differential>
 </StructureDefinition>
