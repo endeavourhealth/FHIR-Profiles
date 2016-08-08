@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="primarycare-observation-external-document-extension" />
+  <id value="primarycare-external-document-extension" />
   <meta>
-    <lastUpdated value="2016-08-05T14:24:44.543+01:00" />
+    <lastUpdated value="2016-08-08T16:25:54.392+01:00" />
   </meta>
-  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-observation-external-document-extension" />
-  <name value="PrimaryCare-ObservationExternalDocument-Extension" />
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-external-document-extension" />
+  <name value="PrimaryCare-ExternalDocument-Extension" />
   <status value="draft" />
   <contact>
     <telecom>
@@ -40,7 +40,7 @@
         <min value="1" />
         <max value="1" />
       </base>
-      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-observation-external-document-extension" />
+      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-external-document-extension" />
     </element>
     <element>
       <path value="Extension.valueIdentifier" />

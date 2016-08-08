@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-procedure" />
   <meta>
-    <lastUpdated value="2016-08-05T10:53:36.055+01:00" />
+    <lastUpdated value="2016-08-08T16:31:55.584+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -53,6 +53,11 @@
       <definition value="Optional Extensions Element - found in all resources." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Procedure.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-recorded-date-extension" />
@@ -65,9 +70,26 @@
       <definition value="Optional Extensions Element - found in all resources." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Procedure.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-recorded-by-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="Procedure.extension" />
+      <name value="externalDocument" />
+      <short value="Identifier of externally stored documents related to this resource" />
+      <definition value="Optional Extensions Element - found in all resources." />
+      <min value="0" />
+      <max value="*" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-external-document-extension" />
       </type>
     </element>
     <element>
