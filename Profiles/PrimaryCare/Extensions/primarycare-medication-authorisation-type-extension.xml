@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="primarycare-medication-authorisation-type-extension" />
+  <meta>
+    <lastUpdated value="2016-08-08T10:44:53.575+01:00" />
+  </meta>
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-authorisation-type-extension" />
+  <name value="PrimaryCare-MedicationAuthorisationType-Extension" />
+  <status value="draft" />
+  <contact>
+    <telecom>
+      <system value="other" />
+      <value value="http://endeavourhealth.org" />
+    </telecom>
+  </contact>
+  <date value="2016-08-08T00:00:00+01:00" />
+  <description value="The authorisation type of a medication authorisation (acute, repeat etc.)" />
+  <requirements value="The ability to add extensions in a structured way is what keeps FHIR resources simple." />
+  <fhirVersion value="1.0.2" />
+  <kind value="datatype" />
+  <constrainedType value="Extension" />
+  <abstract value="false" />
+  <contextType value="resource" />
+  <context value="MedicationStatement" />
+  <base value="http://hl7.org/fhir/StructureDefinition/Extension" />
+  <differential>
+    <element>
+      <path value="Extension" />
+      <base>
+        <path value="Extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
+    </element>
+    <element>
+      <path value="Extension.url" />
+      <representation value="xmlAttr" />
+      <base>
+        <path value="Extension.url" />
+        <min value="1" />
+        <max value="1" />
+      </base>
+      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-medication-authorisation-type-extension" />
+    </element>
+    <element>
+      <path value="Extension.valueCoding" />
+      <short value="Authorisation type of the medication (acute, repeat etc.)" />
+      <min value="1" />
+      <base>
+        <path value="Extension.value[x]" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="Coding" />
+      </type>
+      <binding>
+        <strength value="required" />
+      </binding>
+    </element>
+  </differential>
+</StructureDefinition>
