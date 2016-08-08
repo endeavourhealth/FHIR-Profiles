@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-medication-order" />
   <meta>
-    <lastUpdated value="2016-08-05T10:48:30.285+01:00" />
+    <lastUpdated value="2016-08-05T16:05:57.163+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -132,7 +132,7 @@
       <path value="MedicationOrder.extension" />
       <name value="medicationSupplyType" />
       <short value="Indicates the legal/contractual nature of a prescription" />
-      <min value="1" />
+      <min value="0" />
       <max value="1" />
       <base>
         <path value="MedicationOrder.extension" />
@@ -151,6 +151,11 @@
       <definition value="Optional Extensions Element - found in all resources." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="MedicationOrder.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-recorded-date-extension" />
@@ -163,6 +168,11 @@
       <definition value="Optional Extensions Element - found in all resources." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="MedicationOrder.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-recorded-by-extension" />

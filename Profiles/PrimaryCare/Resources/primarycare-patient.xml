@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-patient" />
   <meta>
-    <lastUpdated value="2016-08-05T11:02:49.851+01:00" />
+    <lastUpdated value="2016-08-08T09:59:38.142+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -108,18 +108,6 @@
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient-spine-sensitive-extension" />
-      </type>
-    </element>
-    <element>
-      <path value="Patient.extension" />
-      <name value="ethnicity" />
-      <short value="Ethnicity code of the patient" />
-      <definition value="The ethnicity of the subject." />
-      <min value="0" />
-      <max value="1" />
-      <type>
-        <code value="Extension" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-ethnic-category-extension" />
       </type>
     </element>
     <element>
