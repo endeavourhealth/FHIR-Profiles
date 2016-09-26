@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-problem-associated-extension" />
   <meta>
-    <lastUpdated value="2015-09-22T20:02:49.724+10:00" />
+    <lastUpdated value="2016-09-26T14:55:12.874+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -33,48 +33,38 @@
       <name value="extension" />
       <short value="Associated resource" />
       <definition value="A reference to another resource associated to this problem." />
-      <min value="0" />
-      <max value="*" />
-      <type>
-        <code value="Element" />
-      </type>
-      <mapping>
-        <identity value="rim" />
-        <map value="N/A" />
-      </mapping>
+      <base>
+        <path value="Extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
     </element>
     <element>
       <path value="Extension.url" />
       <representation value="xmlAttr" />
-      <short value="identifies the meaning of the extension" />
-      <definition value="Source of the definition for the extension code - a logical name or a URL." />
-      <comments value="The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension, with the code for the extension after a #." />
-      <min value="1" />
-      <max value="1" />
-      <type>
-        <code value="uri" />
-      </type>
+      <base>
+        <path value="Extension.url" />
+        <min value="1" />
+        <max value="1" />
+      </base>
       <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-problem-associated-extension" />
-      <mapping>
-        <identity value="rim" />
-        <map value="N/A" />
-      </mapping>
     </element>
     <element>
       <path value="Extension.valueReference" />
       <name value="valueReference" />
-      <short value="Associated resource" />
-      <definition value="A resource that is associated to this one." />
-      <min value="0" />
-      <max value="1" />
+      <short value="Associated resources" />
+      <definition value="Contained list of resource references that are part of a problem" />
+      <min value="1" />
+      <base>
+        <path value="Extension.valueReference" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Reference" />
-        <profile value="http://hl7.org/fhir/StructureDefinition/Resource" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/List" />
+        <aggregation value="contained" />
       </type>
-      <mapping>
-        <identity value="rim" />
-        <map value="N/A" />
-      </mapping>
     </element>
   </differential>
 </StructureDefinition>
