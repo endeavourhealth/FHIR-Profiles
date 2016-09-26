@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-referral-request" />
   <meta>
-    <lastUpdated value="2016-08-08T16:32:39.236+01:00" />
+    <lastUpdated value="2016-09-26T18:13:56.604+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -84,9 +84,31 @@
       <definition value="Optional Extensions Element - found in all resources." />
       <min value="0" />
       <max value="*" />
+      <base>
+        <path value="ReferralRequest.extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-external-document-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="ReferralRequest.extension" />
+      <name value="sendMode" />
+      <short value="How the referral was sent (written, telephone etc.)" />
+      <definition value="Optional Extensions Element - found in all resources." />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="ReferralRequest.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-referral-request-send-mode-extension" />
       </type>
     </element>
     <element>

@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-family-member-history" />
   <meta>
-    <lastUpdated value="2016-08-08T16:30:09.522+01:00" />
+    <lastUpdated value="2016-09-26T18:32:58.476+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -102,9 +102,31 @@
       <definition value="Optional Extensions Element - found in all resources." />
       <min value="0" />
       <max value="*" />
+      <base>
+        <path value="FamilyMemberHistory.extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-external-document-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="FamilyMemberHistory.extension" />
+      <name value="reportedBy" />
+      <short value="Who is responsible for this resource" />
+      <definition value="Optional Extensions Element - found in all resources." />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="FamilyMemberHistory.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-family-member-history-reporter-extension" />
       </type>
     </element>
     <element>
