@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ValueSet xmlns="http://hl7.org/fhir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hl7.org/fhir http://hl7.org/fhir/valueset.xsd">
-	<id value="primarycare-referral-request-send-mode"/>
+	<id value="primarycare-referral-request-priority"/>
 	<meta>
 		<lastUpdated value="2016-08-08T00:00:00+00:00"/>
 		<profile value="http://hl7.org/fhir/StructureDefinition/valueset-shareable-definition"/>
@@ -8,7 +8,7 @@
 	<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
 		<valueInteger value="1" />
 	</extension>
-	<url value="http://endeavourhealth.org/fhir/ValueSet/primarycare-referral-request-send-mode"/>
+	<url value="http://endeavourhealth.org/fhir/ValueSet/primarycare-referral-request-priority"/>
 	<version value="1.0.0"/>
 	<name value="PrimaryCare-ReferralRequestMode"/>
 	<status value="draft"/>
@@ -20,29 +20,22 @@
 		</telecom>
 	</contact>
 	<date value="2016-08-03T00:00:00+00:00"/>
-	<description value="The mode a referral was sent via (written, Choose and Book etc.)"/>
+	<description value="The priority a referral was sent with. See http://www.datadictionary.nhs.uk/data_dictionary/attributes/p/prio/priority_type_de.asp"/>
 	<codeSystem>
-		<system value="http://endeavourhealth.org/fhir/ValueSet/primarycare-referral-request-send-mode"/>
+		<system value="http://endeavourhealth.org/fhir/ValueSet/primarycare-referral-request-priority"/>
 	
 		<concept>
-			<code value="T"/>
-			<display value="Telephone"/>
+			<code value="1"/>
+			<display value="Routine"/>
 		</concept>		
 		<concept>
-			<code value="W"/>
-			<display value="Written"/>
+			<code value="2"/>
+			<display value="Urgent"/>
 		</concept>		
 		<concept>
-			<code value="V"/>
-			<display value="Verbal"/>
+			<code value="3"/>
+			<display value="Two Week Wait"/>
 		</concept>		
-		<concept>
-			<code value="E"/>
-			<display value="NHS e-Referral"/>
-		</concept>		
-			<concept>
-			<code value="M"/>
-			<display value="Managed"/>
-		</concept>
+
 	</codeSystem>
 </ValueSet>
