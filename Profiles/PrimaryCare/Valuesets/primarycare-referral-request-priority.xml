@@ -10,7 +10,7 @@
 	</extension>
 	<url value="http://endeavourhealth.org/fhir/ValueSet/primarycare-referral-request-priority"/>
 	<version value="1.0.0"/>
-	<name value="PrimaryCare-ReferralRequestMode"/>
+	<name value="PrimaryCare-ReferralRequestPriority"/>
 	<status value="draft"/>
 	<publisher value="Endeavour Health Charitable Trust"/>
 	<contact>
