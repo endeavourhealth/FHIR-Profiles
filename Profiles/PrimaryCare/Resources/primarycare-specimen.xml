@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-specimen" />
   <meta>
-    <lastUpdated value="2016-10-11T17:23:44.241+01:00" />
+    <lastUpdated value="2017-04-07T09:22:10.751+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -84,6 +84,11 @@
       <definition value="Optional Extensions Element - found in all resources." />
       <min value="0" />
       <max value="*" />
+      <base>
+        <path value="Specimen.extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-external-document-extension" />
@@ -95,9 +100,25 @@
       <short value="Encounter during which Specimen was taken" />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Specimen.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://hl7.org/fhir/StructureDefinition/encounter-associatedEncounter" />
+      </type>
+    </element>
+    <element>
+      <path value="Specimen.extension" />
+      <name value="isReview" />
+      <definition value="Optional Extensions Element - found in all resources." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-problem-review" />
       </type>
     </element>
     <element>

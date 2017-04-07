@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-diagnostic-report" />
   <meta>
-    <lastUpdated value="2016-09-30T14:32:42.753+01:00" />
+    <lastUpdated value="2017-04-07T09:18:06.666+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -143,6 +143,17 @@
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-diagnostic-report-filed-by-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="DiagnosticReport.extension" />
+      <name value="isReview" />
+      <definition value="Optional Extensions Element - found in all resources." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-problem-review" />
       </type>
     </element>
     <element>
