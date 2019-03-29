@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-episode-of-care" />
   <meta>
-    <lastUpdated value="2017-04-10T16:51:45.17+01:00" />
+    <lastUpdated value="2019-03-29T14:34:42.953+00:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="0" />
@@ -44,9 +44,65 @@
       <definition value="Optional Extensions Element - found in all resources." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="EpisodeOfCare.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-confidential" />
+      </type>
+    </element>
+    <element>
+      <path value="EpisodeOfCare.extension" />
+      <name value="registrationStatusListIdentifier" />
+      <short value="Identifier of a containedList resource that provides the registration status history" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-episode-registration-status-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="EpisodeOfCare.extension" />
+      <name value="registrationType" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient-registration-type-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="EpisodeOfCare.extension" />
+      <name value="outcome" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-episode-outcome" />
+      </type>
+    </element>
+    <element>
+      <path value="EpisodeOfCare.extension" />
+      <name value="priority" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-episode-priority" />
+      </type>
+    </element>
+    <element>
+      <path value="EpisodeOfCare.extension" />
+      <name value="pccArrival" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-episode-pccarrival" />
       </type>
     </element>
     <element>

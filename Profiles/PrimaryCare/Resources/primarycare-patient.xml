@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-patient" />
   <meta>
-    <lastUpdated value="2017-04-10T16:51:42.827+01:00" />
+    <lastUpdated value="2019-03-29T14:41:31.369+00:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -43,22 +43,6 @@
         <discriminator value="url" />
         <rules value="openAtEnd" />
       </slicing>
-    </element>
-    <element>
-      <path value="Patient.extension" />
-      <name value="registrationType" />
-      <definition value="Optional Extensions Element - found in all resources." />
-      <min value="0" />
-      <max value="1" />
-      <base>
-        <path value="Patient.extension" />
-        <min value="0" />
-        <max value="1" />
-      </base>
-      <type>
-        <code value="Extension" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient-registration-type-extension" />
-      </type>
     </element>
     <element>
       <path value="Patient.extension" />
@@ -132,9 +116,34 @@
       <definition value="Optional Extensions Element - found in all resources." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Patient.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-confidential" />
+      </type>
+    </element>
+    <element>
+      <path value="Patient.extension" />
+      <name value="religion" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-religion-category-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="Patient.extension" />
+      <name value="speaksEnglish" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/patient-speaks-english-extension" />
       </type>
     </element>
     <element>

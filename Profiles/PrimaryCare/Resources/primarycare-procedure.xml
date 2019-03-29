@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-procedure" />
   <meta>
-    <lastUpdated value="2017-04-10T16:44:05.147+01:00" />
+    <lastUpdated value="2019-03-29T14:43:12.461+00:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -119,9 +119,44 @@
       <definition value="Optional Extensions Element - found in all resources." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Procedure.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-confidential" />
+      </type>
+    </element>
+    <element>
+      <path value="Procedure.extension" />
+      <name value="sequenceNumber" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-procedure-sequence-number-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="Procedure.extension" />
+      <name value="isPrimary" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-procedure-is-primary-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="Procedure.extension" />
+      <name value="parentResource" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/parent-resource" />
       </type>
     </element>
     <element>

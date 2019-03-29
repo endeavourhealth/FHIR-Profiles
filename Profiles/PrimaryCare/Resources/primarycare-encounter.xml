@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-encounter" />
   <meta>
-    <lastUpdated value="2017-04-10T16:51:47.554+01:00" />
+    <lastUpdated value="2019-03-29T14:30:46.122+00:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -133,9 +133,44 @@
       <definition value="Optional Extensions Element - found in all resources." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Encounter.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-confidential" />
+      </type>
+    </element>
+    <element>
+      <path value="Encounter.extension" />
+      <name value="specialty" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter-specialty-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="Encounter.extension" />
+      <name value="treatmentFunction" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter-treatment-function-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="Encounter.extension" />
+      <name value="locationType" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/encounter-location-type-extension" />
       </type>
     </element>
     <element>

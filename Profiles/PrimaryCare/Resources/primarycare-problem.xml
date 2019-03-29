@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-problem" />
   <meta>
-    <lastUpdated value="2017-04-10T16:51:57.034+01:00" />
+    <lastUpdated value="2019-03-29T14:25:49.572+00:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -98,7 +98,7 @@
     </element>
     <element>
       <path value="Condition.extension" />
-      <name value="related" />
+      <name value="parentProblem" />
       <short value="Related problem - combined | grouped | replaces | evolved-from" />
       <definition value="A reference to another problem (target) whose relationship is defined by the relationship type code." />
       <min value="0" />
@@ -153,9 +153,34 @@
       <definition value="Optional Extensions Element - found in all resources." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Condition.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-confidential" />
+      </type>
+    </element>
+    <element>
+      <path value="Condition.extension" />
+      <name value="episodicity" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-problem-episodicity" />
+      </type>
+    </element>
+    <element>
+      <path value="Condition.extension" />
+      <name value="significance" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-problem-significance-extension" />
       </type>
     </element>
     <element>
