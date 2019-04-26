@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-patient" />
   <meta>
-    <lastUpdated value="2019-03-29T14:41:31.369+00:00" />
+    <lastUpdated value="2019-04-26T12:02:52.732+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -131,6 +131,11 @@
       <name value="religion" />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Patient.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-religion-category-extension" />
@@ -141,9 +146,25 @@
       <name value="speaksEnglish" />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Patient.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://hl7.org/fhir/StructureDefinition/patient-speaks-english-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="Patient.extension" />
+      <name value="testPatient" />
+      <definition value="Optional Extensions Element - found in all resources." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/patient-is-test-patient-extension" />
       </type>
     </element>
     <element>

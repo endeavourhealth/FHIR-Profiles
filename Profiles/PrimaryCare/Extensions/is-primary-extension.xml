@@ -1,13 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="primarycare-procedure-is-primary-extension" />
+  <id value="is-primary-extension" />
   <meta>
-    <lastUpdated value="2019-03-29T14:04:44.802+00:00" />
+    <lastUpdated value="2019-04-26T15:32:42.235+01:00" />
   </meta>
-  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-procedure-is-primary-extension" />
-  <name value="PrimaryCare-Procedure-Is-Primary-Extension" />
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/is-primary-extension" />
+  <name value="Is-Primary-Extension" />
   <status value="draft" />
-  <description value="Indicates a Procedure is the primary procedure for a hospital admission or outpatient attendance" />
+  <date value="2019-04-26T00:00:00+01:00" />
+  <description value="Indicates if a resource is &quot;primary&quot; - e.g. the primary procedure a patient had" />
   <requirements value="The ability to add extensions in a structured way is what keeps FHIR resources simple." />
   <fhirVersion value="1.0.2" />
   <kind value="datatype" />
@@ -33,11 +34,10 @@
         <min value="1" />
         <max value="1" />
       </base>
-      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-procedure-is-primary-extension" />
+      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/is-primary-extension" />
     </element>
     <element>
       <path value="Extension.valueBoolean" />
-      <min value="1" />
       <base>
         <path value="Extension.value[x]" />
         <min value="0" />

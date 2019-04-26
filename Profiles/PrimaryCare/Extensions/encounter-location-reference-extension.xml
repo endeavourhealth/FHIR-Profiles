@@ -1,21 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="appointment-booking-date-extension" />
+  <id value="encounter-location-reference-extension" />
   <meta>
-    <lastUpdated value="2019-04-26T15:32:55.275+01:00" />
+    <lastUpdated value="2019-04-26T15:32:51.056+01:00" />
   </meta>
-  <url value="http://endeavourhealth.org/fhir/StructureDefinition/appointment-booking-date-extension" />
-  <name value="Appointment-Booking-Date-Extension" />
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter-location-reference-extension" />
+  <name value="Encounter-Location-Reference-Extension" />
   <status value="draft" />
   <date value="2019-04-26T00:00:00+01:00" />
-  <description value="Date time an appointmet was booked" />
+  <description value="Reference to a location resource where this encounter took place" />
   <requirements value="The ability to add extensions in a structured way is what keeps FHIR resources simple." />
   <fhirVersion value="1.0.2" />
   <kind value="datatype" />
   <constrainedType value="Extension" />
   <abstract value="false" />
   <contextType value="resource" />
-  <context value="Appointment" />
+  <context value="Encounter" />
   <base value="http://hl7.org/fhir/StructureDefinition/Extension" />
   <differential>
     <element>
@@ -34,18 +34,17 @@
         <min value="1" />
         <max value="1" />
       </base>
-      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/appointment-booking-date-extension" />
+      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter-location-reference-extension" />
     </element>
     <element>
-      <path value="Extension.valueDateTime" />
-      <min value="1" />
+      <path value="Extension.valueReference" />
       <base>
         <path value="Extension.value[x]" />
         <min value="0" />
         <max value="1" />
       </base>
       <type>
-        <code value="dateTime" />
+        <code value="Reference" />
       </type>
     </element>
   </differential>
