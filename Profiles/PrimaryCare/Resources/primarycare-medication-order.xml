@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-medication-order" />
   <meta>
-    <lastUpdated value="2016-08-05T16:05:57.163+01:00" />
+    <lastUpdated value="2017-04-10T16:49:24.688+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -176,6 +176,17 @@
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-recorded-by-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="MedicationOrder.extension" />
+      <name value="confidential" />
+      <definition value="Optional Extensions Element - found in all resources." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-confidential" />
       </type>
     </element>
     <element>

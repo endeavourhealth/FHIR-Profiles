@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="primarycare-flag" />
+  <meta>
+    <lastUpdated value="2019-04-03T09:58:35.51+01:00" />
+  </meta>
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-flag" />
+  <name value="PrimaryCare-Flag" />
+  <display value="Flag" />
+  <status value="draft" />
+  <publisher value="Endeavour Health Charitable Trust" />
+  <contact>
+    <telecom>
+      <system value="other" />
+      <value value="http://www.endeavourhealth.org/" />
+    </telecom>
+  </contact>
+  <date value="2018-04-17T00:00:00+01:00" />
+  <description value="Represents a non-coded flag for a patient record, such as a Palliative Special Note or Child Safeguarding Status" />
+  <fhirVersion value="1.0.2" />
+  <kind value="resource" />
+  <constrainedType value="Flag" />
+  <abstract value="false" />
+  <base value="http://hl7.org/fhir/StructureDefinition/Flag" />
+  <differential>
+    <element>
+      <path value="Flag" />
+      <base>
+        <path value="Flag" />
+        <min value="0" />
+        <max value="*" />
+      </base>
+      <type>
+        <code value="Flag" />
+      </type>
+    </element>
+  </differential>
+</StructureDefinition>

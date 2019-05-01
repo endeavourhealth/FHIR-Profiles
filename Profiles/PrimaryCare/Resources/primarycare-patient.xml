@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-patient" />
   <meta>
-    <lastUpdated value="2016-10-12T09:55:25.484+01:00" />
+    <lastUpdated value="2019-04-26T12:02:52.732+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -43,22 +43,6 @@
         <discriminator value="url" />
         <rules value="openAtEnd" />
       </slicing>
-    </element>
-    <element>
-      <path value="Patient.extension" />
-      <name value="registrationType" />
-      <definition value="Optional Extensions Element - found in all resources." />
-      <min value="0" />
-      <max value="1" />
-      <base>
-        <path value="Patient.extension" />
-        <min value="0" />
-        <max value="1" />
-      </base>
-      <type>
-        <code value="Extension" />
-        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-patient-registration-type-extension" />
-      </type>
     </element>
     <element>
       <path value="Patient.extension" />
@@ -116,9 +100,71 @@
       <definition value="The ethnicity of the subject." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="Patient.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-ethnic-category-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="Patient.extension" />
+      <name value="confidential" />
+      <definition value="Optional Extensions Element - found in all resources." />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="Patient.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-confidential" />
+      </type>
+    </element>
+    <element>
+      <path value="Patient.extension" />
+      <name value="religion" />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="Patient.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-religion-category-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="Patient.extension" />
+      <name value="speaksEnglish" />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="Patient.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="Extension" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/patient-speaks-english-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="Patient.extension" />
+      <name value="testPatient" />
+      <definition value="Optional Extensions Element - found in all resources." />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/patient-is-test-patient-extension" />
       </type>
     </element>
     <element>

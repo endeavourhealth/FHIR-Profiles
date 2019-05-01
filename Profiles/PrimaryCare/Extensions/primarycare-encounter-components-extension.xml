@@ -1,26 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StructureDefinition xmlns="http://hl7.org/fhir">
-  <id value="primarycare-appointment-left-extension" />
+  <id value="primarycare-encounter-components-extension" />
   <meta>
-    <lastUpdated value="2019-04-10T16:44:31.41+01:00" />
+    <lastUpdated value="2017-02-22T17:22:26.821+00:00" />
   </meta>
-  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-appointment-left-extension" />
-  <name value="PrimaryCare-Appointment-Left-Extension" />
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter-components-extension" />
+  <name value="PrimaryCare-EncounterComponents-Extension" />
   <status value="draft" />
   <contact>
     <telecom>
       <system value="other" />
-      <value value="http://endeavourhealth.org" />
+      <value value="http://www.endeavourhealth.org/" />
     </telecom>
   </contact>
-  <description value="Actual time the patient left their appointment (rather than the scheduled end time)" />
+  <date value="2017-02-22T00:00:00+00:00" />
+  <description value="A reference to a contained List resource, containing references to all clinical items recorded during this Encounter&#xD;&#xA;" />
   <requirements value="The ability to add extensions in a structured way is what keeps FHIR resources simple." />
   <fhirVersion value="1.0.2" />
   <kind value="datatype" />
   <constrainedType value="Extension" />
   <abstract value="false" />
   <contextType value="resource" />
-  <context value="Appointment" />
+  <context value="Encounter" />
   <base value="http://hl7.org/fhir/StructureDefinition/Extension" />
   <differential>
     <element>
@@ -39,10 +40,10 @@
         <min value="1" />
         <max value="1" />
       </base>
-      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-appointment-left-extension" />
+      <fixedUri value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-encounter-components-extension" />
     </element>
     <element>
-      <path value="Extension.value[x]" />
+      <path value="Extension.valueReference" />
       <min value="1" />
       <base>
         <path value="Extension.value[x]" />
@@ -50,10 +51,8 @@
         <max value="1" />
       </base>
       <type>
-        <code value="dateTime" />
-      </type>
-      <type>
-        <code value="time" />
+        <code value="Reference" />
+        <profile value="http://hl7.org/fhir/StructureDefinition/List" />
       </type>
     </element>
   </differential>

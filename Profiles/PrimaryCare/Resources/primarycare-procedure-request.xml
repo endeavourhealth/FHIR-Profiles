@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-procedure-request" />
   <meta>
-    <lastUpdated value="2016-08-05T11:20:53.215+01:00" />
+    <lastUpdated value="2019-03-29T14:44:09.423+00:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -67,9 +67,40 @@
       <definition value="Optional Extensions Element - found in all resources." />
       <min value="0" />
       <max value="1" />
+      <base>
+        <path value="ProcedureRequest.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-procedure-request-schedule-text-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="ProcedureRequest.extension" />
+      <name value="confidential" />
+      <definition value="Optional Extensions Element - found in all resources." />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="ProcedureRequest.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-confidential" />
+      </type>
+    </element>
+    <element>
+      <path value="ProcedureRequest.extension" />
+      <name value="locationType" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-procedure-request-location-extension" />
       </type>
     </element>
     <element>

@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-observation" />
   <meta>
-    <lastUpdated value="2016-08-08T16:31:20.432+01:00" />
+    <lastUpdated value="2019-03-29T14:39:24.909+00:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -92,6 +92,48 @@
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-external-document-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="Observation.extension" />
+      <name value="isReview" />
+      <definition value="Optional Extensions Element - found in all resources." />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="Observation.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-problem-review" />
+      </type>
+    </element>
+    <element>
+      <path value="Observation.extension" />
+      <name value="confidential" />
+      <definition value="Optional Extensions Element - found in all resources." />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="Observation.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-confidential" />
+      </type>
+    </element>
+    <element>
+      <path value="Observation.extension" />
+      <name value="parentResource" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/parent-resource" />
       </type>
     </element>
     <element>

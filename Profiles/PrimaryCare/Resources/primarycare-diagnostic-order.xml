@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-diagnostic-order" />
   <meta>
-    <lastUpdated value="2016-08-08T16:29:38.601+01:00" />
+    <lastUpdated value="2019-03-29T14:27:13.271+00:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="1" />
@@ -84,9 +84,56 @@
       <definition value="Optional Extensions Element - found in all resources." />
       <min value="0" />
       <max value="*" />
+      <base>
+        <path value="DiagnosticOrder.extension" />
+        <min value="0" />
+        <max value="*" />
+      </base>
       <type>
         <code value="Extension" />
         <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-external-document-extension" />
+      </type>
+    </element>
+    <element>
+      <path value="DiagnosticOrder.extension" />
+      <name value="isReview" />
+      <definition value="Optional Extensions Element - found in all resources." />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="DiagnosticOrder.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-problem-review" />
+      </type>
+    </element>
+    <element>
+      <path value="DiagnosticOrder.extension" />
+      <name value="confidential" />
+      <definition value="Optional Extensions Element - found in all resources." />
+      <min value="0" />
+      <max value="1" />
+      <base>
+        <path value="DiagnosticOrder.extension" />
+        <min value="0" />
+        <max value="1" />
+      </base>
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-confidential" />
+      </type>
+    </element>
+    <element>
+      <path value="DiagnosticOrder.extension" />
+      <name value="parentResource" />
+      <min value="0" />
+      <max value="1" />
+      <type>
+        <code value="Extension" />
+        <profile value="http://endeavourhealth.org/fhir/StructureDefinition/parent-resource" />
       </type>
     </element>
     <element>
