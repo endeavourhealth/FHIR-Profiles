@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <id value="primarycare-questionnaire-response" />
+  <meta>
+    <lastUpdated value="2019-07-16T13:46:19.582+01:00" />
+  </meta>
+  <url value="http://endeavourhealth.org/fhir/StructureDefinition/primarycare-questionnaire-response" />
+  <name value="PrimaryCare-Questionnaire-Response" />
+  <status value="draft" />
+  <publisher value="Endeavour Health Charitable Trust" />
+  <contact>
+    <telecom>
+      <system value="other" />
+      <value value="http://www.endeavourhealth.org/" />
+    </telecom>
+  </contact>
+  <date value="2019-07-16T13:40:34.707+01:00" />
+  <fhirVersion value="1.0.2" />
+  <kind value="resource" />
+  <constrainedType value="QuestionnaireResponse" />
+  <abstract value="false" />
+  <base value="http://hl7.org/fhir/StructureDefinition/QuestionnaireResponse" />
+  <differential>
+    <element>
+      <path value="QuestionnaireResponse" />
+    </element>
+  </differential>
+</StructureDefinition>
