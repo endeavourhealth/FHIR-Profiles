@@ -2,7 +2,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
   <id value="primarycare-appointment" />
   <meta>
-    <lastUpdated value="2016-08-05T13:14:41.781+01:00" />
+    <lastUpdated value="2019-07-24T13:50:03.591+01:00" />
   </meta>
   <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm">
     <valueInteger value="0" />
@@ -216,6 +216,7 @@
     </element>
     <element>
       <path value="Appointment.slot" />
+      <max value="1" />
       <base>
         <path value="Appointment.slot" />
         <min value="0" />
